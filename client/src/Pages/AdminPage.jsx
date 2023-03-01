@@ -1,6 +1,6 @@
 function AdminPage() {
   return (
-    <div>AdminPage</div>
+    <div>AdminPage{localStorage.getItem("token")}</div>
   )
 }
 

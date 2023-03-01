@@ -26,20 +26,12 @@ function LoginPage(props) {
             const response = await loginUserRequest(values);
             const { token } = response.data;
             setToken(token);
-            /* 
-            const n = response.data.user.rol;
-            // Actualiza el valor del estado con el token recibido
-            setToken(token); */
-            //console.log(user);
             localStorage.setItem("token", token);
-            //setUser( { rol: response.data.user.rol });
             state({ rol: response.data.user.rol });
             navigate("/admin");
             setUser({ rol: "admin" }, () => {
               console.log(user);
             });
-            //console.log(`este es el ${user}`)
-            //console.log(`este es el ${setUser}`)
             //resetea el form
             actions.resetForm();
           } catch (error) {

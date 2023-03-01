@@ -23,7 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage state={setrol} />} />
         <Route path="/recovery" element={<RecoveryPage />} />
-        <Route element={<ProtectedRoute isAllowed={!!rol.rol} />}>
+        <Route element={<ProtectedRoute isAllowed={!!rol.rol && rol.rol=== "admin"} />}>
           <Route path="/admin" element={<Admin />} />
         </Route>
 
