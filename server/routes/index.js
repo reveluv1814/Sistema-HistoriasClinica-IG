@@ -22,7 +22,8 @@ function routerApi(app) {
   //ruta de login etc
   app.use("/auth", authRouter);
   //admin /middleware/ router que usa (en este caso usuario)
-  app.use("/admin", estaAutorizado ,adminEndpoint);
+  app.use("/admin", estaAutorizado,
+  adminEndpoint);
 
   
 }

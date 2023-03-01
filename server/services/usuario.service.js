@@ -43,6 +43,14 @@ class UsuarioService {
           { include: "laboratorista" }
         );
         break;
+        case "admin":
+        newUsuario = await models.Usuario.create(
+          {
+            ...data,
+            password: hash,
+          }
+        );
+        break;
       default:
         throw new Error(`El rol '${data.rol}' no es válido`);
     }

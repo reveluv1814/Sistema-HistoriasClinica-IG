@@ -1,9 +1,16 @@
 import { Form, Formik } from "formik";
-import React, { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { loginUserRequest } from "../api/login.api";
-
-function LoginPage() {
+import { UserContext } from "../context/UserContext";
+function LoginPage(props) {
+  const { state } = props;
   const [token, setToken] = useState("");
+  const [nombre, setNombre] = useState("");
+
+  const navigate = useNavigate();
+
+  const { user, setUser } = useContext(UserContext);
   return (
     <div>
       <Formik //estados iniciales
@@ -13,14 +20,26 @@ function LoginPage() {
         }}
         //onsubmit evento para enviar el formulario
         onSubmit={async (values, actions) => {
-          console.log(values);
+          //  console.log(values);
           //enviamos la peticion al back
           try {
             const response = await loginUserRequest(values);
             const { token } = response.data;
-            // Actualiza el valor del estado con el token recibido
             setToken(token);
-
+            /* 
+            const n = response.data.user.rol;
+            // Actualiza el valor del estado con el token recibido
+            setToken(token); */
+            //console.log(user);
+            localStorage.setItem("token", token);
+            //setUser( { rol: response.data.user.rol });
+            state({ rol: response.data.user.rol });
+            navigate("/admin");
+            setUser({ rol: "admin" }, () => {
+              console.log(user);
+            });
+            //console.log(`este es el ${user}`)
+            //console.log(`este es el ${setUser}`)
             //resetea el form
             actions.resetForm();
           } catch (error) {
@@ -56,6 +75,7 @@ function LoginPage() {
             <p>
               Token: <b>{token}</b>
             </p>
+            <p>email: {nombre}</p>
           </Form>
         )}
       </Formik>

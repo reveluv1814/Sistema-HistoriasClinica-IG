@@ -13,7 +13,8 @@ const createUsuarioSchema = Joi.object({
   password: password.required(),
   rol: rol.required(),
   doctor: createDoctorSchema.when('rol', { is: 'doctor', then: Joi.required() }),
-  personal: createPersonaSchema.when('rol', { is: 'personal', then: Joi.required() }),
+  personal: createPersonaSchema.when('rol', { is: 'personal', then: Joi.required(), otherwise: Joi.forbidden() }),
+  
   //laboratorista: createLaboratoristaSchema.when('rol', { is: 'laboratorista', then: Joi.required() }),
 });
 
