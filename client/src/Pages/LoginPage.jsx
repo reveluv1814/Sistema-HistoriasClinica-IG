@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUserRequest } from "../api/login.api";
 import { UserContext } from "../context/UserContext";
 import { Link } from "react-router-dom";
+import * as Yup from "yup";
 
 function LoginPage(props) {
   const { state } = props;
@@ -16,9 +17,9 @@ function LoginPage(props) {
     <div className="flex w-full h-[86%]">
       <div className="w-1/2 fondologin">
         <div className="flex h-[100%] items-center justify-center">
-            <h1 className="text-6xl font-bold text-white titulologin leading-[96px]">
-              Sistema de <br /> Administración de <br /> Historias Clínicas
-            </h1>
+          <h1 className="text-6xl font-bold text-white titulologin leading-[96px]">
+            Sistema de <br /> Administración de <br /> Historias Clínicas
+          </h1>
         </div>
       </div>
       <div className="w-1/2 flex flex-col items-center pt-14">
@@ -34,6 +35,14 @@ function LoginPage(props) {
                 password: "",
                 seepass: false,
               }}
+              validationSchema={Yup.object({
+                email: Yup.string()
+                  .email("Correo invalido")
+                  .required("Campo requerido"),
+                password: Yup.string()
+                  .min(5, "Debe tener 5 caracteres o más")
+                  .required("Campo requerido"),
+              })}
               //onsubmit evento para enviar el formulario
               onSubmit={async (values, actions) => {
                 //  console.log(values);
@@ -56,19 +65,31 @@ function LoginPage(props) {
               }}
             >
               {(
-                { handleChange, handleSubmit, values, isSubmitting } //handleChange :funcion para que se llene lo que escribe en los inputs gracias al evento onchange y el onsubmint es para cuando se envia el boton
+                {
+                  handleChange,
+                  handleSubmit,
+                  values,
+                  isSubmitting,
+                  touched,
+                  errors,
+                } //handleChange :funcion para que se llene lo que escribe en los inputs gracias al evento onchange y el onsubmint es para cuando se envia el boton
               ) => (
                 <Form onSubmit={handleSubmit} className="flex flex-col">
                   <label className="font-semibold text-lg">Correo:</label>
                   <input
                     type="text"
                     name="email"
+                    id="email"
                     placeholder="email"
                     onChange={handleChange}
                     value={values.email}
-                    className="border-none focus:outline-none rounded-md pl-3 mt-2 mb-4"
+                    className="border-none focus:outline-none rounded-md pl-3 mt-2"
                   />
-                  <label className="font-semibold text-lg">Contraseña:</label>
+                  {touched.email && errors.email ? (
+                    <p className="text-xs font-semibold text-red-800">{errors.email}</p>
+                  ) : null}
+
+                  <label className="font-semibold text-lg ">Contraseña:</label>
 
                   <div className="flex flex-row">
                     <input
@@ -78,7 +99,7 @@ function LoginPage(props) {
                       placeholder="contraseña"
                       onChange={handleChange}
                       value={values.password}
-                      className="border-none focus:outline-none rounded-md pl-3 mt-2 mb-4"
+                      className="border-none focus:outline-none rounded-md pl-3 mt-2"
                     />
                     <svg
                       className="ml-2 mt-2 w-5 h-6 see"
@@ -108,11 +129,14 @@ function LoginPage(props) {
                       />
                     </svg>
                   </div>
+                  {touched.password && errors.password ? (
+                      <p className="flex flex-col text-xs font-semibold text-red-800">{errors.password}</p>
+                    ) : null}
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btlogin bg-gradient-to-r from-red-500 to-indigo-600 text-white py-2 px-4 rounded-xl"
+                    className="btlogin bg-gradient-to-r from-red-500 to-indigo-600 text-white py-2 px-4 rounded-xl mt-4"
                   >
                     {isSubmitting ? "Guardando" : "Enviar"}
                   </button>

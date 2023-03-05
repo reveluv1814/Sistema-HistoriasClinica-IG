@@ -9,6 +9,7 @@ const config = {
   apiKey: process.env.API_KEY,
   //JWT
   jwtSecret: process.env.JWT_SECRET,
+  jwtSecretMail: process.env.JWT_SECRET_MAIL,
   //recovery password
   emailSender: process.env.SMTP_EMAIL,
   emailPassword: process.env.SMTP_PASSWORD,

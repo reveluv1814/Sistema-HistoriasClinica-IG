@@ -1,21 +1,21 @@
 //boom
-const boom = require('@hapi/boom');
+const boom = require("@hapi/boom");
 //
 //bcrypt
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 //
 //jwt
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 //
 //nodemailer
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 //
 
 //el secret
-const { config} = require('./../config/config');
+const { config } = require("./../config/config");
 //
 //servicio de los usuarios
-const UsuarioService = require('./usuario.service');
+const UsuarioService = require("./usuario.service");
 const service = new UsuarioService();
 //
 
@@ -52,15 +52,18 @@ class AuthService {
     if (!user) throw boom.unauthorized(); //si no existe el email sale error
     //verifiacamos que no tenga un recoveryToken en la bd
     jwt.verify(user.recoveryToken, config.jwtSecret, (err) => {
-      if (!err) throw boom.badRequest('You already have a active token.');
+      if (!err) throw boom.badRequest("You already have a active token.");
     });
     /**********generamos token para enviar link de recuperación  */
 
     const payload = { sub: user.id }; //generamos el payload del token
-    const token = jwt.sign(payload, config.jwtSecret, { expiresIn: '15min' }); //generamos el token
-    const link = `http://myfrontend.com/recovery?token=${token}`;
+    const token = jwt.sign(payload, config.jwtSecretMail, {
+      expiresIn: "15min",
+    }); //generamos el token
+    const link = `http://localhost:5173/change-password?token=${token}`;
     //guardamos el token en la base de datos por seguridad
     await service.update(user.id, { recoveryToken: token });
+    
     /*******fin del proceso de envio del token */
 
     //correo
@@ -68,9 +71,15 @@ class AuthService {
       //enviamos el correo
       from: config.emailSender, // sender address/de quien
       to: `${user.email}`, // list of receivers/ para quien
-      subject: 'E-Mail para recuperar Contraseña', // Subject line / titulo del correo
-      text: 'recuperar contraseña', // plain text body / text del correo
-      html: `<b>Ingresa a este link =>${link}</b>`, // html body
+      subject: "Recuperación de Contrasaña Sistema de Administracion de Historias Clínicas", // Subject line / titulo del correo
+      text: "Enlace de Recuperación", // plain text body / text del correo
+      html: `
+      <h1 style="text-align:center; ">Enlace de Recuperación</h1>
+      <div style="display: flex;justify-content: center;align-items: center;flex-direction: row;"> 
+          <img src="https://www.umsa.bo/image/journal/article?img_id=3993637&t=1632166043920" style="width:20%"> </br>
+          <h2>Ingresa al siguiente enlace para recuperar tu Contraseña:</h2></br>
+          <p style="font-weight: 700; "> ${link} </p>
+      </div>`, // html body
     };
     const rta = await this.sendMail(mail);
     return rta;
@@ -79,31 +88,33 @@ class AuthService {
   //envia mail si se olvidó la contraseña
   async sendMail(infoMail) {
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com', //servidor de correo
+      host: "smtp.gmail.com", //servidor de correo
       port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
-        user: config.emailSender, //'neilgraneros11@gmail.com'
-        pass: config.emailPassword, //'uxzsxmhiuldcqbcf',
+        user: config.emailSender, //''
+        pass: config.emailPassword, //'',
       },
     });
     await transporter.sendMail(infoMail);
-    return { message: 'mail sent' };
+    return { message: "mail sent" };
   }
 
   //funcion que recibe la nueva contraseña del fron junto con el token para cambiarlo
   async changePassword(token, newPassword) {
     try {
       //inico verifica
-      const payload = jwt.verify(token, config.jwtSecret);
+      const payload = jwt.verify(token, config.jwtSecretMail);
       const user = await service.findOne(payload.sub);
       if (user.recoveryToken !== token) throw boom.unauthorized();
       //fin verifica
       const hash = await bcrypt.hash(newPassword, 10); //hashea la nueva contraseña
-
       await service.update(user.id, { recoveryToken: null, password: hash }); //actualiza
-      return { message: 'password changed' };
+      return { message: "password changed" };
     } catch (error) {
+      setTimeout(async () => {
+        await service.update(user.id, { recoveryToken: null });
+      }, 5 * 60 * 1000); // 15 minutos en milisegundos
       throw boom.unauthorized();
     }
   }

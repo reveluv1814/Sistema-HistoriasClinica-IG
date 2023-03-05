@@ -4,6 +4,7 @@ import NotFound from "./Pages/NotFound";
 import RecoveryPage from "./Pages/RecoveryPage";
 import Admin from "./Pages/AdminPage";
 import Navbar from "./Components/Navbar";
+import ChangePassword from './Pages/ChangePassword'
 import ProtectedRoute from "./Components/Protected";
 import { UserContext } from "./context/UserContext";
 import { useEffect, useState } from "react";
@@ -22,7 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginPage state={setrol} />} />
           <Route path="/recovery" element={<RecoveryPage />} />
-
+          <Route path="/change-password" element={<ChangePassword/>}/>
           <Route
             element={
               <ProtectedRoute isAllowed={!!rol.rol && rol.rol === "admin"} />
