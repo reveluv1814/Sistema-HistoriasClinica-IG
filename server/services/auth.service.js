@@ -102,10 +102,11 @@ class AuthService {
 
   //funcion que recibe la nueva contraseña del fron junto con el token para cambiarlo
   async changePassword(token, newPassword) {
+    let user;
     try {
       //inico verifica
       const payload = jwt.verify(token, config.jwtSecretMail);
-      const user = await service.findOne(payload.sub);
+      user = await service.findOne(payload.sub);
       if (user.recoveryToken !== token) throw boom.unauthorized();
       //fin verifica
       const hash = await bcrypt.hash(newPassword, 10); //hashea la nueva contraseña
