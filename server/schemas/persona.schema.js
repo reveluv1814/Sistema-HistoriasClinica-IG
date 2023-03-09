@@ -6,7 +6,7 @@ const apellidoMaterno = Joi.string().min(2).max(100);
 const apellidoPaterno = Joi.string().min(2).max(100);
 const telefono = Joi.string()
   .pattern(/^[0-9]+$/)
-  .min(8)
+  .min(6)
   .max(15);
 const direccion = Joi.string().min(5).max(200);
 const foto = Joi.string().uri();

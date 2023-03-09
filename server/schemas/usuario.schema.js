@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
 const { createDoctorSchema, updateDoctorSchema } = require('./doctor.schema');
-const { createPersonaSchema, updatePersonaSchema } = require('./persona.schema');
+//const { createPersonaSchema, updatePersonaSchema } = require('./persona.schema');
 
 const id = Joi.number().integer();
 const email = Joi.string().email();
@@ -13,7 +13,7 @@ const createUsuarioSchema = Joi.object({
   password: password.required(),
   rol: rol.required(),
   doctor: createDoctorSchema.when('rol', { is: 'doctor', then: Joi.required() }),
-  personal: createPersonaSchema.when('rol', { is: 'personal', then: Joi.required(), otherwise: Joi.forbidden() }),
+  //personal: createPersonaSchema.when('rol', { is: 'personal', then: Joi.required(), otherwise: Joi.forbidden() }),
   
   //laboratorista: createLaboratoristaSchema.when('rol', { is: 'laboratorista', then: Joi.required() }),
 });
@@ -21,6 +21,10 @@ const createUsuarioSchema = Joi.object({
 const updateUsuarioSchema = Joi.object({
   email: email,
   password: password,
+  rol: rol.required(),
+  doctor: updateDoctorSchema.when('rol', { is: 'doctor', then: Joi.required() }),
+  //personal: updatePersonaSchema.when('rol', { is: 'personal', then: Joi.required(), otherwise: Joi.forbidden() }),
+  
 });
 
 const getUsuarioSchema = Joi.object({
