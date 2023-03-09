@@ -7,34 +7,31 @@ import Navbar from "./Components/Navbar";
 import ChangePassword from './Pages/ChangePassword'
 import ProtectedRoute from "./Components/Protected";
 import { UserContext } from "./context/UserContext";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import UserProvider, { contextUser } from "./hooks/context/ContextUser";
 
 function App() {
-  const [rol, setrol] = useState({ rol: null });
-  useEffect(() => {
-    console.log(rol);
-  }, [rol]);
-
-  const value = "useContext(UserContext);";
-  console.log(value);
+  const { user } = useContext(contextUser);
   return (
+    <>
       <div className="bg-zinc-100 h-screen">
         <Navbar />
         <Routes>
-          <Route path="/" element={<LoginPage state={setrol} />} />
+          <Route path="/" element={<LoginPage />} />
           <Route path="/recovery" element={<RecoveryPage />} />
           <Route path="/change-password" element={<ChangePassword/>}/>
           <Route
             element={
-              <ProtectedRoute isAllowed={!!rol.rol && rol.rol === "admin"} />
+              <ProtectedRoute isAllowed={!!user.rol && user.rol === "admin"} />
             }
-          >
+            >
             <Route path="/admin" element={<Admin />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
+            </>
   );
 }
 

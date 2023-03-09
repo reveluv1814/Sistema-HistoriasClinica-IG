@@ -1,7 +1,7 @@
 import axios from "axios";
-
+const URI_API = "http://10.0.40.75:4000/"
 export const loginUserRequest = async (login) =>
-  await axios.post("http://localhost:4000/auth/login", login);
+  await axios.post(URI_API+"auth/login", login);
 
 export const RecoveryRequest = async (email) =>
   await axios.post("http://localhost:4000/auth/recovery", email);

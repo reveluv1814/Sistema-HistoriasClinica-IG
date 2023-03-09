@@ -5,14 +5,16 @@ import { loginUserRequest } from "../api/login.api";
 import { UserContext } from "../context/UserContext";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import { contextUser } from "../hooks/context/ContextUser";
 
 function LoginPage(props) {
-  const { state } = props;
+
+  const {setUser} = useContext(contextUser);
+
   const [token, setToken] = useState("");
 
   const navigate = useNavigate();
 
-  const { user, setUser } = useContext(UserContext);
   return (
     <div className="flex w-full h-[86%]">
       <div className="w-1/2 fondologin">
@@ -52,11 +54,12 @@ function LoginPage(props) {
                   const { token } = response.data;
                   setToken(token);
                   localStorage.setItem("token", token);
-                  state({ rol: response.data.user.rol });
+                  setUser(
+                    {
+                      rol: response.data.user.rol
+                    })
                   navigate("/admin");
-                  setUser({ rol: "admin" }, () => {
-                    console.log(user);
-                  });
+                  
                   //resetea el form
                   actions.resetForm();
                 } catch (error) {
