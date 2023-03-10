@@ -106,8 +106,8 @@ router.patch(
     try {
       const { id } = req.params;
 
-      const doctorBusca = await service.findByUsuario(id);
-      const personaBusca = await service.findOne(doctor.personaId);
+      const doctorBusca = await doctorService.findByUsuario(id);
+      const personaBusca = await personaService.findOne(doctorBusca.personaId);
       ///
       const body = req.body;
       const usuario = await usuarioService.update(id, body.usuario);
