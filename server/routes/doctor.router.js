@@ -1,7 +1,7 @@
 const express = require("express");
 
 const DoctorService = require("./../services/doctor.service");
-const validatorHandler = require("./../middlewares/validator.handler");
+const {validatorHandler} = require("./../middlewares/validator.handler");
 const {
   updateDoctorSchema,
   createDoctorSchema,

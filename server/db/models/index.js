@@ -14,8 +14,10 @@ function setupModels(sequelize) {
   //crea la asociacion
   //----uno a uno
   Usuario.associate(sequelize.models);
-  Doctor.associate(sequelize.models);
   Persona.associate(sequelize.models);
+  Doctor.associate(sequelize.models);
+
+
 }
 
 module.exports = setupModels;

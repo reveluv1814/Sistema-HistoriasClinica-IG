@@ -1,24 +1,21 @@
 const Joi = require("joi");
 
-const {
-  createPersonaSchema,
-  updatePersonaSchema,
-} = require("./persona.schema");
-
 const id = Joi.number().integer();
 const unidad = Joi.string().min(4);
 const especialidad = Joi.string().min(2);
+const usuarioId = Joi.number().integer();
+const personaId = Joi.number().integer();
 
 const createDoctorSchema = Joi.object({
   unidad: unidad.required(),
   especialidad: especialidad.required(),
-  persona: createPersonaSchema,
 });
 
 const updateDoctorSchema = Joi.object({
   unidad,
   especialidad,
-  persona: updatePersonaSchema,
+  usuarioId,
+  personaId,
 });
 
 const getDoctorSchema = Joi.object({

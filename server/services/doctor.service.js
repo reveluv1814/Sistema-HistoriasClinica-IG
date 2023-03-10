@@ -8,9 +8,7 @@ class DoctorService {
   constructor() {}
 
   async find() {
-    const rta = await models.Doctor.findAll({
-      include: ["usuario", "persona"],
-    });
+    const rta = await models.Doctor.findAll();
     return rta;
   }
 
@@ -21,44 +19,34 @@ class DoctorService {
     }
     return user;
   }
-
-  async create(data) {
-    const hash = await bcrypt.hash(data.usuario.password, 10);
-    const newData = {
-      ...data,
-      usuario: {
-        ...data.usuario,
-        password: hash,
-      },
-    };
-
-    const newDoctor = await models.Doctor.create(newData, {
-      include: ["usuario", "persona"],
+  async findByUsuario(usuarioId) {
+    const rta = await models.Doctor.findOne({
+      //busca al primer usuario que cumpla con el where
+      where: { usuarioId },
     });
+    return rta;
+  }
+  async findByPersona(personaId) {
+    const rta = await models.Doctor.findOne({
+      //busca al primer usuario que cumpla con el where
+      where: { personaId },
+    });
+    return rta;
+  }
+  async create(data) {
+    const newDoctor = await models.Doctor.create(data);
     return newDoctor;
   }
 
   async update(id, changes) {
     const model = await this.findOne(id);
-    const newData = {
-      ...changes,
-      usuario: {
-        ...changes.usuario,
-      },
-      persona: {
-        ...changes.persona,
-      },
-    };
-    const rta = await model.update(newData, {
-      include: ["usuario", "persona"],
-    });
+
+    const rta = await model.update(changes);
     return rta;
   }
   async delete(id) {
     const model = await this.findOne(id);
-    await model.destroy({
-      include: ["usuario", "persona"],
-    });
+    await model.destroy();
     return { rta: true };
   }
 }

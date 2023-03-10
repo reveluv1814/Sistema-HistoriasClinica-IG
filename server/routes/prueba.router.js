@@ -1,7 +1,7 @@
 const express = require("express");
 
 const UsuarioService = require("./../services/usuario.service");
-const validatorHandler = require("../middlewares/validator.handler"); //valida los schemas
+const {validatorHandler} = require("../middlewares/validator.handler"); //valida los schemas
 const {createUsuarioSchema} = require("./../schemas/usuario.schema");
 
 const router = express.Router();
