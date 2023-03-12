@@ -32,6 +32,12 @@ class PersonaService {
     await user.destroy();
     return { id };
   }
+  async deleteUsuario(personaId) {
+    await models.Persona.destroy({
+      where: { id: personaId }
+    });
+    return { personaId };
+  }
 }
 
 module.exports = PersonaService;

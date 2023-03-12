@@ -3,6 +3,8 @@ const boom = require("@hapi/boom");
 const bcrypt = require("bcrypt");
 
 const { models } = require("../libs/sequelize");
+const { Usuario } = require("../db/models/usuario.model");
+const { Persona } = require("../db/models/persona.model");
 
 class DoctorService {
   constructor() {}
@@ -47,6 +49,12 @@ class DoctorService {
   async delete(id) {
     const model = await this.findOne(id);
     await model.destroy();
+    return { rta: true };
+  }
+  async deleteUsuario(id) {
+    await models.Doctor.destroy({
+      where: { usuarioId: id }
+    });
     return { rta: true };
   }
 }

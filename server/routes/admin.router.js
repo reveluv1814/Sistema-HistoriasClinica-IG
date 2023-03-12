@@ -19,16 +19,15 @@ const {
 const {
   updatePersonaSchema,
   createPersonaSchema,
-  getPersonaSchema,
 } = require("./../schemas/persona.schema");
 const {
   updateDoctorSchema,
   createDoctorSchema,
-  getDoctorSchema,
 } = require("./../schemas/doctor.schema");
 
 const router = express.Router();
 
+//
 const usuarioService = new UsuarioService();
 const personaService = new PersonaService();
 const doctorService = new DoctorService();
@@ -36,13 +35,9 @@ const doctorService = new DoctorService();
 router.get("/", checkRoles("admin"), async (req, res, next) => {
   try {
     const usuarios = await usuarioService.find();
-    const personas = await personaService.find();
-    const doctores = await doctorService.find();
 
     res.json({
       usuarios,
-      personas,
-      doctores,
     });
   } catch (error) {
     next(error);
@@ -57,12 +52,9 @@ router.get(
     try {
       const { id } = req.params;
       const usuario = await usuarioService.findOne(id);
-      const doctor = await doctorService.findByUsuario(id);
-      const persona = await personaService.findOne(doctor.personaId);
+
       res.json({
         usuario,
-        persona,
-        doctor,
       });
     } catch (error) {
       next(error);
@@ -127,18 +119,19 @@ router.patch(
 router.delete(
   "/:id",
   checkRoles("admin"),
-  validatorHandler(getDoctorSchema, "params"),
+  validatorHandler(getUsuarioSchema, "params"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      const doctor = await doctorService.findOne(id);
+      const usuario = await usuarioService.findOne(id);
 
-      await doctorService.delete(id);
-      await usuarioService.delete(doctor.usuarioId);
-      await personaService.delete(doctor.personaId);
+      await doctorService.deleteUsuario(usuario.id);
+      await personaService.deleteUsuario(usuario.doctor.personaId);
+      await usuarioService.delete(usuario.id);
+
       res
         .status(201)
-        .json({ id, usuarioId: doctor.usuarioId, personaId: doctor.personaId });
+        .json({ id, persona: usuario.doctor.personaId , doctor: usuario.doctor.id});
     } catch (error) {
       next(error);
     }

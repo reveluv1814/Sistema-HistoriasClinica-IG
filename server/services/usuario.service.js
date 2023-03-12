@@ -3,6 +3,9 @@ const boom = require("@hapi/boom");
 const bcrypt = require("bcrypt");
 
 const { models } = require("./../libs/sequelize");
+const { Doctor } = require("../db/models/doctor.model");
+const { Persona } = require("../db/models/persona.model");
+const { Op } = require("sequelize");
 
 class UsuarioService {
   constructor() {}
@@ -23,7 +26,26 @@ class UsuarioService {
   }
 
   async find() {
-    const rta = await models.Usuario.findAll();
+    const rta = await models.Usuario.findAll({
+      include: [
+        {
+          model: Doctor,
+          as: "doctor",
+          attributes: ["unidad"], // atributos que deseas seleccionar de la tabla usuario
+          include: [
+            {
+              model: Persona,
+              as: "persona",
+              attributes: ["nombre", "apellidoPaterno", "apellidoMaterno"], // atributos que deseas seleccionar de la tabla persona
+            },
+          ],
+        },
+      ],
+      where: { rol: { [Op.ne]: "admin" } },
+      order: [
+        ["createdAt", "DESC"], // ordenar por fecha de creación en orden ascendente
+      ],
+    });
     return rta;
   }
 
@@ -36,7 +58,20 @@ class UsuarioService {
   }
 
   async findOne(id) {
-    const user = await models.Usuario.findByPk(id);
+    const user = await models.Usuario.findByPk(id, {
+      include: [
+        {
+          model: Doctor,
+          as: "doctor",
+          include: [
+            {
+              model: Persona,
+              as: "persona",
+            },
+          ],
+        },
+      ],
+    });
     if (!user) {
       throw boom.notFound("usuario no encontrado");
     }
