@@ -41,7 +41,7 @@ class UsuarioService {
           ],
         },
       ],
-      where: { rol: { [Op.ne]: "admin" } },
+      //where: { rol: { [Op.ne]: "admin" } },
       order: [
         ["createdAt", "DESC"], // ordenar por fecha de creación en orden ascendente
       ],
