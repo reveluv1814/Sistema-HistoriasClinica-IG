@@ -3,9 +3,12 @@ const boom = require("@hapi/boom");
 const bcrypt = require("bcrypt");
 
 const { models } = require("./../libs/sequelize");
-const { Doctor } = require("../db/models/doctor.model");
 const { Persona } = require("../db/models/persona.model");
-const { Op } = require("sequelize");
+const { Doctor } = require("../db/models/doctor.model");
+const { PersonalAdmin } = require("../db/models/personalAdmin.model");
+const { Laboratorista } = require("../db/models/laboratorista.model");
+
+//const { Op } = require("sequelize");
 
 class UsuarioService {
   constructor() {}
@@ -40,6 +43,30 @@ class UsuarioService {
             },
           ],
         },
+        {
+          model: PersonalAdmin,
+          as: "personalAdmin",
+          attributes: ["cargo"], // atributos que deseas seleccionar de la tabla usuario
+          include: [
+            {
+              model: Persona,
+              as: "persona",
+              attributes: ["nombre", "apellidoPaterno", "apellidoMaterno"], // atributos que deseas seleccionar de la tabla persona
+            },
+          ],
+        },
+        {
+          model: Laboratorista,
+          as: "laboratorista",
+          attributes: ["especialidad"], // atributos que deseas seleccionar de la tabla usuario
+          include: [
+            {
+              model: Persona,
+              as: "persona",
+              attributes: ["nombre", "apellidoPaterno", "apellidoMaterno"], // atributos que deseas seleccionar de la tabla persona
+            },
+          ],
+        },
       ],
       //where: { rol: { [Op.ne]: "admin" } },
       order: [
@@ -63,6 +90,26 @@ class UsuarioService {
         {
           model: Doctor,
           as: "doctor",
+          include: [
+            {
+              model: Persona,
+              as: "persona",
+            },
+          ],
+        },
+        {
+          model: PersonalAdmin,
+          as: "personalAdmin",
+          include: [
+            {
+              model: Persona,
+              as: "persona",
+            },
+          ],
+        },
+        {
+          model: Laboratorista,
+          as: "laboratorista",
           include: [
             {
               model: Persona,

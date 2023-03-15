@@ -51,6 +51,14 @@ class Persona extends Model {
       as: "doctor",
       foreignKey: "personaId",
     });
+    this.hasOne(models.PersonalAdmin, {
+      as: "personalAdmin",
+      foreignKey: "personaId",
+    });
+    this.hasOne(models.Laboratorista, {
+      as: "laboratorista",
+      foreignKey: "personaId",
+    });
   }
 
   static config(sequelize) {

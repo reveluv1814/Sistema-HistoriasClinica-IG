@@ -1,6 +1,11 @@
-{
+{ "admin": {
+    "email":"neilgraneros11@gmail.com",
+    "password": "123456",
+    "rol": "admin"
+  },
+  "doctor":{
     "usuario": {
-      "email":"neil2@email.com",
+      "email":"doctor1@email.com",
       "password": "123456",
       "rol": "doctor"
     },
@@ -8,6 +13,7 @@
       "nombre": "juan carlos",
       "apellidoMaterno": "flores",
       "apellidoPaterno": "perez",
+      "ci": "12345687",
       "telefono": "152879522",
       "direccion": "villa copa ",
       "foto": "https://picsum.photos/id/237/200/300",
@@ -17,4 +23,45 @@
       "unidad":"genetica",
       "especialidad": "genetica medica"
     }
+  },
+  "personalAdmin":{
+    "usuario": {
+      "email":"personal1@email.com",
+      "password": "123456",
+      "rol": "personalAdmin"
+    },
+    "persona":{
+      "nombre": "Dianna Petty",
+      "apellidoMaterno": "Hayes",
+      "apellidoPaterno": "Mccormick",
+      "ci": "12345687",
+      "telefono": "152879522",
+      "direccion": "villa copa ",
+      "foto": "http://placehold.it/32x32",
+      "es_persona": false
+    },
+    "personalAdmin":{
+      "cargo":"secretaria"
+    }
+  },
+  "laboratorista":{
+    "usuario": {
+      "email":"laboratorista1@email.com",
+      "password": "123456",
+      "rol": "laboratorista"
+    },
+    "persona":{
+      "nombre": "Jeri Bradford",
+      "apellidoMaterno": "Gilliam",
+      "apellidoPaterno": "Holder",
+      "ci": "12345687",
+      "telefono": "152879522",
+      "direccion": "villa copa ",
+      "foto": "http://placehold.it/32x32",
+      "es_persona": false
+    },
+    "laboratorista":{
+      "especialidad": "laboratorio medico"
+    }
   }
+}

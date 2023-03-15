@@ -2,38 +2,38 @@ const boom = require("@hapi/boom");
 
 const { models } = require("../libs/sequelize");
 
-class DoctorService {
+class PersonalAdminService {
   constructor() {}
 
   async find() {
-    const rta = await models.Doctor.findAll();
+    const rta = await models.PersonalAdmin.findAll();
     return rta;
   }
 
   async findOne(id) {
-    const user = await models.Doctor.findByPk(id);
+    const user = await models.PersonalAdmin.findByPk(id);
     if (!user) {
-      throw boom.notFound("doctor no encontrado");
+      throw boom.notFound("Personal Administrativo no encontrado");
     }
     return user;
   }
   async findByUsuario(usuarioId) {
-    const rta = await models.Doctor.findOne({
+    const rta = await models.PersonalAdmin.findOne({
       //busca al primer usuario que cumpla con el where
       where: { usuarioId },
     });
     return rta;
   }
   async findByPersona(personaId) {
-    const rta = await models.Doctor.findOne({
+    const rta = await models.PersonalAdmin.findOne({
       //busca al primer usuario que cumpla con el where
       where: { personaId },
     });
     return rta;
   }
   async create(data) {
-    const newDoctor = await models.Doctor.create(data);
-    return newDoctor;
+    const newPersonalAdmin = await models.PersonalAdmin.create(data);
+    return newPersonalAdmin;
   }
 
   async update(id, changes) {
@@ -48,11 +48,11 @@ class DoctorService {
     return { rta: true };
   }
   async deleteUsuario(id) {
-    await models.Doctor.destroy({
+    await models.PersonalAdmin.destroy({
       where: { usuarioId: id }
     });
     return { rta: true };
   }
 }
 
-module.exports = DoctorService;
+module.exports = PersonalAdminService;
