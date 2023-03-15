@@ -21,6 +21,10 @@ const PersonaSchema = {
     allowNull: false,
     type: DataTypes.STRING,
   },
+  ci: {
+    allowNull: false,
+    type: DataTypes.STRING,
+  },
   telefono: {
     allowNull: false,
     type: DataTypes.STRING,
