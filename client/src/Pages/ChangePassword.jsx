@@ -68,7 +68,7 @@ const ChangePassword = () => {
   }
 
   return (
-    <div className=" flex flex-col items-center justify-center h-[60%] ">
+    <div className=" flex flex-col items-center justify-center h-full ">
       <h2 className="text-4xl font-normal text-red-500 ">
         Introduzca su nueva Contraseña
       </h2>

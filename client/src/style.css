@@ -45,3 +45,54 @@
     border-left: 7px solid rgba(255, 255, 255, 1);
     padding-left: 20px;
 }
+
+/*tabla user*/
+
+.tablaAdmin:first-child{
+    border-top-left-radius: 0.75rem/* 12px */;
+}
+.tablaAdmin:last-child{
+    border-top-right-radius: 0.75rem/* 12px */;
+    border-right: none;
+}
+.tablaAdminUsers:last-child{
+    border-right: none;
+}
+.tablaAdminFooter:first-child{
+    border-bottom-left-radius: 0.75rem/* 12px */;
+}
+.tablaAdminFooter:last-child{
+    border-bottom-right-radius: 0.75rem/* 12px */;
+    border-right: none;
+}
+.textAdminPage{
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Poppins';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer{
+   background: linear-gradient(270deg, #6366F1 0%, #EF4444 100%);
+}
+.logofooter{
+    background-image: url('./../LogoBlanco.png');
+}

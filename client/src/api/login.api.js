@@ -1,5 +1,5 @@
 import axios from "axios";
-const URI_API = "http://10.0.40.75:4000/";
+const URI_API = "http://localhost:4000/";
 export const loginUserRequest = async (login) =>
   await axios.post(URI_API + "auth/login", login);
 

@@ -2,10 +2,9 @@ import { Form, Formik } from "formik";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUserRequest } from "../api/login.api";
-import { UserContext } from "../context/UserContext";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import { contextUser } from "../hooks/context/ContextUser";
+import { contextUser } from "../Context/ContextUser";
 
 function LoginPage(props) {
 
@@ -16,7 +15,7 @@ function LoginPage(props) {
   const navigate = useNavigate();
 
   return (
-    <div className="flex w-full h-[86%]">
+    <div className="flex w-full h-[87%]">
       <div className="w-1/2 fondologin">
         <div className="flex h-[100%] items-center justify-center">
           <h1 className="text-6xl font-bold text-white titulologin leading-[96px]">
@@ -63,6 +62,7 @@ function LoginPage(props) {
                   //resetea el form
                   actions.resetForm();
                 } catch (error) {
+                  alert("usuario no encontrado")
                   console.log(error);
                 }
               }}
