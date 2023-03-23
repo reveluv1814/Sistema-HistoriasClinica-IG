@@ -21,7 +21,8 @@
     },
     "doctor":{
       "unidad":"genetica",
-      "especialidad": "genetica medica"
+      "especialidad": "genetica medica",
+      "numeroMatrcula": 111
     }
   },
   "personalAdmin":{
@@ -61,7 +62,8 @@
       "es_persona": false
     },
     "laboratorista":{
-      "especialidad": "laboratorio medico"
+      "especialidad": "laboratorio medico",
+      "matriculaProf": 1111
     }
   }
 }
