@@ -2,13 +2,19 @@ import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import "./../../assets/Modal.css";
+import { useAdminPage } from "../../Context/AdminPageProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
-const Modal = (props) => {
+const ModalAdd = (props) => {
+  const { closeModalSucces, setCloseModalSucces } = useAdminPage();
+
   const closeOnEscapeKeyDown = (e) => {
     if ((e.charCode || e.keyCode) === 27) {
       props.onClose();
     }
   };
+
   const modalRef = useRef(null);
 
   const navigate = useNavigate();
@@ -21,7 +27,10 @@ const Modal = (props) => {
   }, []);
 
   const handleCloseAndRedirect = (route) => {
-    props.onClose(); // cierra el modal
+    props.onClose();
+    if (closeModalSucces) {
+      setCloseModalSucces(false);
+    } // cierra el modal
     if (props.buttonAction) {
       navigate(route); // redirecciona si se proporciona la ruta
     }
@@ -42,11 +51,22 @@ const Modal = (props) => {
           <div className="modal-header">
             <h4 className="modal-title">{props.title}</h4>
           </div>
-          <div className="modal-body">{props.children}</div>
+          <div className={closeModalSucces ? "hidden" : ""}>
+            <div className="modal-body">{props.children}</div>
+          </div>
+          <div className={!closeModalSucces ? "hidden" : ""}>
+            <div className="modal-body">
+              <FontAwesomeIcon
+                icon={faCircleCheck}
+                className="w-20 h-20 p-1 text-emerald-700"
+              />
+              <p className="font-semibold">Usuario registrado satisfactoriamente!!!</p>
+            </div>
+          </div>
+
           <div className="modal-footer">
             <button
-              onClick={() => handleCloseAndRedirect(props.buttonAction)
-                }
+              onClick={() => handleCloseAndRedirect(props.buttonAction)}
               className={`button ${props.button} `}
             >
               {props.botonTitle}
@@ -58,4 +78,4 @@ const Modal = (props) => {
   );
 };
 
-export default Modal;
+export default ModalAdd;

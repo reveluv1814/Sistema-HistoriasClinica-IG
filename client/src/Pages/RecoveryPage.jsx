@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { RecoveryRequest } from "../api/login.api";
 import Modal from "../Components/Modal/Modal";
 
-//const navigate = useNavigate();
+localStorage.removeItem("token");
+
 const initialValues = {
   email: "",
 };
-
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Correo electrónico no válido")
@@ -20,17 +19,12 @@ const RecoveryPage = () => {
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const navigate = useNavigate();
   const handleSubmit = async (values, { resetForm }) => {
     try {
       const response = await RecoveryRequest(values);
-      console.log(response);
-      //alert("Se envío un mensaje a tu correo cierra la ventana");
       setSuccess(true);
       resetForm();
-      //navigate("/");
     } catch (error) {
-      console.log(error);
       setShow(true);
     }
   };
@@ -43,9 +37,6 @@ const RecoveryPage = () => {
         onSubmit={handleSubmit}
       >
         {({
-          values,
-          handleChange,
-          handleSubmit,
           isSubmitting,
           errors,
           touched,
@@ -145,6 +136,7 @@ const RecoveryPage = () => {
         contenido={" shadow-md shadow-emerald-500/40"}
         button={"bg-emerald-500 hover:bg-emerald-700"}
         botonTitle={"Aceptar"}
+        buttonAction= {("/")}
       >
         <p className="flex justify-center">
           <svg
@@ -155,7 +147,7 @@ const RecoveryPage = () => {
             <path d="M243.8 339.8C232.9 350.7 215.1 350.7 204.2 339.8L140.2 275.8C129.3 264.9 129.3 247.1 140.2 236.2C151.1 225.3 168.9 225.3 179.8 236.2L224 280.4L332.2 172.2C343.1 161.3 360.9 161.3 371.8 172.2C382.7 183.1 382.7 200.9 371.8 211.8L243.8 339.8zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z" />
           </svg>
         </p>
-        <p className="text-center text-base font-normal">
+        <p className="text-center text-base font-normal mt-5">
           El correo fue enviado exitosamente
         </p>
         <p className="text-center text-sm font-normal text-emerald-700">

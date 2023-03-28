@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext,useState } from "react";
 import { AdminPageContex } from "./AdminPageContext";
 import nameFormat from "../libs/names.lib";
 
@@ -14,6 +14,8 @@ export const useAdminPage = () => {
 };
 
 export const AdminPageContexProvider = ({ children }) => {
+
+  const [closeModalSucces, setCloseModalSucces] = useState(false);
   const bodyTableAdmin = function (payload, actions) {
     return (
       <tbody>
@@ -45,8 +47,10 @@ export const AdminPageContexProvider = ({ children }) => {
     );
   };
 
+
+
   return (
-    <AdminPageContex.Provider value={{ bodyTableAdmin }}>
+    <AdminPageContex.Provider value={{ bodyTableAdmin,closeModalSucces,setCloseModalSucces }}>
       {children}
     </AdminPageContex.Provider>
   );

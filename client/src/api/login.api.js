@@ -11,3 +11,6 @@ export const changePassword = async (cambio) =>
 
 export const getUsers = async (token) =>
   await axios.get("http://localhost:4000/admin",{headers: {"Authorization": 'Bearer ' +token}});
+
+export const postUsers = async (token,body) =>
+  await axios.post("http://localhost:4000/admin",body,{headers: {"Authorization": 'Bearer ' +token}});
