@@ -14,3 +14,6 @@ export const getUsers = async (token) =>
 
 export const postUsers = async (token,body) =>
   await axios.post("http://localhost:4000/admin",body,{headers: {"Authorization": 'Bearer ' +token}});
+
+export const deleteUser = async (token,id) =>
+  await axios.delete(`http://localhost:4000/admin/${id}`,{headers: {"Authorization": 'Bearer ' +token}});

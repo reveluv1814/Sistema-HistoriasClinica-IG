@@ -93,12 +93,17 @@ const UserForm = () => {
   const token = localStorage.getItem("token");
 
   const [step, setStep] = useState(1);
+  const [resError, setResError] = useState(false);
   const onSubmit = async (values) => {
     try {
       const response = await postUsers(token, values);
       setCloseModalSucces(true);
+      resetForm();
+      setResError(false);
+      console.log(resError);
     } catch (error) {
       console.error(error);
+      setResError(true);
     }
   };
 
@@ -239,30 +244,6 @@ const UserForm = () => {
                   </div>
                   <div className="flex flex-col mb-4">
                     <label
-                      htmlFor="persona.apellidoMaterno"
-                      className="block text-gray-700 font-bold mb-2"
-                    >
-                      Apellido materno
-                    </label>
-                    <Field
-                      type="text"
-                      name="persona.apellidoMaterno"
-                      className={`border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline${
-                        errors.persona?.apellidoMaterno &&
-                        touched.persona?.apellidoMaterno
-                          ? "border-red-500"
-                          : ""
-                      }`}
-                    />
-                    {errors.persona?.apellidoMaterno &&
-                      touched.persona?.apellidoMaterno && (
-                        <div className="text-red-500">
-                          {errors.persona.apellidoMaterno}
-                        </div>
-                      )}
-                  </div>
-                  <div className="flex flex-col mb-4">
-                    <label
                       htmlFor="persona.apellidoPaterno"
                       className="block text-gray-700 font-bold mb-2"
                     >
@@ -285,6 +266,31 @@ const UserForm = () => {
                         </div>
                       )}
                   </div>
+                  <div className="flex flex-col mb-4">
+                    <label
+                      htmlFor="persona.apellidoMaterno"
+                      className="block text-gray-700 font-bold mb-2"
+                    >
+                      Apellido materno
+                    </label>
+                    <Field
+                      type="text"
+                      name="persona.apellidoMaterno"
+                      className={`border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline${
+                        errors.persona?.apellidoMaterno &&
+                        touched.persona?.apellidoMaterno
+                          ? "border-red-500"
+                          : ""
+                      }`}
+                    />
+                    {errors.persona?.apellidoMaterno &&
+                      touched.persona?.apellidoMaterno && (
+                        <div className="text-red-500">
+                          {errors.persona.apellidoMaterno}
+                        </div>
+                      )}
+                  </div>
+
                   <div className="flex flex-col mb-4">
                     <label
                       htmlFor="persona.ci"
@@ -571,6 +577,11 @@ const UserForm = () => {
                   </button>
                 )}
               </>
+            )}
+            {resError && (
+              <p className="font-semibold text-rose-700 text-center mt-2">
+                Ocurrio un error, Cierra y vuelve a intentarlo
+              </p>
             )}
           </Form>
         );
