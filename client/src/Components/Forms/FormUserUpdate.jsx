@@ -3,44 +3,11 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useAdminPage } from "../../Context/AdminPageProvider";
 
-const initialValues = {
-  usuario: {
-    email: "",
-    password: "",
-    rol: "",
-  },
-  persona: {
-    nombre: "",
-    apellidoMaterno: "",
-    apellidoPaterno: "",
-    ci: "",
-    telefono: "",
-    direccion: "",
-    foto: "http://placehold.it/32x32",
-    es_persona: false,
-  },
-  doctor: {
-    unidad: "",
-    especialidad: "",
-    numeroMatricula: "",
-  },
-  personalAdmin: {
-    cargo: "",
-  },
-  laboratorista: {
-    especialidad: "",
-    matriculaProf: "",
-  },
-};
-
 const validationSchema = Yup.object({
   usuario: Yup.object({
     email: Yup.string()
       .email("Ingrese un email válido")
       .required("Campo requerido"),
-    password: Yup.string()
-      .required("Campo requerido")
-      .min(6, "La contraseña debe tener al menos 6 caracteres"),
     rol: Yup.string().required("Campo requerido"),
   }),
   persona: Yup.object({
@@ -87,14 +54,86 @@ const validationSchema = Yup.object({
   }),
 });
 
-const UserForm = () => {
-  const { setCloseModalSucces, postUsuario, userId: usuario } = useAdminPage();
+const UserFormUpdate = () => {
+  const { setCloseModalSucces, updateUsuario, userId } = useAdminPage();
+  //console.log(userId.laboratorista)
+  let n,m;
+  const userRole = () => {
+    switch (userId.rol) {
+      case "laboratorista":
+        n = {
+          especialidad: userId.laboratorista.especialidad,
+          matriculaProf: "55454",
+        };
+        m = {
+          nombre: userId.laboratorista.persona.nombre,
+          apellidoMaterno: userId.laboratorista.persona.apellidoMaterno,
+          apellidoPaterno: userId.laboratorista.persona.apellidoPaterno,
+          ci: userId.laboratorista.persona.ci,
+          telefono: userId.laboratorista.persona.telefono,
+          direccion: userId.laboratorista.persona.direccion,
+        };
+        return {
+          userRol: n,
+          persona: m,
+        };
+      case "doctor":
+        n = {
+          unidad: userId.doctor.unidad,
+          especialidad: userId.doctor.especialidad,
+          numeroMatricula: "12356",
+        };
+        m = {
+          nombre: userId.doctor.persona.nombre,
+          apellidoMaterno: userId.doctor.persona.apellidoMaterno,
+          apellidoPaterno: userId.doctor.persona.apellidoPaterno,
+          ci: userId.doctor.persona.ci,
+          telefono: userId.doctor.persona.telefono,
+          direccion: userId.doctor.persona.direccion,
+        };
+        return {
+          userRol: n,
+          persona: m,
+        };
+      case "personalAdmin":
+        n = {
+          cargo: userId.personalAdmin.cargo,
+        };
+        m = {
+          nombre: userId.personalAdmin.persona.nombre,
+          apellidoMaterno: userId.personalAdmin.persona.apellidoMaterno,
+          apellidoPaterno: userId.personalAdmin.persona.apellidoPaterno,
+          ci: userId.personalAdmin.persona.ci,
+          telefono: userId.personalAdmin.persona.telefono,
+          direccion: userId.personalAdmin.persona.direccion,
+        };
+        return {
+          userRol: n,
+          persona: m, 
+        };
+      default:
+        return null;
+    }
+  };
+  const editUsuario = userRole();
+
+  const initialValues = {
+    usuario: {
+      email: userId.email,
+      rol: userId.rol,
+    },
+    persona: editUsuario.persona,
+    doctor: editUsuario.userRol,
+    personalAdmin: editUsuario.userRol,
+    laboratorista: editUsuario.userRol,
+  };
+
   const [step, setStep] = useState(1); //step de paginacion
 
   const [resError, setResError] = useState(false); //para activar modal de error
   const onSubmit = async (values) => {
     try {
-      await postUsuario(values);
+      const res = await updateUsuario(userId.id, values);
       setCloseModalSucces(true);
       //resetForm();
       setResError(false);
@@ -149,31 +188,6 @@ const UserForm = () => {
                   />
                   {errors.usuario?.email && touched.usuario?.email && (
                     <div className="text-red-500">{errors.usuario.email}</div>
-                  )}
-                </div>
-                <div className="flex flex-col mb-4">
-                  <label
-                    htmlFor="usuario.password"
-                    className="block text-gray-700 font-bold mb-2"
-                  >
-                    Password
-                  </label>
-                  <Field
-                    type="password"
-                    name="usuario.password"
-                    className={`border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                      errors.usuario?.password && touched.usuario?.password
-                        ? "border-red-500"
-                        : ""
-                    }`}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.usuario.password}
-                  />
-                  {errors.usuario?.password && touched.usuario?.password && (
-                    <div className="text-red-500">
-                      {errors.usuario.password}
-                    </div>
                   )}
                 </div>
                 <div className="flex flex-col mb-4">
@@ -569,7 +583,7 @@ const UserForm = () => {
                     type="submit"
                     className="ml-2 bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded"
                     disabled={isValidating || !isValid}
-                    onClick={resetForm()}
+                    /* onClick={resetForm()} */
                   >
                     Guardar
                   </button>
@@ -587,4 +601,4 @@ const UserForm = () => {
     </Formik>
   );
 };
-export default UserForm;
+export default UserFormUpdate;

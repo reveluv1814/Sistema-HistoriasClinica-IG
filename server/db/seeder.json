@@ -22,7 +22,7 @@
     "doctor":{
       "unidad":"genetica",
       "especialidad": "genetica medica",
-      "numeroMatrcula": 111
+      "numeroMatricula": 111
     }
   },
   "personalAdmin":{

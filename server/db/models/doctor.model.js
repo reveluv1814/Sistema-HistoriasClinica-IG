@@ -20,6 +20,10 @@ const DoctorSchema =  {
     allowNull: false,
     type: DataTypes.STRING,
   },
+  numeroMatricula:{
+    allowNull: false,
+    type: DataTypes.STRING,
+  },
   usuarioId: {
     field: 'usuario_id',
     allowNull: false,
@@ -51,6 +55,11 @@ class Doctor extends Model {
   static associate(models) {
     this.belongsTo(models.Usuario, {as: 'usuario'});
     this.belongsTo(models.Persona, {as: 'persona'});
+    //
+    this.hasMany(models.Cita, {
+      as: 'cita',
+      foreignKey: 'doctorId',
+    });
   }
 
   static config(sequelize) {

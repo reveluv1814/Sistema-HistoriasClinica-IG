@@ -5,6 +5,8 @@ const { Persona, PersonaSchema } = require("./persona.model");
 const { Doctor, DoctorSchema } = require("./doctor.model");
 const { Laboratorista, LaboratoristaSchema } = require("./laboratorista.model");
 const { PersonalAdmin, PersonalAdminSchema } = require("./personalAdmin.model");
+const { Paciente, PacienteSchema } = require("./paciente.model");
+const { Cita, CitaSchema } = require("./cita.model");
 
 //configuracion de los modelos
 function setupModels(sequelize) {
@@ -14,6 +16,8 @@ function setupModels(sequelize) {
   Doctor.init(DoctorSchema, Doctor.config(sequelize));
   PersonalAdmin.init(PersonalAdminSchema, PersonalAdmin.config(sequelize));
   Laboratorista.init(LaboratoristaSchema, Laboratorista.config(sequelize));
+  Paciente.init(PacienteSchema, Paciente.config(sequelize));
+  Cita.init(CitaSchema, Cita.config(sequelize));
 
   //crea la asociacion
   //----uno a uno
@@ -22,8 +26,8 @@ function setupModels(sequelize) {
   Doctor.associate(sequelize.models);
   PersonalAdmin.associate(sequelize.models);
   Laboratorista.associate(sequelize.models);
-
-
+  Paciente.associate(sequelize.models);
+  Cita.associate(sequelize.models);
 }
 
 module.exports = setupModels;

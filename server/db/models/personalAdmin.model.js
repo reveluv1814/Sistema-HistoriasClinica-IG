@@ -47,6 +47,14 @@ class PersonalAdmin extends Model {
   static associate(models) {
     this.belongsTo(models.Usuario, {as: 'usuario'});
     this.belongsTo(models.Persona, {as: 'persona'});
+    this.hasOne(models.Paciente, {
+      as: "paciente",
+      foreignKey: "personalAd_Id",
+    });
+    this.hasMany(models.Cita, {
+      as: 'cita',
+      foreignKey: 'personalAd_Id',
+    });
   }
 
   static config(sequelize) {

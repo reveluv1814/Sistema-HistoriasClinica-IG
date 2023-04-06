@@ -5,22 +5,7 @@ import { getUsers } from "./../api/login.api";
 import { AdminPageContexProvider } from "../Context/AdminPageProvider";
 
 function AdminPage() {
-  const [usuarios, setUsuarios] = useState(null);
-
-  async function getDataUsers() {
-    const token = localStorage.getItem("token");
-    const response = await getUsers(token);
-    setUsuarios(response);
-  }
-
-  useEffect(
-    () => {
-      getDataUsers();
-    },
-    [
-      /*usuaruios*/
-    ]
-  );
+  
   return (
     <AdminPageContexProvider>
       <div className="flex flex-col justify-center items-center text-center h-[auto] mb-[10%]">
@@ -51,15 +36,10 @@ function AdminPage() {
           </button>
         </div>
 
-        {usuarios ? (
-          <Table
-            payloadColumn={["nombre", "rol", "email", "opciones"]}
-            payload={usuarios.data}
-            actions={["editar", "eliminar", "ver"]}
-          />
-        ) : (
-          <></>
-        )}
+        <Table
+          payloadColumn={["nombre", "rol", "email", "opciones"]}
+          actions={["editar", "eliminar", "ver"]}
+        />
       </div>
     </AdminPageContexProvider>
   );

@@ -16,6 +16,10 @@ const LaboratoristaSchema =  {
     allowNull: false,
     type: DataTypes.STRING,
   },
+  matriculaProf: {
+    allowNull: false,
+    type: DataTypes.STRING,
+  },
   usuarioId: {
     field: 'usuario_id',
     allowNull: false,

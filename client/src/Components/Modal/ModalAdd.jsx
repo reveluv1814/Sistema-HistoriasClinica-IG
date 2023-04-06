@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const ModalAdd = (props) => {
-  const { closeModalSucces, setCloseModalSucces } = useAdminPage();
+  const { closeModalSucces, setCloseModalSucces, updateUsuario,userId } =
+    useAdminPage();
 
   const closeOnEscapeKeyDown = (e) => {
     if ((e.charCode || e.keyCode) === 27) {
@@ -35,7 +36,18 @@ const ModalAdd = (props) => {
       navigate(route); // redirecciona si se proporciona la ruta
     }
   };
-
+  /* ///
+  let user
+  useEffect(() => {
+    const loadUser = async () => {
+      if (userId!==0) {
+        user = await updateUsuario(userId);
+        console.log(user);
+      }
+    };
+    loadUser();
+  }, []);
+ */
   return (
     <CSSTransition
       in={props.show}
@@ -49,10 +61,13 @@ const ModalAdd = (props) => {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="modal-header">
-            <h4 className="modal-title">{props.title}</h4>
+            <h4 className="modal-title">
+              {props.title}
+            </h4>
           </div>
           <div className={closeModalSucces ? "hidden" : ""}>
             <div className="modal-body">{props.children}</div>
+            
           </div>
           <div className={!closeModalSucces ? "hidden" : ""}>
             <div className="modal-body">
@@ -60,7 +75,9 @@ const ModalAdd = (props) => {
                 icon={faCircleCheck}
                 className="w-20 h-20 p-1 text-emerald-700"
               />
-              <p className="font-semibold">Usuario registrado satisfactoriamente!!!</p>
+              <p className="font-semibold">
+                Usuario registrado satisfactoriamente!!!
+              </p>
             </div>
           </div>
 
