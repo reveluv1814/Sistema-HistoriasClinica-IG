@@ -1,13 +1,12 @@
 const Joi = require("joi");
 
-const fechanac = Joi.number().date();//.timestamp()
+const id = Joi.number().integer();
+const fechanac = Joi.date();
 const sexo = Joi.string();
 const raza = Joi.string();
 const procedencia = Joi.string();
 const residencia = Joi.string();
 const personaId = Joi.number().integer();
-const personalAd_Id = Joi.number().integer();
-
 
 const getPacienteSchema = Joi.object({
   id: id.required(),
@@ -28,7 +27,6 @@ const updatePacienteSchema = Joi.object({
   procedencia,
   residencia,
   personaId,
-  personalAd_Id
 });
 
 module.exports = { getPacienteSchema, createPacienteSchema, updatePacienteSchema };

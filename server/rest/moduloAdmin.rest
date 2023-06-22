@@ -1,0 +1,180 @@
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbCI6ImFkbWluIiwiaWF0IjoxNjg3NDY0NDA4fQ.-PbRqbigzQ2UWfXDYWg-j6vXE_kJAATq5KwECVwNdao
+
+#listar
+GET http://127.0.0.1:4000/admin
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+#obtener un usuario
+GET http://127.0.0.1:4000/admin/3
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+#crear
+POST http://127.0.0.1:4000/admin/create-doctor
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": {
+      "email":"doctor1@email.com",
+      "password": "123456",
+      "rol": "doctor"
+    },
+    "persona":{
+      "nombre": "juan carlos",
+      "apellidoMaterno": "flores",
+      "apellidoPaterno": "perez",
+      "ci": "12345687",
+      "telefono": "152879522",
+      "direccion": "villa copa ",
+      "foto": "https://picsum.photos/id/237/200/300",
+      "es_persona": false
+    },
+    "doctor":{
+      "unidad":"genetica",
+      "especialidad": "genetica medica",
+      "numeroMatricula": "111"
+    }
+}
+
+###
+POST http://127.0.0.1:4000/admin/create-personal
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": {
+      "email":"personal1@email.com",
+      "password": "123456",
+      "rol": "personalAdmin"
+    },
+    "persona":{
+      "nombre": "Dianna Petty",
+      "apellidoMaterno": "Hayes",
+      "apellidoPaterno": "Mccormick",
+      "ci": "12345687",
+      "telefono": "152879522",
+      "direccion": "villa copa ",
+      "foto": "http://placehold.it/32x32",
+      "es_persona": false
+    },
+    "personalAdmin":{
+      "cargo":"secretaria"
+    }
+}
+
+###
+POST http://127.0.0.1:4000/admin/create-laboratorista
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": {
+      "email":"laboratorista1@email.com",
+      "password": "123456",
+      "rol": "laboratorista"
+    },
+    "persona":{
+      "nombre": "Jeri Bradford",
+      "apellidoMaterno": "Gilliam",
+      "apellidoPaterno": "Holder",
+      "ci": "12345687",
+      "telefono": "152879522",
+      "direccion": "villa copa ",
+      "foto": "http://placehold.it/32x32",
+      "es_persona": false
+    },
+    "laboratorista":{
+      "especialidad": "laboratorio medico",
+      "matriculaProf": "1111"
+    }
+}
+
+###
+#editar USUARIO 
+
+PATCH http://127.0.0.1:4000/admin/doctor/1
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "usuario": {
+      "email":"doctor1@email.com"
+    },
+    "persona":{
+      "nombre": "juan carlos",
+      "apellidoMaterno": "flores",
+      "apellidoPaterno": "perez",
+      "ci": "12345687",
+      "telefono": "152879522",
+      "direccion": "villa copa ",
+      "foto": "https://picsum.photos/id/237/200/300",
+    },
+    "doctor":{
+      "unidad":"genetica",
+      "especialidad": "genetica medica",
+      "numeroMatricula": 111
+    }
+}
+
+###
+PATCH http://127.0.0.1:4000/admin/personal/1
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "usuario": {
+      "email":"personal1@email.com"
+    },
+    "persona":{
+      "nombre": "Dianna Petty",
+      "apellidoMaterno": "Hayes",
+      "apellidoPaterno": "Mccormick",
+      "ci": "12345687",
+      "telefono": "152879522",
+      "direccion": "villa copa ",
+      "foto": "http://placehold.it/32x32"
+    },
+    "personalAdmin":{
+      "cargo":"secretaria"
+    }
+}
+
+###
+PATCH http://127.0.0.1:4000/admin/laboratorista/1
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "usuario": {
+      "email":"laboratorista1@email.com"
+    },
+    "persona":{
+      "nombre": "Jeri Bradford",
+      "apellidoMaterno": "Gilliam",
+      "apellidoPaterno": "Holder",
+      "ci": "12345687",
+      "telefono": "152879522",
+      "direccion": "villa copa ",
+      "foto": "http://placehold.it/32x32"
+    },
+    "laboratorista":{
+      "especialidad": "laboratorio medico",
+      "matriculaProf": 1111
+    }
+}
+
+###
+#eliminar usuario
+DELETE http://127.0.0.1:4000/admin/4
+Authorization: Bearer {{token}}
+Accept: application/json

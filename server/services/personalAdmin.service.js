@@ -49,9 +49,14 @@ class PersonalAdminService {
   }
   async deleteUsuario(id) {
     await models.PersonalAdmin.destroy({
-      where: { usuarioId: id }
+      where: { usuarioId: id },
     });
     return { rta: true };
+  }
+  //crea un paciente
+  async addPaciente(data) {
+    const newPaciente = await models.P_creaPac.create(data);
+    return newPaciente;
   }
 }
 

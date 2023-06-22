@@ -18,8 +18,7 @@ const PacienteSchema = {
     defaultValue: Sequelize.fn("now"),
   },
   edad: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
+    type: DataTypes.VIRTUAL,
     get() {
       const fechanac = new Date(this.getDataValue("fechanac"));
       const hoy = new Date();
@@ -65,7 +64,7 @@ const PacienteSchema = {
     onUpdate: "CASCADE",
     onDelete: "SET NULL",
   },
-  personalAd_Id: {
+  /* personalAd_Id: {
     field: "personalAd_Id",
     allowNull: false,
     type: DataTypes.INTEGER,
@@ -76,11 +75,12 @@ const PacienteSchema = {
     },
     onUpdate: "CASCADE",
     onDelete: "SET NULL",
-  },
+  }, */
 };
 
 class Paciente extends Model {
   static associate(models) {
+    this.belongsTo(models.Persona, { as: "persona" });
     this.hasMany(models.Cita, {
       as: "cita",
       foreignKey: "pacienteId",
