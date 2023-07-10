@@ -1,7 +1,6 @@
 const { Model, DataTypes, Sequelize } = require("sequelize");
 
 const { PERSONA_TABLE } = require("./persona.model");
-const { PERSONAL_ADMIN_TABLE } = require("./personalAdmin.model");
 
 const PACIENTE_TABLE = "paciente";
 
@@ -64,18 +63,6 @@ const PacienteSchema = {
     onUpdate: "CASCADE",
     onDelete: "SET NULL",
   },
-  /* personalAd_Id: {
-    field: "personalAd_Id",
-    allowNull: false,
-    type: DataTypes.INTEGER,
-    unique: true,
-    references: {
-      model: PERSONAL_ADMIN_TABLE,
-      key: "id",
-    },
-    onUpdate: "CASCADE",
-    onDelete: "SET NULL",
-  }, */
 };
 
 class Paciente extends Model {

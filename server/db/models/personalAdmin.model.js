@@ -46,10 +46,7 @@ class PersonalAdmin extends Model {
   static associate(models) {
     this.belongsTo(models.Usuario, { as: "usuario" });
     this.belongsTo(models.Persona, { as: "persona" });
-    /* this.hasOne(models.Paciente, {
-      as: "paciente",
-      foreignKey: "personalAd_Id",
-    }); */
+    
     this.hasMany(models.Cita, {
       as: "cita",
       foreignKey: "personalAd_Id",
@@ -59,6 +56,12 @@ class PersonalAdmin extends Model {
       through: models.P_creaPac,
       foreignKey: "personalAd_Id",
       otherKey: "pacienteId",
+    });
+    this.belongsToMany(models.HistoriaClinica, {
+      as: "historias",
+      through: models.P_creaPac,
+      foreignKey: "personalAd_Id",
+      otherKey: "historiaId",
     });
   }
 

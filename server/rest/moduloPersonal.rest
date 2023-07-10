@@ -1,4 +1,4 @@
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbCI6InBlcnNvbmFsQWRtaW4iLCJpYXQiOjE2ODc0NjQ0NTR9.-o0OYnucfGcqc0YPDEVUdPwbrOj_QfzBeSJTkiUoObY
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbCI6InBlcnNvbmFsQWRtaW4iLCJpYXQiOjE2ODkwMDk3ODh9.YYgaILxeVVE85yB_UWUe8geIo-Np0VtPEOQOWEbXo_M
 
 #listar
 GET http://127.0.0.1:4000/personal/pacientes
@@ -37,7 +37,6 @@ Accept: application/json
         "residencia": "la paz"
     },
     "personalAdmin":{
-        "personalAd_Id":1,
-        "historiaId": "4"
+        "personalAd_Id":1
     }
 }

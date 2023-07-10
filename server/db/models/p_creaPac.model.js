@@ -1,6 +1,7 @@
 const { Model, DataTypes, Sequelize } = require("sequelize");
 const { PERSONAL_ADMIN_TABLE } = require("./personalAdmin.model");
 const { PACIENTE_TABLE } = require("./paciente.model");
+const { HISTORIA_TABLE } = require("./historia.model");
 
 const PCREA_PAC_TABLE = "p_creaPac";
 
@@ -40,8 +41,15 @@ const P_creaPacSchema = {
     onDelete: "SET NULL",
   },
   historiaId: {
+    field: "historiaC_Id",
     allowNull: false,
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
+    references: {
+      model: HISTORIA_TABLE,
+      key: "id",
+    },
+    onUpdate: "CASCADE",
+    onDelete: "SET NULL",
   },
 };
 

@@ -56,6 +56,7 @@ class PersonalAdminService {
   //crea un paciente
   async addPaciente(data) {
     const newPaciente = await models.P_creaPac.create(data);
+    
     return newPaciente;
   }
 }

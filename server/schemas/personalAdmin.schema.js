@@ -26,7 +26,7 @@ const getPersonalAdminSchema = Joi.object({
 const addCreaPaciente = Joi.object({
   personalAd_Id: personalAd_Id.required(),
   /*pacienteId: pacienteId.required(), */
-  historiaId: historiaId.required(),
+  /* historiaId: historiaId.required(), */
 });
 
 module.exports = {

@@ -3,6 +3,7 @@ const express = require("express");
 const PersonaService = require("./../../services/persona.service");
 const PersonalAdminService = require("../../services/personalAdmin.service");
 const PacienteService = require("../../services/paciente.service");
+const HistoriaService = require("../../services/historia.service");
 
 //middlewares
 const {
@@ -26,12 +27,17 @@ const {
   createPacienteSchema,
   updatePacienteSchema,
 } = require("../../schemas/paciente.schema");
+const {
+  getHistoriaSchema,
+  updateHistoriaSchema,
+} = require("../../schemas/historiaClinica.schema");
 
 const router = express.Router();
 
 const personalAdminService = new PersonalAdminService();
 const personaService = new PersonaService();
 const pacienteService = new PacienteService();
+const historiaService = new HistoriaService();
 
 router.get(
   "/pacientes",
@@ -62,9 +68,12 @@ router.post(
         ...body.paciente,
         personaId: newPersona.id,
       });
+      const newHistoria = await historiaService.create({ arbolGene: "" });
+
       const personalCrea = await personalAdminService.addPaciente({
         ...body.personalAdmin,
         pacienteId: newPaciente.id,
+        historiaId: newHistoria.id,
       });
       res.status(201).json({ newPersona, newPaciente, personalCrea });
     } catch (error) {

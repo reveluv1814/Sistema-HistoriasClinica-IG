@@ -7,6 +7,7 @@ const { Laboratorista, LaboratoristaSchema } = require("./laboratorista.model");
 const { PersonalAdmin, PersonalAdminSchema } = require("./personalAdmin.model");
 const { Paciente, PacienteSchema } = require("./paciente.model");
 const { Cita, CitaSchema } = require("./cita.model");
+const { Historia, HistoriaSchema } = require("./historia.model");
 const { P_creaPac, P_creaPacSchema } = require("./p_creaPac.model");
 
 //configuracion de los modelos
@@ -19,7 +20,9 @@ function setupModels(sequelize) {
   Laboratorista.init(LaboratoristaSchema, Laboratorista.config(sequelize));
   Paciente.init(PacienteSchema, Paciente.config(sequelize));
   Cita.init(CitaSchema, Cita.config(sequelize));
+  Historia.init(HistoriaSchema, Historia.config(sequelize));
   P_creaPac.init(P_creaPacSchema, P_creaPac.config(sequelize));
+
 
   //crea la asociacion
   //----uno a uno

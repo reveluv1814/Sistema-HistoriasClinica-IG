@@ -11,15 +11,13 @@ const {
   LABORATORISTA_TABLE,
   LaboratoristaSchema,
 } = require("./../models/laboratorista.model");
-const {
-  PACIENTE_TABLE,
-  PacienteSchema,
-} = require("./../models/paciente.model");
+const { PACIENTE_TABLE } = require("./../models/paciente.model");
 const { CITA_TABLE, CitaSchema } = require("./../models/cita.model");
 const {
   PCREA_PAC_TABLE,
   P_creaPacSchema,
 } = require("./../models/p_creaPac.model");
+const { HISTORIA_TABLE,HistoriaSchema } = require("./../models/historia.model");
 
 module.exports = {
   up: async (queryInterface) => {
@@ -76,16 +74,18 @@ module.exports = {
       },
     });
     await queryInterface.createTable(CITA_TABLE, CitaSchema);
+    await queryInterface.createTable(HISTORIA_TABLE, HistoriaSchema);
     await queryInterface.createTable(PCREA_PAC_TABLE, P_creaPacSchema);
   },
   down: async (queryInterface) => {
     await queryInterface.dropTable(CITA_TABLE);
+    await queryInterface.dropTable(PCREA_PAC_TABLE);
+    await queryInterface.dropTable(HISTORIA_TABLE);
     await queryInterface.dropTable(PACIENTE_TABLE);
     await queryInterface.dropTable(LABORATORISTA_TABLE);
     await queryInterface.dropTable(PERSONAL_ADMIN_TABLE);
     await queryInterface.dropTable(DOCTOR_TABLE);
     await queryInterface.dropTable(PERSONA_TABLE);
     await queryInterface.dropTable(USUARIO_TABLE);
-    await queryInterface.dropTable(PCREA_PAC_TABLE);
   },
 };
