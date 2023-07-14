@@ -25,9 +25,11 @@
   }
   
   .modal-content {
+    width: 550px;
+    background-color: #fff;
     transition: all 0.3s ease-in-out;
     transform: translateY(-200px);
-    border-radius: 20px;
+    border-radius: 10px;
   }
   
   .modal.enter-done .modal-content {

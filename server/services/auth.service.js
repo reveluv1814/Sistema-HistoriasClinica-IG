@@ -23,11 +23,11 @@ class AuthService {
   //comparar datos
   async getUser(email, password) {
     const user = await service.findByEmail(email);
-    if (!user) throw boom.unauthorized(); //si no existe el email sale error
+    if (!user) throw boom.unauthorized("Email no encontrado"); //si no existe el email sale error
 
     const isMatch = await bcrypt.compare(password, user.password); //compara password y el hash
 
-    if (!isMatch) throw boom.unauthorized(); //si es falso  sale un error
+    if (!isMatch) throw boom.unauthorized("Contraseña incorrecta"); //si es falso  sale un error
 
     delete user.dataValues.password; //elimina el password para que no se vea
 
@@ -60,10 +60,11 @@ class AuthService {
     const token = jwt.sign(payload, config.jwtSecretMail, {
       expiresIn: "15min",
     }); //generamos el token
-    const link = `http://localhost:5173/change-password?token=${token}`;
+    const link =
+      config.urlFrontService + `/recovery/change-password?token=${token}`;
     //guardamos el token en la base de datos por seguridad
     await service.update(user.id, { recoveryToken: token });
-    
+
     /*******fin del proceso de envio del token */
 
     //correo
@@ -71,7 +72,8 @@ class AuthService {
       //enviamos el correo
       from: config.emailSender, // sender address/de quien
       to: `${user.email}`, // list of receivers/ para quien
-      subject: "Recuperación de Contrasaña Sistema de Administracion de Historias Clínicas", // Subject line / titulo del correo
+      subject:
+        "Recuperación de Contrasaña Sistema de Administracion de Historias Clínicas", // Subject line / titulo del correo
       text: "Enlace de Recuperación", // plain text body / text del correo
       html: `
       <h1 style="text-align:center; ">Enlace de Recuperación</h1>
@@ -108,6 +110,7 @@ class AuthService {
       const payload = jwt.verify(token, config.jwtSecretMail);
       user = await service.findOne(payload.sub);
       if (user.recoveryToken !== token) throw boom.unauthorized();
+      if (user.recoveryToken === null) throw boom.unauthorized();
       //fin verifica
       const hash = await bcrypt.hash(newPassword, 10); //hashea la nueva contraseña
       await service.update(user.id, { recoveryToken: null, password: hash }); //actualiza

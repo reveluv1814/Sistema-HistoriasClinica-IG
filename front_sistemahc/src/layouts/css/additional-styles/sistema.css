@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;1,300&display=swap%27');
+.logo{
+    background-image: url('./../../images/ig.png');
+}
+.logo:hover{
+    cursor: pointer;
+}
+.textPop{
+    font-family: 'Poppins', sans-serif;
+}
+.textnav{
+    box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.19);
+}
+.linav:hover{
+    border-image: linear-gradient(90deg, #bd3c3c 5.47%, rgba(51, 79, 224, 0.81) 100%);
+    border-bottom: 3px solid;
+    border-image-slice: 1;
+    transition:  0.25s ease;
+}
+.fondologin{
+    background-image: url('./../../images/fondologin.png');
+    background-size: cover;
+    background-position: left;
+    background-repeat: repeat-x; 
+    background-position-x: 0%;
+    /*background-repeat: no-repeat;*/
+}
+.userlogin{
+    background-image: url('./../../images/user.png');
+    background-position: center;
+    background-size: cover;
+}
+.see{
+    cursor: pointer;
+    
+}
+.see:hover{
+    color: #bd3c3c;
+}
+.btlogin:active,.btlogin:focus{
+    border-image: linear-gradient(90deg, #bdb707 5.47%, rgba(20, 181, 74, 0.81) 100%);
+    font-weight: 500;
+}
+.titulologin{
+    border-left: 7px solid rgba(255, 255, 255, 1);
+    padding-left: 20px;
+}
+
+/*tabla user*/
+
+.tablaAdmin:first-child{
+    border-top-left-radius: 0.75rem/* 12px */;
+}
+.tablaAdmin:last-child{
+    border-right: none;
+}
+.tablaAdminUsers:last-child{
+    border-right: none;
+}
+.tablaAdminFooter:first-child{
+    border-bottom-left-radius: 0.75rem/* 12px */;
+}
+.tablaAdminFooter:last-child{
+    border-right: none;
+}
+.textAdminPage{
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Poppins';
+}
+.theadd{
+     width: calc(100% - 0.9em);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer{
+   background: linear-gradient(270deg, #6366F1 0%, #EF4444 100%);
+}
+.logofooter{
+    background-image: url('./../../images/LogoBlanco.png');
+}

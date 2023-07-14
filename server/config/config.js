@@ -3,7 +3,7 @@ require('dotenv').config();
 const config = {
   env: process.env.NODE_ENV || 'dev',
   isProd: process.env.NODE_ENV === 'production',
-  port: process.env.PORT_SERVER || 3000,
+  port: process.env.PORT_SERVER || 4000,
   dbUrl: process.env.DATABASE_URL,
   //auth
   apiKey: process.env.API_KEY,
@@ -13,6 +13,8 @@ const config = {
   //recovery password
   emailSender: process.env.SMTP_EMAIL,
   emailPassword: process.env.SMTP_PASSWORD,
+  //url front
+  urlFrontService: process.env.URL_FRONT_SERVICE
 };
 
 module.exports = { config };
