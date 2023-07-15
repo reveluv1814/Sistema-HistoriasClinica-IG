@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import authService from "../../services/authService";
 import Modal from "../../components/Modal";
 
@@ -14,8 +14,11 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref("newPassword"), null], "Las contraseñas no coinciden."),
 });
 const FormChangePass = () => {
-  if (localStorage.getItem("token")) {
-    localStorage.removeItem("token");
+  if (localStorage.getItem("access_token")) {
+    localStorage.removeItem("access_token");
+  }
+  if (localStorage.getItem("rol")) {
+    localStorage.removeItem("rol");
   }
   const [showError, setShowError] = useState(false);
   const [success, setSuccess] = useState(false);

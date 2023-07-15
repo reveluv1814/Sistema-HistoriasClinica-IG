@@ -3,6 +3,7 @@ import LoginForm from "./LoginComponents/FormLogin";
 import NavbarLogin from "../layouts/pages/NavbarLogin";
 
 const Login = () => {
+  localStorage.clear();
   return (
     <>
       <NavbarLogin />
