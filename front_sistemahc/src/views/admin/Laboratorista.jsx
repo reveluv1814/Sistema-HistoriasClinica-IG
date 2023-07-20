@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import TablePagination from "../../components/TablePagination";
-import doctorService from "./../../services/doctorService";
+import laboratoristaService from "./../../services/laboratoristaService";
 
-const Doctores = () => {
-  const [doctores, setDoctores] = useState([]);
+const Laboratorista = () => {
+  const [laboratorista, setLaboratorista] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [q, setq] = useState("");
@@ -14,44 +14,44 @@ const Doctores = () => {
     { key: "persona.apellidoMaterno", label: "APELLIDO MATERNO." },
     { key: "persona.nombre", label: "NOMBRE" },
     { key: "persona.ci", label: "CI" },
+    { key: "especialidad", label: "ESPECIALIDAD" },
     { key: "usuario.email", label: "CORREO ELECTRONICO" },
-    { key: "unidad", label: "UNIDAD" },
     { key: "usuario.createdAt", label: "CREADO EN" },
   ];
   useEffect(() => {
-    getDoctores();
+    getLaboratoristas();
   }, []);
   //FUNCIONES
-  const getDoctores = async (nroPage = 1, limit = 10) => {
+  const getLaboratoristas = async (nroPage = 1, limit = 10) => {
     setPage(nroPage);
-    const { data } = await doctorService.listar(q, nroPage, limit);
-    console.log(data.doctores);
-    console.log("TOTAL:", data.doctores.count);
-    console.log("Registros:", data.doctores.rows);
-    setTotal(data.doctores.count);
-    setDoctores(data.doctores.rows);
+    const { data } = await laboratoristaService.listar(q, nroPage, limit);
+    console.log(data.laboratoristas);
+    console.log("TOTAL:", data.laboratoristas.count);
+    console.log("Registros:", data.laboratoristas.rows);
+    setTotal(data.laboratoristas.count);
+    setLaboratorista(data.laboratoristas.rows);
   };
   return (
     <>
       <div className="max-w-lg">
         <h3 className="text-gray-800 text-xl font-bold sm:text-2xl font-inter">
-          Doctores
+        Laboratoristas
         </h3>
         <p className="text-gray-600 mt-2">
-          Aqui se encuentran todos los <b>doctores</b> registrados en el sistema.
+          Aqui se encuentran todos los <b>laboratoristas</b> registrados en el sistema.
         </p>
       </div>
       <div className="mt-2 shadow-sm border rounded-lg overflow-x-auto">
         <TablePagination
           columnas={columnas}
-          datos={doctores}
+          datos={laboratorista}
           total={total}
           page={page}
-          fetchData={getDoctores}
+          fetchData={getLaboratoristas}
         ></TablePagination>
       </div>
     </>
   );
 };
 
-export default Doctores;
+export default Laboratorista

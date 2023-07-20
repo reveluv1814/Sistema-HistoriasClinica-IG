@@ -1,33 +1,40 @@
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbCI6ImFkbWluIiwiaWF0IjoxNjg5MTg2MTM5fQ.2T9Yz1grV4vsq-I_gmG3V_h5ioiUmG-YXlVww0nru8o
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbCI6ImFkbWluIiwiaWF0IjoxNjg5ODAxMDgwfQ.sYPl2dx0PIbBFXBBmEGeAQmw3p3iwI2SDSVj9CUNAEc
 
-#listar
+#listar usuario
 GET http://127.0.0.1:4000/admin
 Authorization: Bearer {{token}}
 Accept: application/json
 
-###
-#obtener un usuario
-GET http://127.0.0.1:4000/admin/3
+#eliminar usuario
+DELETE http://127.0.0.1:4000/admin/4
+Authorization: Bearer {{token}}
+Accept: application/json
+###########################################################
+### doctores
+GET http://127.0.0.1:4000/admin/doctor?q=&page=1&limit=10
 Authorization: Bearer {{token}}
 Accept: application/json
 
-###
-#crear
-POST http://127.0.0.1:4000/admin/create-doctor
+### mostrar un doctor
+GET http://127.0.0.1:4000/admin/doctor/7
+Authorization: Bearer {{token}}
+Accept: application/json
+### crear un doctor
+POST http://127.0.0.1:4000/admin/doctor
 Authorization: Bearer {{token}}
 Content-Type: application/json
 Accept: application/json
 
 {
     "usuario": {
-      "email":"doctor1@email.com",
+      "email":"doctor11@email.com",
       "password": "123456",
       "rol": "doctor"
     },
     "persona":{
       "nombre": "juan carlos",
       "apellidoMaterno": "flores",
-      "apellidoPaterno": "perez",
+      "apellidoPaterno": "ortiz",
       "ci": "12345687",
       "telefono": "152879522",
       "direccion": "villa copa ",
@@ -40,9 +47,43 @@ Accept: application/json
       "numeroMatricula": "111"
     }
 }
+### Editar un doctor
+PATCH  http://127.0.0.1:4000/admin/doctor/7
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
 
-###
-POST http://127.0.0.1:4000/admin/create-personal
+{
+    "usuario": {
+      "email":"doctor22@email.com"
+    },
+    "persona":{
+      "nombre": "gary nova mamani",
+      "apellidoPaterno": "blanco"
+    },
+    "doctor":{
+      "unidad":"genetica lab",
+      "numeroMatricula": "4646546"
+    }
+}
+### eliminar un doctor
+DELETE http://127.0.0.1:4000/admin/doctor/6
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###############################################fin doctores
+### listar personal
+GET http://127.0.0.1:4000/admin/personalAd?q=&page=1&limit=10
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### mostrar un personalAd
+GET http://127.0.0.1:4000/admin/personalAd/2
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### crear un personalAd
+POST http://127.0.0.1:4000/admin/personalAd
 Authorization: Bearer {{token}}
 Content-Type: application/json
 Accept: application/json
@@ -67,9 +108,40 @@ Accept: application/json
       "cargo":"secretaria"
     }
 }
+### Editar un personalAd
+PATCH  http://127.0.0.1:4000/admin/personalAd/2
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
 
-###
-POST http://127.0.0.1:4000/admin/create-laboratorista
+{
+    "usuario": {
+      "email":"personal22@email.com"
+    },
+    "persona":{
+      "nombre": "alejandra gabriela"
+    },
+    "personalAdmin":{
+      "cargo":"mensajera"
+    }
+}
+### eliminar un personalAd
+DELETE http://127.0.0.1:4000/admin/personalAd/2
+Authorization: Bearer {{token}}
+Accept: application/json
+###############################################fin personalAd
+### listar laboratoristas
+GET http://127.0.0.1:4000/admin/laboratorista?q=&page=1&limit=10
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### mostrar un laboratorista
+GET http://127.0.0.1:4000/admin/laboratorista/2
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### crear un laboratorista
+POST http://127.0.0.1:4000/admin/laboratorista
 Authorization: Bearer {{token}}
 Content-Type: application/json
 Accept: application/json
@@ -95,86 +167,25 @@ Accept: application/json
       "matriculaProf": "1111"
     }
 }
-
-###
-#editar USUARIO 
-
-PATCH http://127.0.0.1:4000/admin/doctor/1
+### Editar un laboratorista
+PATCH  http://127.0.0.1:4000/admin/laboratorista/2
 Authorization: Bearer {{token}}
-Accept: application/json
 Content-Type: application/json
+Accept: application/json
 
 {
     "usuario": {
-      "email":"doctor1@email.com"
+      "email":"laboratorista22@email.com"
     },
     "persona":{
-      "nombre": "juan carlos",
-      "apellidoMaterno": "flores",
-      "apellidoPaterno": "perez",
-      "ci": "12345687",
-      "telefono": "152879522",
-      "direccion": "villa copa ",
-      "foto": "https://picsum.photos/id/237/200/300",
-    },
-    "doctor":{
-      "unidad":"genetica",
-      "especialidad": "genetica medica",
-      "numeroMatricula": 111
-    }
-}
-
-###
-PATCH http://127.0.0.1:4000/admin/personal/1
-Authorization: Bearer {{token}}
-Accept: application/json
-Content-Type: application/json
-
-{
-    "usuario": {
-      "email":"personal1@email.com"
-    },
-    "persona":{
-      "nombre": "Dianna Petty",
-      "apellidoMaterno": "Hayes",
-      "apellidoPaterno": "Mccormick",
-      "ci": "12345687",
-      "telefono": "152879522",
-      "direccion": "villa copa ",
-      "foto": "http://placehold.it/32x32"
-    },
-    "personalAdmin":{
-      "cargo":"secretaria"
-    }
-}
-
-###
-PATCH http://127.0.0.1:4000/admin/laboratorista/1
-Authorization: Bearer {{token}}
-Accept: application/json
-Content-Type: application/json
-
-{
-    "usuario": {
-      "email":"laboratorista1@email.com"
-    },
-    "persona":{
-      "nombre": "Jeri Bradford",
-      "apellidoMaterno": "Gilliam",
-      "apellidoPaterno": "Holder",
-      "ci": "12345687",
-      "telefono": "152879522",
-      "direccion": "villa copa ",
-      "foto": "http://placehold.it/32x32"
+      "nombre": "diego marco"
     },
     "laboratorista":{
-      "especialidad": "laboratorio medico",
-      "matriculaProf": 1111
+      "especialidad": "laboratorio de huesos"
     }
 }
-
-###
-#eliminar usuario
-DELETE http://127.0.0.1:4000/admin/4
+### eliminar un laboratorista
+DELETE http://127.0.0.1:4000/admin/laboratorista/2
 Authorization: Bearer {{token}}
 Accept: application/json
+###

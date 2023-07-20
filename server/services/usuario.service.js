@@ -8,7 +8,7 @@ const { Doctor } = require("../db/models/doctor.model");
 const { PersonalAdmin } = require("../db/models/personalAdmin.model");
 const { Laboratorista } = require("../db/models/laboratorista.model");
 
-//const { Op } = require("sequelize");
+const { Op } = require("sequelize");
 
 class UsuarioService {
   constructor() {}
@@ -69,6 +69,77 @@ class UsuarioService {
         },
       ],
       /* where: { rol: { [Op.ne]: "admin" } }, */
+      order: [
+        ["createdAt", "DESC"], // ordenar por fecha de creación en orden ascendente
+      ],
+    });
+    return rta;
+  }
+  async findDoctor() {
+    const rta = await models.Usuario.findAll({
+      include: [
+        {
+          model: Doctor,
+          as: "doctor",
+          attributes: ["unidad"], // atributos que deseas seleccionar de la tabla usuario
+          include: [
+            {
+              model: Persona,
+              as: "persona",
+              attributes: ["nombre", "apellidoPaterno", "apellidoMaterno"], // atributos que deseas seleccionar de la tabla persona
+            },
+          ],
+        },
+      ],
+      where: {
+        rol: { [Op.notIn]: ["admin", "laboratorista", "personalAdmin"] },
+      },
+      order: [
+        ["createdAt", "DESC"], // ordenar por fecha de creación en orden ascendente
+      ],
+    });
+    return rta;
+  }
+  async findPersonal() {
+    const rta = await models.Usuario.findAll({
+      include: [
+        {
+          model: PersonalAdmin,
+          as: "personalAdmin",
+          attributes: ["cargo"], // atributos que deseas seleccionar de la tabla usuario
+          include: [
+            {
+              model: Persona,
+              as: "persona",
+              attributes: ["nombre", "apellidoPaterno", "apellidoMaterno"], // atributos que deseas seleccionar de la tabla persona
+            },
+          ],
+        },
+      ],
+      where: { rol: { [Op.notIn]: ["admin", "laboratorista", "doctor"] } },
+      order: [
+        ["createdAt", "DESC"], // ordenar por fecha de creación en orden ascendente
+      ],
+    });
+    return rta;
+  }
+  async findLaboratoristas() {
+    const rta = await models.Usuario.findAll({
+      include: [
+        {
+          model: Laboratorista,
+          as: "laboratorista",
+          attributes: ["especialidad"], // atributos que deseas seleccionar de la tabla usuario
+          include: [
+            {
+              model: Persona,
+              as: "persona",
+              attributes: ["nombre", "apellidoPaterno", "apellidoMaterno"], // atributos que deseas seleccionar de la tabla persona
+            },
+          ],
+        },
+      ],
+      where: { rol: { [Op.notIn]: ["admin", "personalAdmin", "doctor"] } },
       order: [
         ["createdAt", "DESC"], // ordenar por fecha de creación en orden ascendente
       ],

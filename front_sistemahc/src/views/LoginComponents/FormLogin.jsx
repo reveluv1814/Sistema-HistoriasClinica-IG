@@ -112,7 +112,7 @@ const LoginForm = () => {
                 disabled={isSubmitting}
                 className="btlogin bg-gradient-to-r from-red-500 to-indigo-600 text-white py-2 px-4 rounded-xl mt-4"
               >
-                {isSubmitting ? "Guardando" : "Enviar"}
+                {isSubmitting ? "Iniciando Sesión" : "Iniciar Sesión"}
               </button>
               <p className="mt-6 text-right font-thin text-sm underline hover:font-normal">
                 <Link to={"recovery/recovery-password"}>

@@ -1,13 +1,22 @@
 import SitioLayout from "../layouts/SitioLayout";
+import AdminLayout from "../layouts/AdminLayout";
+import Laboratorista from "../views/admin/Laboratorista";
 import Doctor from "../views/admin/Doctores";
-import { Route } from "react-router-dom";
+import Personal from "../views/admin/Personal";
 const AdminRoutes = {
   path: "/admin",
-  element: <SitioLayout />,
+  element: <AdminLayout />,
   children: [
     {
       path: "doctores",
       element: <Doctor />,
+    },
+    {
+      path: "laboratoristas",
+      element: <Laboratorista />,
+    },{
+      path: "personal-administrativo",
+      element: <Personal />,
     },
   ],
 };

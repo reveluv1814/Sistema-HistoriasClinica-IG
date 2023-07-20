@@ -45,7 +45,12 @@
     border-left: 7px solid rgba(255, 255, 255, 1);
     padding-left: 20px;
 }
-
+/*dashboard css*/
+.logoHeader{
+    background-image: url('./../../images/igblanco.png');
+    background-position: center;
+    background-size: cover;
+}
 /*tabla user*/
 
 .tablaAdmin:first-child{
