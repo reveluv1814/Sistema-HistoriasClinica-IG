@@ -1,7 +1,7 @@
 import api from "./api";
 
 const doctorService = {
-    listar: (q="", page, limit) => {
+    listar: (q="", page=1, limit=10) => {
         return api.get(`/admin/doctor?q=${q}&page=${page}&limit=${limit}`)
     },
 
