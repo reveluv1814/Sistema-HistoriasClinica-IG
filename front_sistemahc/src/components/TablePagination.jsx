@@ -7,7 +7,7 @@ const TablePagination = ({ columnas, datos, total, page, fetchData, handleEdit, 
     return (
         <>
             <table className="w-full divide-y ">
-                <thead className="bg-gray-100 text-gray-700 font-medium border-b" >
+                <thead className="bg-gray-200 text-gray-700 font-medium " >
                     <tr>
                         {columnas.map((columna, index) => ( 
                             <th className="py-2 pt-3 px-4 text-left text-sm font-medium uppercase" key={index}>{columna.label}</th>

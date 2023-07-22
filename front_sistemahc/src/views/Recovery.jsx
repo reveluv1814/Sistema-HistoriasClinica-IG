@@ -2,6 +2,7 @@ import React from "react";
 import FormRecovery from "./LoginComponents/FormRecovery";
 
 const Recovery = () => {
+  localStorage.clear();
   return (
     <>
       {" "}

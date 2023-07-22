@@ -9,12 +9,6 @@ const validationSchema = Yup.object().shape({
   email: Yup.string().email("Correo invalido").required("Campo requerido"),
 });
 const FormRecovery = () => {
-  if (localStorage.getItem("access_token")) {
-    localStorage.removeItem("access_token");
-  }
-  if (localStorage.getItem("rol")) {
-    localStorage.removeItem("rol");
-  }
   const [showError, setShowError] = useState(false);
   const [success, setSuccess] = useState(false);
   const resetModalError = () => {

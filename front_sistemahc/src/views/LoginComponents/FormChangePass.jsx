@@ -14,12 +14,6 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref("newPassword"), null], "Las contraseñas no coinciden."),
 });
 const FormChangePass = () => {
-  if (localStorage.getItem("access_token")) {
-    localStorage.removeItem("access_token");
-  }
-  if (localStorage.getItem("rol")) {
-    localStorage.removeItem("rol");
-  }
   const [showError, setShowError] = useState(false);
   const [success, setSuccess] = useState(false);
   const resetModalError = () => {

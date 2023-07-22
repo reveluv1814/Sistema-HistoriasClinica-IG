@@ -9,9 +9,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
     transition: all 0.3s ease-in-out;
-    pointer-events: none;
+    /* pointer-events: none; para que al dar click fuera del modal no se cierre*/
     font-family:  'Poppins', sans-serif;
   }
   

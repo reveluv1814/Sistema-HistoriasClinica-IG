@@ -24,7 +24,7 @@ const createPersonaSchema = Joi.object({
   ci: ci.required(),
   telefono: telefono.required(),
   direccion: direccion.required(),
-  foto: foto.required(),
+  foto: foto.optional(),
   es_persona: es_persona.required(),
 });
 

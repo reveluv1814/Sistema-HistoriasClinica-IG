@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const ChangePassword = () => {
   const [tokenIsValid, setTokenIsValid] = useState(false);
   const navigate = useNavigate();
+  localStorage.clear();
 
   useEffect(() => {
     const urlSearchParams = new URLSearchParams(window.location.search);
