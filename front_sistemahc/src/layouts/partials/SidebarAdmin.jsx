@@ -90,7 +90,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           </button>
           {/* Logo */}
           <NavLink end to="/" className="block">
-            <div className="logoHeader w-36 h-24"></div>
+            <div className="logoHeader  w-16 h-16 sm:h-11 sm:w-11"></div>
             {/* <svg width="32" height="32" viewBox="0 0 32 32">
               <defs>
                 <linearGradient x1="28.538%" y1="20.229%" x2="100%" y2="108.156%" id="logo-a">

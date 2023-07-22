@@ -35,7 +35,7 @@ const Personal = () => {
     <>
       <div className="max-w-lg">
         <h3 className="text-gray-800 text-xl font-bold sm:text-2xl font-inter">
-          Doctores
+          Personal Administrativo
         </h3>
         <p className="text-gray-600 mt-2">
           Aqui se encuentran todos los miembros del <b>personal administrativo</b> registrados en el sistema.

@@ -58,7 +58,7 @@ input[type=number] {
 }
 /*dashboard css*/
 .logoHeader{
-    background-image: url('./../../images/igblanco.png');
+    background-image: url('./../../images/igSidebar.png');
     background-position: center;
     background-size: cover;
 }
