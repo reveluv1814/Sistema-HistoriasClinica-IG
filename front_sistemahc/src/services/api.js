@@ -48,7 +48,7 @@ api.interceptors.response.use(
 const apiService = {
   get: (url, params) => api.get(url, params),
   post: (url, params) => api.post(url, params),
-  put: (url, params) => api.put(url, params),
+  patch: (url, params) => api.patch(url, params),
   delete: (url, params) => api.delete(url, params),
 };
 

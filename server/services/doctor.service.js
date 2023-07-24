@@ -9,12 +9,12 @@ class DoctorService {
     const q = req.query.q;
     const page = parseInt(req.query.page);
     const limit = parseInt(req.query.limit);
-    const offset = (page-1) * limit
+    const offset = (page - 1) * limit;
     const rta = await models.Doctor.findAndCountAll({
       where: {
         "$persona.apellidoPaterno$": {
-          [Op.like]: `%${q}%`
-        }
+          [Op.iLike]: `%${q}%`,
+        },
       },
       include: [
         {
@@ -54,13 +54,6 @@ class DoctorService {
         {
           model: models.Persona,
           as: "persona",
-          attributes: [
-            "id",
-            "nombre",
-            "apellidoPaterno",
-            "apellidoMaterno",
-            "ci",
-          ], // Especifica los atributos de persona que deseas mostrar
         },
       ],
     });

@@ -9,12 +9,12 @@ class LaboratoristaService {
     const q = req.query.q;
     const page = parseInt(req.query.page);
     const limit = parseInt(req.query.limit);
-    const offset = (page-1) * limit
+    const offset = (page - 1) * limit;
     const rta = await models.Laboratorista.findAndCountAll({
       where: {
         "$persona.apellidoPaterno$": {
-          [Op.like]: `%${q}%`
-        }
+          [Op.iLike]: `%${q}%`,
+        },
       },
       include: [
         {
@@ -25,13 +25,6 @@ class LaboratoristaService {
         {
           model: models.Persona,
           as: "persona",
-          attributes: [
-            "id",
-            "nombre",
-            "apellidoPaterno",
-            "apellidoMaterno",
-            "ci",
-          ], // Especifica los atributos de persona que deseas mostrar
         },
       ],
       offset: offset,
@@ -112,9 +105,12 @@ class LaboratoristaService {
     });
 
     // Actualiza el registro de Doctor
-    const updatedLaboratorista = await models.Laboratorista.update(laboratorista, {
-      where: { id },
-    });
+    const updatedLaboratorista = await models.Laboratorista.update(
+      laboratorista,
+      {
+        where: { id },
+      }
+    );
 
     const [rowCount] = updatedLaboratorista; // Obtiene la cantidad de filas actualizadas
     if (rowCount === 0) {

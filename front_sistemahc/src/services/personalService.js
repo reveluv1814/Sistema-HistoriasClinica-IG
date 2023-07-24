@@ -14,7 +14,7 @@ const personalService = {
     },
 
     modificar: (id, datos) => {
-        return api.put(`/admin/personalAd/${id}`, datos)
+        return api.patch(`/admin/personalAd/${id}`, datos)
     },
 
     eliminar: (id) => {

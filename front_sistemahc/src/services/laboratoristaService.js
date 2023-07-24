@@ -14,7 +14,7 @@ const laboratoristaService = {
     },
 
     modificar: (id, datos) => {
-        return api.put(`/admin/laboratorista/${id}`, datos)
+        return api.patch(`/admin/laboratorista/${id}`, datos)
     },
 
     eliminar: (id) => {

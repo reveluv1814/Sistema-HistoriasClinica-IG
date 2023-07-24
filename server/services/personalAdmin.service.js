@@ -13,7 +13,7 @@ class PersonalAdminService {
     const rta = await models.PersonalAdmin.findAndCountAll({
       where: {
         "$persona.apellidoPaterno$": {
-          [Op.like]: `%${q}%`,
+          [Op.iLike]: `%${q}%`,
         },
       },
       include: [
@@ -25,13 +25,6 @@ class PersonalAdminService {
         {
           model: models.Persona,
           as: "persona",
-          attributes: [
-            "id",
-            "nombre",
-            "apellidoPaterno",
-            "apellidoMaterno",
-            "ci",
-          ], // Especifica los atributos de persona que deseas mostrar
         },
       ],
       offset: offset,

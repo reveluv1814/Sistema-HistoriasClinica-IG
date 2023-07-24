@@ -14,7 +14,7 @@ const doctorService = {
     },
 
     modificar: (id, datos) => {
-        return api.put(`/admin/doctor/${id}`, datos)
+        return api.patch(`/admin/doctor/${id}`, datos)
     },
 
     eliminar: (id) => {

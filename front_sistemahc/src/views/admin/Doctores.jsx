@@ -11,7 +11,8 @@ const Doctores = () => {
   const [q, setq] = useState("");
   const [limit, setLimit] = useState(10);
   const [addDoctor, setAddDoctor] = useState(false);
-  //const [buscar, setBuscar] = useState("");
+  const [editFlag, setEditFlag] = useState(false);
+  const [idDocEdit, setIdDocEdit] = useState(0);
 
   const columnas = [
     { key: "id", label: "COD" },
@@ -29,6 +30,7 @@ const Doctores = () => {
   const closeAddUser = () => {
     setAddDoctor(false);
   };
+  const [doctorValue, setdoctorValue] = useState({});
   //FUNCIONES
   const getDoctores = async (nroPage = 1, limit = 10) => {
     setPage(nroPage);
@@ -42,6 +44,63 @@ const Doctores = () => {
   const funBuscar = (e) => {
     setq(e.target.value);
   };
+  const addDoc = () => {
+    setdoctorValue({
+      usuario: {
+        email: "",
+        password: "",
+        rol: "doctor",
+      },
+      persona: {
+        nombre: "",
+        apellidoMaterno: "",
+        apellidoPaterno: "",
+        ci: "",
+        telefono: "",
+        direccion: "",
+        foto: "http://placehold.it/32x32",
+        es_persona: false,
+      },
+      doctor: {
+        unidad: "",
+        especialidad: "",
+        numeroMatricula: "",
+      },
+    });
+    setEditFlag(false);
+    setAddDoctor(!addDoctor);
+  };
+  const editDoctor = async (id) => {
+    try {
+      const { data } = await doctorService.mostrar(id);
+      setdoctorValue({
+        usuario: {
+          email: data.doctor.usuario.email,
+          password: data.doctor.usuario.password,
+          rol: data.doctor.usuario.rol,
+        },
+        persona: {
+          nombre: data.doctor.persona.nombre,
+          apellidoMaterno: data.doctor.persona.apellidoMaterno,
+          apellidoPaterno: data.doctor.persona.apellidoPaterno,
+          ci: data.doctor.persona.ci,
+          telefono: data.doctor.persona.telefono,
+          direccion: data.doctor.persona.direccion,
+          foto: data.doctor.persona.foto,
+        },
+        doctor: {
+          unidad: data.doctor.unidad,
+          especialidad: data.doctor.especialidad,
+          numeroMatricula: data.doctor.numeroMatricula,
+        },
+      });
+      setIdDocEdit(id);
+      setEditFlag(true);
+      setAddDoctor(!addDoctor);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       <div className="max-w-full">
@@ -52,28 +111,9 @@ const Doctores = () => {
           Aqui se encuentran todos los <b>doctores</b> registrados en el
           sistema.
         </p>
-        <button
-          className="flex flex-row ml-auto bg-blue-500 justify-center items-center text-center font-inter font-normal mb-2 text-sm text-white h-10 pr-3 rounded-md shadow-lg hover:bg-blue-600"
-          onClick={() => setAddDoctor(!addDoctor)}
-        >
-          <div className="text-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              className="w-8 h-10 p-1 bg-blue-600  text-white mr-2 rounded-tl-md rounded-bl-md"
-              viewBox="0 0 640 512"
-            >
-              <path
-                d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
-                fill="currentColor"
-              />
-            </svg>
-          </div>
-          Añadir usuario
-        </button>
       </div>
       <div className="flex flex-col justify-center items-center ">
-        <p  className="font-inter font-normal text-xs text-slate-600">
+        <p className="font-inter font-normal text-xs text-slate-600">
           Buscar por <b>Apellido Paterno</b>
         </p>
         <div className="relative ">
@@ -99,6 +139,25 @@ const Doctores = () => {
           />
         </div>
       </div>
+      <button
+        className="flex flex-row ml-auto bg-blue-500 justify-center items-center text-center font-inter font-normal mb-2 text-sm text-white h-10 pr-3 rounded-md shadow-lg hover:bg-blue-600"
+        onClick={addDoc}
+      >
+        <div className="text-white">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="1em"
+            className="w-8 h-10 p-1 bg-blue-600  text-white mr-2 rounded-tl-md rounded-bl-md"
+            viewBox="0 0 640 512"
+          >
+            <path
+              d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+        Añadir usuario
+      </button>
 
       <div className="mt-2 shadow-sm border rounded-lg overflow-x-auto">
         <TablePagination
@@ -107,14 +166,22 @@ const Doctores = () => {
           total={total}
           page={page}
           fetchData={getDoctores}
+          handleEdit={editDoctor}
         ></TablePagination>
         <Modal
           modalOpen={addDoctor}
           setOpenModal={closeAddUser}
-          title={"Agregar Doctor"}
+          title={editFlag ? "Editar Doctor" : "Agregar Doctor"}
           contenido={" shadow shadow-blue-500/40"}
         >
-          <FormAddUser setOpenModal={closeAddUser} />
+          <FormAddUser
+            setOpenModal={closeAddUser}
+            userValue={doctorValue}
+            userService={doctorService}
+            listar={getDoctores}
+            editUser={editFlag}
+            idEdit={idDocEdit}
+          />
         </Modal>
       </div>
     </>
