@@ -12,7 +12,7 @@ function SidebarLinkGroup({
   }
 
   return (
-    <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${activecondition && 'bg-sky-900'}`}>
+    <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${activecondition && 'bg-sky-900 dark:bg-slate-800'}`}>
       {children(handleClick, open)}
     </li>
   );

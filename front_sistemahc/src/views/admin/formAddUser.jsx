@@ -116,16 +116,16 @@ const FormAdduser = ({
               key={idx}
             >
               <div
-                className={`w-6 h-6 rounded-full border-2 flex-none flex items-center justify-center ${
+                className={`w-6 h-6 rounded-full border-2 flex-none flex items-center justify-center dark:border-indigo-500 ${
                   stepsLine.currentStep > idx + 1
-                    ? "bg-sky-300 border-sky-400"
+                    ? "bg-sky-300 border-sky-400 dark:bg-indigo-400 dark:border-indigo-500"
                     : "" || stepsLine.currentStep == idx + 1
-                    ? "border-sky-400"
+                    ? "border-sky-400 dark:border-indigo-500"
                     : ""
                 }`}
               >
                 <span
-                  className={`w-2 h-2 rounded-full bg-sky-400 ${
+                  className={`w-2 h-2 rounded-full bg-sky-400 dark:bg-indigo-400 ${
                     stepsLine.currentStep != idx + 1 ? "hidden" : ""
                   }`}
                 ></span>
@@ -136,7 +136,7 @@ const FormAdduser = ({
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-5 h-5 text-white"
+                    className="w-5 h-5 text-white dark:text-indigo-900"
                   >
                     <path
                       strokeLinecap="round"
@@ -149,11 +149,11 @@ const FormAdduser = ({
                 )}
               </div>
               <hr
-                className={`w-full border ${
+                className={`w-full border dark:border-indigo-400 ${
                   idx + 1 == stepsLine.stpesCount.length
                     ? "hidden"
                     : "" || stepsLine.currentStep > idx + 1
-                    ? "border-sky-400"
+                    ? "border-sky-400 dark:border-indigo-500"
                     : ""
                 }`}
               />
@@ -181,29 +181,29 @@ const FormAdduser = ({
                 <>
                   <label
                     htmlFor="usuario.email"
-                    className="mb-1 text-base font-medium text-gray-700"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
                   >
                     Email:
                   </label>
                   <Field
                     type="email"
                     name="usuario.email"
-                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md ${
+                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.usuario?.email && touched.usuario?.email
-                        ? "border-red-500"
+                        ? "border-red-500 dark:border-red-300"
                         : ""
                     }`}
                   />
                   <ErrorMessage
                     name="usuario.email"
                     component="p"
-                    className="text-center text-red-500 text-xs italic"
+                    className="text-center text-red-500 text-xs italic dark:text-red-200"
                   />
                   {!editUser && (
                     <>
                       <label
                         htmlFor="usuario.password"
-                        className="block mb-1 text-base font-medium text-gray-700"
+                        className="block mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
                       >
                         Password:
                       </label>
@@ -212,15 +212,15 @@ const FormAdduser = ({
                           type="password"
                           name="usuario.password"
                           id="usuario.password"
-                          className={`text-base text-zinc-900 p-2 flex-grow shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg ${
+                          className={`text-base text-zinc-900 p-2 flex-grow shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg dark:bg-slate-800 dark:text-gray-400 ${
                             errors.usuario?.password &&
                             touched.usuario?.password
-                              ? "border-red-500"
+                              ? "border-red-500 dark:border-red-300"
                               : ""
                           }`}
                         />
                         <svg
-                          className="ml-2 mt-2 w-6 h-7 cursor-pointer flex-none hover: text-gray-700"
+                          className="ml-2 mt-2 w-6 h-7 cursor-pointer flex-none hover: text-gray-700 dark:text-gray-200"
                           onClick={() => {
                             if (!values.seepass) {
                               document
@@ -250,14 +250,14 @@ const FormAdduser = ({
                       <ErrorMessage
                         name="usuario.password"
                         component="p"
-                        className="text-center text-red-500 text-xs italic"
+                        className="text-center text-red-500 text-xs italic dark:text-red-200"
                       />
                     </>
                   )}
 
                   <label
                     htmlFor="usuario.rol"
-                    className="mb-1 text-base font-medium text-gray-700"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
                   >
                     Rol:
                   </label>
@@ -265,7 +265,7 @@ const FormAdduser = ({
                     type="email"
                     name="usuario.rol"
                     className={
-                      "p-2 text-base capitalize-first text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md "
+                      "p-2 text-base capitalize-first text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md  dark:bg-slate-800 dark:text-gray-400"
                     }
                     disabled
                   />
@@ -281,7 +281,7 @@ const FormAdduser = ({
                 >
                   <label
                     htmlFor="persona.nombre"
-                    className="mb-1 text-base font-medium text-gray-700"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
                   >
                     Nombres:
                   </label>
@@ -291,20 +291,20 @@ const FormAdduser = ({
                     style={{
                       textTransform: "capitalize",
                     }}
-                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md ${
+                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.nombre && errors.persona?.nombre
-                        ? "border-red-500"
+                        ? "border-red-500 dark:border-red-300"
                         : ""
                     }`}
                   />
                   <ErrorMessage
                     name="persona.nombre"
                     component="p"
-                    className="text-center text-red-500 text-xs italic"
+                    className="text-center text-red-500 text-xs italic dark:text-red-200"
                   />
                   <label
                     htmlFor="persona.apellidoPaterno"
-                    className="mb-1 text-base font-medium text-gray-700"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
                   >
                     Apellido Paterno:
                   </label>
@@ -314,21 +314,21 @@ const FormAdduser = ({
                     style={{
                       textTransform: "capitalize",
                     }}
-                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md ${
+                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.apellidoPaterno &&
                       errors.persona?.apellidoPaterno
-                        ? "border-red-500"
+                        ? "border-red-500 dark:border-red-300"
                         : ""
                     }`}
                   />
                   <ErrorMessage
                     name="persona.apellidoPaterno"
                     component="p"
-                    className="text-center text-red-500 text-xs italic"
+                    className="text-center text-red-500 text-xs italic dark:text-red-200"
                   />
                   <label
                     htmlFor="persona.apellidoMaterno"
-                    className="mb-1 text-base font-medium text-gray-700"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
                   >
                     Apellido Materno:
                   </label>
@@ -338,61 +338,61 @@ const FormAdduser = ({
                     style={{
                       textTransform: "capitalize",
                     }}
-                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md ${
+                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.apellidoMaterno &&
                       errors.persona?.apellidoMaterno
-                        ? "border-red-500"
+                        ? "border-red-500 dark:border-red-300"
                         : ""
                     }`}
                   />
                   <ErrorMessage
                     name="persona.apellidoMaterno"
                     component="p"
-                    className="text-center text-red-500 text-xs italic"
+                    className="text-center text-red-500 text-xs italic dark:text-red-200"
                   />
                   <label
                     htmlFor="persona.ci"
-                    className="mb-1 text-base font-medium text-gray-700"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
                   >
                     CI:
                   </label>
                   <Field
                     type="text"
                     name="persona.ci"
-                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md ${
+                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.ci && errors.persona?.ci
-                        ? "border-red-500"
+                        ? "border-red-500 dark:border-red-300"
                         : ""
                     }`}
                   />
                   <ErrorMessage
                     name="persona.ci"
                     component="p"
-                    className="text-center text-red-500 text-xs italic"
+                    className="text-center text-red-500 text-xs italic dark:text-red-200"
                   />
                   <label
                     htmlFor="persona.telefono"
-                    className="mb-1 text-base font-medium text-gray-700"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
                   >
                     Teléfono:
                   </label>
                   <Field
                     type="text"
                     name="persona.telefono"
-                    className={`p-2 esteInput text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md ${
+                    className={`p-2 esteInput text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.telefono && errors.persona?.telefono
-                        ? "border-red-500"
+                        ? "border-red-500 dark:border-red-300"
                         : ""
                     } `}
                   />
                   <ErrorMessage
                     name="persona.telefono"
                     component="p"
-                    className="text-center text-red-500 text-xs italic"
+                    className="text-center text-red-500 text-xs italic dark:text-red-200"
                   />
                   <label
                     htmlFor="persona.direccion"
-                    className="mb-1 text-base font-medium text-gray-700"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
                   >
                     Dirección:
                   </label>
@@ -402,18 +402,18 @@ const FormAdduser = ({
                     style={{
                       textTransform: "capitalize",
                     }}
-                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md ${
+                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.direccion && errors.persona?.direccion
-                        ? "border-red-500"
+                        ? "border-red-500 dark:border-red-300"
                         : ""
                     }`}
                   />
                   <ErrorMessage
                     name="persona.direccion"
                     component="p"
-                    className="text-center text-red-500 text-xs italic"
+                    className="text-center text-red-500 text-xs italic dark:text-red-200"
                   />
-                  <label className="mb-1 text-base font-medium text-gray-700">
+                  <label className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300">
                     Foto:
                   </label>
                   <div className="flex items-center justify-center w-full">
@@ -458,7 +458,7 @@ const FormAdduser = ({
                     <>
                       <label
                         htmlFor="doctor.unidad"
-                        className="mb-1 text-base font-medium text-gray-700"
+                        className="mb-1 text-base font-medium text-gray-700  dark:text-gray-300"
                       >
                         Unidad:
                       </label>
@@ -468,20 +468,20 @@ const FormAdduser = ({
                         style={{
                           textTransform: "capitalize",
                         }}
-                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md ${
+                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                           errors.doctor?.unidad && errors.doctor?.unidad
-                            ? "border-red-500"
+                            ? "border-red-500 dark:border-red-300"
                             : ""
                         }`}
                       />
                       <ErrorMessage
                         name="doctor.unidad"
                         component="p"
-                        className="text-center text-red-500 text-xs italic"
+                        className="text-center text-red-500 text-xs italic dark:text-red-200"
                       />
                       <label
                         htmlFor="doctor.especialidad"
-                        className="mb-1 text-base font-medium text-gray-700"
+                        className="mb-1 text-base font-medium text-gray-700  dark:text-gray-300"
                       >
                         Especialidad:
                       </label>
@@ -491,21 +491,21 @@ const FormAdduser = ({
                         style={{
                           textTransform: "capitalize",
                         }}
-                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md ${
+                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                           errors.doctor?.especialidad &&
                           errors.doctor?.especialidad
-                            ? "border-red-500"
+                            ? "border-red-500 dark:border-red-300"
                             : ""
                         }`}
                       />
                       <ErrorMessage
                         name="doctor.especialidad"
                         component="p"
-                        className="text-center text-red-500 text-xs italic"
+                        className="text-center text-red-500 text-xs italic dark:text-red-200"
                       />
                       <label
                         htmlFor="doctor.numeroMatricula"
-                        className="mb-1 text-base font-medium text-gray-700"
+                        className="mb-1 text-base font-medium text-gray-700  dark:text-gray-300"
                       >
                         Número de Matrícula:
                       </label>
@@ -515,17 +515,17 @@ const FormAdduser = ({
                         style={{
                           textTransform: "capitalize",
                         }}
-                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md ${
+                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                           errors.doctor?.numeroMatricula &&
                           errors.doctor?.numeroMatricula
-                            ? "border-red-500"
+                            ? "border-red-500 dark:border-red-300"
                             : ""
                         }`}
                       />
                       <ErrorMessage
                         name="doctor.numeroMatricula"
                         component="p"
-                        className="text-center text-red-500 text-xs italic"
+                        className="text-center text-red-500 text-xs italic dark:text-red-200"
                       />
                     </>
                   )}
@@ -533,7 +533,7 @@ const FormAdduser = ({
                     <>
                       <label
                         htmlFor="personalAdmin.cargo"
-                        className="mb-1 text-base font-medium text-gray-700"
+                        className="mb-1 text-base font-medium text-gray-700  dark:text-gray-300"
                       >
                         Cargo:
                       </label>
@@ -543,17 +543,17 @@ const FormAdduser = ({
                         style={{
                           textTransform: "capitalize",
                         }}
-                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md ${
+                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                           errors.personalAdmin?.cargo &&
                           errors.personalAdmin?.cargo
-                            ? "border-red-500"
+                            ? "border-red-500 dark:border-red-300"
                             : ""
                         }`}
                       />
                       <ErrorMessage
                         name="personalAdmin.cargo"
                         component="p"
-                        className="text-center text-red-500 text-xs italic"
+                        className="text-center text-red-500 text-xs italic dark:text-red-200"
                       />
                     </>
                   )}
@@ -561,7 +561,7 @@ const FormAdduser = ({
                     <>
                       <label
                         htmlFor="laboratorista.especialidad"
-                        className="mb-1 text-base font-medium text-gray-700"
+                        className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
                       >
                         Especialidad:
                       </label>
@@ -571,21 +571,21 @@ const FormAdduser = ({
                         style={{
                           textTransform: "capitalize",
                         }}
-                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md ${
+                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                           errors.laboratorista?.especialidad &&
                           errors.laboratorista?.especialidad
-                            ? "border-red-500"
+                            ? "border-red-500 dark:border-red-300"
                             : ""
                         }`}
                       />
                       <ErrorMessage
                         name="laboratorista.especialidad"
                         component="p"
-                        className="text-center text-red-500 text-xs italic"
+                        className="text-center text-red-500 text-xs italic dark:text-red-200"
                       />
                       <label
                         htmlFor="laboratorista.matriculaProf"
-                        className="mb-1 text-base font-medium text-gray-700"
+                        className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
                       >
                         Número de Matrícula Profesional:
                       </label>
@@ -595,17 +595,17 @@ const FormAdduser = ({
                         style={{
                           textTransform: "capitalize",
                         }}
-                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md ${
+                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                           errors.laboratorista?.matriculaProf &&
                           errors.laboratorista?.matriculaProf
-                            ? "border-red-500"
+                            ? "border-red-500 dark:border-red-300"
                             : ""
                         }`}
                       />
                       <ErrorMessage
                         name="laboratorista.matriculaProf"
                         component="p"
-                        className="text-center text-red-500 text-xs italic"
+                        className="text-center text-red-500 text-xs italic dark:text-red-200"
                       />
                     </>
                   )}
@@ -662,7 +662,7 @@ const FormAdduser = ({
               )}
               {step === 3 && (
                 <>
-                  <div className="mt-2 text-center text-red-500 text-xs italic">
+                  <div className="mt-2 text-center text-red-500 text-xs italic dark:text-red-200">
                     {isValidating || !isValid
                       ? "Revisa si introduciste bien los campos"
                       : ""}
@@ -700,7 +700,7 @@ const FormAdduser = ({
                 <>
                   <div className="container md:mt-1">
                     <div className="flex flex-col items-center">
-                      <div className="wrapper">
+                      <div className="wrapper ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="w-20"
@@ -723,10 +723,10 @@ const FormAdduser = ({
                         </svg>
                       </div>
 
-                      <div className="mt-3 text-xl font-semibold uppercase text-emerald-600">
+                      <div className="mt-3 text-xl font-semibold uppercase text-emerald-600 dark:text-emerald-500">
                         {editUser ? "Actualizado!" : "Registrado!"}
                       </div>
-                      <div className="text-base font-normal text-gray-500 text-center">
+                      <div className="text-base font-normal text-gray-500 text-center dark:text-gray-300">
                         {values.usuario.rol === "doctor" && (
                           <>
                             {editUser
@@ -752,7 +752,7 @@ const FormAdduser = ({
 
                       <button
                         type="button"
-                        className="h-10 px-5 mt-5 text-green-700 transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-emerald-700 hover:text-green-100"
+                        className="h-10 px-5 mt-5 text-green-700 transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-emerald-700 hover:text-green-100 dark:text-green-500 dark:hover:text-green-200"
                         onClick={() => setOpenModal(false)}
                         disabled={isValidating || !isValid}
                       >

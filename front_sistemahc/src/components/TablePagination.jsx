@@ -16,8 +16,8 @@ const TablePagination = ({
 
   return (
     <>
-      <table className="w-full divide-y ">
-        <thead className="bg-gray-200 text-gray-700 font-medium ">
+      <table className="w-full divide-y dark:divide-slate-700">
+        <thead className="bg-gray-200 text-gray-700 font-medium dark:bg-slate-700 dark:text-gray-200 ">
           <tr>
             {columnas.map((columna, index) => (
               <th
@@ -32,12 +32,12 @@ const TablePagination = ({
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white divide-y divide-gray-200 dark:bg-slate-600 dark:divide-slate-800">
           {datos.map((reg, index) => (
             <tr key={reg.id}>
               {columnas.map((col, pos) => (
                 <td
-                  className="py-2 px-4 text-sm text-gray-500 font-inter"
+                  className="py-2 px-4 text-sm text-gray-500 font-inter dark:text-gray-300"
                   key={pos}
                 >
                   {eval("reg." + col.key)}
@@ -154,12 +154,12 @@ const TablePagination = ({
           ))}
         </tbody>
       </table>
-      <div className="flex justify-center mt-2 bg-gray-100 text-gray-700 font-medium border-b pt-2 pb-2">
-        <nav className="inline-flex rounded-md shadow">
+      <div className="flex justify-center mt-2 bg-gray-100 text-gray-700 font-medium border-b pt-2 pb-2 dark:bg-slate-700 dark:text-gray-200 dark:border-b-slate-800">
+        <nav className="inline-flex rounded-md shadow ">
           <button
             onClick={() => fetchData(page - 1)}
             disabled={page == 1}
-            className="py-2 px-4 bg-gray-300 text-gray-600 hover:bg-gray-400 rounded-l-md hover:text-gray-100"
+            className="py-2 px-4 bg-gray-300 text-gray-600 hover:bg-gray-400 rounded-l-md hover:text-gray-100 dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-indigo-900 dark:hover:text-slate-50"
           >
             anterior
           </button>
@@ -172,8 +172,8 @@ const TablePagination = ({
                     onClick={() => fetchData(index + 1)}
                     className={`${
                       page === index + 1
-                        ? "bg-blue-500 text-white"
-                        : "bg-gray-200 text-gray-700"
+                        ? "bg-blue-500 text-white dark:bg-sky-700"
+                        : "bg-gray-200 text-gray-700 dark:bg-gray-400 dark:text-slate-100"
                     } py-2 px-4 mx-1 rounded-md focus:outline-none`}
                   >
                     {index + 1}
@@ -185,7 +185,7 @@ const TablePagination = ({
           <button
             onClick={() => fetchData(page + 1)}
             disabled={page == Math.ceil(total / itemsPerPage)}
-            className="py-2 px-4 bg-gray-300 text-gray-600 hover:bg-gray-400 rounded-r-md hover:text-gray-100"
+            className="py-2 px-4 bg-gray-300 text-gray-600 hover:bg-gray-400 rounded-r-md hover:text-gray-100 dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-indigo-900 dark:hover:text-slate-50"
           >
             siguiente
           </button>

@@ -136,22 +136,22 @@ const Doctores = () => {
   return (
     <>
       <div className="max-w-full">
-        <h3 className="text-gray-800 text-xl font-bold sm:text-2xl font-inter">
+        <h3 className="text-gray-800 text-xl font-bold sm:text-2xl font-inter dark:text-white">
           Doctores
         </h3>
-        <p className="text-gray-600 mt-2">
+        <p className="text-gray-600 mt-2 dark:text-gray-200">
           Aqui se encuentran todos los <b>doctores</b> registrados en el
           sistema.
         </p>
       </div>
-      <div className="flex flex-col justify-center items-center ">
-        <p className="font-inter font-normal text-xs text-slate-600">
+      <div className="flex flex-col justify-center items-center mt-4">
+        <p className="font-inter font-normal text-xs text-slate-600 dark:text-gray-100">
           Buscar por <b>Apellido Paterno</b>
         </p>
         <div className="relative ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute top-0 bottom-0 w-6 h-6 my-auto text-gray-400 left-3"
+            className="absolute top-0 bottom-0 w-6 h-6 my-auto text-gray-400 left-3 dark:text-gray-400"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -167,19 +167,19 @@ const Doctores = () => {
             type="text"
             placeholder="Buscar"
             onChange={(e) => funBuscar(e)}
-            className="w-96 py-2 pl-12 pr-4 text-gray-500 border-gray-200 rounded-md outline-none bg-gray-50 focus:bg-white focus:border-sky-600"
+            className="w-96 py-2 pl-12 pr-4 text-gray-500 border-gray-200 rounded-md outline-none bg-gray-50 focus:bg-white focus:border-sky-600 dark:bg-slate-700 dark:border-indigo-900 dark:text-gray-300 dark:focus:border-indigo-900"
           />
         </div>
       </div>
       <button
-        className="flex flex-row ml-auto bg-blue-500 justify-center items-center text-center font-inter font-normal mb-2 text-sm text-white h-10 pr-3 rounded-md shadow-lg hover:bg-blue-600"
+        className="flex flex-row ml-auto bg-blue-500 dark:bg-blue-600 justify-center items-center text-center font-inter font-normal mb-2 text-sm text-white h-10 pr-3 rounded-md shadow-lg hover:bg-blue-600 dark:hover:bg-blue-700 "
         onClick={addDoc}
       >
         <div className="text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="1em"
-            className="w-8 h-10 p-1 bg-blue-600  text-white mr-2 rounded-tl-md rounded-bl-md"
+            className="w-8 h-10 p-1 bg-blue-600 dark:bg-blue-700 text-white mr-2 rounded-tl-md rounded-bl-md"
             viewBox="0 0 640 512"
           >
             <path
@@ -191,7 +191,7 @@ const Doctores = () => {
         Añadir usuario
       </button>
 
-      <div className="mt-2 shadow-sm border rounded-lg overflow-x-auto">
+      <div className="mt-2 shadow-sm border rounded-lg overflow-x-auto dark:border-slate-700 ">
         <TablePagination
           columnas={columnas}
           datos={doctores}
@@ -223,7 +223,7 @@ const Doctores = () => {
           title={"Eliminar Doctor?"}
           contenido={" shadow shadow-rose-500/40"}
         >
-          <div className="flex justify-center items-center text-rose-800">
+          <div className="flex justify-center items-center text-rose-800 dark:text-rose-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -240,7 +240,7 @@ const Doctores = () => {
             </svg>
           </div>
 
-          <h4 className="text-center text-gray-700 text-lg font-medium">
+          <h4 className="text-center text-gray-700 text-lg font-medium dark:text-gray-300">
             Desea Eliminar al Doctor/a seleccionado?
           </h4>
           <div className="flex justify-center items-center mt-4">
@@ -265,7 +265,7 @@ const Doctores = () => {
           contenido={" shadow shadow-sky-500/40"}
         >
           <div className="flex items-center justify-center">
-            <div className="bg-white shadow-md rounded-lg p-4">
+            <div className="bg-white shadow-md rounded-lg p-4 dark:bg-slate-800/50">
               <img
                 className="w-32 h-32 rounded-full mx-auto mb-4"
                 src={showDoctor.doctor?.persona?.foto}
@@ -276,33 +276,33 @@ const Doctores = () => {
                 {showDoctor.doctor?.persona?.apellidoPaterno}{" "}
                 {showDoctor.doctor?.persona?.apellidoMaterno}
               </h3>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 CI: {showDoctor.doctor?.persona?.ci}
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 Dirección: {showDoctor.doctor?.persona?.direccion}
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 Teléfono: {showDoctor.doctor?.persona?.telefono}
               </p>
-              <hr className="border-t-2 bg-gray-700 my-2" />
-              <p className="text-gray-700">
+              <hr className="border-t-2 bg-gray-700 my-2 dark:border-t-gray-600" />
+              <p className="text-gray-700 dark:text-gray-300">
                 Email: {showDoctor.doctor?.usuario?.email}
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 Rol: {showDoctor.doctor?.usuario?.rol}
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 Fecha de creación: {showDoctor.doctor?.usuario?.createdAt}
               </p>
-              <hr className="border-t-2 bg-gray-700 my-2" />
-              <p className="text-gray-700">
+              <hr className="border-t-2 bg-gray-700 my-2 dark:border-t-gray-600" />
+              <p className="text-gray-700 dark:text-gray-300">
                 Unidad: {showDoctor.doctor?.unidad}
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 Especialidad: {showDoctor.doctor?.especialidad}
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 Número de Matrícula: {showDoctor.doctor?.numeroMatricula}
               </p>
             </div>

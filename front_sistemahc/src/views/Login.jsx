@@ -1,9 +1,11 @@
 import LoginForm from "./LoginComponents/FormLogin";
-
-import NavbarLogin from "../layouts/pages/NavbarLogin";
+import { useThemeProvider } from "./../layouts/utils/ThemeContext";
+import NavbarLogin from "./../layouts/pages/NavbarLogin";
 
 const Login = () => {
   localStorage.clear();
+  const { changeCurrentTheme } = useThemeProvider();
+  changeCurrentTheme("light");
   return (
     <>
       <NavbarLogin />

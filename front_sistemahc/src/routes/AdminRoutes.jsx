@@ -1,4 +1,3 @@
-import SitioLayout from "../layouts/SitioLayout";
 import AdminLayout from "../layouts/AdminLayout";
 import Laboratorista from "../views/admin/Laboratorista";
 import Doctor from "../views/admin/Doctores";

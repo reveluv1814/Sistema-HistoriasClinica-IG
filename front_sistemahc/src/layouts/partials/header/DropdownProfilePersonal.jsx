@@ -75,11 +75,20 @@ function DropdownProfile({
           <ul>
             <li>
               <Link
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 dark:text-indigo-300 dark:hover:text-indigo-200 flex items-center py-1 px-3"
-                to="/"
+                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3"
+                to="/settings"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                Cerrar sesión
+                Settings
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3"
+                to="/signin"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              >
+                Sign Out
               </Link>
             </li>
           </ul>

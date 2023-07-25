@@ -134,16 +134,16 @@ const Laboratorista = () => {
   return (
     <>
       <div className="max-w-lg">
-        <h3 className="text-gray-800 text-xl font-bold sm:text-2xl font-inter">
+        <h3 className="text-gray-800 text-xl font-bold sm:text-2xl font-inter dark:text-white">
           Laboratoristas
         </h3>
-        <p className="text-gray-600 mt-2">
+        <p className="text-gray-600 mt-2 dark:text-gray-200">
           Aqui se encuentran todos los <b>laboratoristas</b> registrados en el
           sistema.
         </p>
       </div>
       <div className="flex flex-col justify-center items-center mt-4">
-        <p className="font-inter font-normal text-xs text-slate-600">
+        <p className="font-inter font-normal text-xs text-slate-600 dark:text-gray-100">
           Buscar por <b>Apellido Paterno</b>
         </p>
         <div className="relative ">
@@ -165,19 +165,19 @@ const Laboratorista = () => {
             type="text"
             placeholder="Buscar"
             onChange={(e) => funBuscar(e)}
-            className="w-96 py-2 pl-12 pr-4 text-gray-500 border-gray-200 rounded-md outline-none bg-gray-50 focus:bg-white focus:border-sky-600"
+            className="w-96 py-2 pl-12 pr-4 text-gray-500 border-gray-200 rounded-md outline-none bg-gray-50 focus:bg-white focus:border-sky-600 dark:bg-slate-700 dark:border-indigo-900 dark:text-gray-300 dark:focus:border-indigo-900"
           />
         </div>
       </div>
       <button
-        className="flex flex-row ml-auto bg-blue-500 justify-center items-center text-center font-inter font-normal mb-2 text-sm text-white h-10 pr-3 rounded-md shadow-lg hover:bg-blue-600"
+        className="flex flex-row ml-auto bg-blue-500 justify-center items-center text-center font-inter font-normal mb-2 text-sm text-white h-10 pr-3 rounded-md shadow-lg hover:bg-blue-600 dark:to-blue-600 dark:hover:bg-blue-700"
         onClick={addLabora}
       >
         <div className="text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="1em"
-            className="w-8 h-10 p-1 bg-blue-600  text-white mr-2 rounded-tl-md rounded-bl-md"
+            className="w-8 h-10 p-1 bg-blue-600 dark:bg-blue-700 text-white mr-2 rounded-tl-md rounded-bl-md"
             viewBox="0 0 640 512"
           >
             <path
@@ -188,7 +188,7 @@ const Laboratorista = () => {
         </div>
         Añadir usuario
       </button>
-      <div className="mt-2 shadow-sm border rounded-lg overflow-x-auto">
+      <div className="mt-2 shadow-sm border rounded-lg overflow-x-auto dark:border-slate-700">
         <TablePagination
           columnas={columnas}
           datos={laboratorista}
@@ -220,7 +220,7 @@ const Laboratorista = () => {
           title={"Eliminar Laboratorista?"}
           contenido={" shadow shadow-rose-500/40"}
         >
-          <div className="flex justify-center items-center text-rose-800">
+          <div className="flex justify-center items-center text-rose-800 dark:text-rose-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -237,7 +237,7 @@ const Laboratorista = () => {
             </svg>
           </div>
 
-          <h4 className="text-center text-gray-700 text-lg font-medium">
+          <h4 className="text-center text-gray-700 text-lg font-medium dark:text-gray-300">
             Desea Eliminar al Laboratorista seleccionado?
           </h4>
           <div className="flex justify-center items-center mt-4">
@@ -262,7 +262,7 @@ const Laboratorista = () => {
           contenido={" shadow shadow-sky-500/40"}
         >
           <div className="flex items-center justify-center">
-            <div className="bg-white shadow-md rounded-lg p-4">
+            <div className="bg-white shadow-md rounded-lg p-4 dark:bg-slate-800/50">
               <img
                 className="w-32 h-32 rounded-full mx-auto mb-4"
                 src={showLaboratorista.laboratorista?.persona?.foto}
@@ -273,32 +273,32 @@ const Laboratorista = () => {
                 {showLaboratorista.laboratorista?.persona?.apellidoPaterno}{" "}
                 {showLaboratorista.laboratorista?.persona?.apellidoMaterno}
               </h3>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 CI: {showLaboratorista.laboratorista?.persona?.ci}
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 Dirección: {showLaboratorista.laboratorista?.persona?.direccion}
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 Teléfono: {showLaboratorista.laboratorista?.persona?.telefono}
               </p>
-              <hr className="border-t-2 bg-gray-700 my-2" />
-              <p className="text-gray-700">
+              <hr className="border-t-2 bg-gray-700 my-2 dark:border-t-gray-600" />
+              <p className="text-gray-700 dark:text-gray-300">
                 Email: {showLaboratorista.laboratorista?.usuario?.email}
               </p>
 
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 Rol: {showLaboratorista.laboratorista?.usuario?.rol}
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 Fecha de creación:{" "}
                 {showLaboratorista.laboratorista?.usuario?.createdAt}
               </p>
-              <hr className="border-t-2 bg-gray-700 my-2" />
-              <p className="text-gray-700">
+              <hr className="border-t-2 bg-gray-700 my-2 dark:border-t-gray-600" />
+              <p className="text-gray-700 dark:text-gray-300">
                 Especialidad: {showLaboratorista.laboratorista?.especialidad}
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-gray-300">
                 Matrícula Profesional:{" "}
                 {showLaboratorista.laboratorista?.matriculaProf}
               </p>
