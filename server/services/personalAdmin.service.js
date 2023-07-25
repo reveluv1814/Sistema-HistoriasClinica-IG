@@ -25,6 +25,13 @@ class PersonalAdminService {
         {
           model: models.Persona,
           as: "persona",
+          attributes: [
+            "id",
+            "nombre",
+            "apellidoPaterno",
+            "apellidoMaterno",
+            "ci",
+          ], // Especifica los atributos de persona que deseas mostrar
         },
       ],
       offset: offset,
@@ -47,13 +54,6 @@ class PersonalAdminService {
         {
           model: models.Persona,
           as: "persona",
-          attributes: [
-            "id",
-            "nombre",
-            "apellidoPaterno",
-            "apellidoMaterno",
-            "ci",
-          ], // Especifica los atributos de persona que deseas mostrar
         },
       ],
     });

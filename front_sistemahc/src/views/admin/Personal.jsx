@@ -11,6 +11,12 @@ const Personal = () => {
   const [q, setq] = useState("");
   const [limit, setLimit] = useState(10);
   const [addPersonal, setAddPersonal] = useState(false);
+  const [editFlag, setEditFlag] = useState(false);
+  const [idPersonalEdit, setIdPersonalEdit] = useState(0);
+  const [deletePersonal, setDeletePersonal] = useState(false);
+  const [deletePersonalId, setDeletePersonalId] = useState(0);
+  const [showPersonal, setShowPersonal] = useState({});
+  const [showPersonalModal, setShowPersonalModal] = useState(false);
 
   const columnas = [
     { key: "id", label: "COD" },
@@ -28,38 +34,101 @@ const Personal = () => {
   const closeAddUser = () => {
     setAddPersonal(false);
   };
+  const deletePersonalFun = () => {
+    setDeletePersonal(false);
+  };
+  const [personalValue, setPersonalValue] = useState({});
   //FUNCIONES
   const getPersonalAd = async (nroPage = 1, limit = 10) => {
     setPage(nroPage);
     const { data } = await personalService.listar(q, nroPage, limit);
-    console.log(data.personal);
+    /* console.log(data.personal);
     console.log("TOTAL:", data.personal.count);
-    console.log("Registros:", data.personal.rows);
+    console.log("Registros:", data.personal.rows); */
     setTotal(data.personal.count);
     setPersonalAd(data.personal.rows);
   };
   const funBuscar = (e) => {
     setq(e.target.value);
   };
-  const personalValue = {
-    usuario: {
-      email: "",
-      password: "",
-      rol: "personalAdmin",
-    },
-    persona: {
-      nombre: "",
-      apellidoMaterno: "",
-      apellidoPaterno: "",
-      ci: "",
-      telefono: "",
-      direccion: "",
-      foto: "http://placehold.it/32x32",
-      es_persona: false,
-    },
-    personalAdmin: {
-      cargo: "",
-    },
+  const handleShow = async (datos) => {
+    try {
+      const { data } = await personalService.mostrar(datos.id);
+      setShowPersonal(data);
+      setShowPersonalModal(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const addPersonalAd = () => {
+    setPersonalValue({
+      usuario: {
+        email: "",
+        password: "",
+        rol: "personalAdmin",
+      },
+      persona: {
+        nombre: "",
+        apellidoMaterno: "",
+        apellidoPaterno: "",
+        ci: "",
+        telefono: "",
+        direccion: "",
+        foto: "https://rickandmortyapi.com/api/character/avatar/15.jpeg",
+        es_persona: false,
+      },
+      personalAdmin: {
+        cargo: "",
+      },
+    });
+    setEditFlag(false);
+    setAddPersonal(!addPersonal);
+  };
+  const editPersonal = async (id) => {
+    try {
+      const { data } = await personalService.mostrar(id);
+      setPersonalValue({
+        usuario: {
+          email: data.personalAdmin.usuario.email,
+          password: data.personalAdmin.usuario.password,
+          rol: data.personalAdmin.usuario.rol,
+        },
+        persona: {
+          nombre: data.personalAdmin.persona.nombre,
+          apellidoMaterno: data.personalAdmin.persona.apellidoMaterno,
+          apellidoPaterno: data.personalAdmin.persona.apellidoPaterno,
+          ci: data.personalAdmin.persona.ci,
+          telefono: data.personalAdmin.persona.telefono,
+          direccion: data.personalAdmin.persona.direccion,
+          foto: data.personalAdmin.persona.foto,
+        },
+        personalAdmin: {
+          cargo: data.personalAdmin.cargo,
+        },
+      });
+      setIdPersonalEdit(id);
+      setEditFlag(true);
+      setAddPersonal(!addPersonal);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const deleteId = async (datos) => {
+    setDeletePersonalId(datos.id);
+    setDeletePersonal(true);
+  };
+  const handleDelete = async () => {
+    if (deletePersonal) {
+      try {
+        await personalService.eliminar(deletePersonalId);
+        getPersonalAd();
+        setDeletePersonal(false);
+        setDeletePersonalId(0);
+      } catch (error) {
+        alert("Ocurrió un problema al intentar eliminar");
+        console.log(error);
+      }
+    }
   };
   return (
     <>
@@ -101,7 +170,7 @@ const Personal = () => {
       </div>
       <button
         className="flex flex-row ml-auto bg-blue-500 justify-center items-center text-center font-inter font-normal mb-2 text-sm text-white h-10 pr-3 rounded-md shadow-lg hover:bg-blue-600"
-        onClick={() => setAddPersonal(!addPersonal)}
+        onClick={addPersonalAd}
       >
         <div className="text-white">
           <svg
@@ -125,19 +194,114 @@ const Personal = () => {
           total={total}
           page={page}
           fetchData={getPersonalAd}
+          handleEdit={editPersonal}
+          handleDelete={deleteId}
+          handleShow={handleShow}
         ></TablePagination>
         <Modal
           modalOpen={addPersonal}
           setOpenModal={closeAddUser}
-          title={"Agregar Personal Administrativo"}
+          title={
+            editFlag
+              ? "Editar Personal Administrativo"
+              : "Agregar Personal Administrativo"
+          }
           contenido={" shadow shadow-blue-500/40"}
         >
           <FormAddUser
             setOpenModal={closeAddUser}
             userValue={personalValue}
             userService={personalService}
-            listar= {getPersonalAd}
+            listar={getPersonalAd}
+            editUser={editFlag}
+            idEdit={idPersonalEdit}
           />
+        </Modal>
+        <Modal
+          modalOpen={deletePersonal}
+          setOpenModal={deletePersonalFun}
+          title={"Eliminar Personal Administrativo?"}
+          contenido={" shadow shadow-rose-500/40"}
+        >
+          <div className="flex justify-center items-center text-rose-800">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-20 "
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z"
+              />
+            </svg>
+          </div>
+
+          <h4 className="text-center text-gray-700 text-lg font-medium">
+            Desea Eliminar al Personal Administrativo seleccionado?
+          </h4>
+          <div className="flex justify-center items-center mt-4">
+            <button
+              onClick={() => deletePersonalFun()}
+              className="bg-rose-600 text-white px-1 py-2 rounded-md text-base font-medium mr-2 hover:bg-red-700"
+            >
+              Cancelar
+            </button>
+            <button
+              onClick={() => handleDelete()}
+              className="bg-blue-500 text-white px-1 py-2 rounded-md text-base font-medium ml-2 hover:bg-blue-400"
+            >
+              Aceptar
+            </button>
+          </div>
+        </Modal>
+        <Modal
+          modalOpen={showPersonalModal}
+          setOpenModal={() => setShowPersonalModal(false)}
+          title={"Personal Administrativo"}
+          contenido={" shadow shadow-sky-500/40"}
+        >
+          <div className="flex items-center justify-center">
+            <div className="bg-white shadow-md rounded-lg p-4">
+              <img
+                className="w-32 h-32 rounded-full mx-auto mb-4"
+                src={showPersonal.personalAdmin?.persona?.foto}
+                alt={`${showPersonal.personalAdmin?.persona?.nombre} ${showPersonal.personalAdmin?.persona?.apellidoPaterno}`}
+              />
+              <h3 className="text-lg font-semibold capitalize">
+                {showPersonal.personalAdmin?.persona?.nombre}{" "}
+                {showPersonal.personalAdmin?.persona?.apellidoPaterno}{" "}
+                {showPersonal.personalAdmin?.persona?.apellidoMaterno}
+              </h3>
+              <p className="text-gray-700">
+                CI: {showPersonal.personalAdmin?.persona?.ci}
+              </p>
+              <p className="text-gray-700">
+                Dirección: {showPersonal.personalAdmin?.persona?.direccion}
+              </p>
+              <p className="text-gray-700">
+                Teléfono: {showPersonal.personalAdmin?.persona?.telefono}
+              </p>
+              <hr className="border-t-2 bg-gray-700 my-2" />
+              <p className="text-gray-700">
+                Email: {showPersonal.personalAdmin?.usuario?.email}
+              </p>
+              <p className="text-gray-700">
+                Rol: {showPersonal.personalAdmin?.usuario?.rol}
+              </p>
+              <p className="text-gray-700">
+                Fecha de creación:{" "}
+                {showPersonal.personalAdmin?.usuario?.createdAt}
+              </p>
+              <hr className="border-t-2 bg-gray-700 my-2" />
+              <p className="text-gray-700">
+                Cargo: {showPersonal.personalAdmin?.cargo}
+              </p>
+            </div>
+          </div>
         </Modal>
       </div>
     </>

@@ -13,7 +13,10 @@ const Doctores = () => {
   const [addDoctor, setAddDoctor] = useState(false);
   const [editFlag, setEditFlag] = useState(false);
   const [idDocEdit, setIdDocEdit] = useState(0);
-
+  const [deleteDoc, setDeleteDoc] = useState(false);
+  const [deleteDoctorId, setDeleteDoctorId] = useState(0);
+  const [showDoctor, setShowDoctor] = useState({});
+  const [showDocModal, setShowDocModal] = useState(false);
   const columnas = [
     { key: "id", label: "COD" },
     { key: "persona.apellidoPaterno", label: "APELLIDO PATERNO." },
@@ -30,19 +33,31 @@ const Doctores = () => {
   const closeAddUser = () => {
     setAddDoctor(false);
   };
+  const deleteDocFun = () => {
+    setDeleteDoc(false);
+  };
   const [doctorValue, setdoctorValue] = useState({});
   //FUNCIONES
   const getDoctores = async (nroPage = 1, limit = 10) => {
     setPage(nroPage);
     const { data } = await doctorService.listar(q, nroPage, limit);
-    console.log(data.doctores);
+    /* console.log(data.doctores);
     console.log("TOTAL:", data.doctores.count);
-    console.log("Registros:", data.doctores.rows);
+    console.log("Registros:", data.doctores.rows); */
     setTotal(data.doctores.count);
     setDoctores(data.doctores.rows);
   };
   const funBuscar = (e) => {
     setq(e.target.value);
+  };
+  const handleShow = async (datos) => {
+    try {
+      const { data } = await doctorService.mostrar(datos.id);
+      setShowDoctor(data);
+      setShowDocModal(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const addDoc = () => {
     setdoctorValue({
@@ -58,7 +73,7 @@ const Doctores = () => {
         ci: "",
         telefono: "",
         direccion: "",
-        foto: "http://placehold.it/32x32",
+        foto: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
         es_persona: false,
       },
       doctor: {
@@ -99,6 +114,23 @@ const Doctores = () => {
       setAddDoctor(!addDoctor);
     } catch (error) {
       console.error(error);
+    }
+  };
+  const deleteId = async (datos) => {
+    setDeleteDoctorId(datos.id);
+    setDeleteDoc(true);
+  };
+  const handleDelete = async () => {
+    if (deleteDoc) {
+      try {
+        await doctorService.eliminar(deleteDoctorId);
+        getDoctores();
+        setDeleteDoc(false);
+        setDeleteDoctorId(0);
+      } catch (error) {
+        alert("Ocurrió un problema al intentar eliminar");
+        console.log(error);
+      }
     }
   };
   return (
@@ -167,6 +199,8 @@ const Doctores = () => {
           page={page}
           fetchData={getDoctores}
           handleEdit={editDoctor}
+          handleDelete={deleteId}
+          handleShow={handleShow}
         ></TablePagination>
         <Modal
           modalOpen={addDoctor}
@@ -182,6 +216,97 @@ const Doctores = () => {
             editUser={editFlag}
             idEdit={idDocEdit}
           />
+        </Modal>
+        <Modal
+          modalOpen={deleteDoc}
+          setOpenModal={deleteDocFun}
+          title={"Eliminar Doctor?"}
+          contenido={" shadow shadow-rose-500/40"}
+        >
+          <div className="flex justify-center items-center text-rose-800">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-20 "
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z"
+              />
+            </svg>
+          </div>
+
+          <h4 className="text-center text-gray-700 text-lg font-medium">
+            Desea Eliminar al Doctor/a seleccionado?
+          </h4>
+          <div className="flex justify-center items-center mt-4">
+            <button
+              onClick={() => deleteDocFun()}
+              className="bg-rose-600 text-white px-1 py-2 rounded-md text-base font-medium mr-2 hover:bg-red-700"
+            >
+              Cancelar
+            </button>
+            <button
+              onClick={() => handleDelete()}
+              className="bg-blue-500 text-white px-1 py-2 rounded-md text-base font-medium ml-2 hover:bg-blue-400"
+            >
+              Aceptar
+            </button>
+          </div>
+        </Modal>
+        <Modal
+          modalOpen={showDocModal}
+          setOpenModal={() => setShowDocModal(false)}
+          title={"Doctor/a"}
+          contenido={" shadow shadow-sky-500/40"}
+        >
+          <div className="flex items-center justify-center">
+            <div className="bg-white shadow-md rounded-lg p-4">
+              <img
+                className="w-32 h-32 rounded-full mx-auto mb-4"
+                src={showDoctor.doctor?.persona?.foto}
+                alt={`${showDoctor.doctor?.persona?.nombre} ${showDoctor.doctor?.persona?.apellidoPaterno}`}
+              />
+              <h3 className="text-lg font-semibold capitalize">
+                {showDoctor.doctor?.persona?.nombre}{" "}
+                {showDoctor.doctor?.persona?.apellidoPaterno}{" "}
+                {showDoctor.doctor?.persona?.apellidoMaterno}
+              </h3>
+              <p className="text-gray-700">
+                CI: {showDoctor.doctor?.persona?.ci}
+              </p>
+              <p className="text-gray-700">
+                Dirección: {showDoctor.doctor?.persona?.direccion}
+              </p>
+              <p className="text-gray-700">
+                Teléfono: {showDoctor.doctor?.persona?.telefono}
+              </p>
+              <hr className="border-t-2 bg-gray-700 my-2" />
+              <p className="text-gray-700">
+                Email: {showDoctor.doctor?.usuario?.email}
+              </p>
+              <p className="text-gray-700">
+                Rol: {showDoctor.doctor?.usuario?.rol}
+              </p>
+              <p className="text-gray-700">
+                Fecha de creación: {showDoctor.doctor?.usuario?.createdAt}
+              </p>
+              <hr className="border-t-2 bg-gray-700 my-2" />
+              <p className="text-gray-700">
+                Unidad: {showDoctor.doctor?.unidad}
+              </p>
+              <p className="text-gray-700">
+                Especialidad: {showDoctor.doctor?.especialidad}
+              </p>
+              <p className="text-gray-700">
+                Número de Matrícula: {showDoctor.doctor?.numeroMatricula}
+              </p>
+            </div>
+          </div>
         </Modal>
       </div>
     </>

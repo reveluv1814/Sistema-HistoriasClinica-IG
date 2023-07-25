@@ -45,10 +45,10 @@ router.get(
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      const personal = await personalService.findOne(id);
+      const personalAdmin = await personalService.findOne(id);
 
       res.json({
-        personal,
+        personalAdmin,
       });
     } catch (error) {
       next(error);
