@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import {React,useState,useEffect} from 'react';
 
 function WelcomeBanner() {
   const [saludo, setSaludo] = useState("");
@@ -14,34 +14,10 @@ function WelcomeBanner() {
       setSaludo("¡Buenas noches!");
     }
   }, []);
-  //roles
-  const rol = localStorage.getItem("rol");
-  // Lógica condicional para mostrar el texto adecuado según el rol
-  let roleText;
-  switch (rol) {
-    case "admin":
-      roleText = "Admin";
-      break;
-    case "personalAdmin":
-      roleText = "Personal Administrativo";
-      break;
-    case "doctor":
-      roleText = "Doctor/a";
-      break;
-    case "laboratorista":
-      roleText = "Laboratorista";
-      break;
-    default:
-      roleText = "Unknown Role"; // O cualquier otro texto predeterminado
-      break;
-  }
   return (
     <div className="relative bg-sky-200 dark:bg-indigo-500 p-4 sm:p-6 rounded-md overflow-hidden mb-8">
       {/* Background illustration */}
-      <div
-        className="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block"
-        aria-hidden="true"
-      >
+      <div className="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block" aria-hidden="true">
         <svg width="319" height="198" xmlnsXlink="http://www.w3.org/1999/xlink">
           <defs>
             <path id="welcome-a" d="M64 0l64 128-64-20-64 20z" />
@@ -51,13 +27,7 @@ function WelcomeBanner() {
               <stop stopColor="#A5B4FC" offset="0%" />
               <stop stopColor="#818CF8" offset="100%" />
             </linearGradient>
-            <linearGradient
-              x1="50%"
-              y1="24.537%"
-              x2="50%"
-              y2="100%"
-              id="welcome-c"
-            >
+            <linearGradient x1="50%" y1="24.537%" x2="50%" y2="100%" id="welcome-c">
               <stop stopColor="#4338CA" offset="0%" />
               <stop stopColor="#6366F1" stopOpacity="0" offset="100%" />
             </linearGradient>
@@ -68,33 +38,21 @@ function WelcomeBanner() {
                 <use xlinkHref="#welcome-a" />
               </mask>
               <use fill="url(#welcome-b)" xlinkHref="#welcome-a" />
-              <path
-                fill="url(#welcome-c)"
-                mask="url(#welcome-d)"
-                d="M64-24h80v152H64z"
-              />
+              <path fill="url(#welcome-c)" mask="url(#welcome-d)" d="M64-24h80v152H64z" />
             </g>
             <g transform="rotate(-51 91.324 -105.372)">
               <mask id="welcome-f" fill="#fff">
                 <use xlinkHref="#welcome-e" />
               </mask>
               <use fill="url(#welcome-b)" xlinkHref="#welcome-e" />
-              <path
-                fill="url(#welcome-c)"
-                mask="url(#welcome-f)"
-                d="M40.333-15.147h50v95h-50z"
-              />
+              <path fill="url(#welcome-c)" mask="url(#welcome-f)" d="M40.333-15.147h50v95h-50z" />
             </g>
             <g transform="rotate(44 61.546 392.623)">
               <mask id="welcome-h" fill="#fff">
                 <use xlinkHref="#welcome-g" />
               </mask>
               <use fill="url(#welcome-b)" xlinkHref="#welcome-g" />
-              <path
-                fill="url(#welcome-c)"
-                mask="url(#welcome-h)"
-                d="M40.333-15.147h50v95h-50z"
-              />
+              <path fill="url(#welcome-c)" mask="url(#welcome-h)" d="M40.333-15.147h50v95h-50z" />
             </g>
           </g>
         </svg>
@@ -102,12 +60,8 @@ function WelcomeBanner() {
 
       {/* Content */}
       <div className="relative">
-        <h1 className="text-2xl md:text-3xl text-slate-700 dark:text-slate-100 font-bold mb-1 font-inter">
-          {saludo}, {roleText}. 👋
-        </h1>
-        <p className="dark:text-indigo-200 font-inter text-slate-700">
-          Esto es lo que ocurre hoy dentro del sistema:
-        </p>
+        <h1 className="text-2xl md:text-3xl text-slate-700 dark:text-slate-100 font-bold mb-1 font-inter">{saludo}, Admin. 👋</h1>
+        <p className="dark:text-indigo-200 font-inter text-slate-700">Esto es lo que ocurre hoy dentro del sistema:</p>
       </div>
     </div>
   );

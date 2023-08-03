@@ -34,6 +34,27 @@ function DropdownProfile({
     document.addEventListener('keydown', keyHandler);
     return () => document.removeEventListener('keydown', keyHandler);
   });
+  //logica de rol
+  const rol = localStorage.getItem("rol");
+  // Lógica condicional para mostrar el texto adecuado según el rol
+  let roleText;
+  switch (rol) {
+    case "admin":
+      roleText = "Administrator";
+      break;
+    case "personalAdmin":
+      roleText = "Personal Administrativo";
+      break;
+    case "doctor":
+      roleText = "Doctor/a";
+      break;
+    case "laboratorista":
+      roleText = "Laboratorista";
+      break;
+    default:
+      roleText = "Unknown Role"; // O cualquier otro texto predeterminado
+      break;
+  }
 
   return (
     <div className="relative inline-flex">
@@ -70,7 +91,7 @@ function DropdownProfile({
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200 dark:border-slate-700">
             <div className="font-medium text-slate-800 dark:text-slate-100">Instituto de Genética</div>
-            <div className="text-xs text-slate-500 dark:text-slate-400 italic">Administrator</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400 italic">{roleText}</div>
           </div>
           <ul>
             <li>

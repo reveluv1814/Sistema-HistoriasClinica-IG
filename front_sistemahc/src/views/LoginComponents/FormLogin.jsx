@@ -25,7 +25,26 @@ const LoginForm = () => {
 
       localStorage.setItem("access_token", data.token);
       localStorage.setItem("rol", data.user.rol);
-      navigate("/admin");
+      const rol = localStorage.getItem("rol");
+
+      switch (rol) {
+        case "admin":
+          navigate("/admin");
+          break;
+        case "personalAdmin":
+          navigate("/personal");
+          break;
+        case "doctor":
+          navigate("/doctor");
+          break;
+        case "laboratorista":
+          navigate("/laboratorista");
+          break;
+        default:
+          // En caso de que el rol no coincida con ninguno de los casos anteriores, redirigir al usuario a "/"
+          navigate("/");
+          break;
+      }
       actions.resetForm();
     } catch (error) {
       setOpenModal(true);
