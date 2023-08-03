@@ -19,6 +19,7 @@ const HistoriaSchema = {
     field: "create_at",
     defaultValue: Sequelize.NOW,
   },
+  //agregar las ids foraneas
 };
 
 class Historia extends Model {

@@ -1,6 +1,7 @@
 const boom = require("@hapi/boom");
 const { Op } = require("sequelize");
 const { models } = require("../libs/sequelize");
+const UserService = require("./usuario.service");
 
 class PersonalAdminService {
   constructor() {}
@@ -77,9 +78,10 @@ class PersonalAdminService {
     return rta;
   }
   async create(data) {
+    const userService = new UserService();
     const { usuario, persona, personalAdmin } = data;
 
-    const newUsuario = await models.Usuario.create(usuario);
+    const newUsuario = await userService.createUser(usuario);
     const newPersona = await models.Persona.create(persona);
 
     const newPersonalAdmin = await models.PersonalAdmin.create({
@@ -138,11 +140,11 @@ class PersonalAdminService {
     return { rta: true };
   }
   //crea un paciente
-  async addPaciente(data) {
+  /*  async addPaciente(data) {
     const newPaciente = await models.P_creaPac.create(data);
 
     return newPaciente;
-  }
+  } */
 }
 
 module.exports = PersonalAdminService;

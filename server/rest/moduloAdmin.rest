@@ -1,4 +1,4 @@
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbCI6ImFkbWluIiwiaWF0IjoxNjg5ODAxMDgwfQ.sYPl2dx0PIbBFXBBmEGeAQmw3p3iwI2SDSVj9CUNAEc
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbCI6ImFkbWluIiwiaWF0IjoxNjkwOTkwMjM2fQ.ONmhSZUa5dJEWcCmrE6i9qWldclBvrvc3kwxPd7K02Y
 
 #listar usuario
 GET http://127.0.0.1:4000/admin
@@ -90,14 +90,14 @@ Accept: application/json
 
 {
     "usuario": {
-      "email":"personal1@email.com",
+      "email":"personal11@email.com",
       "password": "123456",
       "rol": "personalAdmin"
     },
     "persona":{
-      "nombre": "Dianna Petty",
-      "apellidoMaterno": "Hayes",
-      "apellidoPaterno": "Mccormick",
+      "nombre": "Melo Carmelo",
+      "apellidoMaterno": "Flores",
+      "apellidoPaterno": "Graneros",
       "ci": "12345687",
       "telefono": "152879522",
       "direccion": "villa copa ",
@@ -105,7 +105,7 @@ Accept: application/json
       "es_persona": false
     },
     "personalAdmin":{
-      "cargo":"secretaria"
+      "cargo":"secretarios"
     }
 }
 ### Editar un personalAd

@@ -13,7 +13,7 @@ const { Op } = require("sequelize");
 class UsuarioService {
   constructor() {}
 
-  async create(data) {
+  async createUser(data) {
     //hash - creamos un nuevo usuario aplicando hash a su password
     const hash = await bcrypt.hash(data.password, 10);
     //creamos segun el rol

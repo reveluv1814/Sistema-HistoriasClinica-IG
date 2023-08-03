@@ -1,32 +1,35 @@
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbCI6InBlcnNvbmFsQWRtaW4iLCJpYXQiOjE2ODkwMDk3ODh9.YYgaILxeVVE85yB_UWUe8geIo-Np0VtPEOQOWEbXo_M
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQ5LCJyb2wiOiJwZXJzb25hbEFkbWluIiwiaWF0IjoxNjkwOTkyODU0fQ.NXm08yJisrfXKxEFWd4o0GCzdcWd95wQSO98APNcang
 
 #listar
-GET http://127.0.0.1:4000/personal/pacientes
+GET http://127.0.0.1:4000/personal/paciente?q=&page=1&limit=10
 Authorization: Bearer {{token}}
 Accept: application/json
-
+###
+GET http://127.0.0.1:4000/personal/paciente/hola
+Authorization: Bearer {{token}}
+Accept: application/json
 ###
 #obtener un usuario
-GET http://127.0.0.1:4000/personal/3
+GET http://127.0.0.1:4000/personal/paciente/3
 Authorization: Bearer {{token}}
 Accept: application/json
 
 ###
 #crear
-POST http://127.0.0.1:4000/personal/add-paciente
+POST http://127.0.0.1:4000/personal/paciente
 Authorization: Bearer {{token}}
 Content-Type: application/json
 Accept: application/json
 
 {
     "persona":{
-      "nombre": "neil angel",
-      "apellidoMaterno": "graneros",
+      "nombre": "gary kamil",
+      "apellidoMaterno": "pacheco",
       "apellidoPaterno": "flores",
       "ci": "12345687",
       "telefono": "152879522",
       "direccion": "villa copa ",
-      "foto": "https://picsum.photos/id/237/200/300",
+      "foto": "http://placehold.it/32x32",
       "es_persona": true
     },
     "paciente":{
@@ -37,6 +40,25 @@ Accept: application/json
         "residencia": "la paz"
     },
     "personalAdmin":{
-        "personalAd_Id":1
+        "personalAd_Id":11
     }
 }
+### actualizar
+PATCH  http://127.0.0.1:4000/personal/paciente/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "persona":{
+      "nombre": "giovani gael"
+    },
+    "paciente":{
+        "raza":"blanco",
+        "procedencia":"oruro"
+    }
+}
+### eliminar un personalAd
+DELETE http://127.0.0.1:4000/personal/paciente/2
+Authorization: Bearer {{token}}
+Accept: application/json

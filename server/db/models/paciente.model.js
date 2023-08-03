@@ -72,6 +72,12 @@ class Paciente extends Model {
       as: "cita",
       foreignKey: "pacienteId",
     });
+    this.belongsToMany(models.PersonalAdmin, {
+      as: "personalAd",
+      through: models.P_creaPac,
+      foreignKey: "pacienteId",
+      otherKey: "personalAd_Id",
+    });
   }
 
   static config(sequelize) {
