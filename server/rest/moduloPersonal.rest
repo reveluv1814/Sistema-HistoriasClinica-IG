@@ -23,10 +23,10 @@ Accept: application/json
 
 {
     "persona":{
-      "nombre": "gary kamil",
-      "apellidoMaterno": "pacheco",
-      "apellidoPaterno": "flores",
-      "ci": "12345687",
+      "nombre": "jose michael",
+      "apellidoMaterno": "blanco",
+      "apellidoPaterno": "palacios",
+      "ci": "987555",
       "telefono": "152879522",
       "direccion": "villa copa ",
       "foto": "http://placehold.it/32x32",

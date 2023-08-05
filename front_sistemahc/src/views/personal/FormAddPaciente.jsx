@@ -3,33 +3,22 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "../../layouts/css/additional-styles/sistema.css";
 
-const FormAdduser = ({
+const FormAddPaciente = ({
   setOpenModal,
-  userValue,
-  userService,
+  pacienteValue,
+  pacienteService,
   listar,
-  editUser,
+  editPaciente,
   idEdit,
 }) => {
   const [step, setStep] = useState(1);
   const [showError, setShowError] = useState(false);
   const [stepsLine, setStepLine] = useState({
-    stpesCount: [1, 2, 3],
+    stpesCount: [1, 2],
     currentStep: 1,
   });
-
   //yup
   const validationSchema = Yup.object({
-    usuario: Yup.object({
-      email: Yup.string()
-        .email("Ingrese un email válido")
-        .required("Campo requerido"),
-      password: editUser
-        ? Yup.string().strip()
-        : Yup.string()
-            .required("Campo requerido")
-            .min(5, "La contraseña debe tener al menos 5 caracteres"),
-    }),
     persona: Yup.object({
       nombre: Yup.string().required("Campo requerido"),
       apellidoMaterno: Yup.string().required("Campo requerido"),
@@ -42,41 +31,19 @@ const FormAdduser = ({
         .matches(/^\d+$/, "Debe contener solo números"),
       direccion: Yup.string().required("Campo requerido"),
     }),
-    doctor: Yup.object({
-      unidad: Yup.string().when("usuario.rol", {
-        is: "doctor",
-        then: Yup.string().required("Campo requerido"),
-      }),
-      especialidad: Yup.string().when("usuario.rol", {
-        is: "doctor",
-        then: Yup.string().required("Campo requerido"),
-      }),
-      numeroMatricula: Yup.string().when("usuario.rol", {
-        is: "doctor",
-        then: Yup.string().required("Campo requerido"),
-      }),
-    }),
-    personalAdmin: Yup.object({
-      cargo: Yup.string().when("usuario.rol", {
-        is: "personalAdmin",
-        then: Yup.string().required("Campo requerido"),
-      }),
-    }),
-    laboratorista: Yup.object({
-      especialidad: Yup.string().when("usuario.rol", {
-        is: "laboratorista",
-        then: Yup.string().required("Campo requerido"),
-      }),
-      matriculaProf: Yup.string().when("usuario.rol", {
-        is: "laboratorista",
-        then: Yup.string().required("Campo requerido"),
-      }),
+    paciente: Yup.object({
+      fechanac: Yup.date()
+        .nullable()
+        .required("Fecha de nacimiento es requerida"),
+      sexo: Yup.string().required("Sexo es requerido"),
+      raza: Yup.string().required("Raza es requerida"),
+      procedencia: Yup.string().required("Procedencia es requerida"),
+      residencia: Yup.string().required("Residencia es requerida"),
     }),
   });
-
   //funciones
   const handleSubmit = (values, actions) => {
-    if (editUser) {
+    if (editPaciente) {
       editar(values, actions);
     } else {
       agregar(values, actions);
@@ -84,7 +51,8 @@ const FormAdduser = ({
   };
   const agregar = async (values, actions) => {
     try {
-      const { data } = await userService.guardar(values);
+      const { data } = await pacienteService.guardar(values);
+      console.log(data);
       setStep(step + 1);
       actions.resetForm();
       listar();
@@ -95,7 +63,7 @@ const FormAdduser = ({
   };
   const editar = async (values, actions) => {
     try {
-      const { data } = await userService.modificar(idEdit, values);
+      const { data } = await pacienteService.modificar(idEdit, values);
       setStep(step + 1);
       actions.resetForm();
       listar();
@@ -104,7 +72,6 @@ const FormAdduser = ({
       console.error(error);
     }
   };
-
   return (
     <>
       <div className="max-w-lg mx-auto px-6 mb-5 sm:px-10">
@@ -162,7 +129,7 @@ const FormAdduser = ({
         </ul>
       </div>
       <Formik
-        initialValues={userValue}
+        initialValues={pacienteValue}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
@@ -178,100 +145,6 @@ const FormAdduser = ({
           <>
             <Form onSubmit={handleSubmit} className="flex flex-col px-7 ">
               {step === 1 && (
-                <>
-                  <label
-                    htmlFor="usuario.email"
-                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Email:
-                  </label>
-                  <Field
-                    type="email"
-                    name="usuario.email"
-                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
-                      errors.usuario?.email && touched.usuario?.email
-                        ? "border-red-500 dark:border-red-300"
-                        : ""
-                    }`}
-                  />
-                  <ErrorMessage
-                    name="usuario.email"
-                    component="p"
-                    className="text-center text-red-500 text-xs italic dark:text-red-200"
-                  />
-                  {!editUser && (
-                    <>
-                      <label
-                        htmlFor="usuario.password"
-                        className="block mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
-                      >
-                        Password:
-                      </label>
-                      <div className="flex flex-row w-full ">
-                        <Field
-                          type="password"
-                          name="usuario.password"
-                          id="usuario.password"
-                          className={`text-base text-zinc-900 p-2 flex-grow shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg dark:bg-slate-800 dark:text-gray-400 ${
-                            errors.usuario?.password &&
-                            touched.usuario?.password
-                              ? "border-red-500 dark:border-red-300"
-                              : ""
-                          }`}
-                        />
-                        <svg
-                          className="ml-2 mt-2 w-6 h-7 cursor-pointer flex-none hover: text-gray-700 dark:text-gray-200"
-                          onClick={() => {
-                            if (!values.seepass) {
-                              document
-                                .getElementById("usuario.password")
-                                .setAttribute("type", "text");
-                              values.seepass = true;
-                            } else {
-                              document
-                                .getElementById("usuario.password")
-                                .setAttribute("type", "password");
-                              values.seepass = false;
-                            }
-                          }}
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth="1.5"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
-                          />
-                        </svg>
-                      </div>
-                      <ErrorMessage
-                        name="usuario.password"
-                        component="p"
-                        className="text-center text-red-500 text-xs italic dark:text-red-200"
-                      />
-                    </>
-                  )}
-
-                  <label
-                    htmlFor="usuario.rol"
-                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Rol:
-                  </label>
-                  <Field
-                    type="email"
-                    name="usuario.rol"
-                    className={
-                      "p-2 text-base capitalize-first text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md  dark:bg-slate-800 dark:text-gray-400"
-                    }
-                    disabled
-                  />
-                </>
-              )}
-              {step === 2 && (
                 <div
                   style={{
                     height: "476px",
@@ -365,7 +238,7 @@ const FormAdduser = ({
                     htmlFor="persona.telefono"
                     className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
                   >
-                    Teléfono:
+                    Celular/Teléfono:
                   </label>
                   <Field
                     type="text"
@@ -441,148 +314,118 @@ const FormAdduser = ({
                   </div>
                 </div>
               )}
-              {step === 3 && (
+              {step === 2 && (
                 <>
-                  {values.usuario.rol === "doctor" && (
-                    <>
-                      <label
-                        htmlFor="doctor.unidad"
-                        className="mb-1 text-base font-medium text-gray-700  dark:text-gray-300"
-                      >
-                        Unidad:
-                      </label>
-                      <Field
-                        type="text"
-                        name="doctor.unidad"
-                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
-                          errors.doctor?.unidad && errors.doctor?.unidad
-                            ? "border-red-500 dark:border-red-300"
-                            : ""
-                        }`}
-                      />
-                      <ErrorMessage
-                        name="doctor.unidad"
-                        component="p"
-                        className="text-center text-red-500 text-xs italic dark:text-red-200"
-                      />
-                      <label
-                        htmlFor="doctor.especialidad"
-                        className="mb-1 text-base font-medium text-gray-700  dark:text-gray-300"
-                      >
-                        Especialidad:
-                      </label>
-                      <Field
-                        type="text"
-                        name="doctor.especialidad"
-                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
-                          errors.doctor?.especialidad &&
-                          errors.doctor?.especialidad
-                            ? "border-red-500 dark:border-red-300"
-                            : ""
-                        }`}
-                      />
-                      <ErrorMessage
-                        name="doctor.especialidad"
-                        component="p"
-                        className="text-center text-red-500 text-xs italic dark:text-red-200"
-                      />
-                      <label
-                        htmlFor="doctor.numeroMatricula"
-                        className="mb-1 text-base font-medium text-gray-700  dark:text-gray-300"
-                      >
-                        Número de Matrícula:
-                      </label>
-                      <Field
-                        type="text"
-                        name="doctor.numeroMatricula"
-                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
-                          errors.doctor?.numeroMatricula &&
-                          errors.doctor?.numeroMatricula
-                            ? "border-red-500 dark:border-red-300"
-                            : ""
-                        }`}
-                      />
-                      <ErrorMessage
-                        name="doctor.numeroMatricula"
-                        component="p"
-                        className="text-center text-red-500 text-xs italic dark:text-red-200"
-                      />
-                    </>
-                  )}
-                  {values.usuario.rol === "personalAdmin" && (
-                    <>
-                      <label
-                        htmlFor="personalAdmin.cargo"
-                        className="mb-1 text-base font-medium text-gray-700  dark:text-gray-300"
-                      >
-                        Cargo:
-                      </label>
-                      <Field
-                        type="text"
-                        name="personalAdmin.cargo"
-                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
-                          errors.personalAdmin?.cargo &&
-                          errors.personalAdmin?.cargo
-                            ? "border-red-500 dark:border-red-300"
-                            : ""
-                        }`}
-                      />
-                      <ErrorMessage
-                        name="personalAdmin.cargo"
-                        component="p"
-                        className="text-center text-red-500 text-xs italic dark:text-red-200"
-                      />
-                    </>
-                  )}
-                  {values.usuario.rol === "laboratorista" && (
-                    <>
-                      <label
-                        htmlFor="laboratorista.especialidad"
-                        className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
-                      >
-                        Especialidad:
-                      </label>
-                      <Field
-                        type="text"
-                        name="laboratorista.especialidad"
-                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
-                          errors.laboratorista?.especialidad &&
-                          errors.laboratorista?.especialidad
-                            ? "border-red-500 dark:border-red-300"
-                            : ""
-                        }`}
-                      />
-                      <ErrorMessage
-                        name="laboratorista.especialidad"
-                        component="p"
-                        className="text-center text-red-500 text-xs italic dark:text-red-200"
-                      />
-                      <label
-                        htmlFor="laboratorista.matriculaProf"
-                        className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
-                      >
-                        Número de Matrícula Profesional:
-                      </label>
-                      <Field
-                        type="text"
-                        name="laboratorista.matriculaProf"
-                        className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
-                          errors.laboratorista?.matriculaProf &&
-                          errors.laboratorista?.matriculaProf
-                            ? "border-red-500 dark:border-red-300"
-                            : ""
-                        }`}
-                      />
-                      <ErrorMessage
-                        name="laboratorista.matriculaProf"
-                        component="p"
-                        className="text-center text-red-500 text-xs italic dark:text-red-200"
-                      />
-                    </>
-                  )}
+                  <label
+                    htmlFor="paciente.fechanac"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    Fecha de nacimiento:
+                  </label>
+                  <Field
+                    type="date"
+                    name="paciente.fechanac"
+                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
+                      errors.paciente?.fechanac && touched.paciente?.fechanac
+                        ? "border-red-500 dark:border-red-300"
+                        : ""
+                    }`}
+                  />
+                  <ErrorMessage
+                    name="paciente.fechanac"
+                    component="p"
+                    className="text-center text-red-500 text-xs italic dark:text-red-200"
+                  />
+                  <label
+                    htmlFor="paciente.sexo"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    Sexo:
+                  </label>
+                  <Field
+                    as="select"
+                    name="paciente.sexo"
+                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
+                      errors.paciente?.sexo && touched.paciente?.sexo
+                        ? "border-red-500 dark:border-red-300"
+                        : ""
+                    }`}
+                  >
+                    <option disabled value="">
+                      Seleccione una opción
+                    </option>
+                    <option value="hombre">Hombre</option>
+                    <option value="mujer">Mujer</option>
+                  </Field>
+                  <ErrorMessage
+                    name="paciente.sexo"
+                    component="p"
+                    className="text-center text-red-500 text-xs italic dark:text-red-200"
+                  />
+                  <label
+                    htmlFor="paciente.raza"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    Raza:
+                  </label>
+                  <Field
+                    type="text"
+                    name="paciente.raza"
+                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
+                      errors.paciente?.raza && touched.paciente?.raza
+                        ? "border-red-500 dark:border-red-300"
+                        : ""
+                    }`}
+                  />
+                  <ErrorMessage
+                    name="paciente.raza"
+                    component="p"
+                    className="text-center text-red-500 text-xs italic dark:text-red-200"
+                  />
+                  <label
+                    htmlFor="paciente.procedencia"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    Procedencia:
+                  </label>
+                  <Field
+                    type="text"
+                    name="paciente.procedencia"
+                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
+                      errors.paciente?.procedencia &&
+                      touched.paciente?.procedencia
+                        ? "border-red-500 dark:border-red-300"
+                        : ""
+                    }`}
+                  />
+                  <ErrorMessage
+                    name="paciente.procedencia"
+                    component="p"
+                    className="text-center text-red-500 text-xs italic dark:text-red-200"
+                  />
+                  <label
+                    htmlFor="paciente.residencia"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    Residencia:
+                  </label>
+                  <Field
+                    type="text"
+                    name="paciente.residencia"
+                    className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
+                      errors.paciente?.residencia &&
+                      touched.paciente?.residencia
+                        ? "border-red-500 dark:border-red-300"
+                        : ""
+                    }`}
+                  />
+                  <ErrorMessage
+                    name="paciente.residencia"
+                    component="p"
+                    className="text-center text-red-500 text-xs italic dark:text-red-200"
+                  />
                 </>
               )}
-
               {/* Botones de navegación */}
               {step === 1 && (
                 <div className="mt-4 flex items-center justify-center">
@@ -602,36 +445,6 @@ const FormAdduser = ({
                 </div>
               )}
               {step === 2 && (
-                <div className="mt-4 flex items-center justify-center">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setStep(step - 1);
-                      setStepLine((prevState) => ({
-                        ...prevState,
-                        currentStep: 1,
-                      }));
-                    }}
-                    className="mr-2 bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-2 rounded-md"
-                  >
-                    Atrás
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setStep(step + 1);
-                      setStepLine((prevState) => ({
-                        ...prevState,
-                        currentStep: 3,
-                      }));
-                    }}
-                    className="ml-2 bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-2 rounded-md"
-                  >
-                    Siguiente
-                  </button>
-                </div>
-              )}
-              {step === 3 && (
                 <>
                   <div className="mt-2 text-center text-red-500 text-xs italic dark:text-red-200">
                     {isValidating || !isValid
@@ -650,7 +463,7 @@ const FormAdduser = ({
                         setStep(step - 1);
                         setStepLine((prevState) => ({
                           ...prevState,
-                          currentStep: 2,
+                          currentStep: 1,
                         }));
                       }}
                       className="mr-2 bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-2 rounded-md"
@@ -667,7 +480,7 @@ const FormAdduser = ({
                   </div>
                 </>
               )}
-              {step === 4 && (
+              {step === 3 && (
                 <>
                   <div className="container md:mt-1">
                     <div className="flex flex-col items-center">
@@ -695,30 +508,12 @@ const FormAdduser = ({
                       </div>
 
                       <div className="mt-3 text-xl font-semibold uppercase text-emerald-600 dark:text-emerald-500">
-                        {editUser ? "Actualizado!" : "Registrado!"}
+                        {editPaciente ? "Actualizado!" : "Registrado!"}
                       </div>
                       <div className="text-base font-normal text-gray-500 text-center dark:text-gray-300">
-                        {values.usuario.rol === "doctor" && (
-                          <>
-                            {editUser
-                              ? "El/La Doctor/Doctora fue actualizado/a correctamente."
-                              : "El/La Doctor/Doctora fue agregado/a correctamente."}
-                          </>
-                        )}
-                        {values.usuario.rol === "laboratorista" && (
-                          <>
-                            {editUser
-                              ? "El/La Laboratorista fue actualizado/a correctamente."
-                              : "El/La Laboratorista fue agregado/a correctamente."}
-                          </>
-                        )}
-                        {values.usuario.rol === "personalAdmin" && (
-                          <>
-                            {editUser
-                              ? "El Personal Administrativo fue actualizado/a correctamente."
-                              : "El Personal Administrativo fue agregado/a correctamente."}
-                          </>
-                        )}
+                        {editPaciente
+                          ? "El/La Paciente fue actualizado correctamente."
+                          : "El/La Paciente fue agregado correctamente."}
                       </div>
 
                       <button
@@ -740,4 +535,5 @@ const FormAdduser = ({
     </>
   );
 };
-export default FormAdduser;
+
+export default FormAddPaciente;

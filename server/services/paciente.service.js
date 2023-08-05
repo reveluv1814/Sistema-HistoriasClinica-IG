@@ -1,5 +1,5 @@
 const boom = require("@hapi/boom");
-const { Op } = require("sequelize");
+const { Op, Sequelize } = require("sequelize");
 const { models } = require("./../libs/sequelize");
 
 class PacienteService {
@@ -15,6 +15,26 @@ class PacienteService {
         {
           model: models.Persona,
           as: "persona",
+          attributes: [
+            "id",
+            [
+              Sequelize.fn(
+                "CONCAT",
+                Sequelize.col("nombre"),
+                " ",
+                Sequelize.col("apellidoPaterno"),
+                " ",
+                Sequelize.col("apellidoMaterno")
+              ),
+              "nombreCompleto",
+            ],
+            "ci",
+            "telefono",
+            "direccion",
+            "foto",
+            "es_persona",
+            "createdAt",
+          ],
           where: {
             ci: {
               [Op.iLike]: `%${q}%`,
@@ -30,9 +50,17 @@ class PacienteService {
               as: "persona",
               attributes: [
                 "id",
-                "nombre",
-                "apellidoPaterno",
-                "apellidoMaterno",
+                [
+                  Sequelize.fn(
+                    "CONCAT",
+                    Sequelize.col("nombre"),
+                    " ",
+                    Sequelize.col("apellidoPaterno"),
+                    " ",
+                    Sequelize.col("apellidoMaterno")
+                  ),
+                  "nombreCompleto",
+                ],
                 "ci",
               ],
             },
