@@ -3,6 +3,7 @@ import TablePagination from "../../components/TablePagination";
 import Modal from "../../components/Modal";
 import pacienteService from "./../../services/pacienteService";
 import FormAddPaciente from "./FormAddPaciente";
+import { useUserProfileProvider } from "./../../context/UserProfileContext";
 
 const Paciente = () => {
   const [pacientes, setPacientes] = useState([]);
@@ -16,7 +17,9 @@ const Paciente = () => {
   const [modalAddPaciente, setModalAddPaciente] = useState(false);
   const [modalDeletePaciente, setModalDeletePaciente] = useState(false);
   const [deletePacienteId, setDeletePacienteId] = useState(0);
-
+  //context
+  const { getUserProfile, idRol } = useUserProfileProvider();
+  
   const columnas = [
     { key: "id", label: "COD" },
     { key: "persona.nombreCompleto", label: "NOMBRE COMPLETO" },
@@ -50,6 +53,8 @@ const Paciente = () => {
     setq(e.target.value);
   };
   const funAddValuePaciente = () => {
+    const idUserProfile = localStorage.getItem("id");
+    getUserProfile(idUserProfile);
     setPacienteValue({
       persona: {
         nombre: "",
@@ -69,7 +74,7 @@ const Paciente = () => {
         residencia: "",
       },
       personalAdmin: {
-        personalAd_Id: 11,
+        personalAd_Id: idRol,
       },
     });
     setEditFlag(false);

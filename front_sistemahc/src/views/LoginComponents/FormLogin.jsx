@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/authService";
 import Modal from "../../components/Modal";
+import { useUserProfileProvider } from "./../../context/UserProfileContext";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Correo invalido").required("Campo requerido"),
@@ -15,6 +16,9 @@ const LoginForm = () => {
   //e.preventDefault()
   const navigate = useNavigate();
   const [modalOpen, setOpenModal] = useState(false);
+  //context
+  const {getUserProfile} = useUserProfileProvider();
+  //
   const resetData = () => {
     setOpenModal(false);
   };
@@ -22,11 +26,13 @@ const LoginForm = () => {
   const handleSubmit = async (values, actions) => {
     try {
       const { data } = await authService.loginConNode(values);
-
       localStorage.setItem("access_token", data.token);
       localStorage.setItem("rol", data.user.rol);
+      localStorage.setItem("id", data.user.id);
       const rol = localStorage.getItem("rol");
-
+      //context
+      getUserProfile(data.user.id);
+      //
       switch (rol) {
         case "admin":
           navigate("/admin");

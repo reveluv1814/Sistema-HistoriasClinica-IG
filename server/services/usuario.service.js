@@ -193,6 +193,7 @@ class UsuarioService {
     if (!user) {
       throw boom.notFound("usuario no encontrado");
     }
+    delete user.dataValues.password;
     return user;
   }
 

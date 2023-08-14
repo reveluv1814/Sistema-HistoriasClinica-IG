@@ -13,6 +13,7 @@ const FormAddPaciente = ({
 }) => {
   const [step, setStep] = useState(1);
   const [showError, setShowError] = useState(false);
+
   const [stepsLine, setStepLine] = useState({
     stpesCount: [1, 2],
     currentStep: 1,
@@ -52,7 +53,6 @@ const FormAddPaciente = ({
   const agregar = async (values, actions) => {
     try {
       const { data } = await pacienteService.guardar(values);
-      console.log(data);
       setStep(step + 1);
       actions.resetForm();
       listar();

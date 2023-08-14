@@ -25,12 +25,13 @@ const doctorService = new DoctorService();
 const personalAdminService = new PersonalAdminService();
 const laboratoristaService = new LaboratoristaService();
 
-router.get("/", checkRoles("admin"), async (req, res, next) => {
+router.get("/profile/:id", async (req, res, next) => {
   try {
-    const usuarios = await usuarioService.find();
+    const { id } = req.params;
+    const usuario = await usuarioService.findOne(id);
 
     res.json({
-      usuarios,
+      usuario,
     });
   } catch (error) {
     next(error);
