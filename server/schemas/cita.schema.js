@@ -1,16 +1,24 @@
 const Joi = require("joi");
 
 const id = Joi.number().integer();
-const fecha = Joi.date().required();
-const hora = Joi.date().format("HH:mm").required();
+const fecha = Joi.date();
+const hora = Joi.string().regex(/^([01]\d|2[0-3]):?([0-5]\d)$/);
 const pacienteId = Joi.number().integer();
 const doctorId = Joi.number().integer();
-const personalAd_Id = Joi.number().integer();
+const personalAdId = Joi.number().integer();
+const resumen = Joi.string();
+const impresionDiag = Joi.string();
+const estado = Joi.boolean();
 
 const createCitaSchema = Joi.object({
-  unidad: unidad.required(),
-  especialidad: especialidad.required(),
-  numeroMatricula: numeroMatricula.required(),
+  fecha: fecha.required(),
+  hora: hora.required(),
+  pacienteId: pacienteId.required(),
+  doctorId: doctorId.required(),
+  personalAdId: personalAdId.required(),
+  resumen: resumen.required(),
+  impresionDiag: impresionDiag.required(),
+  estado: estado.required(),
 });
 
 const updateCitaSchema = Joi.object({
@@ -18,7 +26,10 @@ const updateCitaSchema = Joi.object({
   hora,
   pacienteId,
   doctorId,
-  personalAd_Id,
+  personalAdId,
+  resumen,
+  impresionDiag,
+  estado,
 });
 
 const getCitaSchema = Joi.object({

@@ -1,4 +1,4 @@
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQ5LCJyb2wiOiJwZXJzb25hbEFkbWluIiwiaWF0IjoxNjkwOTkyODU0fQ.NXm08yJisrfXKxEFWd4o0GCzdcWd95wQSO98APNcang
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbCI6InBlcnNvbmFsQWRtaW4iLCJpYXQiOjE2OTM4NzE0MDB9.HM_KLVzMfGY31rXG7jAYtr2lUEfqXneRtPPOlLdxGSw
 
 #listar
 GET http://127.0.0.1:4000/personal/paciente?q=&page=1&limit=10
@@ -15,7 +15,7 @@ Authorization: Bearer {{token}}
 Accept: application/json
 
 ###
-#crear
+#crear paciente
 POST http://127.0.0.1:4000/personal/paciente
 Authorization: Bearer {{token}}
 Content-Type: application/json
@@ -40,7 +40,7 @@ Accept: application/json
         "residencia": "la paz"
     },
     "personalAdmin":{
-        "personalAd_Id":11
+        "personalAd_Id":1
     }
 }
 ### actualizar
@@ -60,5 +60,53 @@ Accept: application/json
 }
 ### eliminar un personalAd
 DELETE http://127.0.0.1:4000/personal/paciente/2
+Authorization: Bearer {{token}}
+Accept: application/json
+
+####### CREAR UNA CITA ##################
+
+#listar citas
+GET http://127.0.0.1:4000/personal/cita
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###listar una cita
+GET http://127.0.0.1:4000/personal/cita/2
+Authorization: Bearer {{token}}
+Accept: application/json
+### crea una cita
+POST http://127.0.0.1:4000/personal/cita
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "cita":{
+        "fecha":"2023-06-11",
+        "hora" :"18:00",
+        "pacienteId": 1,
+        "doctorId": 1,
+        "personalAdId": 1,
+        "resumen":"resumiendooo",
+        "impresionDiag":"impresiones buenas",
+        "estado":true
+    }
+}
+###Edita una cita
+PATCH http://127.0.0.1:4000/personal/cita/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "cita":{
+        "hora" :"14:00",
+        "resumen":"buen resumen",
+        "impresionDiag":"impresiones a verrr",
+        "estado":false
+    }
+}
+### Elimina una cita
+DELETE http://127.0.0.1:4000/personal/cita/2
 Authorization: Bearer {{token}}
 Accept: application/json

@@ -69,7 +69,7 @@ class Paciente extends Model {
   static associate(models) {
     this.belongsTo(models.Persona, { as: "persona" });
     this.hasMany(models.Cita, {
-      as: "cita",
+      as: "citas",
       foreignKey: "pacienteId",
     });
     this.belongsToMany(models.PersonalAdmin, {

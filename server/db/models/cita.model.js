@@ -22,17 +22,29 @@ const CitaSchema = {
     allowNull: false,
     type: DataTypes.TIME,
   },
+  estado: {
+    allowNull: false,
+    type: DataTypes.BOOLEAN,
+  },
   createdAt: {
     allowNull: false,
     type: DataTypes.DATE,
     field: "create_at",
     defaultValue: Sequelize.NOW,
   },
+  resumen: {
+    allowNull: true,
+    type: DataTypes.STRING,
+  },
+  impresionDiag: {
+    allowNull: true,
+    type: DataTypes.STRING,
+  },
   pacienteId: {
     field: "paciente_id",
     allowNull: false,
     type: DataTypes.INTEGER,
-    unique: true,
+    unique: false,
     references: {
       model: PACIENTE_TABLE,
       key: "id",
@@ -44,7 +56,7 @@ const CitaSchema = {
     field: "doctor_id",
     allowNull: false,
     type: DataTypes.INTEGER,
-    unique: true,
+    unique: false,
     references: {
       model: DOCTOR_TABLE,
       key: "id",
@@ -52,26 +64,25 @@ const CitaSchema = {
     onUpdate: "CASCADE",
     onDelete: "SET NULL",
   },
-  personalAd_Id: {
+  personalAdId: {
     field: "personalAd_Id",
     allowNull: false,
     type: DataTypes.INTEGER,
-    unique: true,
+    unique: false,
     references: {
       model: PERSONAL_ADMIN_TABLE,
       key: "id",
     },
     onUpdate: "CASCADE",
     onDelete: "SET NULL",
-  },
+  }, 
 };
 
 class Cita extends Model {
   static associate(models) {
-    /*this.hasOne(models.Doctor, {
-      as: "doctor",
-      foreignKey: "personaId",
-    });*/
+    this.belongsTo(models.Doctor, { as: "doctor" });
+    this.belongsTo(models.Paciente, { as: "paciente" });
+    this.belongsTo(models.PersonalAdmin, { as: "personalAd" });
   }
 
   static config(sequelize) {

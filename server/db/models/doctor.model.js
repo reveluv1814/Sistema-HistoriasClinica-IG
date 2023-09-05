@@ -57,7 +57,7 @@ class Doctor extends Model {
     this.belongsTo(models.Persona, {as: 'persona'});
     //
     this.hasMany(models.Cita, {
-      as: 'cita',
+      as: 'citas',
       foreignKey: 'doctorId',
     });
   }

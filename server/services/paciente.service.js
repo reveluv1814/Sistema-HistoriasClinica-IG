@@ -105,10 +105,10 @@ class PacienteService {
     if (!paciente) throw boom.notFound("Paciente not found");
     return paciente;
   }
-  async create(data) {
+  /* async create(data) {
     const newPaciente = await models.Paciente.create(data);
     return newPaciente;
-  }
+  } */
   async create(data) {
     const { paciente, persona, personalAdmin } = data;
 

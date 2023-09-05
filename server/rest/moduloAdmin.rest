@@ -1,4 +1,4 @@
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbCI6ImFkbWluIiwiaWF0IjoxNjkwOTkwMjM2fQ.ONmhSZUa5dJEWcCmrE6i9qWldclBvrvc3kwxPd7K02Y
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbCI6ImFkbWluIiwiaWF0IjoxNjkzODcxMzU1fQ.y6wAMpXERcp37l5fw62ywD6TFwW5s_DLVv_qQJjGQEc
 
 #listar usuario
 GET http://127.0.0.1:4000/admin

@@ -18,7 +18,7 @@ router.post(
     async (req, res, next) => {
       try {
         const body = req.body;
-        const newCategory = await service.create(body);
+        const newCategory = await service.createAd(body);
         res.status(201).json(newCategory);
       } catch (error) {
         next(error);

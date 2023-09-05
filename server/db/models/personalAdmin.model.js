@@ -48,8 +48,8 @@ class PersonalAdmin extends Model {
     this.belongsTo(models.Persona, { as: "persona" });
     
     this.hasMany(models.Cita, {
-      as: "cita",
-      foreignKey: "personalAd_Id",
+      as: 'citas',
+      foreignKey: 'personalAdId',
     });
     this.belongsToMany(models.Paciente, {
       as: "pacientes",
