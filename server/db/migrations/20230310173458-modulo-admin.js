@@ -25,7 +25,13 @@ const {
   ANTECEDENTE_F_TABLE,
   AntecedenteFSchema,
 } = require("./../models/antecedenteFamiliar.model");
-const { ANTECEDENTE_P_TABLE, AntecedentePSchema,} = require("./../models/antecedentePersonal.model");
+const {
+  ANTECEDENTE_P_TABLE,
+  AntecedentePSchema,
+} = require("./../models/antecedentePersonal.model");
+const {
+  COMPOSICION_F_TABLE,
+} = require("./../models/composicionFamiliar.model");
 
 module.exports = {
   up: async (queryInterface) => {
@@ -84,10 +90,40 @@ module.exports = {
     await queryInterface.createTable(ANTECEDENTE_F_TABLE, AntecedenteFSchema);
     await queryInterface.createTable(ANTECEDENTE_P_TABLE, AntecedentePSchema);
     await queryInterface.createTable(HISTORIA_TABLE, HistoriaSchema);
+    await queryInterface.createTable(COMPOSICION_F_TABLE, {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
+      nrogestacion: { allowNull: true, type: DataTypes.INTEGER },
+      nomHijo: { allowNull: true, type: DataTypes.STRING },
+      sexo: { allowNull: true, type: DataTypes.STRING },
+      fechanac: { allowNull: true, type: DataTypes.DATE },
+      obs: { allowNull: true, type: DataTypes.STRING },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        field: "create_at",
+        defaultValue: Sequelize.NOW,
+      },
+      historiaId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: HISTORIA_TABLE,
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
+    });
     await queryInterface.createTable(CITA_TABLE, CitaSchema);
     await queryInterface.createTable(PCREA_PAC_TABLE, P_creaPacSchema);
   },
   down: async (queryInterface) => {
+    await queryInterface.dropTable(COMPOSICION_F_TABLE);
     await queryInterface.dropTable(ANTECEDENTE_P_TABLE);
     await queryInterface.dropTable(ANTECEDENTE_F_TABLE);
     await queryInterface.dropTable(CITA_TABLE);

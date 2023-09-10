@@ -57,6 +57,10 @@ class Historia extends Model {
     });
     this.belongsTo(models.AntecedentesF, { as: "antecedenteF" });
     this.belongsTo(models.AntecedentesP, { as: "antecedenteP" });
+    this.hasMany(models.ComposicionF, {
+      as: "composicionesF",
+      foreignKey: "historiaId",
+    });
   }
 
   static config(sequelize) {

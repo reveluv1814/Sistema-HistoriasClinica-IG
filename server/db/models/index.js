@@ -14,6 +14,7 @@ const {
   AntecedenteFSchema,
 } = require("./antecedenteFamiliar.model");
 const { AntecedenteP,AntecedentePSchema } = require("./antecedentePersonal.model");
+const { ComposicionF,ComposicionFSchema } = require("./composicionFamiliar.model");
 
 //configuracion de los modelos
 function setupModels(sequelize) {
@@ -29,6 +30,7 @@ function setupModels(sequelize) {
   P_creaPac.init(P_creaPacSchema, P_creaPac.config(sequelize));
   AntecedenteF.init(AntecedenteFSchema, AntecedenteF.config(sequelize));
   AntecedenteP.init(AntecedentePSchema, AntecedenteP.config(sequelize));
+  ComposicionF.init(ComposicionFSchema, ComposicionF.config(sequelize));
 
   //crea la asociacion
   //----uno a uno
@@ -42,6 +44,7 @@ function setupModels(sequelize) {
   Historia.associate(sequelize.models);
   AntecedenteF.associate(sequelize.models);
   AntecedenteP.associate(sequelize.models);
+  ComposicionF.associate(sequelize.models);
 }
 
 module.exports = setupModels;
