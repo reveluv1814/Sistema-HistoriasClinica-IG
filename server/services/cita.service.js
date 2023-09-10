@@ -1,13 +1,20 @@
 const boom = require("@hapi/boom");
 const { Op, Sequelize } = require("sequelize");
 const { models } = require("./../libs/sequelize");
+const HistoriaPac = require("./p_creaPac.service");
 
 class CitaService {
   constructor() {}
 
   async create(data) {
+    const historiaPAc= new HistoriaPac()
     const { cita } = data;
-    const newCita = await models.Cita.create(cita);
+    const pacienteId = cita.pacienteId;
+    const historiaId = await historiaPAc.findPacHis(pacienteId);
+    const newCita = await models.Cita.create({
+      ...cita,
+      historiaId: historiaId.historiaId,
+    });
     return newCita;
   }
 

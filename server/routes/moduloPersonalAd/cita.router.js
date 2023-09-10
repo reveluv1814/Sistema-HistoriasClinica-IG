@@ -1,6 +1,7 @@
 const express = require("express");
 
 const CitaService = require("../../services/cita.service");
+const HistoriaUService = require("../../services/p_creaPac.service");
 //middlewares
 const {
   validatorHandlerObjetos,
@@ -16,6 +17,7 @@ const {
 //inicializando
 const router = express.Router();
 const citaService = new CitaService();
+const historiaService = new HistoriaUService();
 
 router.get(
   "/",
@@ -25,6 +27,22 @@ router.get(
       const citas = await citaService.find();
       res.json({
         citas,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+//borrar
+router.get(
+  "/historia/:id",
+  checkRoles("admin", "personalAdmin"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const historias = await historiaService.findPacHis(id);
+      res.json({
+        historias,
       });
     } catch (error) {
       next(error);

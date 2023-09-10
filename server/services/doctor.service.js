@@ -63,6 +63,32 @@ class DoctorService {
     }
     return user;
   }
+  async findCita() {
+    const rta = await models.Doctor.findAndCountAll({
+      include: [
+        {
+          model: models.Usuario,
+          as: "usuario",
+          attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+        },
+        {
+          model: models.Persona,
+          as: "persona",
+          attributes: [
+            "id",
+            "nombre",
+            "apellidoPaterno",
+            "apellidoMaterno",
+            "ci",
+          ], // Especifica los atributos de persona que deseas mostrar
+        },
+      ],
+      order: [
+        ["id"], // ordenar por fecha de creación en orden ascendente
+      ],
+    });
+    return rta;
+  }
   async findByUsuario(usuarioId) {
     const rta = await models.Doctor.findOne({
       //busca al primer usuario que cumpla con el where

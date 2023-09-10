@@ -17,7 +17,15 @@ const {
   PCREA_PAC_TABLE,
   P_creaPacSchema,
 } = require("./../models/p_creaPac.model");
-const { HISTORIA_TABLE,HistoriaSchema } = require("./../models/historia.model");
+const {
+  HISTORIA_TABLE,
+  HistoriaSchema,
+} = require("./../models/historia.model");
+const {
+  ANTECEDENTE_F_TABLE,
+  AntecedenteFSchema,
+} = require("./../models/antecedenteFamiliar.model");
+const { ANTECEDENTE_P_TABLE, AntecedentePSchema,} = require("./../models/antecedentePersonal.model");
 
 module.exports = {
   up: async (queryInterface) => {
@@ -73,11 +81,15 @@ module.exports = {
         onDelete: "SET NULL",
       },
     });
-    await queryInterface.createTable(CITA_TABLE, CitaSchema);
+    await queryInterface.createTable(ANTECEDENTE_F_TABLE, AntecedenteFSchema);
+    await queryInterface.createTable(ANTECEDENTE_P_TABLE, AntecedentePSchema);
     await queryInterface.createTable(HISTORIA_TABLE, HistoriaSchema);
+    await queryInterface.createTable(CITA_TABLE, CitaSchema);
     await queryInterface.createTable(PCREA_PAC_TABLE, P_creaPacSchema);
   },
   down: async (queryInterface) => {
+    await queryInterface.dropTable(ANTECEDENTE_P_TABLE);
+    await queryInterface.dropTable(ANTECEDENTE_F_TABLE);
     await queryInterface.dropTable(CITA_TABLE);
     await queryInterface.dropTable(PCREA_PAC_TABLE);
     await queryInterface.dropTable(HISTORIA_TABLE);

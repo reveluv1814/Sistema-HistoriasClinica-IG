@@ -5,23 +5,18 @@ const { models } = require("../libs/sequelize");
 class PcPacService {
   constructor() {}
 
-  async find() {
-    const rta = await models.P_creaPac.findAll({
-        include: [
-          {
-            model: models.Paciente,
-            as: "paciente",
-            through: { attributes: [] }, // Excluir atributos de la tabla intermedia
-          },
-          {
-            model: models.HistoriaClinica,
-            as: "historia",
-            through: { attributes: [] }, // Excluir atributos de la tabla intermedia
-          },
-        ],
-        order: [["id"]], // Ordenar por fecha de creación en orden ascendente
-      });
-      return rta;
+  async findPacHis(id) {
+    const rta = await models.P_creaPac.findOne({
+      where: { pacienteId: id },
+      attributes: ["historiaId"],
+    });
+    if (!rta) {
+      throw new Error(
+        "No se encontró una relación entre el paciente y su historia clínica."
+      );
+    }
+
+    return rta;
   }
 }
 

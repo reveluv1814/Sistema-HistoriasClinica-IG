@@ -3,6 +3,7 @@ const { Model, DataTypes, Sequelize } = require("sequelize");
 const { PACIENTE_TABLE } = require("./paciente.model");
 const { DOCTOR_TABLE } = require("./doctor.model");
 const { PERSONAL_ADMIN_TABLE } = require("./personalAdmin.model");
+const { HISTORIA_TABLE } = require("./historia.model");
 
 const CITA_TABLE = "cita";
 
@@ -52,6 +53,18 @@ const CitaSchema = {
     onUpdate: "CASCADE",
     onDelete: "SET NULL",
   },
+  historiaId: {
+    field: "historia_id",
+    allowNull: false,
+    type: DataTypes.INTEGER,
+    unique: false,
+    references: {
+      model: HISTORIA_TABLE,
+      key: "id",
+    },
+    onUpdate: "CASCADE",
+    onDelete: "SET NULL",
+  },
   doctorId: {
     field: "doctor_id",
     allowNull: false,
@@ -75,7 +88,7 @@ const CitaSchema = {
     },
     onUpdate: "CASCADE",
     onDelete: "SET NULL",
-  }, 
+  },
 };
 
 class Cita extends Model {
@@ -83,6 +96,7 @@ class Cita extends Model {
     this.belongsTo(models.Doctor, { as: "doctor" });
     this.belongsTo(models.Paciente, { as: "paciente" });
     this.belongsTo(models.PersonalAdmin, { as: "personalAd" });
+    this.belongsTo(models.HistoriaClinica, { as: "historia" });
   }
 
   static config(sequelize) {

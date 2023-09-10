@@ -9,6 +9,11 @@ const { Paciente, PacienteSchema } = require("./paciente.model");
 const { Cita, CitaSchema } = require("./cita.model");
 const { Historia, HistoriaSchema } = require("./historia.model");
 const { P_creaPac, P_creaPacSchema } = require("./p_creaPac.model");
+const {
+  AntecedenteF,
+  AntecedenteFSchema,
+} = require("./antecedenteFamiliar.model");
+const { AntecedenteP,AntecedentePSchema } = require("./antecedentePersonal.model");
 
 //configuracion de los modelos
 function setupModels(sequelize) {
@@ -22,7 +27,8 @@ function setupModels(sequelize) {
   Cita.init(CitaSchema, Cita.config(sequelize));
   Historia.init(HistoriaSchema, Historia.config(sequelize));
   P_creaPac.init(P_creaPacSchema, P_creaPac.config(sequelize));
-
+  AntecedenteF.init(AntecedenteFSchema, AntecedenteF.config(sequelize));
+  AntecedenteP.init(AntecedentePSchema, AntecedenteP.config(sequelize));
 
   //crea la asociacion
   //----uno a uno
@@ -33,6 +39,9 @@ function setupModels(sequelize) {
   Laboratorista.associate(sequelize.models);
   Paciente.associate(sequelize.models);
   Cita.associate(sequelize.models);
+  Historia.associate(sequelize.models);
+  AntecedenteF.associate(sequelize.models);
+  AntecedenteP.associate(sequelize.models);
 }
 
 module.exports = setupModels;

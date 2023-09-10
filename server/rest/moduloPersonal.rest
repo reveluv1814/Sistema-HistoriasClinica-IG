@@ -1,4 +1,4 @@
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbCI6InBlcnNvbmFsQWRtaW4iLCJpYXQiOjE2OTM4NzE0MDB9.HM_KLVzMfGY31rXG7jAYtr2lUEfqXneRtPPOlLdxGSw
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbCI6InBlcnNvbmFsQWRtaW4iLCJpYXQiOjE2OTQxODgxNTV9.OULPAIXZFm83dn-Y6hozx0amejbm2hPLyKum-Fez620
 
 #listar
 GET http://127.0.0.1:4000/personal/paciente?q=&page=1&limit=10
@@ -108,5 +108,17 @@ Accept: application/json
 }
 ### Elimina una cita
 DELETE http://127.0.0.1:4000/personal/cita/2
+Authorization: Bearer {{token}}
+Accept: application/json
+### Lista doctores para la cita
+GET http://127.0.0.1:4000/personal/doctor
+Authorization: Bearer {{token}}
+Accept: application/json
+### Seleciona un doctor para la cita
+GET http://127.0.0.1:4000/personal/doctor/1
+Authorization: Bearer {{token}}
+Accept: application/json
+####
+GET http://127.0.0.1:4000/personal/cita/historia/1
 Authorization: Bearer {{token}}
 Accept: application/json
