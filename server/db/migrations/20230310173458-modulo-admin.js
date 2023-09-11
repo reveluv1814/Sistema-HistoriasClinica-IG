@@ -42,6 +42,10 @@ const { MAX_MANDIBULA_TABLE, MaxMandibulaSchema } = require("./../models/explora
 const { BOCA_TABLE, BocaSchema } = require("./../models/exploracionFisicaModels/boca.model");
 const { CUELLO_TABLE, CuelloSchema } = require("./../models/exploracionFisicaModels/cuello.model");
 const { TORAX_TABLE, ToraxSchema } = require("./../models/exploracionFisicaModels/torax.model");
+const { COLUMNA_TABLE, ColumnaSchema } = require("./../models/exploracionFisicaModels/columna.model");
+const { ABDOMEN_TABLE, AbdomenSchema } = require("./../models/exploracionFisicaModels/abdomen.model");
+const { TEJIDO_SUB_TABLE, TejidoSubSchema } = require("./../models/exploracionFisicaModels/tejidoSub.model");
+const { MUSCULATURA_TABLE, MusculaturaSchema } = require("./../models/exploracionFisicaModels/musculatura.model");
 
 module.exports = {
   up: async (queryInterface) => {
@@ -108,6 +112,10 @@ module.exports = {
     await queryInterface.createTable(BOCA_TABLE, BocaSchema);
     await queryInterface.createTable(CUELLO_TABLE, CuelloSchema);
     await queryInterface.createTable(TORAX_TABLE, ToraxSchema);
+    await queryInterface.createTable(COLUMNA_TABLE, ColumnaSchema);
+    await queryInterface.createTable(ABDOMEN_TABLE, AbdomenSchema);
+    await queryInterface.createTable(TEJIDO_SUB_TABLE, TejidoSubSchema);
+    await queryInterface.createTable(MUSCULATURA_TABLE, MusculaturaSchema);
     //
     await queryInterface.createTable(EXPLORACION_F_TABLE, ExploracionFSchema);
     await queryInterface.createTable(HISTORIA_TABLE, HistoriaSchema);
@@ -153,6 +161,10 @@ module.exports = {
     await queryInterface.dropTable(BOCA_TABLE);
     await queryInterface.dropTable(CUELLO_TABLE);
     await queryInterface.dropTable(TORAX_TABLE);
+    await queryInterface.dropTable(COLUMNA_TABLE);
+    await queryInterface.dropTable(ABDOMEN_TABLE);
+    await queryInterface.dropTable(TEJIDO_SUB_TABLE);
+    await queryInterface.dropTable(MUSCULATURA_TABLE);
     //
     await queryInterface.dropTable(EXPLORACION_F_TABLE);
     await queryInterface.dropTable(COMPOSICION_F_TABLE);

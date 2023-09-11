@@ -37,6 +37,10 @@ const { MaxMandibula, MaxMandibulaSchema,} = require("./exploracionFisicaModels/
 const { Boca, BocaSchema,} = require("./exploracionFisicaModels/boca.model");
 const { Cuello, CuelloSchema,} = require("./exploracionFisicaModels/cuello.model");
 const { Torax, ToraxSchema,} = require("./exploracionFisicaModels/torax.model");
+const { Columna, ColumnaSchema,} = require("./exploracionFisicaModels/columna.model");
+const { Abdomen, AbdomenSchema,} = require("./exploracionFisicaModels/abdomen.model");
+const { TejidoSub, TejidoSubSchema,} = require("./exploracionFisicaModels/tejidoSub.model");
+const { Musculatura, MusculaturaSchema,} = require("./exploracionFisicaModels/musculatura.model");
 
 //configuracion de los modelos
 function setupModels(sequelize) {
@@ -63,6 +67,10 @@ function setupModels(sequelize) {
   Boca.init(BocaSchema, Boca.config(sequelize));
   Cuello.init(CuelloSchema, Cuello.config(sequelize));
   Torax.init(ToraxSchema, Torax.config(sequelize));
+  Columna.init(ColumnaSchema, Columna.config(sequelize));
+  Abdomen.init(AbdomenSchema, Abdomen.config(sequelize));
+  TejidoSub.init(TejidoSubSchema, TejidoSub.config(sequelize));
+  Musculatura.init(MusculaturaSchema, Musculatura.config(sequelize));
 
   //crea la asociacion
   //----uno a uno
@@ -87,6 +95,10 @@ function setupModels(sequelize) {
   Boca.associate(sequelize.models);
   Cuello.associate(sequelize.models);
   Torax.associate(sequelize.models);
+  Columna.associate(sequelize.models);
+  Abdomen.associate(sequelize.models);
+  TejidoSub.associate(sequelize.models);
+  Musculatura.associate(sequelize.models);
 }
 
 module.exports = setupModels;

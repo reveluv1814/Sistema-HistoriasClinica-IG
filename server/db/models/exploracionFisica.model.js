@@ -1,15 +1,17 @@
 const { Model, DataTypes, Sequelize } = require("sequelize");
 
-const {
-  CRANEO_F_TABLE,
-} = require("./exploracionFisicaModels/craneoFacial.model");
+const { CRANEO_F_TABLE,} = require("./exploracionFisicaModels/craneoFacial.model");
 const { OREJAS_TABLE } = require("./exploracionFisicaModels/orejas.model");
 const { OJOS_TABLE } = require("./exploracionFisicaModels/ojos.model");
 const { NARIZ_TABLE } = require("./exploracionFisicaModels/nariz.model");
-const { MAX_MANDIBULA_TABLE } = require("./exploracionFisicaModels/maxMandibula.model");
+const { MAX_MANDIBULA_TABLE,} = require("./exploracionFisicaModels/maxMandibula.model");
 const { BOCA_TABLE } = require("./exploracionFisicaModels/boca.model");
 const { CUELLO_TABLE } = require("./exploracionFisicaModels/cuello.model");
 const { TORAX_TABLE } = require("./exploracionFisicaModels/torax.model");
+const { COLUMNA_TABLE } = require("./exploracionFisicaModels/columna.model");
+const { ABDOMEN_TABLE } = require("./exploracionFisicaModels/abdomen.model");
+const { TEJIDO_SUB_TABLE,} = require("./exploracionFisicaModels/tejidoSub.model");
+const { MUSCULATURA_TABLE,} = require("./exploracionFisicaModels/musculatura.model");
 
 const EXPLORACION_F_TABLE = "exploracionFisica";
 
@@ -149,6 +151,54 @@ const ExploracionFSchema = {
     onUpdate: "CASCADE",
     onDelete: "CASCADE",
   },
+  columnaId: {
+    field: "columna_id",
+    allowNull: true,
+    type: DataTypes.INTEGER,
+    unique: true,
+    references: {
+      model: COLUMNA_TABLE,
+      key: "id",
+    },
+    onUpdate: "CASCADE",
+    onDelete: "CASCADE",
+  },
+  abdomenId: {
+    field: "abdomen_id",
+    allowNull: true,
+    type: DataTypes.INTEGER,
+    unique: true,
+    references: {
+      model: ABDOMEN_TABLE,
+      key: "id",
+    },
+    onUpdate: "CASCADE",
+    onDelete: "CASCADE",
+  },
+  tejidoSubId: {
+    field: "tejidoSub_id",
+    allowNull: true,
+    type: DataTypes.INTEGER,
+    unique: true,
+    references: {
+      model: TEJIDO_SUB_TABLE,
+      key: "id",
+    },
+    onUpdate: "CASCADE",
+    onDelete: "CASCADE",
+  },
+  musculaturaId: {
+    field: "musculatura_id",
+    allowNull: true,
+    type: DataTypes.INTEGER,
+    unique: true,
+    references: {
+      model: MUSCULATURA_TABLE,
+      key: "id",
+    },
+    onUpdate: "CASCADE",
+    onDelete: "CASCADE",
+  },
 };
 
 class ExploracionF extends Model {
@@ -167,6 +217,10 @@ class ExploracionF extends Model {
     this.belongsTo(models.Boca, { as: "boca" });
     this.belongsTo(models.Cuello, { as: "cuello" });
     this.belongsTo(models.Torax, { as: "torax" });
+    this.belongsTo(models.Columna, { as: "columna" });
+    this.belongsTo(models.Abdomen, { as: "abdomen" });
+    this.belongsTo(models.TejidoSub, { as: "tejidoSub" });
+    this.belongsTo(models.Musculatura, { as: "musculatura" });
   }
 
   static config(sequelize) {
