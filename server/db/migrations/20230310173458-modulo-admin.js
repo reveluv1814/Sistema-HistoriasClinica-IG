@@ -32,6 +32,16 @@ const {
 const {
   COMPOSICION_F_TABLE,
 } = require("./../models/composicionFamiliar.model");
+const { EXPLORACION_F_TABLE, ExploracionFSchema } = require("./../models/exploracionFisica.model");
+//exploracion fisica
+const { CRANEO_F_TABLE, CraneoFSchema } = require("./../models/exploracionFisicaModels/craneoFacial.model");
+const { OREJAS_TABLE, OrejasSchema } = require("./../models/exploracionFisicaModels/orejas.model");
+const { OJOS_TABLE, OjosSchema } = require("./../models/exploracionFisicaModels/ojos.model");
+const { NARIZ_TABLE, NarizSchema } = require("./../models/exploracionFisicaModels/nariz.model");
+const { MAX_MANDIBULA_TABLE, MaxMandibulaSchema } = require("./../models/exploracionFisicaModels/maxMandibula.model");
+const { BOCA_TABLE, BocaSchema } = require("./../models/exploracionFisicaModels/boca.model");
+const { CUELLO_TABLE, CuelloSchema } = require("./../models/exploracionFisicaModels/cuello.model");
+const { TORAX_TABLE, ToraxSchema } = require("./../models/exploracionFisicaModels/torax.model");
 
 module.exports = {
   up: async (queryInterface) => {
@@ -89,6 +99,17 @@ module.exports = {
     });
     await queryInterface.createTable(ANTECEDENTE_F_TABLE, AntecedenteFSchema);
     await queryInterface.createTable(ANTECEDENTE_P_TABLE, AntecedentePSchema);
+    // exploracion fisica
+    await queryInterface.createTable(CRANEO_F_TABLE, CraneoFSchema);
+    await queryInterface.createTable(OREJAS_TABLE, OrejasSchema);
+    await queryInterface.createTable(OJOS_TABLE, OjosSchema);
+    await queryInterface.createTable(NARIZ_TABLE, NarizSchema);
+    await queryInterface.createTable(MAX_MANDIBULA_TABLE, MaxMandibulaSchema);
+    await queryInterface.createTable(BOCA_TABLE, BocaSchema);
+    await queryInterface.createTable(CUELLO_TABLE, CuelloSchema);
+    await queryInterface.createTable(TORAX_TABLE, ToraxSchema);
+    //
+    await queryInterface.createTable(EXPLORACION_F_TABLE, ExploracionFSchema);
     await queryInterface.createTable(HISTORIA_TABLE, HistoriaSchema);
     await queryInterface.createTable(COMPOSICION_F_TABLE, {
       id: {
@@ -123,6 +144,17 @@ module.exports = {
     await queryInterface.createTable(PCREA_PAC_TABLE, P_creaPacSchema);
   },
   down: async (queryInterface) => {
+    //exploracion fisica
+    await queryInterface.dropTable(CRANEO_F_TABLE);
+    await queryInterface.dropTable(OREJAS_TABLE);
+    await queryInterface.dropTable(OJOS_TABLE);
+    await queryInterface.dropTable(NARIZ_TABLE);
+    await queryInterface.dropTable(MAX_MANDIBULA_TABLE);
+    await queryInterface.dropTable(BOCA_TABLE);
+    await queryInterface.dropTable(CUELLO_TABLE);
+    await queryInterface.dropTable(TORAX_TABLE);
+    //
+    await queryInterface.dropTable(EXPLORACION_F_TABLE);
     await queryInterface.dropTable(COMPOSICION_F_TABLE);
     await queryInterface.dropTable(ANTECEDENTE_P_TABLE);
     await queryInterface.dropTable(ANTECEDENTE_F_TABLE);
