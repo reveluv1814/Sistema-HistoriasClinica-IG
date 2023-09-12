@@ -9,7 +9,7 @@ const MusculaturaSchema = {
     primaryKey: true,
     type: DataTypes.INTEGER,
   },
-  //}
+  //
   normotrofica: { allowNull: true, type: DataTypes.BOOLEAN },
   hipotrofica: { allowNull: true, type: DataTypes.BOOLEAN },
   hipertrofica: { allowNull: true, type: DataTypes.BOOLEAN },

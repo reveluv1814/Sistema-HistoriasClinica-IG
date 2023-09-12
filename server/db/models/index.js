@@ -41,6 +41,10 @@ const { Columna, ColumnaSchema,} = require("./exploracionFisicaModels/columna.mo
 const { Abdomen, AbdomenSchema,} = require("./exploracionFisicaModels/abdomen.model");
 const { TejidoSub, TejidoSubSchema,} = require("./exploracionFisicaModels/tejidoSub.model");
 const { Musculatura, MusculaturaSchema,} = require("./exploracionFisicaModels/musculatura.model");
+const { ExNeurologico, ExNeurologicoSchema,} = require("./exploracionFisicaModels/exNeurologico.model");
+const { PielAnexos, PielAnexosSchema,} = require("./exploracionFisicaModels/pielAnexos.model");
+const { GenitalesEx, GenitalesExSchema,} = require("./exploracionFisicaModels/genitalesEx.model");
+const { Miembros, MiembrosSchema,} = require("./exploracionFisicaModels/miembros.model");
 
 //configuracion de los modelos
 function setupModels(sequelize) {
@@ -71,6 +75,10 @@ function setupModels(sequelize) {
   Abdomen.init(AbdomenSchema, Abdomen.config(sequelize));
   TejidoSub.init(TejidoSubSchema, TejidoSub.config(sequelize));
   Musculatura.init(MusculaturaSchema, Musculatura.config(sequelize));
+  ExNeurologico.init(ExNeurologicoSchema, ExNeurologico.config(sequelize));
+  PielAnexos.init(PielAnexosSchema, PielAnexos.config(sequelize));
+  GenitalesEx.init(GenitalesExSchema, GenitalesEx.config(sequelize));
+  Miembros.init(MiembrosSchema, Miembros.config(sequelize));
 
   //crea la asociacion
   //----uno a uno
@@ -99,6 +107,10 @@ function setupModels(sequelize) {
   Abdomen.associate(sequelize.models);
   TejidoSub.associate(sequelize.models);
   Musculatura.associate(sequelize.models);
+  ExNeurologico.associate(sequelize.models);
+  PielAnexos.associate(sequelize.models);
+  GenitalesEx.associate(sequelize.models);
+  Miembros.associate(sequelize.models);
 }
 
 module.exports = setupModels;

@@ -46,6 +46,10 @@ const { COLUMNA_TABLE, ColumnaSchema } = require("./../models/exploracionFisicaM
 const { ABDOMEN_TABLE, AbdomenSchema } = require("./../models/exploracionFisicaModels/abdomen.model");
 const { TEJIDO_SUB_TABLE, TejidoSubSchema } = require("./../models/exploracionFisicaModels/tejidoSub.model");
 const { MUSCULATURA_TABLE, MusculaturaSchema } = require("./../models/exploracionFisicaModels/musculatura.model");
+const { EX_NEUROLOGICO_TABLE, ExNeurologicoSchema } = require("./../models/exploracionFisicaModels/exNeurologico.model");
+const { PIEL_ANEXOS_TABLE, PielAnexosSchema } = require("./../models/exploracionFisicaModels/pielAnexos.model");
+const { GENITALES_EX_TABLE, GenitalesExSchema } = require("./../models/exploracionFisicaModels/genitalesEx.model");
+const { MIEMBROS_TABLE, MiembrosSchema } = require("./../models/exploracionFisicaModels/miembros.model");
 
 module.exports = {
   up: async (queryInterface) => {
@@ -116,6 +120,10 @@ module.exports = {
     await queryInterface.createTable(ABDOMEN_TABLE, AbdomenSchema);
     await queryInterface.createTable(TEJIDO_SUB_TABLE, TejidoSubSchema);
     await queryInterface.createTable(MUSCULATURA_TABLE, MusculaturaSchema);
+    await queryInterface.createTable(EX_NEUROLOGICO_TABLE, ExNeurologicoSchema);
+    await queryInterface.createTable(PIEL_ANEXOS_TABLE, PielAnexosSchema);
+    await queryInterface.createTable(GENITALES_EX_TABLE, GenitalesExSchema);
+    await queryInterface.createTable(MIEMBROS_TABLE, MiembrosSchema);
     //
     await queryInterface.createTable(EXPLORACION_F_TABLE, ExploracionFSchema);
     await queryInterface.createTable(HISTORIA_TABLE, HistoriaSchema);
@@ -165,6 +173,10 @@ module.exports = {
     await queryInterface.dropTable(ABDOMEN_TABLE);
     await queryInterface.dropTable(TEJIDO_SUB_TABLE);
     await queryInterface.dropTable(MUSCULATURA_TABLE);
+    await queryInterface.dropTable(EX_NEUROLOGICO_TABLE);
+    await queryInterface.dropTable(PIEL_ANEXOS_TABLE);
+    await queryInterface.dropTable(GENITALES_EX_TABLE);
+    await queryInterface.dropTable(MIEMBROS_TABLE);
     //
     await queryInterface.dropTable(EXPLORACION_F_TABLE);
     await queryInterface.dropTable(COMPOSICION_F_TABLE);

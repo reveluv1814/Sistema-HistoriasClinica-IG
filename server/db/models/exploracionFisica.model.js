@@ -12,6 +12,10 @@ const { COLUMNA_TABLE } = require("./exploracionFisicaModels/columna.model");
 const { ABDOMEN_TABLE } = require("./exploracionFisicaModels/abdomen.model");
 const { TEJIDO_SUB_TABLE,} = require("./exploracionFisicaModels/tejidoSub.model");
 const { MUSCULATURA_TABLE,} = require("./exploracionFisicaModels/musculatura.model");
+const { EX_NEUROLOGICO_TABLE,} = require("./exploracionFisicaModels/exNeurologico.model");
+const { PIEL_ANEXOS_TABLE,} = require("./exploracionFisicaModels/pielAnexos.model");
+const { GENITALES_EX_TABLE,} = require("./exploracionFisicaModels/genitalesEx.model");
+const { MIEMBROS_TABLE,} = require("./exploracionFisicaModels/miembros.model");
 
 const EXPLORACION_F_TABLE = "exploracionFisica";
 
@@ -199,6 +203,54 @@ const ExploracionFSchema = {
     onUpdate: "CASCADE",
     onDelete: "CASCADE",
   },
+  exNeurologicoId: {
+    field: "exNeurologico_id",
+    allowNull: true,
+    type: DataTypes.INTEGER,
+    unique: true,
+    references: {
+      model: EX_NEUROLOGICO_TABLE,
+      key: "id",
+    },
+    onUpdate: "CASCADE",
+    onDelete: "CASCADE",
+  },
+  pielAnexosId: {
+    field: "pielAnexos_id",
+    allowNull: true,
+    type: DataTypes.INTEGER,
+    unique: true,
+    references: {
+      model: PIEL_ANEXOS_TABLE,
+      key: "id",
+    },
+    onUpdate: "CASCADE",
+    onDelete: "CASCADE",
+  },
+  genitalesExId: {
+    field: "genitalesEx_id",
+    allowNull: true,
+    type: DataTypes.INTEGER,
+    unique: true,
+    references: {
+      model: GENITALES_EX_TABLE,
+      key: "id",
+    },
+    onUpdate: "CASCADE",
+    onDelete: "CASCADE",
+  },
+  miembrosId: {
+    field: "miembros_id",
+    allowNull: true,
+    type: DataTypes.INTEGER,
+    unique: true,
+    references: {
+      model: MIEMBROS_TABLE,
+      key: "id",
+    },
+    onUpdate: "CASCADE",
+    onDelete: "CASCADE",
+  },
 };
 
 class ExploracionF extends Model {
@@ -221,6 +273,10 @@ class ExploracionF extends Model {
     this.belongsTo(models.Abdomen, { as: "abdomen" });
     this.belongsTo(models.TejidoSub, { as: "tejidoSub" });
     this.belongsTo(models.Musculatura, { as: "musculatura" });
+    this.belongsTo(models.ExNeurologico, { as: "exNeurologico" });
+    this.belongsTo(models.PielAnexos, { as: "pielAnexos" });
+    this.belongsTo(models.GenitalesEx, { as: "genitalesEx" });
+    this.belongsTo(models.Miembros, { as: "miembros" });
   }
 
   static config(sequelize) {
