@@ -75,6 +75,12 @@ class Historia extends Model {
       foreignKey: "historiaId",
     });
     this.belongsTo(models.ExploracionF, { as: "exploracionF" });
+    //
+    this.belongsToMany(models.Laboratorista, {
+      through: models.HistoriaLabo,
+      as: "laboratoristas",
+      foreignKey: "historiaId",
+    });
   }
 
   static config(sequelize) {

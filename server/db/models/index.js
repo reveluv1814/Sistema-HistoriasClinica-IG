@@ -9,27 +9,13 @@ const { Paciente, PacienteSchema } = require("./paciente.model");
 const { Cita, CitaSchema } = require("./cita.model");
 const { Historia, HistoriaSchema } = require("./historia.model");
 const { P_creaPac, P_creaPacSchema } = require("./p_creaPac.model");
-const {
-  AntecedenteF,
-  AntecedenteFSchema,
-} = require("./antecedenteFamiliar.model");
-const {
-  AntecedenteP,
-  AntecedentePSchema,
-} = require("./antecedentePersonal.model");
-const {
-  ComposicionF,
-  ComposicionFSchema,
-} = require("./composicionFamiliar.model");
-const {
-  ExploracionF,
-  ExploracionFSchema,
-} = require("./exploracionFisica.model");
+const { AntecedenteF, AntecedenteFSchema,} = require("./antecedenteFamiliar.model");
+const { AntecedenteP, AntecedentePSchema,} = require("./antecedentePersonal.model");
+const { ComposicionF, ComposicionFSchema,} = require("./composicionFamiliar.model");
+const { HistoriaLabo, HistoriaLaboSchema,} = require("./historiaLabo.model");
+const { ExploracionF, ExploracionFSchema,} = require("./exploracionFisica.model");
 //exploracion fisica
-const {
-  CraneoF,
-  CraneoFSchema,
-} = require("./exploracionFisicaModels/craneoFacial.model");
+const { CraneoF, CraneoFSchema,} = require("./exploracionFisicaModels/craneoFacial.model");
 const { Orejas, OrejasSchema,} = require("./exploracionFisicaModels/orejas.model");
 const { Ojos, OjosSchema,} = require("./exploracionFisicaModels/ojos.model");
 const { Nariz, NarizSchema,} = require("./exploracionFisicaModels/nariz.model");
@@ -61,6 +47,7 @@ function setupModels(sequelize) {
   AntecedenteF.init(AntecedenteFSchema, AntecedenteF.config(sequelize));
   AntecedenteP.init(AntecedentePSchema, AntecedenteP.config(sequelize));
   ComposicionF.init(ComposicionFSchema, ComposicionF.config(sequelize));
+  HistoriaLabo.init(HistoriaLaboSchema, HistoriaLabo.config(sequelize));
   ExploracionF.init(ExploracionFSchema, ExploracionF.config(sequelize));
   //exploracion fisica
   CraneoF.init(CraneoFSchema, CraneoF.config(sequelize));

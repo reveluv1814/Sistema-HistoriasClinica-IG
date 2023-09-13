@@ -13,10 +13,7 @@ const {
 } = require("./../models/laboratorista.model");
 const { PACIENTE_TABLE } = require("./../models/paciente.model");
 const { CITA_TABLE, CitaSchema } = require("./../models/cita.model");
-const {
-  PCREA_PAC_TABLE,
-  P_creaPacSchema,
-} = require("./../models/p_creaPac.model");
+const { PCREA_PAC_TABLE,P_creaPacSchema,} = require("./../models/p_creaPac.model");
 const {
   HISTORIA_TABLE,
   HistoriaSchema,
@@ -25,13 +22,9 @@ const {
   ANTECEDENTE_F_TABLE,
   AntecedenteFSchema,
 } = require("./../models/antecedenteFamiliar.model");
-const {
-  ANTECEDENTE_P_TABLE,
-  AntecedentePSchema,
-} = require("./../models/antecedentePersonal.model");
-const {
-  COMPOSICION_F_TABLE,
-} = require("./../models/composicionFamiliar.model");
+const { ANTECEDENTE_P_TABLE, AntecedentePSchema,} = require("./../models/antecedentePersonal.model");
+const { HISTORIA_LABO_TABLE, HistoriaLaboSchema,} = require("./../models/historiaLabo.model");
+const { COMPOSICION_F_TABLE,} = require("./../models/composicionFamiliar.model");
 const { EXPLORACION_F_TABLE, ExploracionFSchema } = require("./../models/exploracionFisica.model");
 //exploracion fisica
 const { CRANEO_F_TABLE, CraneoFSchema } = require("./../models/exploracionFisicaModels/craneoFacial.model");
@@ -158,6 +151,7 @@ module.exports = {
     });
     await queryInterface.createTable(CITA_TABLE, CitaSchema);
     await queryInterface.createTable(PCREA_PAC_TABLE, P_creaPacSchema);
+    await queryInterface.createTable(HISTORIA_LABO_TABLE, HistoriaLaboSchema);
   },
   down: async (queryInterface) => {
     //exploracion fisica
@@ -182,6 +176,7 @@ module.exports = {
     await queryInterface.dropTable(COMPOSICION_F_TABLE);
     await queryInterface.dropTable(ANTECEDENTE_P_TABLE);
     await queryInterface.dropTable(ANTECEDENTE_F_TABLE);
+    await queryInterface.dropTable(HISTORIA_LABO_TABLE);
     await queryInterface.dropTable(CITA_TABLE);
     await queryInterface.dropTable(PCREA_PAC_TABLE);
     await queryInterface.dropTable(HISTORIA_TABLE);
