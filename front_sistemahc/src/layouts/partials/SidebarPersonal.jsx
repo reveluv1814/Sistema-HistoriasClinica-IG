@@ -232,7 +232,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
                                 (isActive
-                                  ? "text-indigo-500"
+                                  ? "text-indigo-300"
                                   : "text-slate-300 hover:text-slate-200")
                               }
                             >
@@ -244,16 +244,16 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                           <li className="mb-1 last:mb-0">
                             <NavLink
                               end
-                              to="/dashboard/fintech"
+                              to="/personal/citas"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
                                 (isActive
-                                  ? "text-indigo-500"
+                                  ? "text-indigo-300"
                                   : "text-slate-300 hover:text-slate-200")
                               }
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Fintech
+                                Citas
                               </span>
                             </NavLink>
                           </li>

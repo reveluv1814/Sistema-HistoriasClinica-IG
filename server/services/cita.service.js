@@ -7,7 +7,7 @@ class CitaService {
   constructor() {}
 
   async create(data) {
-    const historiaPAc= new HistoriaPac()
+    const historiaPAc = new HistoriaPac();
     const { cita } = data;
     const pacienteId = cita.pacienteId;
     const historiaId = await historiaPAc.findPacHis(pacienteId);
@@ -104,6 +104,87 @@ class CitaService {
 
   async findOne(id) {
     const cita = await models.Cita.findByPk(id, {
+      include: [
+        {
+          model: models.Doctor,
+          as: "doctor",
+          attributes: ["unidad"],
+          include: [
+            {
+              model: models.Persona,
+              as: "persona",
+              attributes: [
+                [
+                  Sequelize.fn(
+                    "CONCAT",
+                    Sequelize.col("doctor.persona.nombre"),
+                    " ",
+                    Sequelize.col("doctor.persona.apellidoPaterno"),
+                    " ",
+                    Sequelize.col("doctor.persona.apellidoMaterno")
+                  ),
+                  "nombreCompleto",
+                ],
+              ],
+            },
+          ],
+        },
+        {
+          model: models.Paciente,
+          as: "paciente",
+          attributes: ["residencia"],
+          include: [
+            {
+              model: models.Persona,
+              as: "persona",
+              attributes: [
+                [
+                  Sequelize.fn(
+                    "CONCAT",
+                    Sequelize.col("paciente.persona.nombre"),
+                    " ",
+                    Sequelize.col("paciente.persona.apellidoPaterno"),
+                    " ",
+                    Sequelize.col("paciente.persona.apellidoMaterno")
+                  ),
+                  "nombreCompleto",
+                ],
+              ],
+            },
+          ],
+        },
+        {
+          model: models.PersonalAdmin,
+          as: "personalAd",
+          attributes: ["cargo"],
+          include: [
+            {
+              model: models.Persona,
+              as: "persona",
+              attributes: [
+                [
+                  Sequelize.fn(
+                    "CONCAT",
+                    Sequelize.col("personalAd.persona.nombre"),
+                    " ",
+                    Sequelize.col("personalAd.persona.apellidoPaterno"),
+                    " ",
+                    Sequelize.col("personalAd.persona.apellidoMaterno")
+                  ),
+                  "nombreCompleto",
+                ],
+              ],
+            },
+          ],
+        },
+      ],
+    });
+    if (!cita) throw boom.notFound("Cita not found");
+    return cita;
+  }
+  async findPersonal(id) {
+    const cita = await models.Cita.findAll({
+      where: { personalAdId: id },
       include: [
         {
           model: models.Doctor,

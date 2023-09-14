@@ -10,7 +10,7 @@ Authorization: Bearer {{token}}
 Accept: application/json
 ###
 #obtener un usuario
-GET http://127.0.0.1:4000/personal/paciente/3
+GET http://127.0.0.1:4000/personal/paciente/1
 Authorization: Bearer {{token}}
 Accept: application/json
 
@@ -82,7 +82,7 @@ Accept: application/json
 
 {
     "cita":{
-        "fecha":"2023-06-11",
+        "fecha":"2023-10-11",
         "hora" :"18:00",
         "pacienteId": 1,
         "doctorId": 1,
@@ -110,6 +110,12 @@ Accept: application/json
 DELETE http://127.0.0.1:4000/personal/cita/2
 Authorization: Bearer {{token}}
 Accept: application/json
+
+### Lista todas las citas del personal x
+GET http://127.0.0.1:4000/personal/cita/personalAd/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
 ### Lista doctores para la cita
 GET http://127.0.0.1:4000/personal/doctor
 Authorization: Bearer {{token}}

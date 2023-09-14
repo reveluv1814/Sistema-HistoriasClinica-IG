@@ -10,6 +10,8 @@ const jwt = require("jsonwebtoken");
 //nodemailer
 const nodemailer = require("nodemailer");
 //
+//modelos de la bd
+const { models } = require("./../libs/sequelize");
 
 //el secret
 const { config } = require("./../config/config");
@@ -31,6 +33,19 @@ class AuthService {
 
     delete user.dataValues.password; //elimina el password para que no se vea
 
+    // Verificar si el rol del usuario es "admin"
+    if (user.dataValues.rol === "admin") {
+      // Si es admin, devolver solo el usuario
+      return user;
+    }
+
+    // Si no es admin, obtener el idRol usando la función findRolUser
+    const idRol = await this.findRolUser(
+      user.dataValues.id,
+      user.dataValues.rol
+    );
+    // Devolver un objeto que contiene tanto el usuario como el idRol
+    user.dataValues.idRol = idRol;
     return user;
   }
   //firamdo del token osea encripta los datos
@@ -121,6 +136,36 @@ class AuthService {
       }, 5 * 60 * 1000); // 15 minutos en milisegundos
       throw boom.unauthorized();
     }
+  }
+  //funcion para devolver el id del rol
+  async findRolUser(id, rol) {
+    let roleModel;
+    // Verificar el rol especificado y seleccionar el modelo de rol apropiado
+    switch (rol) {
+      case "doctor":
+        roleModel = models.Doctor;
+        break;
+      case "personalAdmin":
+        roleModel = models.PersonalAdmin;
+        break;
+      case "laboratorista":
+        roleModel = models.Laboratorista;
+        break;
+      default:
+        throw new Error(`Rol no válido: ${rol}`);
+    }
+    // Buscar el rol específico basado en el id de usuario
+    const role = await roleModel.findOne({
+      where: {
+        usuarioId: id,
+      },
+    });
+    if (!role) {
+      throw boom.notFound(
+        `No se encontró un rol de ${rol} para el usuario con ID ${id}`
+      );
+    }
+    return role.id;
   }
 }
 

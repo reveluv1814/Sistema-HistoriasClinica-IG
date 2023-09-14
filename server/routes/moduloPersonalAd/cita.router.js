@@ -64,6 +64,21 @@ router.get(
     }
   }
 );
+router.get(
+  "/personalAd/:id",
+  checkRoles("admin", "personalAdmin"),
+  validatorHandler(getCitaSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const citas = await citaService.findPersonal(id);
+
+      res.json(citas);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 router.post(
   "/",
   checkRoles("admin", "personalAdmin"),
