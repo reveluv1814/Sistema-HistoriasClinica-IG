@@ -11,6 +11,8 @@ const TablePagination = ({
   handleShow,
   handleAddCarrito,
   handlePDF,
+  handleCita,
+  citaFlag,
 }) => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
@@ -30,6 +32,11 @@ const TablePagination = ({
             <th className="py-2 pt-3 px-4 text-left text-sm font-medium uppercase">
               Opciones
             </th>
+            {citaFlag && (
+              <th className="py-2 pt-3 px-4 text-left text-sm font-medium uppercase">
+                Acciones
+              </th>
+            )}
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200 dark:bg-slate-600 dark:divide-slate-800">
@@ -128,6 +135,7 @@ const TablePagination = ({
                     </svg>
                   </button>
                 )}
+
                 {handlePDF && (
                   <button
                     className="py-1 px-2 bg-red-500 text-white hover:bg-red-600 rounded"
@@ -150,6 +158,23 @@ const TablePagination = ({
                   </button>
                 )}
               </td>
+              {citaFlag && (
+                <td className="text-sm text-gray-500">
+                  {handleCita && (
+                    <button
+                      className="text-center justify-center py-1 px-2 bg-yellow-500 text-white hover:bg-yellow-600 rounded ml-2 hover:text-slate-700"
+                      onClick={() => handleCita(reg)}
+                    >
+                      <span
+                        className="align-middle text-xs"
+                        style={{ margin: 0 }}
+                      >
+                        Crear Cita
+                      </span>
+                    </button>
+                  )}
+                </td>
+              )}
             </tr>
           ))}
         </tbody>

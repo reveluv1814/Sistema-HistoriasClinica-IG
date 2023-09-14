@@ -16,7 +16,7 @@ const Paciente = () => {
   const [modalAddPaciente, setModalAddPaciente] = useState(false);
   const [modalDeletePaciente, setModalDeletePaciente] = useState(false);
   const [deletePacienteId, setDeletePacienteId] = useState(0);
-    
+
   const columnas = [
     { key: "id", label: "COD" },
     { key: "persona.nombreCompleto", label: "NOMBRE COMPLETO" },
@@ -124,6 +124,13 @@ const Paciente = () => {
       }
     }
   };
+  const handleCita = async (datos) => {
+    try {
+      console.log(datos);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <div className="max-w-full">
@@ -191,7 +198,8 @@ const Paciente = () => {
           fetchData={getPacientes}
           handleEdit={editPaciente}
           handleDelete={deleteId}
-          /*handleShow={handleShow} */
+          handleCita={handleCita}
+          citaFlag={true}
         ></TablePagination>
         <Modal
           modalOpen={modalAddPaciente}
