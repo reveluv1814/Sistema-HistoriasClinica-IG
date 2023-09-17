@@ -52,7 +52,7 @@ const Citas = () => {
     try {
       //getCitaValue(datos.id)
       const data = { name: "John", age: 30 };
-      navigate(`/personal/editCita/${datos.id}`, { state: data });
+      navigate(`/personal/editCita/${datos.id}`);
     } catch (error) {
       console.log(error);
     }

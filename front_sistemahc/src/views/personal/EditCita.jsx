@@ -1,25 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useUserProfileProvider } from "./../../context/UserProfileContext";
-import { useParams, useNavigate,useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import citaService from "./../../services/citaService";
 import Modal from "../../components/Modal";
 
 const EditCita = () => {
-  //logica para saber si se va editar o no
   //consigue el id de params
   const { id } = useParams();
-  const location = useLocation();
-  const data = location.state;
-  /* const location = useLocation();
-  const valueCita = location.state && location.state.valueCita; */
-  //const { getCitaValue, citaValue, setCitaValue } = useUserProfileProvider();//
-  const [citaData, setCitaData] = useState(null);
+  const formikRef = useRef();
 
+  const [citaValue, setCitaValue] = useState({});
+
+  //rellena los valores iniciales
   useEffect(() => {
-    //getCitaValue(id);
-    console.log(citaData);
+    const fetchData = async () => {
+      try {
+        const citaVa = await citaService.mostrar(id);
+        const { fecha, hora, doctorId } = citaVa.data;
+        // Formatea la fecha y hora según tus necesidades
+        const fechaFormateada = new Date(fecha).toISOString().split("T")[0];
+        const horaFormateada = hora.slice(0, 5);
+
+        // Crea un nuevo objeto con los elementos deseados
+        const nuevaCita = {
+          fecha: fechaFormateada,
+          hora: horaFormateada,
+          doctorId: doctorId,
+        };
+        setCitaValue({ cita: nuevaCita });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+  //lista a los doctores
+  useEffect(() => {
     const fetchDoctores = async () => {
       try {
         const { data } = await citaService.doctores();
@@ -50,14 +67,13 @@ const EditCita = () => {
   //funciones
   const switchAddCita = () => {
     setModalAddCita(false);
-    navigate("/personal/pacientes");
+    navigate("/personal/citas");
   };
   const handleSubmit = async (values, actions) => {
     try {
       const idDocInt = parseInt(values.cita.doctorId);
       values.cita.doctorId = idDocInt;
       await citaService.modificar(id, values);
-      //setCitaValue({})
       setModalAddCita(true);
       actions.resetForm();
     } catch (error) {
@@ -68,10 +84,8 @@ const EditCita = () => {
 
   return (
     <>
-    <p>Name: {data}</p>
-      <p>Age: {data}</p>
       <a
-        onClick={() => navigate("/personal/pacientes")}
+        onClick={() => navigate("/personal/citas")}
         className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-indigo-600 rounded-lg shadow-md group cursor-pointer bg-indigo-500 dark:bg-indigo-800 dark:border-indigo-900"
       >
         <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-indigo-400 dark:bg-indigo-700 group-hover:translate-x-0 ease">
@@ -96,7 +110,9 @@ const EditCita = () => {
         <span className="relative invisible">Atrás</span>
       </a>
       <Formik
-        initialValues={citaData}
+        enableReinitialize
+        innerRef={formikRef}
+        initialValues={citaValue}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
@@ -110,6 +126,8 @@ const EditCita = () => {
           isValid,
         }) => (
           <>
+            <p>los valores aqui:{JSON.stringify(values)}</p>
+
             <div className="bg-indigo-300 dark:bg-slate-700 flex justify-center rounded-xl p-5 mt-4">
               <div className="bg-gray-100 dark:bg-slate-800 xl:w-2/3 md:w-2/4 p-5 flex items-center justify-center flex-wrap rounded-2xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
                 <Form onSubmit={handleSubmit}>
@@ -214,7 +232,7 @@ const EditCita = () => {
       <Modal
         modalOpen={modalAddCita}
         setOpenModal={switchAddCita}
-        title={"Cita agregada"}
+        title={"Cita editada"}
         contenido={" shadow shadow-emerald-500/40"}
       >
         <div className="container md:mt-1">

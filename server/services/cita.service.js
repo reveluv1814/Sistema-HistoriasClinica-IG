@@ -95,7 +95,7 @@ class CitaService {
         },
       ],
       order: [
-        ["id"], // ordenar por fecha de creación en orden ascendente
+        ["fecha"], // ordenar por fecha de creación en orden ascendente
       ],
     });
 
@@ -258,6 +258,9 @@ class CitaService {
             },
           ],
         },
+      ],
+      order: [
+        ["fecha"], // ordenar por fecha de creación en orden ascendente
       ],
     });
     if (!cita) throw boom.notFound("Cita not found");

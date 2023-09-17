@@ -5,8 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import citaService from "./../../services/citaService";
 import Modal from "../../components/Modal";
 
-const AddCita = ({ isEditing}) => {
-  //logica para saber si se va editar o no
+const AddCita = ({ isEditing }) => {
   //consigue el id de params
   const { id } = useParams();
 

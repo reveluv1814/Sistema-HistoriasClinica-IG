@@ -82,13 +82,13 @@ Accept: application/json
 
 {
     "cita":{
-        "fecha":"2023-10-05",
-        "hora" :"18:00",
+        "fecha":"2023-10-10",
+        "hora" :"19:00",
         "pacienteId": 1,
-        "doctorId": 1,
+        "doctorId": 2,
         "personalAdId": 1,
         
-        "estado":false
+        "estado":true
     }
 }
 ###Edita una cita
