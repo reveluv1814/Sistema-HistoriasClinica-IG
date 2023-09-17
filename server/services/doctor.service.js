@@ -1,5 +1,5 @@
 const boom = require("@hapi/boom");
-const { Op } = require("sequelize");
+const { Op,Sequelize } = require("sequelize");
 const { models } = require("../libs/sequelize");
 const UserService = require("./usuario.service");
 
@@ -75,11 +75,17 @@ class DoctorService {
           model: models.Persona,
           as: "persona",
           attributes: [
-            "id",
-            "nombre",
-            "apellidoPaterno",
-            "apellidoMaterno",
-            "ci",
+            [
+              Sequelize.fn(
+                "CONCAT",
+                Sequelize.col("persona.nombre"),
+                " ",
+                Sequelize.col("persona.apellidoPaterno"),
+                " ",
+                Sequelize.col("persona.apellidoMaterno")
+              ),
+              "nombreCompleto",
+            ],
           ], // Especifica los atributos de persona que deseas mostrar
         },
       ],

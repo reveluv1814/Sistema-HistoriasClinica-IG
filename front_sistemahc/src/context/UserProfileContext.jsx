@@ -1,21 +1,22 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import ProfileService from "../services/profileService";
+import citaService from "../services/citaService";
 
 const UserProfileContext = createContext({});
 
 export default function UserProfileProvider({ children }) {
-  const [userProfile, setUserProfile] = useState({});
-  const [idRol, setIdRol] = useState(null);
-  useEffect(() => {
-    const idUserProfile = localStorage.getItem("id");
-    getUserProfile(idUserProfile);
-  }, []);
-  const getUserProfile = async (iduser) => {
+  const [citaValue, setCitaValue] = useState({});
+  
+  const getCitaValue = async (iduser) => {
     try {
-      const userRol = await ProfileService.mostrar(iduser);
-      setUserProfile(userRol.data);
-      const rol = localStorage.getItem("rol");
-      setIdRol(userRol.data.usuario[rol].id);
+      const citaVa = await citaService.mostrar(iduser);
+      //console.log(citaVa)
+      const fechaFormateada = new Date(citaVa.data.fecha).toISOString().split('T')[0];
+      setCitaValue({cita:{
+        fecha:fechaFormateada,
+        hora: citaVa.data.hora,
+        doctorId: citaVa.data.doctorId, 
+      }});
+      
     } catch (error) {
       console.log(error);
     }
@@ -23,7 +24,7 @@ export default function UserProfileProvider({ children }) {
 
   return (
     <UserProfileContext.Provider
-      value={{ userProfile, setUserProfile, getUserProfile, idRol }}
+      value={{ getCitaValue,citaValue,setCitaValue }}
     >
       {children}
     </UserProfileContext.Provider>

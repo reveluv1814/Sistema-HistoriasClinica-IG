@@ -1,24 +1,62 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import citaService from "./../../services/citaService";
+import Modal from "../../components/Modal";
+import { useUserProfileProvider } from "./../../context/UserProfileContext";
 
 const Citas = () => {
   const [citas, setCitas] = useState([]);
+  const [modalDeleteCita, setModalDeleteCita] = useState(false);
+  const [deleteId, setDeleteId] = useState(0);
 
-  useEffect(() => {
-    async function fetchCitas() {
-      try {
-        const idUserProfile = localStorage.getItem("id");
-
-        const { data } = await citaService.listar(idUserProfile);
-        //console.log(data);
-        setCitas(data);
-      } catch (error) {
-        console.log(error);
-      }
+  const navigate = useNavigate();
+  //
+  const { getCitaValue, citaValue, setCitaValue } = useUserProfileProvider();
+  //
+  const fetchCitas = async () => {
+    try {
+      const idUserProfile = localStorage.getItem("id");
+      const { data } = await citaService.listar(idUserProfile);
+      //console.log(data);
+      setCitas(data);
+    } catch (error) {
+      console.log(error);
     }
+  };
+  useEffect(() => {
     fetchCitas();
   }, []);
   //funciones
+  const deleteCitaFun = () => {
+    setModalDeleteCita(false);
+  };
+  const deleteCita = async () => {
+    if (modalDeleteCita) {
+      try {
+        await citaService.eliminar(deleteId);
+        fetchCitas();
+        setModalDeleteCita(false);
+        setDeleteId(0);
+      } catch (error) {
+        alert("Ocurrió un problema al intentar eliminar");
+        console.log(error);
+      }
+    }
+  };
+  const idCitaDelete = async (data) => {
+    setDeleteId(data.id);
+    setModalDeleteCita(true);
+  };
+  //edit
+  const handleEdit = async (datos) => {
+    try {
+      //getCitaValue(datos.id)
+      const data = { name: "John", age: 30 };
+      navigate(`/personal/editCita/${datos.id}`, { state: data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -28,8 +66,8 @@ const Citas = () => {
         </h3>
         <p className="text-gray-600 mt-2 dark:text-gray-200">
           En esta sección, encontrarás todas las <b>citas</b> que has registrado
-          en el sistema y que están programadas para ser atendidas, así como
-          aquellas que aún no han sido atendidas.
+          en el sistema y que están <b>programadas para ser atendidas</b>, así
+          como aquellas que aún <b>no han sido atendidas</b>.
         </p>
       </div>
       <div className="container mx-auto px-4 py-5 bg-cyan-600  dark:bg-slate-400  rounded-xl mt-5">
@@ -69,10 +107,65 @@ const Citas = () => {
                 {cita.personalAd.persona.nombreCompleto}
               </p>
               {/* <p>{JSON.stringify(cita)}</p> */}
+              <div className="flex flex-row items-center justify-center mt-2">
+                <button
+                  className=" text-sm bg-rose-500 py-2 px-4 rounded-lg mr-2 text-gray-100 hover:bg-rose-600 hover:text-white "
+                  onClick={() => idCitaDelete(cita)}
+                >
+                  Eliminar
+                </button>
+                <button
+                  className="text-sm bg-sky-500 py-2 px-4 rounded-lg ml-2 text-gray-100 hover:bg-sky-600 hover:text-white "
+                  onClick={() => handleEdit(cita)}
+                >
+                  Editar
+                </button>
+              </div>
             </div>
           ))}
         </div>
       </div>
+      <Modal
+        modalOpen={modalDeleteCita}
+        setOpenModal={deleteCitaFun}
+        title={"Eliminar Paciente?"}
+        contenido={" shadow shadow-rose-500/40"}
+      >
+        <div className="flex justify-center items-center text-rose-800 dark:text-rose-500">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-20 "
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z"
+            />
+          </svg>
+        </div>
+
+        <h4 className="text-center text-gray-700 text-lg font-medium dark:text-gray-300">
+          Desea Eliminar la Cita seleccionada?
+        </h4>
+        <div className="flex justify-center items-center mt-4">
+          <button
+            onClick={() => deleteCitaFun()}
+            className="bg-rose-600 text-white px-1 py-2 rounded-md text-base font-medium mr-2 hover:bg-red-700"
+          >
+            Cancelar
+          </button>
+          <button
+            onClick={() => deleteCita()}
+            className="bg-blue-500 text-white px-1 py-2 rounded-md text-base font-medium ml-2 hover:bg-blue-400"
+          >
+            Aceptar
+          </button>
+        </div>
+      </Modal>
     </>
   );
 };

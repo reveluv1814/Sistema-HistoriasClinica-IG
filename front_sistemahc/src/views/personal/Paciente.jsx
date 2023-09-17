@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TablePagination from "../../components/TablePagination";
 import Modal from "../../components/Modal";
 import pacienteService from "./../../services/pacienteService";
@@ -16,6 +17,8 @@ const Paciente = () => {
   const [modalAddPaciente, setModalAddPaciente] = useState(false);
   const [modalDeletePaciente, setModalDeletePaciente] = useState(false);
   const [deletePacienteId, setDeletePacienteId] = useState(0);
+
+  const navigate = useNavigate();
 
   const columnas = [
     { key: "id", label: "COD" },
@@ -126,7 +129,7 @@ const Paciente = () => {
   };
   const handleCita = async (datos) => {
     try {
-      console.log(datos);
+      navigate(`/personal/addCita/${datos.id}`);
     } catch (error) {
       console.log(error);
     }

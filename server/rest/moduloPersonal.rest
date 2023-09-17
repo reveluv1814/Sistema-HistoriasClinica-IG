@@ -71,7 +71,7 @@ Authorization: Bearer {{token}}
 Accept: application/json
 
 ###listar una cita
-GET http://127.0.0.1:4000/personal/cita/2
+GET http://127.0.0.1:4000/personal/cita/4
 Authorization: Bearer {{token}}
 Accept: application/json
 ### crea una cita
@@ -82,14 +82,13 @@ Accept: application/json
 
 {
     "cita":{
-        "fecha":"2023-10-11",
+        "fecha":"2023-10-05",
         "hora" :"18:00",
         "pacienteId": 1,
         "doctorId": 1,
         "personalAdId": 1,
-        "resumen":"resumiendooo",
-        "impresionDiag":"impresiones buenas",
-        "estado":true
+        
+        "estado":false
     }
 }
 ###Edita una cita

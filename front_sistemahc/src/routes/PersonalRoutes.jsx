@@ -1,6 +1,9 @@
 import PersonalLayout from "../layouts/PersonalAdminLayout";
 import Paciente from "../views/personal/Paciente";
 import Citas from "../views/personal/Citas";
+import AddCita from "../views/personal/AddCita";
+import EditCita from "../views/personal/EditCita";
+
 const PersonalRoutes = {
   path: "/personal",
   element: <PersonalLayout />,
@@ -12,6 +15,14 @@ const PersonalRoutes = {
     {
       path: "citas",
       element: <Citas />,
+    },
+    {
+      path: "addCita/:id",
+      element: <AddCita />,
+    },
+    {
+      path: "editCita/:id",
+      element: <EditCita />,
     },
     /* {
       path: "laboratoristas",

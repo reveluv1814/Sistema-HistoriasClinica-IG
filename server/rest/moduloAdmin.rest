@@ -27,14 +27,14 @@ Accept: application/json
 
 {
     "usuario": {
-      "email":"doctor11@email.com",
+      "email":"doctor2@email.com",
       "password": "123456",
       "rol": "doctor"
     },
     "persona":{
-      "nombre": "juan carlos",
-      "apellidoMaterno": "flores",
-      "apellidoPaterno": "ortiz",
+      "nombre": "vania annet",
+      "apellidoMaterno": "graneros",
+      "apellidoPaterno": "perez",
       "ci": "12345687",
       "telefono": "152879522",
       "direccion": "villa copa ",

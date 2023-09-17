@@ -184,7 +184,7 @@ class CitaService {
   }
   async findPersonal(id) {
     const cita = await models.Cita.findAll({
-      where: { personalAdId: id },
+      where: { personalAdId: id, estado: true },
       include: [
         {
           model: models.Doctor,
