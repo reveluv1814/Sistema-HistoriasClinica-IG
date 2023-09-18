@@ -3,6 +3,7 @@ import Paciente from "../views/personal/Paciente";
 import Citas from "../views/personal/Citas";
 import AddCita from "../views/personal/AddCita";
 import EditCita from "../views/personal/EditCita";
+import Historia from "../views/HistoriaComponents/Historia";
 
 const PersonalRoutes = {
   path: "/personal",
@@ -23,6 +24,10 @@ const PersonalRoutes = {
     {
       path: "editCita/:id",
       element: <EditCita />,
+    },
+    {
+      path: "historia/:id",
+      element: <Historia />,
     },
     /* {
       path: "laboratoristas",

@@ -12,6 +12,7 @@ const TablePagination = ({
   handleAddCarrito,
   handlePDF,
   handleCita,
+  handleHistoria,
   citaFlag,
 }) => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -159,10 +160,10 @@ const TablePagination = ({
                 )}
               </td>
               {citaFlag && (
-                <td className="text-sm text-gray-500">
+                <td className="text-sm text-gray-500 flex items-center justify-center pt-1">
                   {handleCita && (
                     <button
-                      className="text-center justify-center py-1 px-2 bg-yellow-500 text-white hover:bg-yellow-600 rounded ml-2 hover:text-slate-700"
+                      className="text-center justify-center py-1 px-2 bg-yellow-500 text-gray-200 hover:bg-yellow-600 rounded ml-2 hover:text-white"
                       onClick={() => handleCita(reg)}
                     >
                       <span
@@ -170,6 +171,19 @@ const TablePagination = ({
                         style={{ margin: 0 }}
                       >
                         Crear Cita
+                      </span>
+                    </button>
+                  )}
+                  {handleHistoria && (
+                    <button
+                      className="text-center justify-center py-1 px-2 bg-indigo-500 text-gray-200 hover:bg-indigo-600 rounded ml-2 hover:text-white"
+                      onClick={() => handleHistoria(reg)}
+                    >
+                      <span
+                        className="align-middle text-xs"
+                        style={{ margin: 0 }}
+                      >
+                        Ver Historia
                       </span>
                     </button>
                   )}

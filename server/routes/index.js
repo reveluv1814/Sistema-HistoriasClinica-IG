@@ -6,6 +6,7 @@ const authRouter = require("./authRoute/auth.router");
 const prueba = require("./prueba.router");
 const adminRouter = require("./moduloAdmin/admin.router");
 const personalRouter = require("./moduloPersonalAd/personal.router");
+const historiaRouter = require("./moduloHistoria/historia.router");
 
 //middleware que verifica token para dar acceso
 const estaAutorizado = passport.authenticate("jwt", { session: false });
@@ -21,6 +22,7 @@ function routerApi(app) {
   //admin /middleware/ router que usa (en este caso usuario)
   app.use("/admin", estaAutorizado, adminRouter);
   app.use("/personal", estaAutorizado, personalRouter);
+  app.use("/historia", estaAutorizado, historiaRouter);
   //crea usuario-doctor-persona
   //app.use("/doctor", estaAutorizado, doctorRouter);
 }

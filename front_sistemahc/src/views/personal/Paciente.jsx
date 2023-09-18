@@ -134,6 +134,14 @@ const Paciente = () => {
       console.log(error);
     }
   };
+  const handleHistoria = async (datos) => {
+    try {
+      console.log(datos)
+      navigate(`/personal/historia/${datos.id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <div className="max-w-full">
@@ -202,6 +210,7 @@ const Paciente = () => {
           handleEdit={editPaciente}
           handleDelete={deleteId}
           handleCita={handleCita}
+          handleHistoria={handleHistoria}
           citaFlag={true}
         ></TablePagination>
         <Modal

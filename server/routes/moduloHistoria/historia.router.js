@@ -1,46 +1,35 @@
 const express = require("express");
 
-const CitaService = require("../../services/cita.service");
+const HistoriaService = require("../../services/historia.service");
 //middlewares
-const {validatorHandlerObjetos,validatorHandler,} = require("../../middlewares/validator.handler"); //valida los schemas
-const { checkRoles } = require("./../../middlewares/auth.handler"); //para verificar el rol
+const {
+  validatorHandlerObjetos,
+  validatorHandler,
+} = require("../../middlewares/validator.handler"); //valida los schemas
+const { checkRoles } = require("../../middlewares/auth.handler"); //para verificar el rol
 //schemas
-const {getCitaSchema,createCitaSchema,updateCitaSchema,} = require("../../schemas/cita.schema");
+const {getHistoriaSchema,createHistoriaSchema,updateHistoriaSchema} = require("../../schemas/historiaClinica.schema");
 //inicializando
 const router = express.Router();
-const citaService = new CitaService();
+const historiaService = new HistoriaService();
 
 router.get(
-  "/",
-  checkRoles("admin", "personalAdmin"),
+  "/:id",
+  checkRoles("admin", "personalAdmin","doctor","laboratorista"),
+  validatorHandler(getHistoriaSchema, "params"),
   async (req, res, next) => {
     try {
-      const citas = await citaService.find();
+      const { id } = req.params;
+      const historia = await historiaService.findPacHis(id);
       res.json({
-        citas,
+        historia,
       });
     } catch (error) {
       next(error);
     }
   }
 );
-//borrar
 /* router.get(
-  "/historia/:id",
-  checkRoles("admin", "personalAdmin"),
-  async (req, res, next) => {
-    try {
-      const { id } = req.params;
-      const historias = await historiaService.findPacHis(id);
-      res.json({
-        historias,
-      });
-    } catch (error) {
-      next(error);
-    }
-  }
-); */
-router.get(
   "/:id",
   checkRoles("admin", "personalAdmin"),
   validatorHandler(getCitaSchema, "params"),
@@ -115,6 +104,6 @@ router.delete(
       next(error);
     }
   }
-);
+); */
 
 module.exports = router;

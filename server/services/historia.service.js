@@ -19,6 +19,52 @@ class HistoriaService {
     if (!historia) throw boom.notFound("Historia not found");
     return historia;
   }
+  async findPacHis(id) {
+    const rta = await models.P_creaPac.findOne({
+      where: { pacienteId: id },
+      //attributes: ["historiaId"],
+    });
+    if (!rta) throw boom.notFound("Historia not found");
+    const historiaP = await models.HistoriaClinica.findOne({
+      where: { id: rta.historiaId },
+      include: [
+        {
+          model: models.AntecedentesF,
+          as: "antecedenteF",
+          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+        },
+        {
+          model: models.AntecedentesP,
+          as: "antecedenteP",
+          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+        },
+        {
+          model: models.ComposicionF,
+          as: "composicionesF",
+          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+        },
+        {
+          model: models.ExploracionF,
+          as: "exploracionF",
+          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+        },
+        /* {
+          model: models.Laboratorista,
+          through: models.HistoriaLabo,
+          as: "laboratoristas",
+          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+        }, */
+        {
+          model: models.Cita,
+          as: "citas",
+          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+        },
+      ],
+    });
+    if (!historiaP) throw boom.notFound("Historia not found");
+
+    return historiaP;
+  }
 
   async update(id, changes) {
     const historia = await this.findOne(id);

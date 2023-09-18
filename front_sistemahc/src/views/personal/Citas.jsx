@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import citaService from "./../../services/citaService";
 import Modal from "../../components/Modal";
-import { useUserProfileProvider } from "./../../context/UserProfileContext";
 
 const Citas = () => {
   const [citas, setCitas] = useState([]);
@@ -10,9 +9,7 @@ const Citas = () => {
   const [deleteId, setDeleteId] = useState(0);
 
   const navigate = useNavigate();
-  //
-  const { getCitaValue, citaValue, setCitaValue } = useUserProfileProvider();
-  //
+  
   const fetchCitas = async () => {
     try {
       const idUserProfile = localStorage.getItem("id");
