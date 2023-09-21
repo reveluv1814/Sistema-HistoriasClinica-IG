@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import historiaService from "./../../services/historiaService";
 
 const Historia = () => {
   //consigue el id de params
   const { id } = useParams();
   const navigate = useNavigate();
+  const [historia, setHistoria] = useState(null);
+  useEffect(() => {
+    const getHistoria = async () => {
+      try {
+        const historiaFetch = await historiaService.historiaPaciente(id);
+        console.log(historiaFetch.data);
+        setHistoria(historiaFetch.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getHistoria();
+  }, []);
+
   return (
     <>
-    <p>este es el id del paciente: {id}</p>
       <a
         onClick={() => navigate("/personal/pacientes")}
         className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-indigo-600 rounded-lg shadow-md group cursor-pointer bg-indigo-500 dark:bg-indigo-800 dark:border-indigo-900"
@@ -34,6 +49,7 @@ const Historia = () => {
         <span className="relative invisible">Atrás</span>
       </a>
       <div>Historia</div>
+      <p>los valores aqui:{JSON.stringify(historia)}</p>
     </>
   );
 };

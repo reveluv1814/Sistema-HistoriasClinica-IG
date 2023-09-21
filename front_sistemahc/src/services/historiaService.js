@@ -1,15 +1,15 @@
 import api from "./api";
 
-const citaService = {
-  listar: (id) => {
-    return api.get(`personal/cita/personalAd/${id}`);
+const ciataService = {
+  historiaPaciente: (id) => {
+    return api.get(`historia/${id}`);
   },
 
-  doctores: () => {
+  /* doctores: () => {
     return api.get('personal/doctor');
-  },
+  } ,*/
 
-  guardar: (datos) => {
+  /* guardar: (datos) => {
     return api.post("/personal/cita", datos);
   },
 
@@ -23,7 +23,7 @@ const citaService = {
 
   eliminar: (id) => {
     return api.delete(`/personal/cita/${id}`);
-  },
+  }, */
 };
 
-export default citaService;
+export default ciataService;

@@ -1,5 +1,6 @@
 const boom = require("@hapi/boom");
 const { models } = require("./../libs/sequelize");
+const PacienteService = require("./paciente.service");
 
 class HistoriaService {
   constructor() {}
@@ -20,11 +21,18 @@ class HistoriaService {
     return historia;
   }
   async findPacHis(id) {
+    const pacienteService = new PacienteService();
+
     const rta = await models.P_creaPac.findOne({
       where: { pacienteId: id },
       //attributes: ["historiaId"],
     });
     if (!rta) throw boom.notFound("Historia not found");
+
+    //busca los datos del paciente
+    const paciente = await pacienteService.findOne(id);
+    if (!paciente) throw boom.notFound("Historia not found");
+
     const historiaP = await models.HistoriaClinica.findOne({
       where: { id: rta.historiaId },
       include: [
@@ -54,16 +62,15 @@ class HistoriaService {
           as: "laboratoristas",
           //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
         }, */
-        {
-          model: models.Cita,
-          as: "citas",
-          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
-        },
       ],
     });
-    if (!historiaP) throw boom.notFound("Historia not found");
 
-    return historiaP;
+    if (!historiaP) throw boom.notFound("Historia not found");
+    const citas = await models.Cita.findAll({
+      where: { historiaId: historiaP.id, estado: false },
+    });
+
+    return { paciente,...historiaP.toJSON(), citas };
   }
 
   async update(id, changes) {
