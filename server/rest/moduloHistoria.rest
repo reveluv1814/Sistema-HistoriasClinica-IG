@@ -1,6 +1,6 @@
 @token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbCI6InBlcnNvbmFsQWRtaW4iLCJpYXQiOjE2OTQxODgxNTV9.OULPAIXZFm83dn-Y6hozx0amejbm2hPLyKum-Fez620
 
 #listar
-GET http://127.0.0.1:4000/historia/1
+GET http://127.0.0.1:4000/historia/2
 Authorization: Bearer {{token}}
 Accept: application/json

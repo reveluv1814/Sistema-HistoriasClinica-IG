@@ -9,12 +9,12 @@ const Citas = () => {
   const [deleteId, setDeleteId] = useState(0);
 
   const navigate = useNavigate();
-  
+
   const fetchCitas = async () => {
     try {
       const idUserProfile = localStorage.getItem("id");
       const { data } = await citaService.listar(idUserProfile);
-      //console.log(data);
+      console.log(data);
       setCitas(data);
     } catch (error) {
       console.log(error);
@@ -71,55 +71,63 @@ const Citas = () => {
         <div
           className={"grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 "}
         >
-          {citas.map((cita, index) => (
-            <div
-              key={index}
-              className="bg-sky-100 dark:bg-slate-800 p-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.4)] hover:bg-slate-100 hover:scale-105 transition-transform cursor-pointer"
-            >
-              {/* Renderiza el contenido de cada elemento aquí  */}
-              <div className="mb-2 grid grid-cols-1 sm:grid-cols-2 ">
-                <div>
-                  <b className="text-gray-600 text-xl dark:text-gray-200">
-                    Fecha:
-                  </b>{" "}
-                  {new Date(cita.fecha).toLocaleDateString()}
+          {citas.map((cita, index) => {
+            const fecha = new Date(cita.fecha);
+            const dia = fecha.getUTCDate().toString().padStart(2, "0");
+            const mes = (fecha.getUTCMonth() + 1).toString().padStart(2, "0");
+            const año = fecha.getUTCFullYear();
+            return (
+              <div
+                key={index}
+                className="bg-sky-100 dark:bg-slate-800 p-4 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.4)] hover:bg-slate-100 hover:scale-105 transition-transform cursor-pointer"
+              >
+                {/* Renderiza el contenido de cada elemento aquí  */}
+                <div className="mb-2 grid grid-cols-1 sm:grid-cols-2 ">
+                  <div>
+                    <b className="text-gray-600 text-xl dark:text-gray-200">
+                      Fecha:
+                    </b>{" "}
+                    {`${dia}/${mes}/${año}`}
+                  </div>
+                  <div>
+                    <b className="text-gray-600 text-xl dark:text-gray-200">
+                      Hora:
+                    </b>{" "}
+                    {cita.hora.slice(0, 5)}
+                  </div>
                 </div>
-                <div>
-                  <b className="text-gray-600 text-xl dark:text-gray-200">
-                    Hora:
+                <p className="mb-2">
+                  <b className="text-gray-800 dark:text-gray-400">Paciente:</b>{" "}
+                  {cita.paciente.persona.nombreCompleto}
+                </p>
+                <p className="mb-2">
+                  <b className="text-gray-800 dark:text-gray-400">Doctor:</b>{" "}
+                  {cita.doctor.persona.nombreCompleto}
+                </p>
+                <p className="italic text-sm">
+                  <b className="text-gray-700 dark:text-gray-400">
+                    Creado Por:
                   </b>{" "}
-                  {cita.hora.slice(0, 5)}
+                  {cita.personalAd.persona.nombreCompleto}
+                </p>
+                {/* <p>{JSON.stringify(cita)}</p> */}
+                <div className="flex flex-row items-center justify-center mt-2">
+                  <button
+                    className=" text-sm bg-rose-500 py-2 px-4 rounded-lg mr-2 text-gray-100 hover:bg-rose-600 hover:text-white "
+                    onClick={() => idCitaDelete(cita)}
+                  >
+                    Eliminar
+                  </button>
+                  <button
+                    className="text-sm bg-sky-500 py-2 px-4 rounded-lg ml-2 text-gray-100 hover:bg-sky-600 hover:text-white "
+                    onClick={() => handleEdit(cita)}
+                  >
+                    Editar
+                  </button>
                 </div>
               </div>
-              <p className="mb-2">
-                <b className="text-gray-800 dark:text-gray-400">Paciente:</b>{" "}
-                {cita.paciente.persona.nombreCompleto}
-              </p>
-              <p className="mb-2">
-                <b className="text-gray-800 dark:text-gray-400">Doctor:</b>{" "}
-                {cita.doctor.persona.nombreCompleto}
-              </p>
-              <p className="italic text-sm">
-                <b className="text-gray-700 dark:text-gray-400">Creado Por:</b>{" "}
-                {cita.personalAd.persona.nombreCompleto}
-              </p>
-              {/* <p>{JSON.stringify(cita)}</p> */}
-              <div className="flex flex-row items-center justify-center mt-2">
-                <button
-                  className=" text-sm bg-rose-500 py-2 px-4 rounded-lg mr-2 text-gray-100 hover:bg-rose-600 hover:text-white "
-                  onClick={() => idCitaDelete(cita)}
-                >
-                  Eliminar
-                </button>
-                <button
-                  className="text-sm bg-sky-500 py-2 px-4 rounded-lg ml-2 text-gray-100 hover:bg-sky-600 hover:text-white "
-                  onClick={() => handleEdit(cita)}
-                >
-                  Editar
-                </button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
       <Modal

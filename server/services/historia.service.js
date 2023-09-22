@@ -1,4 +1,5 @@
 const boom = require("@hapi/boom");
+const { Op, Sequelize } = require("sequelize");
 const { models } = require("./../libs/sequelize");
 const PacienteService = require("./paciente.service");
 
@@ -30,7 +31,7 @@ class HistoriaService {
     if (!rta) throw boom.notFound("Historia not found");
 
     //busca los datos del paciente
-    const paciente = await pacienteService.findOne(id);
+    const paciente = await pacienteService.findPacienteHistoria(id);
     if (!paciente) throw boom.notFound("Historia not found");
 
     const historiaP = await models.HistoriaClinica.findOne({
@@ -68,9 +69,35 @@ class HistoriaService {
     if (!historiaP) throw boom.notFound("Historia not found");
     const citas = await models.Cita.findAll({
       where: { historiaId: historiaP.id, estado: false },
+      include: [
+        {
+          model: models.Doctor,
+          as: "doctor",
+          attributes: ["unidad"],
+          include: [
+            {
+              model: models.Persona,
+              as: "persona",
+              attributes: [
+                [
+                  Sequelize.fn(
+                    "CONCAT",
+                    Sequelize.col("doctor.persona.nombre"),
+                    " ",
+                    Sequelize.col("doctor.persona.apellidoPaterno"),
+                    " ",
+                    Sequelize.col("doctor.persona.apellidoMaterno")
+                  ),
+                  "nombreCompleto",
+                ],
+              ],
+            },
+          ],
+        },
+      ],
     });
 
-    return { paciente,...historiaP.toJSON(), citas };
+    return { paciente, ...historiaP.toJSON(), citas };
   }
 
   async update(id, changes) {

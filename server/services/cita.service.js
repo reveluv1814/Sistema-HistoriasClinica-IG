@@ -266,7 +266,7 @@ class CitaService {
     if (!cita) throw boom.notFound("Cita not found");
     return cita;
   }
-
+  
   async update(id, changes) {
     //const cita = await this.findOne(id);
     const rta = await models.Cita.update(changes, {

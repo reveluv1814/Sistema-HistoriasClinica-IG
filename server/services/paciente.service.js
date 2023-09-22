@@ -105,6 +105,36 @@ class PacienteService {
     if (!paciente) throw boom.notFound("Paciente not found");
     return paciente;
   }
+  async findPacienteHistoria(id) {
+    const paciente = await models.Paciente.findByPk(id, {
+      include: [
+        {
+          model: models.Persona,
+          as: "persona",
+        },
+        /* {
+          model: models.PersonalAdmin,
+          as: "personalAd",
+          attributes:["id","cargo"],
+          include: [
+            {
+              model: models.Persona,
+              as: "persona",
+              attributes: [
+                "id",
+                "nombre",
+                "apellidoPaterno",
+                "apellidoMaterno",
+                "ci",
+              ],
+            },
+          ],
+        }, */
+      ],
+    });
+    if (!paciente) throw boom.notFound("Paciente not found");
+    return paciente;
+  }
   /* async create(data) {
     const newPaciente = await models.Paciente.create(data);
     return newPaciente;
