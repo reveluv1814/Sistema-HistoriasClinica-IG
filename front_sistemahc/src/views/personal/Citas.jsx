@@ -14,7 +14,7 @@ const Citas = () => {
     try {
       const idUserProfile = localStorage.getItem("id");
       const { data } = await citaService.listar(idUserProfile);
-      console.log(data);
+      //console.log(data);
       setCitas(data);
     } catch (error) {
       console.log(error);

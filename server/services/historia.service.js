@@ -57,12 +57,12 @@ class HistoriaService {
           as: "exploracionF",
           //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
         },
-        /* {
+         {
           model: models.Laboratorista,
           through: models.HistoriaLabo,
           as: "laboratoristas",
           //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
-        }, */
+        },
       ],
     });
 

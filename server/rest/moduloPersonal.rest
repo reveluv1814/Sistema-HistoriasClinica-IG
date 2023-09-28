@@ -84,8 +84,8 @@ Accept: application/json
     "cita":{
         "fecha":"2023-10-10",
         "hora" :"19:00",
-        "pacienteId": 2,
-        "doctorId": 2,
+        "pacienteId": 1,
+        "doctorId": 1,
         "personalAdId": 1,
         "resumen":"En esta consulta el paciente  se mostro con mejorias y se vio esto y  estofasdf asdfasdfsdfsdfasdfsd asdfadsfasdfasdfsdf",
         "impresionDiag":"Lo veo con impresiones demasiado buenas y mejorandosafas asdf asdffasdfsdf asdfsdfasfas sadfasdfsd",

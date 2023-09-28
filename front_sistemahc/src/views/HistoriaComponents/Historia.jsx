@@ -7,6 +7,7 @@ import AntecedenteP from "./AntecedentesP";
 import ComposicionF from "./ComposicionF";
 import ExploracionF from "./ExploracionF";
 import Cita from "./Cita";
+import Laboratorio from "./Laboratorio";
 
 const Historia = () => {
   //consigue el id de params
@@ -85,6 +86,7 @@ const Historia = () => {
           </div>
           <ExploracionF exploracionF={historia.historia.exploracionF}/>
           <Cita citas={historia.historia.citas}/>
+          <Laboratorio laboratoristas={historia.historia.laboratoristas}/>
           {console.log(historia.historia.citas)}
         </>
       )}

@@ -136,7 +136,7 @@ const Paciente = () => {
   };
   const handleHistoria = async (datos) => {
     try {
-      console.log(datos)
+      //console.log(datos)
       navigate(`/personal/historia/${datos.id}`);
     } catch (error) {
       console.log(error);
@@ -219,14 +219,6 @@ const Paciente = () => {
           title={editFlag ? "Editar Paciente" : "Agregar Paciente"}
           contenido={" shadow shadow-blue-500/40"}
         >
-          {/* <FormAddUser
-            setOpenModal={closeAddUser}
-            userValue={doctorValue}
-            userService={doctorService}
-            listar={getDoctores}
-            editUser={editFlag}
-            idEdit={idDocEdit}
-          /> */}
           <FormAddPaciente
             setOpenModal={closeAddPaciente}
             pacienteValue={pacienteValue}
