@@ -117,6 +117,10 @@ class HistoriaService {
               model: models.GenitalesEx,
               as: "genitalesEx",
             },
+            {
+              model: models.Miembros,
+              as: "miembros",
+            },
           ],
           //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
         },

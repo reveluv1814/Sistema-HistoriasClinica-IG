@@ -539,3 +539,56 @@ Accept: application/json
         "meato": true
     }
 }
+###crea miembros con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/miembros/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "miembros":{
+        "supManosP": null,
+        "supBraquiactilia": null,
+        "supAracnodactilia": null,
+        "supPolidactilia": null,
+        "supTipoPoli": "",
+        "supSindactilia": null,
+        "supCutanea": null,
+        "supOsea": null,
+        "supDedos": "",
+        "supCavalgamiento": "",
+        "supDeformidad": null,
+        "supObs": "",
+        "infPiePeque": null,
+        "infPolidactilia": null,
+        "infImplantacion": "",
+        "infSindactilia": null,
+        "infCutanea": null,
+        "infOsea": null,
+        "infDedos": "",
+        "infCavo": null,
+        "infCalcaneo": null,
+        "infEquino": null,
+        "infVaro": null,
+        "infValgo": null,
+        "infPiePlano": null,
+        "infDistancia": null,
+        "infObs": "",
+        "artiLimitaciones": "",
+        "artiHiperex": "",
+        "artiContracion": ""
+    }
+}
+###Edita un miembros de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/miembros/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "miembros":{
+        "infPolidactilia": false,
+        "infImplantacion": "hola mundoo",
+        "infSindactilia": true
+    }
+}

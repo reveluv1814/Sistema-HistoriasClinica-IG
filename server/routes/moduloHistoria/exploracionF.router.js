@@ -28,6 +28,7 @@ const musculaturaRouter = require("./exploracionF_Routers/musculatura.router");
 const exNeurologicoRouter = require("./exploracionF_Routers/exNeurologico.router");
 const pielAnexosRouter = require("./exploracionF_Routers/pielAnexos.router");
 const genitalesExRouter = require("./exploracionF_Routers/genitalesEx.router");
+const miembrosRouter = require("./exploracionF_Routers/miembros.router");
 
 //inicializando
 const router = express.Router();
@@ -98,5 +99,6 @@ router.use("/musculatura", musculaturaRouter);
 router.use("/exNeurologico", exNeurologicoRouter);
 router.use("/pielAnexos", pielAnexosRouter);
 router.use("/genitalesEx", genitalesExRouter);
+router.use("/miembros", miembrosRouter);
 
 module.exports = router;
