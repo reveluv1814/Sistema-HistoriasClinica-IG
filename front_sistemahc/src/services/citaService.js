@@ -9,6 +9,10 @@ const citaService = {
     return api.get('personal/doctor');
   },
 
+  CitaDoc: (id) => {
+    return api.get(`doctor/citas/${id}`);
+  },
+
   guardar: (datos) => {
     return api.post("/personal/cita", datos);
   },
@@ -23,6 +27,10 @@ const citaService = {
 
   eliminar: (id) => {
     return api.delete(`/personal/cita/${id}`);
+  },
+
+  docElimina: (id) => {
+    return api.delete(`/doctor/cita/${id}`);
   },
 };
 

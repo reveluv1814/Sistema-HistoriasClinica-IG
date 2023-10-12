@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import SidebarAdmin from "./partials/SidebarAdmin";
 import Header from "./partials/HeaderPersonal";
-import Banner from "./partials/dashboard/WelcomeBanner";
+import Banner from "./partials/dashboard/WelcomeBannerPersonal";
 
 const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);

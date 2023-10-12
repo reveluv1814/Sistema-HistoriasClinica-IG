@@ -55,6 +55,7 @@ router.get(
     }
   }
 );
+//lista citas que creo el personal con id
 router.get(
   "/personalAd/:id",
   checkRoles("admin", "personalAdmin"),
@@ -110,7 +111,7 @@ router.delete(
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      res.status(200).json(await citaService.delete(id));
+      res.status(202).json(await citaService.delete(id));
     } catch (error) {
       next(error);
     }

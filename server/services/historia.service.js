@@ -55,6 +55,69 @@ class HistoriaService {
         {
           model: models.ExploracionF,
           as: "exploracionF",
+          include:[
+            {
+              model: models.CraneoF,
+              as: "craneoF",
+              //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+            },
+            {
+              model: models.Orejas,
+              as: "orejas",
+            },
+            {
+              model: models.Ojos,
+              as: "ojos",
+            },
+            {
+              model: models.Nariz,
+              as: "nariz",
+            },
+            {
+              model: models.MaxMandibula,
+              as: "maxMandibula",
+            },
+            {
+              model: models.Boca,
+              as: "boca",
+            },
+            {
+              model: models.Cuello,
+              as: "cuello",
+            },
+            {
+              model: models.Torax,
+              as: "torax",
+            },
+            {
+              model: models.Columna,
+              as: "columna",
+            },
+            {
+              model: models.Abdomen,
+              as: "abdomen",
+            },
+            {
+              model: models.TejidoSub,
+              as: "tejidoSub",
+            },
+            {
+              model: models.Musculatura,
+              as: "musculatura",
+            },
+            {
+              model: models.ExNeurologico,
+              as: "exNeurologico",
+            },
+            {
+              model: models.PielAnexos,
+              as: "pielAnexos",
+            },
+            {
+              model: models.GenitalesEx,
+              as: "genitalesEx",
+            },
+          ],
           //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
         },
          {
@@ -69,6 +132,85 @@ class HistoriaService {
     if (!historiaP) throw boom.notFound("Historia not found");
     const citas = await models.Cita.findAll({
       where: { historiaId: historiaP.id, estado: false },
+      include: [
+        {
+          model: models.Doctor,
+          as: "doctor",
+          attributes: ["unidad"],
+          include: [
+            {
+              model: models.Persona,
+              as: "persona",
+              attributes: [
+                [
+                  Sequelize.fn(
+                    "CONCAT",
+                    Sequelize.col("doctor.persona.nombre"),
+                    " ",
+                    Sequelize.col("doctor.persona.apellidoPaterno"),
+                    " ",
+                    Sequelize.col("doctor.persona.apellidoMaterno")
+                  ),
+                  "nombreCompleto",
+                ],
+              ],
+            },
+          ],
+        },
+      ],
+    });
+
+    return { paciente, ...historiaP.toJSON(), citas };
+  }
+
+  async findHis(id) {
+    const pacienteService = new PacienteService();
+
+    //verifica que exista la relacion ternaria
+    const rta = await models.P_creaPac.findOne({
+      where: { historiaId: id },
+    });
+    if (!rta) throw boom.notFound("Historia not found");
+
+    //busca los datos del paciente
+    const paciente = await pacienteService.findPacienteHistoria(rta.pacienteId);
+    if (!paciente) throw boom.notFound("Historia not found");
+
+    const historiaP = await models.HistoriaClinica.findOne({
+      where: { id: id },
+      include: [
+        {
+          model: models.AntecedentesF,
+          as: "antecedenteF",
+          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+        },
+        {
+          model: models.AntecedentesP,
+          as: "antecedenteP",
+          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+        },
+        {
+          model: models.ComposicionF,
+          as: "composicionesF",
+          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+        },
+        {
+          model: models.ExploracionF,
+          as: "exploracionF",
+          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+        },
+         {
+          model: models.Laboratorista,
+          through: models.HistoriaLabo,
+          as: "laboratoristas",
+          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+        },
+      ],
+    });
+
+    if (!historiaP) throw boom.notFound("Historia not found");
+    const citas = await models.Cita.findAll({
+      where: { historiaId: id, estado: false },
       include: [
         {
           model: models.Doctor,

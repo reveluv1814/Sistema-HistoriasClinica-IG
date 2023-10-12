@@ -182,9 +182,95 @@ class CitaService {
     if (!cita) throw boom.notFound("Cita not found");
     return cita;
   }
+  //lista las citas del id del personal administrartivo
   async findPersonal(id) {
     const cita = await models.Cita.findAll({
       where: { personalAdId: id, estado: true },
+      include: [
+        {
+          model: models.Doctor,
+          as: "doctor",
+          attributes: ["unidad"],
+          include: [
+            {
+              model: models.Persona,
+              as: "persona",
+              attributes: [
+                [
+                  Sequelize.fn(
+                    "CONCAT",
+                    Sequelize.col("doctor.persona.nombre"),
+                    " ",
+                    Sequelize.col("doctor.persona.apellidoPaterno"),
+                    " ",
+                    Sequelize.col("doctor.persona.apellidoMaterno")
+                  ),
+                  "nombreCompleto",
+                ],
+              ],
+            },
+          ],
+        },
+        {
+          model: models.Paciente,
+          as: "paciente",
+          attributes: ["residencia"],
+          include: [
+            {
+              model: models.Persona,
+              as: "persona",
+              attributes: [
+                [
+                  Sequelize.fn(
+                    "CONCAT",
+                    Sequelize.col("paciente.persona.nombre"),
+                    " ",
+                    Sequelize.col("paciente.persona.apellidoPaterno"),
+                    " ",
+                    Sequelize.col("paciente.persona.apellidoMaterno")
+                  ),
+                  "nombreCompleto",
+                ],
+              ],
+            },
+          ],
+        },
+        {
+          model: models.PersonalAdmin,
+          as: "personalAd",
+          attributes: ["cargo"],
+          include: [
+            {
+              model: models.Persona,
+              as: "persona",
+              attributes: [
+                [
+                  Sequelize.fn(
+                    "CONCAT",
+                    Sequelize.col("personalAd.persona.nombre"),
+                    " ",
+                    Sequelize.col("personalAd.persona.apellidoPaterno"),
+                    " ",
+                    Sequelize.col("personalAd.persona.apellidoMaterno")
+                  ),
+                  "nombreCompleto",
+                ],
+              ],
+            },
+          ],
+        },
+      ],
+      order: [
+        ["fecha"], // ordenar por fecha de creación en orden ascendente
+      ],
+    });
+    if (!cita) throw boom.notFound("Cita not found");
+    return cita;
+  }
+  //lista las citas que debe atender el doctor de id
+  async findDoctor(id) {
+    const cita = await models.Cita.findAll({
+      where: { doctorId: id, estado: true },
       include: [
         {
           model: models.Doctor,

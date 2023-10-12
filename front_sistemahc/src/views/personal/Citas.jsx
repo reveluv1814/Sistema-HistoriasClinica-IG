@@ -47,8 +47,6 @@ const Citas = () => {
   //edit
   const handleEdit = async (datos) => {
     try {
-      //getCitaValue(datos.id)
-      const data = { name: "John", age: 30 };
       navigate(`/personal/editCita/${datos.id}`);
     } catch (error) {
       console.log(error);
@@ -133,7 +131,7 @@ const Citas = () => {
       <Modal
         modalOpen={modalDeleteCita}
         setOpenModal={deleteCitaFun}
-        title={"Eliminar Paciente?"}
+        title={"Eliminar Cita?"}
         contenido={" shadow shadow-rose-500/40"}
       >
         <div className="flex justify-center items-center text-rose-800 dark:text-rose-500">

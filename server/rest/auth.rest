@@ -1,4 +1,4 @@
-#Login
+#Login admin
 POST http://127.0.0.1:4000/auth/login
 Content-Type: application/json
 Accept: application/json
@@ -7,13 +7,22 @@ Accept: application/json
     "email": "neilgraneros11@gmail.com",
     "password": "123456"
 }
-###
+### login personal
 POST http://127.0.0.1:4000/auth/login
 Content-Type: application/json
 Accept: application/json
 
 {
     "email": "personal11@email.com",
+    "password": "123456"
+}
+### login doctor
+POST http://127.0.0.1:4000/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "doctor2@email.com",
     "password": "123456"
 }
 

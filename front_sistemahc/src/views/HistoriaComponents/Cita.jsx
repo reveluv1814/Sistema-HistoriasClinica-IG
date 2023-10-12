@@ -6,7 +6,7 @@ const CitaView = ({ citas }) => {
       <div className="p-4">
         <div className="border rounded-md p-4 shadow-md flex bg-zinc-100 dark:bg-stone-800 dark:border-stone-500 w-full">
           <div className="flex flex-col w-full">
-            <h2 className="text-2xl font-semibold mb-1">Resumen de Consulta</h2>
+            <h2 className="text-2xl font-semibold mb-1">Resumen de Consultas Realizadas</h2>
             <hr
               className="mb-4 border border-sky-700 shadow w-full"
               style={{ width: "100%" }}

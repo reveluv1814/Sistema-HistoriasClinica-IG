@@ -1,0 +1,18 @@
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbCI6ImRvY3RvciIsImlhdCI6MTY5NjAwMTMxMH0.fQSuKF5en3asffqUOhI4bybBh4rgPDq953QMMb5WjPc
+
+#listar
+GET http://127.0.0.1:4000/doctor/pacientes?q=&page=1&limit=10
+Authorization: Bearer {{token}}
+Accept: application/json
+### obtener un paciente
+GET http://127.0.0.1:4000/personal/paciente/1
+Authorization: Bearer {{token}}
+Accept: application/json
+### Lista todas las citas que debe atender el doctor x
+GET http://127.0.0.1:4000/doctor/citas/1
+Authorization: Bearer {{token}}
+Accept: application/json
+### Elimina la cita x que el medico escoja
+DELETE http://127.0.0.1:4000/doctor/cita/7
+Authorization: Bearer {{token}}
+Accept: application/json

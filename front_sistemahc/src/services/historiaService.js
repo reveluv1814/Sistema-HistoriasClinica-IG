@@ -4,6 +4,9 @@ const ciataService = {
   historiaPaciente: (id) => {
     return api.get(`historia/${id}`);
   },
+  historiaFormList: (id) => {
+    return api.get(`historia/form/${id}`);
+  },
 
   /* doctores: () => {
     return api.get('personal/doctor');

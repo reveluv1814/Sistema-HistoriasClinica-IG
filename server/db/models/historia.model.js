@@ -33,7 +33,7 @@ const HistoriaSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   antecedentePId: {
     field: "antecedenteP_id",

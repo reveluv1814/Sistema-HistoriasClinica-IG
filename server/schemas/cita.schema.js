@@ -7,7 +7,7 @@ const pacienteId = Joi.number().integer();
 const doctorId = Joi.number().integer();
 const personalAdId = Joi.number().integer();
 const resumen = Joi.string().optional().allow(null);
-const impresionDiag = Joi.string().optional().allow(null);;
+const impresionDiag = Joi.string().optional().allow(null);
 const estado = Joi.boolean();
 
 const createCitaSchema = Joi.object({
@@ -16,8 +16,8 @@ const createCitaSchema = Joi.object({
   pacienteId: pacienteId.required(),
   doctorId: doctorId.required(),
   personalAdId: personalAdId.required(),
-  resumen,
-  impresionDiag,
+  resumen: resumen.optional().allow(null), // Hacer que resumen sea opcional y permitir null
+  impresionDiag: impresionDiag.optional().allow(null),
   estado: estado.required(),
 });
 

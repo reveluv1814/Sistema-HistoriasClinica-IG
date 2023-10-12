@@ -211,7 +211,7 @@ const Paciente = () => {
           handleDelete={deleteId}
           handleCita={handleCita}
           handleHistoria={handleHistoria}
-          citaFlag={true}
+          accionesFlag={true}
         ></TablePagination>
         <Modal
           modalOpen={modalAddPaciente}

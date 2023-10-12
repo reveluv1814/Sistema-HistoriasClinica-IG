@@ -14,7 +14,6 @@ const createComposicionFSchema = Joi.object({
   sexo,
   fechanac,
   obs,
-  historiaId: historiaId.required(),
 });
 
 const updateComposicionFSchema = Joi.object({

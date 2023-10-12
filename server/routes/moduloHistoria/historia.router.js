@@ -8,14 +8,25 @@ const {
 } = require("../../middlewares/validator.handler"); //valida los schemas
 const { checkRoles } = require("../../middlewares/auth.handler"); //para verificar el rol
 //schemas
-const {getHistoriaSchema,createHistoriaSchema,updateHistoriaSchema} = require("../../schemas/historiaClinica.schema");
+const {
+  getHistoriaSchema,
+  createHistoriaSchema,
+  updateHistoriaSchema,
+} = require("../../schemas/historiaClinica.schema");
+
+//routers de las demás tablas
+const antecedenteFRouter = require("./antecedenteF.router");
+const antecedentePRouter = require("./antecedenteP.router");
+const composicionFRouter = require("./composicionF.router");
+const exploracionFRouter = require("./exploracionF.router");
+
 //inicializando
 const router = express.Router();
 const historiaService = new HistoriaService();
 
 router.get(
   "/:id",
-  checkRoles("admin", "personalAdmin","doctor","laboratorista"),
+  checkRoles("admin", "personalAdmin", "doctor", "laboratorista"),
   validatorHandler(getHistoriaSchema, "params"),
   async (req, res, next) => {
     try {
@@ -29,6 +40,30 @@ router.get(
     }
   }
 );
+router.get(
+  "/form/:id",
+  checkRoles("admin", "doctor", "laboratorista"),
+  validatorHandler(getHistoriaSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const historia = await historiaService.findHis(id);
+      res.json({
+        historia,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+//routers de las demas tablas
+router.use("/antecedenteF", antecedenteFRouter);
+router.use("/antecedenteP", antecedentePRouter);
+router.use("/composicionF", composicionFRouter);
+router.use("/exploracionF", exploracionFRouter);
+
+
+
 /* router.get(
   "/:id",
   checkRoles("admin", "personalAdmin"),

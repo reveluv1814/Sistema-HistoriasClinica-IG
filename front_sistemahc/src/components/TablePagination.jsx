@@ -13,7 +13,8 @@ const TablePagination = ({
   handlePDF,
   handleCita,
   handleHistoria,
-  citaFlag,
+  accionesFlag,
+  personalMedico,
 }) => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
@@ -33,7 +34,7 @@ const TablePagination = ({
             <th className="py-2 pt-3 px-4 text-left text-sm font-medium uppercase">
               Opciones
             </th>
-            {citaFlag && (
+            {accionesFlag && (
               <th className="py-2 pt-3 px-4 text-left text-sm font-medium uppercase">
                 Acciones
               </th>
@@ -52,6 +53,19 @@ const TablePagination = ({
                 </td>
               ))}
               <td className="text-sm text-gray-500">
+                {personalMedico && handleHistoria && (
+                  <button
+                    className="text-center justify-center py-1 px-2 bg-indigo-500 text-gray-200 hover:bg-indigo-600 rounded ml-2 hover:text-white"
+                    onClick={() => handleHistoria(reg)}
+                  >
+                    <span
+                      className="align-middle text-xs"
+                      style={{ margin: 0 }}
+                    >
+                      Ver Historia
+                    </span>
+                  </button>
+                )}
                 {handleAddCarrito && (
                   <button
                     className="py-1 px-2 bg-yellow-500 text-white hover:bg-yellow-600 rounded"
@@ -159,7 +173,7 @@ const TablePagination = ({
                   </button>
                 )}
               </td>
-              {citaFlag && (
+              {accionesFlag && (
                 <td className="text-sm text-gray-500 flex items-center justify-center pt-1">
                   {handleCita && (
                     <button

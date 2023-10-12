@@ -1,0 +1,541 @@
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbCI6ImRvY3RvciIsImlhdCI6MTY5NjAwMTMxMH0.fQSuKF5en3asffqUOhI4bybBh4rgPDq953QMMb5WjPc
+
+#listar la historia del paciente de id x
+GET http://127.0.0.1:4000/historia/1
+Authorization: Bearer {{token}}
+Accept: application/json
+###crea una exploracion fisica con la historia de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "exploracionF":{
+        "peso_porcentaje": null,
+        "peso": null,
+        "talla": null,
+        "talla_porcentaje": null,
+        "pc": null,
+        "pc_porcentaje": null,
+        "pt": null,
+        "pt_porcentaje": null,
+        "envergadura": null,
+        "dii": null,
+        "dii_porcentaje": null,
+        "seg_sup": null,
+        "seg_inf": null,
+        "distancia_inter": null,
+        "bregma": null,
+        "largo_manoD": null,
+        "largo_dedoMD": null,
+        "distancia_intercantal": null,
+        "largo_manoI": null,
+        "largo_dedoMI": null,
+        "orejaD": null,
+        "orejaI": null,
+        "pieD": null,
+        "pieI": null
+    }
+}
+###Edita una exploracion fisica de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "exploracionF":{
+        "peso": 3.55
+    }
+}
+
+############################## Tablas de Exploracion Fisica #########################
+###crea craneo facial con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/craneoF/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "craneoF":{
+       "microcefalia": null,
+       "macrocefalia": null,
+       "hidrocefalia": null,
+       "craneossino": null,
+       "occipital_p": null,
+       "prominente": null,
+       "abultamiento_f": null,
+       "glabela_p": null,
+       "asimetria_c": null,
+       "braquicefalia": null,
+       "aplasia_cuero": null,
+       "implantación_cabello": "",
+       "hipoplasia": null,
+       "suturas": null,
+       "suturas_des": "",
+       "facies": "",
+       "obs": ""
+    }
+}
+###Edita un craneo facial de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/craneoF/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "craneoF":{
+        "microcefalia": false
+    }
+}
+###crea orejas con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/orejas/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "orejas":{
+       "implantacion": "",
+       "microtia": null,
+       "pabellon_mal": null,
+       "apendice": null,
+       "auriculares": null,
+       "ausencia_cae": null,
+       "estenosis_cae": null,
+       "fistula": null,
+       "obs": ""
+    }
+}
+###Edita orejas de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/orejas/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "orejas":{
+        "apendice": false
+    }
+}
+###crea ojos con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/ojos/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "ojos":{
+        "sinofiris": null,
+        "ptosis_p": null,
+        "estrabismo": null,
+        "convergente": null,
+        "divergente": null,
+        "infeccion": null,
+        "epifora": null,
+        "anoftalmina": null,
+        "microftalmina": null,
+        "hipertelorismo": null,
+        "epicanto": null,
+        "angulo_oblicuos": "",
+        "exoftalmina": null,
+        "nistagmus": null,
+        "escleras_azul": null,
+        "coloboma": null,
+        "aniridia": null,
+        "maculas_iris": null,
+        "catarata": null,
+        "leucoma": null,
+        "obs": ""
+    }
+}
+###Edita ojos de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/ojos/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "ojos":{
+        "angulo_oblicuos": "para arriba"
+    }
+}
+###crea una nariz con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/nariz/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nariz":{
+        "puentenasal": null,
+        "stenosis": "",
+        "tabique": null,
+        "hipoplasis": null,
+        "narizProminente": null,
+        "tipoNariz": "",
+        "obs": ""
+    }
+}
+###Edita la nariz de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/nariz/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nariz":{
+        "tipoNariz": "normal xd"
+    }
+}
+###crea un maxMandibula con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/maxMandibula/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "maxMandibula":{
+        "hipoplasiaMaxS": null,
+        "micrognatia": null,
+        "prognatismo": null,
+        "retronagtismo": null,
+        "obs": ""
+    }
+}
+###Edita la maxMandibula de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/maxMandibula/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "maxMandibula":{
+        "prognatismo": false
+    }
+}
+###crea una boca con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/boca/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "boca":{
+        "leporino": null,
+        "vol": null,
+        "fosetasInf": null,
+        "comisuras": null,
+        "microstomia": null,
+        "macrostomia": null,
+        "macroglosia": null,
+        "lenguaHendida": null,
+        "lenguaGeo": null,
+        "frenillo": null,
+        "altDental": null,
+        "fisuraPalatina": null,
+        "paladarOjival": null,
+        "uvulaBifida": null,
+        "palpacionPaladar": null,
+        "obs": ""
+    }
+}
+###Edita la boca de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/boca/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "boca":{
+        "vol": true
+    }
+}
+###crea un cuello con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/cuello/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "cuello":{
+        "corto": null,
+        "quistes": null,
+        "fistula": null,
+        "colli": null,
+        "torticolis": null,
+        "tiroides": null,
+        "obs": ""
+    }
+}
+###Edita un cuello de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/cuello/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "cuello":{
+        "colli": true
+    }
+}
+###crea un torax con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/torax/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "torax":{
+        "cajaPequeña": null,
+        "esternonCorto": null,
+        "escavado": null,
+        "quilla": null,
+        "mamasAnormales": null,
+        "politelia": null,
+        "defectosCostales": null,
+        "obs": "",
+        "pulmones": "",
+        "cardioTa": null,
+        "cardioTaSobre": null,
+        "cardioFc": null,
+        "cardioBM": ""
+    }
+}
+###Edita un torax de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/torax/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "torax":{
+        "pulmones": "tiene dos xd"
+    }
+}
+###crea una columna con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/columna/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "columna":{
+        "cifosis": null,
+        "escoliosis": null,
+        "lordosis": null,
+        "apendice": null,
+        "fovea": null,
+        "obs": ""
+    }
+}
+###Edita una columna de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/columna/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "columna":{
+        "escoliosis": true
+    }
+}
+###crea un abdomen con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/abdomen/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "abdomen":{
+        "herniaUmbilical": null,
+        "herniaInguinal": null,
+        "diastasis": null,
+        "tumoraciones": null,
+        "semiologia": "",
+        "obs": ""
+    }
+}
+###Edita un abdomen de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/abdomen/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "abdomen":{
+        "diastasis": true
+    }
+}
+###crea un tejidoSub con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/tejidoSub/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "tejidoSub":{
+        "espesor": "",
+        "turgor": "",
+        "edemaManos": null,
+        "edemaPies": null,
+        "edemaOtros": "",
+        "ganglios": "",
+        "obs": ""
+    }
+}
+###Edita un tejidoSub de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/tejidoSub/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "tejidoSub":{
+        "turgor": "firme"
+    }
+}
+###crea una musculatura con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/musculatura/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "musculatura":{
+        "normotrofica": null,
+        "hipotrofica": null,
+        "hipertrofica": null,
+        "normotonica": null,
+        "hipotonica": null,
+        "hipertonica": null,
+        "fuerzaMus": "",
+        "agenesia": null,
+        "agenesiaEspeci": "",
+        "obs": ""
+    }
+}
+###Edita una musculatura de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/musculatura/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "musculatura":{
+        "hipertrofica": true
+    }
+}
+###crea un exNeurologico con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/exNeurologico/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "exNeurologico":{
+        "facies": "",
+        "motricidad": "",
+        "sencibilidad": "",
+        "coordinacion": "",
+        "movInvo": "",
+        "equilibrio": "",
+        "lenguaje": "",
+        "reflejos": "",
+        "paresCra": "",
+        "maniNeurovege": ""
+    }
+}
+###Edita un exNeurologico de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/exNeurologico/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "exNeurologico":{
+        "sencibilidad": "muchaaaa"
+    }
+}
+###crea un pielAnexos con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/pielAnexos/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "pielAnexos":{
+        "pigmentacion": null,
+        "aumentoGen": null,
+        "disminucionGen": null,
+        "albinTotal": null,
+        "albinParcial": null,
+        "vitiligo": null,
+        "manchasCL": null,
+        "maculas": null,
+        "otrasManchas": null,
+        "hemanTela": null,
+        "alopesiaGen": null,
+        "alopesiaPar": null,
+        "irsutismo": null,
+        "hipoDisManos": null,
+        "hipoDisPies": null,
+        "hipoDisTumo": null,
+        "vellosFaciales": "",
+        "vellosAxilares": "",
+        "vellosPubi": "",
+        "vellosCorpo": ""
+    }
+}
+###Edita un pielAnexos de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/pielAnexos/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "pielAnexos":{
+        "hemanTela": true
+    }
+}
+###crea un genitalesEx con la exploracion fisica de id x ###############################################
+POST http://127.0.0.1:4000/historia/exploracionF/genitalesEx/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "genitalesEx":{
+        "tanner": "",
+        "ambiguos": null,
+        "criptorquidea": null,
+        "testiculoRetractil": null,
+        "hipoMay": null,
+        "hipoMen": null,
+        "hipertrofiaClitoris": null,
+        "hidrocele": null,
+        "meato": null,
+        "peneal": null,
+        "peneoescrotal": null,
+        "perineal": null,
+        "epispadia": null,
+        "fimosis": null,
+        "tamanioPene": null,
+        "testiculoDMay": "",
+        "testiculoDMen": "",
+        "testiculoIMay": "",
+        "testiculoIMen": ""
+    }
+}
+###Edita un genitalesEx de id x
+PATCH http://127.0.0.1:4000/historia/exploracionF/genitalesEx/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "genitalesEx":{
+        "meato": true
+    }
+}
