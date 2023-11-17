@@ -1,5 +1,5 @@
 const boom = require("@hapi/boom");
-const { Op } = require("sequelize");
+const { Op, Sequelize } = require("sequelize");
 const { models } = require("../libs/sequelize");
 const UserService = require("./usuario.service");
 
@@ -55,6 +55,37 @@ class LaboratoristaService {
         {
           model: models.Persona,
           as: "persona",
+        },
+      ],
+    });
+    if (!user) {
+      throw boom.notFound("Laboratorista no encontrado");
+    }
+    return user;
+  }
+  async findNombre(id) {
+    const user = await models.Laboratorista.findByPk(id, {
+      attributes: [
+        "id",
+        
+      ],
+      include: [
+        {
+          model: models.Persona,
+          as: "persona",
+          attributes: [
+            [
+              Sequelize.fn(
+                "CONCAT",
+                Sequelize.col("nombre"),
+                " ",
+                Sequelize.col("apellidoPaterno"),
+                " ",
+                Sequelize.col("apellidoMaterno")
+              ),
+              "nombreCompleto",
+            ],
+          ],
         },
       ],
     });
@@ -141,6 +172,21 @@ class LaboratoristaService {
       where: { usuarioId: id },
     });
     return { rta: true };
+  }
+  //
+  async createLaboratorio(data) {
+    const userService = new UserService();
+    const { usuario, persona, laboratorista } = data;
+
+    const newUsuario = await userService.createUser(usuario);
+    const newPersona = await models.Persona.create(persona);
+
+    const newLaboratorista = await models.Laboratorista.create({
+      ...laboratorista,
+      usuarioId: newUsuario.id,
+      personaId: newPersona.id,
+    });
+    return newLaboratorista;
   }
 }
 

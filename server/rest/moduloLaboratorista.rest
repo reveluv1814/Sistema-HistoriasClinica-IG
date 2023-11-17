@@ -1,14 +1,6 @@
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbCI6ImxhYm9yYXRvcmlzdGEiLCJpYXQiOjE2OTcyMDgxODV9.skl20OnWuwGAafPWvTK46KK8O7AizWfWt-XMYpWrr1U
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInJvbCI6ImxhYm9yYXRvcmlzdGEiLCJpYXQiOjE3MDAyMzgyMDl9.EcdmVCrTCaYGd7skVGkTdL8hVq-S0nSfexuKPJ7namg
 
-### lista todos los laboratoristas
-GET http://127.0.0.1:4000/laboratorio/?q=&page=1&limit=10
-Authorization: Bearer {{token}}
-Accept: application/json
-### lista el laboratorista de id x
-GET http://127.0.0.1:4000/laboratorio/1
-Authorization: Bearer {{token}}
-Accept: application/json
-
+####################################################
 ###listar la historia del paciente de id x
 GET http://127.0.0.1:4000/historia/1
 Authorization: Bearer {{token}}
@@ -19,3 +11,23 @@ GET http://127.0.0.1:4000/historia/form/1
 Authorization: Bearer {{token}}
 Accept: application/json
 
+### ver nombre del laboratorista de id x
+GET http://127.0.0.1:4000/historia/laboratorio/nombre/2
+Authorization: Bearer {{token}}
+Accept: application/json
+###################################################################
+### crear un laboratorio en la historia de id X
+POST http://127.0.0.1:4000/historia/laboratorio/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "historiaLabo":{
+        "examen": "huesoss",
+        "laboratoristaId": 2
+    }
+}
+### editar un laboratorio de una historia de id x
+
+### eliminar un laboratorio de una historia de id x

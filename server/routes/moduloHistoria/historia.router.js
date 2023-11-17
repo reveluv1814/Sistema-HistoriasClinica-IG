@@ -19,6 +19,7 @@ const antecedenteFRouter = require("./antecedenteF.router");
 const antecedentePRouter = require("./antecedenteP.router");
 const composicionFRouter = require("./composicionF.router");
 const exploracionFRouter = require("./exploracionF.router");
+const laboratorioRouter = require("./../moduloLaboratorista/historiaLabo.router");
 
 //inicializando
 const router = express.Router();
@@ -61,6 +62,8 @@ router.use("/antecedenteF", antecedenteFRouter);
 router.use("/antecedenteP", antecedentePRouter);
 router.use("/composicionF", composicionFRouter);
 router.use("/exploracionF", exploracionFRouter);
+router.use("/laboratorio", laboratorioRouter);
+
 
 
 

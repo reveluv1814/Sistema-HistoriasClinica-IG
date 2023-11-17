@@ -55,7 +55,7 @@ class HistoriaService {
         {
           model: models.ExploracionF,
           as: "exploracionF",
-          include:[
+          include: [
             {
               model: models.CraneoF,
               as: "craneoF",
@@ -124,16 +124,42 @@ class HistoriaService {
           ],
           //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
         },
-         {
+        /* {
           model: models.Laboratorista,
-          through: models.HistoriaLabo,
+          through: {
+            model: models.HistoriaLabo,
+          },
           as: "laboratoristas",
-          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
-        },
+          include: [
+            {
+              model: models.Persona,
+              as: "persona",
+              attributes: [
+                [
+                  Sequelize.fn(
+                    "CONCAT",
+                    Sequelize.col("nombre"),
+                    " ",
+                    Sequelize.col("apellidoPaterno"),
+                    " ",
+                    Sequelize.col("apellidoMaterno")
+                  ),
+                  "nombreCompleto",
+                ],
+              ],
+            },
+          ],
+        }, */
       ],
     });
 
     if (!historiaP) throw boom.notFound("Historia not found");
+    //historiaLabo
+    const historiaLabo = await models.HistoriaLabo.findAll({
+      where: { historiaId: rta.historiaId }, // Filtrar por la historia específica
+    });
+    
+    //Citas
     const citas = await models.Cita.findAll({
       where: { historiaId: historiaP.id, estado: false },
       include: [
@@ -164,7 +190,7 @@ class HistoriaService {
       ],
     });
 
-    return { paciente, ...historiaP.toJSON(), citas };
+    return { paciente, ...historiaP.toJSON(), historiaLabo, citas };
   }
 
   async findHis(id) {
@@ -203,16 +229,23 @@ class HistoriaService {
           as: "exploracionF",
           //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
         },
-         {
+        /* {
           model: models.Laboratorista,
           through: models.HistoriaLabo,
           as: "laboratoristas",
           //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
-        },
+        }, */
       ],
     });
 
     if (!historiaP) throw boom.notFound("Historia not found");
+
+    //historiaLabo
+    const historiaLabo = await models.HistoriaLabo.findAll({
+      where: { historiaId: rta.historiaId }, // Filtrar por la historia específica
+    });
+    
+    //Citas
     const citas = await models.Cita.findAll({
       where: { historiaId: id, estado: false },
       include: [
@@ -243,7 +276,7 @@ class HistoriaService {
       ],
     });
 
-    return { paciente, ...historiaP.toJSON(), citas };
+    return { paciente, ...historiaP.toJSON(), historiaLabo,citas };
   }
 
   async update(id, changes) {
