@@ -1,6 +1,7 @@
 import DoctorLayout from "../layouts/DoctorLayout";
 import Paciente from "../views/doctor/PacienteVista";
 import Citas from "../views/doctor/Citas";
+import Historia from "../views/HistoriaComponents/Historia";
 import HistoriaForm from "../views/HistoriaComponents/HistoriaForms/HistoriaForm";
 
 const DoctorRoutes = {
@@ -17,6 +18,10 @@ const DoctorRoutes = {
     },
     {
       path: "historia/:id",
+      element: <Historia />,
+    },
+    {
+      path: "historiaConsulta/:id",
       element: <HistoriaForm />,
     },
   ], 

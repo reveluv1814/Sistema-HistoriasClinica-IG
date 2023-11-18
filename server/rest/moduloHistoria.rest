@@ -119,8 +119,8 @@ Accept: application/json
 
 {
     "antecedenteP":{
-        "g_embarazo": "hola",
-        "g_obs": "mundo"
+        "pat_fiebre": true,
+        "pat_enfInfec": false
     }
 }
 

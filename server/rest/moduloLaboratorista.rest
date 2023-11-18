@@ -24,10 +24,23 @@ Accept: application/json
 
 {
     "historiaLabo":{
-        "examen": "huesoss",
+        "examen": "huesoss ccc",
         "laboratoristaId": 2
     }
 }
-### editar un laboratorio de una historia de id x
+### editar un laboratorio de id x
+PATCH http://127.0.0.1:4000/historia/laboratorio/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
 
-### eliminar un laboratorio de una historia de id x
+{
+    "historiaLabo":{
+        "examen": "era bromaaa xd"
+    }
+}
+
+### eliminar un laboratorio de id x
+DELETE  http://127.0.0.1:4000/historia/laboratorio/5
+Authorization: Bearer {{token}}
+Accept: application/json

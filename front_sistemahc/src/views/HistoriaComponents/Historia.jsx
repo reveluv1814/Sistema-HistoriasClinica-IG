@@ -18,7 +18,7 @@ const Historia = () => {
     const getHistoria = async () => {
       try {
         const historiaFetch = await historiaService.historiaPaciente(id);
-        //console.log(historiaFetch.data);
+        console.log(historiaFetch.data);
         setHistoria(historiaFetch.data);
       } catch (error) {
         console.log(error);
@@ -84,10 +84,9 @@ const Historia = () => {
               </div>
             </div>
           </div>
-          <ExploracionF exploracionF={historia.historia.exploracionF}/>
-          <Cita citas={historia.historia.citas}/>
-          <Laboratorio laboratoristas={historia.historia.laboratoristas}/>
-          {console.log(historia.historia.citas)}
+          <ExploracionF exploracionF={historia.historia.exploracionF} />
+          <Cita citas={historia.historia.citas} />
+          <Laboratorio laboratoristas={historia.historia.historiaLabo} />
         </>
       )}
     </>

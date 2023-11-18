@@ -47,7 +47,7 @@ const Citas = () => {
   //edit
   const handleEdit = async (datos) => {
     try {
-      navigate(`/doctor/historia/${datos.historiaId}`);
+      navigate(`/doctor/historiaConsulta/${datos.historiaId}`);
       console.log(datos)
     } catch (error) {
       console.log(error);
