@@ -107,7 +107,7 @@ const FormAdduser = ({
 
   return (
     <>
-      <div className="max-w-lg mx-auto px-6 mb-5 sm:px-10">
+      <div className="max-w-lg mx-auto px-6 mb-5 sm:px-10 xl:h-[30px] ">
         <ul aria-label="Steps" className="flex items-center">
           {stepsLine.stpesCount.map((item, idx) => (
             <li
@@ -181,7 +181,7 @@ const FormAdduser = ({
                 <>
                   <label
                     htmlFor="usuario.email"
-                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300 max-lg:text-sm"
                   >
                     Email:
                   </label>
@@ -203,7 +203,7 @@ const FormAdduser = ({
                     <>
                       <label
                         htmlFor="usuario.password"
-                        className="block mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
+                        className="block mb-1 text-base font-medium text-gray-700 dark:text-gray-300 max-lg:text-sm"
                       >
                         Password:
                       </label>
@@ -274,10 +274,10 @@ const FormAdduser = ({
               {step === 2 && (
                 <div
                   style={{
-                    height: "476px",
+                    height: "",
                     overflowY: "scroll",
                   }}
-                  className="flex flex-col pr-2"
+                  className="flex flex-col pr-2 pl-2 h-[476px] xl:h-[300px]"
                 >
                   <label
                     htmlFor="persona.nombre"

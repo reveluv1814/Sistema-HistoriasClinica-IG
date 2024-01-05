@@ -12,7 +12,7 @@ Authorization: Bearer {{tokenDoc}}
 Accept: application/json
 
 ###crea un antecedente familiar con la historia de id x ###############################################
-POST http://127.0.0.1:4000/historia/antecedenteF/2
+POST http://127.0.0.1:4000/historia/antecedenteF/1
 Authorization: Bearer {{tokenDoc}}
 Content-Type: application/json
 Accept: application/json

@@ -147,10 +147,10 @@ const FormAddPaciente = ({
               {step === 1 && (
                 <div
                   style={{
-                    height: "476px",
+                    height: "",
                     overflowY: "scroll",
                   }}
-                  className="flex flex-col pr-2"
+                  className="flex flex-col pr-2 pl-2 h-[476px] xl:h-[300px]"
                 >
                   <label
                     htmlFor="persona.nombre"

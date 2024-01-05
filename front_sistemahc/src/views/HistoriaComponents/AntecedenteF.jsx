@@ -5,7 +5,7 @@ const AntecedenteFView = ({ antecedenteF }) => {
   const dia = fecha.getUTCDate().toString().padStart(2, "0");
   const mes = (fecha.getUTCMonth() + 1).toString().padStart(2, "0");
   const año = fecha.getUTCFullYear();
-  const fechaFormateada = `${dia}/${mes}/${año}`;
+  const fechaFormateada = `${dia}/${mes}/${año}`; 
 
   return (
     <>
@@ -74,12 +74,12 @@ const AntecedenteFView = ({ antecedenteF }) => {
                     </p>
                     <hr className="mb-2 border-0 h-px  bg-gray-300  shadow w-full " />
 
-                    <p className="w-full  mb-2 text-sm">
+                    {/* <p className="w-full  mb-2 text-sm">
                       <span className="font-semibold">
                         Última modificación:
                       </span>{" "}
                       {fechaFormateada || 'sin dato...'}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               )}
