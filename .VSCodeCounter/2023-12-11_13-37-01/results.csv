@@ -1,0 +1,302 @@
+"filename", "language", "JavaScript", "HTTP", "JSON", "HTML", "XML", "JavaScript JSX", "CSS", "YAML", "comment", "blank", "total"
+"d:\NEIL\SistemaHistoriasClinicas\client\index.html", "HTML", 0, 0, 0, 13, 0, 0, 0, 0, 0, 1, 14
+"d:\NEIL\SistemaHistoriasClinicas\client\package-lock.json", "JSON", 0, 0, 2583, 0, 0, 0, 0, 0, 0, 1, 2584
+"d:\NEIL\SistemaHistoriasClinicas\client\package.json", "JSON", 0, 0, 33, 0, 0, 0, 0, 0, 0, 1, 34
+"d:\NEIL\SistemaHistoriasClinicas\client\postcss.config.cjs", "JavaScript", 6, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"d:\NEIL\SistemaHistoriasClinicas\client\public\vite.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
+"d:\NEIL\SistemaHistoriasClinicas\client\src\App.css", "CSS", 0, 0, 0, 0, 0, 0, 37, 0, 0, 6, 43
+"d:\NEIL\SistemaHistoriasClinicas\client\src\App.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 45, 0, 0, 0, 13, 58
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Cards\CardUsuario.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 70, 0, 0, 3, 5, 78
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Footer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 33, 0, 0, 0, 3, 36
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Forms\FormUser.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 545, 0, 0, 30, 16, 591
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Forms\FormUserUpdate.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 556, 0, 0, 32, 17, 605
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Modal\Modal.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 55, 0, 0, 0, 7, 62
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Modal\ModalAdd.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 77, 0, 0, 12, 10, 99
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Navbar.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 33, 0, 0, 0, 3, 36
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Protected.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 9, 0, 0, 0, 2, 11
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\TableUsers.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 84, 0, 0, 0, 6, 90
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\TableUsers2.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 50, 0, 0, 15, 7, 72
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Context\AdminPageContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 3
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Context\AdminPageProvider.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 193, 0, 0, 14, 9, 216
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Context\ContextUser.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 13, 0, 0, 1, 7, 21
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\AdminPage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 44, 0, 0, 0, 5, 49
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\ChangePassword.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 216, 0, 0, 0, 14, 230
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\LoginPage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 190, 0, 0, 5, 12, 207
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\NotFound.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 0, 1, 7
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\RecoveryPage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 152, 0, 0, 0, 11, 163
+"d:\NEIL\SistemaHistoriasClinicas\client\src\api\login.api.js", "JavaScript", 18, 0, 0, 0, 0, 0, 0, 0, 0, 7, 25
+"d:\NEIL\SistemaHistoriasClinicas\client\src\assets\Modal.css", "CSS", 0, 0, 0, 0, 0, 0, 75, 0, 0, 8, 83
+"d:\NEIL\SistemaHistoriasClinicas\client\src\assets\style.css", "CSS", 0, 0, 0, 0, 0, 0, 73, 0, 2, 23, 98
+"d:\NEIL\SistemaHistoriasClinicas\client\src\index.css", "CSS", 0, 0, 0, 0, 0, 0, 3, 0, 0, 2, 5
+"d:\NEIL\SistemaHistoriasClinicas\client\src\libs\names.lib.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 0, 1, 31
+"d:\NEIL\SistemaHistoriasClinicas\client\src\libs\usuario.lib.js", "JavaScript", 34, 0, 0, 0, 0, 0, 0, 0, 0, 1, 35
+"d:\NEIL\SistemaHistoriasClinicas\client\src\main.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 15, 0, 0, 0, 2, 17
+"d:\NEIL\SistemaHistoriasClinicas\client\tailwind.config.cjs", "JavaScript", 8, 0, 0, 0, 0, 0, 0, 0, 1, 1, 10
+"d:\NEIL\SistemaHistoriasClinicas\client\vite.config.js", "JavaScript", 5, 0, 0, 0, 0, 0, 0, 0, 1, 2, 8
+"d:\NEIL\SistemaHistoriasClinicas\docker-compose.yml", "YAML", 0, 0, 0, 0, 0, 0, 0, 13, 0, 1, 14
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\.eslintrc.cjs", "JavaScript", 18, 0, 0, 0, 0, 0, 0, 0, 1, 2, 21
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\index.html", "HTML", 0, 0, 0, 29, 0, 0, 0, 0, 0, 1, 30
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\package-lock.json", "JSON", 0, 0, 4033, 0, 0, 0, 0, 0, 0, 1, 4034
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\package.json", "JSON", 0, 0, 39, 0, 0, 0, 0, 0, 0, 1, 40
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\postcss.config.js", "JavaScript", 6, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\public\vite.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\App.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\App.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 14, 0, 0, 0, 3, 17
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\assets\react.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\components\Modal.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 32, 0, 0, 1, 3, 36
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\components\TablePagination.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 247, 0, 0, 0, 5, 252
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\context\UserProfileContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 27, 0, 0, 1, 7, 35
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\index.css", "CSS", 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\AdminLayout.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 23, 0, 0, 0, 5, 28
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\DoctorLayout.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 23, 0, 0, 0, 5, 28
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\PersonalAdminLayout.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 23, 0, 0, 0, 5, 28
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\SitioLayout.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 10, 0, 0, 0, 3, 13
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\BarChart01.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 186, 0, 0, 8, 11, 205
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\BarChart02.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 124, 0, 0, 3, 10, 137
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\BarChart03.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 148, 0, 0, 6, 12, 166
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\ChartjsConfig.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 61, 0, 0, 6, 5, 72
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\DoughnutChart.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 123, 0, 0, 8, 10, 141
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\LineChart01.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 90, 0, 0, 3, 10, 103
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\LineChart02.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 174, 0, 0, 9, 10, 193
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\RealtimeChart.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 145, 0, 0, 4, 12, 161
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\css\additional-styles\Modal.css", "CSS", 0, 0, 0, 0, 0, 0, 75, 0, 1, 8, 84
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\css\additional-styles\flatpickr.css", "CSS", 0, 0, 0, 0, 0, 0, 203, 0, 1, 34, 238
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\css\additional-styles\sistema.css", "CSS", 0, 0, 0, 0, 0, 0, 86, 0, 4, 24, 114
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\css\additional-styles\utility-patterns.css", "CSS", 0, 0, 0, 0, 0, 0, 79, 0, 42, 21, 142
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\css\style.css", "CSS", 0, 0, 0, 0, 0, 0, 6, 0, 1, 4, 11
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\css\tailwind.config.js", "JavaScript", 66, 0, 0, 0, 0, 0, 0, 0, 3, 2, 71
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\images\icon-01.svg", "XML", 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 20
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\images\icon-02.svg", "XML", 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 20
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\images\icon-03.svg", "XML", 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 20
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\pages\NavbarLogin.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 35, 0, 0, 0, 3, 38
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\pages\NavbarRecovery.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 38, 0, 0, 0, 3, 41
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\Banner.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 28, 0, 0, 0, 4, 32
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\Header.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 47, 0, 0, 38, 6, 91
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\HeaderPersonal.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 66, 0, 0, 6, 6, 78
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\Sidebar.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1497, 0, 0, 60, 14, 1571
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\SidebarAdmin.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 241, 0, 0, 35, 13, 289
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\SidebarDoctor.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1502, 0, 0, 60, 14, 1576
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\SidebarLinkGroup.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 16, 0, 0, 0, 5, 21
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\SidebarPersonal.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 246, 0, 0, 35, 14, 295
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardAvatars.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 41, 0, 0, 0, 3, 44
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard01.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 104, 0, 0, 7, 6, 117
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard02.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 97, 0, 0, 7, 6, 110
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard03.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 97, 0, 0, 7, 6, 110
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard04.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 42, 0, 0, 5, 6, 53
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard05.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 76, 0, 0, 14, 14, 104
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard06.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 36, 0, 0, 3, 6, 45
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard07.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 171, 0, 0, 8, 3, 182
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard08.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 91, 0, 0, 6, 6, 103
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard09.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 54, 0, 0, 5, 6, 65
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard10.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 107, 0, 0, 3, 9, 119
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard11.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 67, 0, 0, 3, 6, 76
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard12.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 155, 0, 0, 8, 3, 166
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard13.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 138, 0, 0, 8, 3, 149
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\WelcomeBanner.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 63, 0, 0, 2, 6, 71
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\WelcomeBannerDoctor.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 63, 0, 0, 2, 6, 71
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\WelcomeBannerPersonal.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 107, 0, 0, 4, 6, 117
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\header\DropdownHelp.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 101, 0, 0, 2, 8, 111
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\header\DropdownNotifications.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 96, 0, 0, 2, 8, 106
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\header\DropdownProfile.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 100, 0, 0, 4, 9, 113
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\header\DropdownProfilePersonal.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 90, 0, 0, 2, 9, 101
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\header\ModalSearch.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 228, 0, 0, 7, 8, 243
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\header\ThemeToggle.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 40, 0, 0, 0, 3, 43
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\utils\Info.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 45, 0, 0, 0, 4, 49
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\utils\ThemeContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 29, 0, 0, 0, 8, 37
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\utils\Transition.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 105, 0, 0, 0, 11, 116
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\utils\Utils.js", "JavaScript", 25, 0, 0, 0, 0, 0, 0, 0, 1, 4, 30
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\main.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 13, 0, 0, 0, 2, 15
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\middleware\AuthRol.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 10, 0, 0, 0, 4, 14
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\AdminRoutes.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 22, 0, 0, 7, 3, 32
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\DoctorRoutes.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 28, 0, 0, 0, 3, 31
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\NotFoundRoutes.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 0, 2, 8
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\PersonalRoutes.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 33, 0, 0, 14, 3, 50
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\ProtectedRoutes.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 11, 0, 0, 0, 2, 13
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\RecoveryRoutes.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 18, 0, 0, 0, 2, 20
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\SitioRoutes.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 7, 0, 0, 10, 2, 19
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 37, 0, 0, 0, 2, 39
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\api.js", "JavaScript", 41, 0, 0, 0, 0, 0, 0, 0, 8, 7, 56
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\authService.js", "JavaScript", 16, 0, 0, 0, 0, 0, 0, 0, 0, 3, 19
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\citaService.js", "JavaScript", 28, 0, 0, 0, 0, 0, 0, 0, 0, 10, 38
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\doctorService.js", "JavaScript", 19, 0, 0, 0, 0, 0, 0, 0, 0, 6, 25
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\historiaService.js", "JavaScript", 10, 0, 0, 0, 0, 0, 0, 0, 18, 5, 33
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\laboratoristaService.js", "JavaScript", 19, 0, 0, 0, 0, 0, 0, 0, 0, 6, 25
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\pacienteService.js", "JavaScript", 22, 0, 0, 0, 0, 0, 0, 0, 0, 7, 29
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\personalService.js", "JavaScript", 19, 0, 0, 0, 0, 0, 0, 0, 0, 6, 25
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\profileService.js", "JavaScript", 7, 0, 0, 0, 0, 0, 0, 0, 0, 3, 10
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\ChangePassword.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 47, 0, 0, 0, 7, 54
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\AntecedenteF.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 89, 0, 0, 0, 6, 95
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\AntecedentesP.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 364, 0, 0, 0, 3, 367
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\Cita.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 62, 0, 0, 0, 3, 65
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\ComposicionF.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 23, 0, 0, 0, 3, 26
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\ExploracionF.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 23, 0, 0, 0, 3, 26
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\Historia.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 90, 0, 0, 2, 5, 97
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\HistoriaForms\HistoriaForm.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 75, 0, 0, 6, 6, 87
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\Laboratorio.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 23, 0, 0, 0, 3, 26
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\Pacientes.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 65, 0, 0, 0, 4, 69
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\Login.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 35, 0, 0, 0, 3, 38
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\LoginComponents\FormChangePass.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 212, 0, 0, 0, 3, 215
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\LoginComponents\FormLogin.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 172, 0, 0, 2, 9, 183
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\LoginComponents\FormRecovery.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 148, 0, 0, 0, 3, 151
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\NotFound.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 132, 0, 0, 0, 3, 135
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\Recovery.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 36, 0, 0, 0, 4, 40
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\admin\Doctores.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 308, 0, 0, 4, 5, 317
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\admin\Laboratorista.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 305, 0, 0, 4, 5, 314
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\admin\Personal.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 303, 0, 0, 4, 5, 312
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\admin\formAddUser.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 731, 0, 0, 4, 9, 744
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\doctor\Citas.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 164, 0, 0, 5, 7, 176
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\doctor\PacienteVista.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 94, 0, 0, 4, 8, 106
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\personal\AddCita.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 256, 0, 0, 10, 10, 276
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\personal\Citas.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 165, 0, 0, 5, 7, 177
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\personal\EditCita.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 265, 0, 0, 7, 13, 285
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\personal\FormAddPaciente.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 530, 0, 0, 4, 6, 540
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\personal\Paciente.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 263, 0, 0, 8, 7, 278
+"d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\vite.config.js", "JavaScript", 27, 0, 0, 0, 0, 0, 0, 0, 1, 2, 30
+"d:\NEIL\SistemaHistoriasClinicas\package-lock.json", "JSON", 0, 0, 6026, 0, 0, 0, 0, 0, 0, 1, 6027
+"d:\NEIL\SistemaHistoriasClinicas\package.json", "JSON", 0, 0, 42, 0, 0, 0, 0, 0, 0, 1, 43
+"d:\NEIL\SistemaHistoriasClinicas\server\auth\index.js", "JavaScript", 5, 0, 0, 0, 0, 0, 0, 0, 2, 3, 10
+"d:\NEIL\SistemaHistoriasClinicas\server\auth\strategies\jwt.js", "JavaScript", 10, 0, 0, 0, 0, 0, 0, 0, 1, 5, 16
+"d:\NEIL\SistemaHistoriasClinicas\server\auth\strategies\local.strategy.js", "JavaScript", 18, 0, 0, 0, 0, 0, 0, 0, 2, 5, 25
+"d:\NEIL\SistemaHistoriasClinicas\server\config\config.js", "JavaScript", 14, 0, 0, 0, 0, 0, 0, 0, 4, 3, 21
+"d:\NEIL\SistemaHistoriasClinicas\server\db\config.js", "JavaScript", 16, 0, 0, 0, 0, 0, 0, 0, 0, 2, 18
+"d:\NEIL\SistemaHistoriasClinicas\server\db\migrations\20230310173458-modulo-admin.js", "JavaScript", 184, 0, 0, 0, 0, 0, 0, 0, 5, 2, 191
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\antecedenteFamiliar.model.js", "JavaScript", 45, 0, 0, 0, 0, 0, 0, 0, 1, 6, 52
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\antecedentePersonal.model.js", "JavaScript", 87, 0, 0, 0, 0, 0, 0, 0, 3, 6, 96
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\cita.model.js", "JavaScript", 106, 0, 0, 0, 0, 0, 0, 0, 0, 7, 113
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\composicionFamiliar.model.js", "JavaScript", 61, 0, 0, 0, 0, 0, 0, 0, 3, 6, 70
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\doctor.model.js", "JavaScript", 67, 0, 0, 0, 0, 0, 0, 0, 1, 7, 75
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisica.model.js", "JavaScript", 281, 0, 0, 0, 0, 0, 0, 0, 5, 7, 293
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\abdomen.model.js", "JavaScript", 39, 0, 0, 0, 0, 0, 0, 0, 3, 6, 48
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\boca.model.js", "JavaScript", 49, 0, 0, 0, 0, 0, 0, 0, 3, 6, 58
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\columna.model.js", "JavaScript", 39, 0, 0, 0, 0, 0, 0, 0, 3, 6, 48
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\craneoFacial.model.js", "JavaScript", 50, 0, 0, 0, 0, 0, 0, 0, 3, 6, 59
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\cuello.model.js", "JavaScript", 40, 0, 0, 0, 0, 0, 0, 0, 3, 6, 49
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\exNeurologico.model.js", "JavaScript", 43, 0, 0, 0, 0, 0, 0, 0, 3, 6, 52
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\genitalesEx.model.js", "JavaScript", 52, 0, 0, 0, 0, 0, 0, 0, 3, 6, 61
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\maxMandibula.model.js", "JavaScript", 38, 0, 0, 0, 0, 0, 0, 0, 3, 6, 47
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\miembros.model.js", "JavaScript", 63, 0, 0, 0, 0, 0, 0, 0, 3, 6, 72
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\musculatura.model.js", "JavaScript", 43, 0, 0, 0, 0, 0, 0, 0, 3, 6, 52
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\nariz.model.js", "JavaScript", 40, 0, 0, 0, 0, 0, 0, 0, 3, 6, 49
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\ojos.model.js", "JavaScript", 54, 0, 0, 0, 0, 0, 0, 0, 3, 6, 63
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\orejas.model.js", "JavaScript", 42, 0, 0, 0, 0, 0, 0, 0, 3, 6, 51
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\pielAnexos.model.js", "JavaScript", 53, 0, 0, 0, 0, 0, 0, 0, 3, 6, 62
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\tejidoSub.model.js", "JavaScript", 40, 0, 0, 0, 0, 0, 0, 0, 3, 6, 49
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\exploracionFisicaModels\torax.model.js", "JavaScript", 46, 0, 0, 0, 0, 0, 0, 0, 3, 6, 55
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\historia.model.js", "JavaScript", 88, 0, 0, 0, 0, 0, 0, 0, 3, 6, 97
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\historiaLabo.model.js", "JavaScript", 43, 0, 0, 0, 0, 0, 0, 0, 0, 6, 49
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\index.js", "JavaScript", 91, 0, 0, 0, 0, 0, 0, 0, 8, 5, 104
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\laboratorista.model.js", "JavaScript", 64, 0, 0, 0, 0, 0, 0, 0, 7, 7, 78
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\p_creaPac.model.js", "JavaScript", 64, 0, 0, 0, 0, 0, 0, 0, 0, 6, 70
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\paciente.model.js", "JavaScript", 87, 0, 0, 0, 0, 0, 0, 0, 0, 7, 94
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\persona.model.js", "JavaScript", 77, 0, 0, 0, 0, 0, 0, 0, 0, 6, 83
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\personalAdmin.model.js", "JavaScript", 71, 0, 0, 0, 0, 0, 0, 0, 0, 8, 79
+"d:\NEIL\SistemaHistoriasClinicas\server\db\models\usuario.model.js", "JavaScript", 59, 0, 0, 0, 0, 0, 0, 0, 0, 6, 65
+"d:\NEIL\SistemaHistoriasClinicas\server\db\seeder.json", "JSON", 0, 0, 69, 0, 0, 0, 0, 0, 0, 0, 69
+"d:\NEIL\SistemaHistoriasClinicas\server\index.js", "JavaScript", 22, 0, 0, 0, 0, 0, 0, 0, 3, 6, 31
+"d:\NEIL\SistemaHistoriasClinicas\server\libs\sequelize.js", "JavaScript", 17, 0, 0, 0, 0, 0, 0, 0, 0, 6, 23
+"d:\NEIL\SistemaHistoriasClinicas\server\middlewares\auth.handler.js", "JavaScript", 21, 0, 0, 0, 0, 0, 0, 0, 3, 7, 31
+"d:\NEIL\SistemaHistoriasClinicas\server\middlewares\error.handler.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 0, 7, 37
+"d:\NEIL\SistemaHistoriasClinicas\server\middlewares\validator.handler.js", "JavaScript", 22, 0, 0, 0, 0, 0, 0, 0, 0, 4, 26
+"d:\NEIL\SistemaHistoriasClinicas\server\rest\auth.rest", "HTTP", 0, 41, 0, 0, 0, 0, 0, 0, 8, 9, 58
+"d:\NEIL\SistemaHistoriasClinicas\server\rest\backdoor.rest", "HTTP", 0, 8, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"d:\NEIL\SistemaHistoriasClinicas\server\rest\exploracionFisica.rest", "HTTP", 0, 522, 0, 0, 0, 0, 0, 0, 36, 36, 594
+"d:\NEIL\SistemaHistoriasClinicas\server\rest\moduloAdmin.rest", "HTTP", 0, 156, 0, 0, 0, 0, 0, 0, 21, 15, 192
+"d:\NEIL\SistemaHistoriasClinicas\server\rest\moduloDoctor.rest", "HTTP", 0, 13, 0, 0, 0, 0, 0, 0, 4, 1, 18
+"d:\NEIL\SistemaHistoriasClinicas\server\rest\moduloHistoria.rest", "HTTP", 0, 132, 0, 0, 0, 0, 0, 0, 9, 11, 152
+"d:\NEIL\SistemaHistoriasClinicas\server\rest\moduloLaboratorista.rest", "HTTP", 0, 32, 0, 0, 0, 0, 0, 0, 8, 6, 46
+"d:\NEIL\SistemaHistoriasClinicas\server\rest\moduloPersonal.rest", "HTTP", 0, 101, 0, 0, 0, 0, 0, 0, 18, 11, 130
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\authRoute\auth.router.js", "JavaScript", 36, 0, 0, 0, 0, 0, 0, 0, 1, 5, 42
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\index.js", "JavaScript", 20, 0, 0, 0, 0, 0, 0, 0, 6, 7, 33
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloAdmin\admin.router.js", "JavaScript", 69, 0, 0, 0, 0, 0, 0, 0, 5, 13, 87
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloAdmin\doctor.router.js", "JavaScript", 96, 0, 0, 0, 0, 0, 0, 0, 3, 12, 111
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloAdmin\laboratorista.router.js", "JavaScript", 96, 0, 0, 0, 0, 0, 0, 0, 3, 12, 111
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloAdmin\personal.router.js", "JavaScript", 96, 0, 0, 0, 0, 0, 0, 0, 3, 12, 111
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloDoctor\doctor.router.js", "JavaScript", 71, 0, 0, 0, 0, 0, 0, 0, 5, 8, 84
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\antecedenteF.router.js", "JavaScript", 61, 0, 0, 0, 0, 0, 0, 0, 36, 9, 106
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\antecedenteP.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 8, 68
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\composicionF.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 8, 68
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF.router.js", "JavaScript", 89, 0, 0, 0, 0, 0, 0, 0, 5, 11, 105
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\abdomen.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 7, 67
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\boca.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 8, 68
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\columna.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 7, 67
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\craneoF.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 8, 68
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\cuello.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 8, 68
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\exNeurologico.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 7, 67
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\genitalesEx.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 7, 67
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\maxMandibula.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 7, 67
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\miembros.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 7, 67
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\musculatura.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 7, 67
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\nariz.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 7, 67
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\ojos.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 7, 67
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\orejas.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 7, 67
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\pielAnexos.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 7, 67
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\tejidoSub.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 7, 67
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\exploracionF_Routers\torax.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 3, 7, 67
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloHistoria\historia.router.js", "JavaScript", 57, 0, 0, 0, 0, 0, 0, 0, 81, 10, 148
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloLaboratorista\historiaLabo.router.js", "JavaScript", 86, 0, 0, 0, 0, 0, 0, 0, 3, 10, 99
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloPersonalAd\cita.router.js", "JavaScript", 93, 0, 0, 0, 0, 0, 0, 0, 20, 9, 122
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloPersonalAd\doctor.router.js", "JavaScript", 41, 0, 0, 0, 0, 0, 0, 0, 3, 8, 52
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloPersonalAd\paciente.router.js", "JavaScript", 107, 0, 0, 0, 0, 0, 0, 0, 18, 10, 135
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\moduloPersonalAd\personal.router.js", "JavaScript", 9, 0, 0, 0, 0, 0, 0, 0, 0, 5, 14
+"d:\NEIL\SistemaHistoriasClinicas\server\routes\prueba.router.js", "JavaScript", 24, 0, 0, 0, 0, 0, 0, 0, 0, 5, 29
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\antecedenteF.schema.js", "JavaScript", 37, 0, 0, 0, 0, 0, 0, 0, 11, 6, 54
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\antecedentesP.schema.js", "JavaScript", 176, 0, 0, 0, 0, 0, 0, 0, 0, 4, 180
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\cita.schema.js", "JavaScript", 34, 0, 0, 0, 0, 0, 0, 0, 0, 6, 40
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\composicionF.schema.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 0, 6, 36
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\doctor.schema.js", "JavaScript", 23, 0, 0, 0, 0, 0, 0, 0, 0, 6, 29
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionF.schema.js", "JavaScript", 86, 0, 0, 0, 0, 0, 0, 0, 0, 6, 92
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\abdomen.schema.js", "JavaScript", 32, 0, 0, 0, 0, 0, 0, 0, 0, 7, 39
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\boca.schema.js", "JavaScript", 62, 0, 0, 0, 0, 0, 0, 0, 0, 7, 69
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\columna.schema.js", "JavaScript", 32, 0, 0, 0, 0, 0, 0, 0, 0, 7, 39
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\craneoF.schema.js", "JavaScript", 65, 0, 0, 0, 0, 0, 0, 0, 0, 7, 72
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\cuello.schema.js", "JavaScript", 35, 0, 0, 0, 0, 0, 0, 0, 0, 7, 42
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\exNeurologico.schema.js", "JavaScript", 44, 0, 0, 0, 0, 0, 0, 0, 0, 7, 51
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\genitalesEx.schema.js", "JavaScript", 71, 0, 0, 0, 0, 0, 0, 0, 0, 7, 78
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\maxMandibula.schema.js", "JavaScript", 29, 0, 0, 0, 0, 0, 0, 0, 0, 7, 36
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\miembros.schema.js", "JavaScript", 104, 0, 0, 0, 0, 0, 0, 0, 0, 7, 111
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\musculatura.schema.js", "JavaScript", 44, 0, 0, 0, 0, 0, 0, 0, 0, 7, 51
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\nariz.schema.js", "JavaScript", 35, 0, 0, 0, 0, 0, 0, 0, 0, 7, 42
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\ojos.schema.js", "JavaScript", 77, 0, 0, 0, 0, 0, 0, 0, 0, 7, 84
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\orejas.schema.js", "JavaScript", 41, 0, 0, 0, 0, 0, 0, 0, 0, 7, 48
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\pielAnexos.schema.js", "JavaScript", 74, 0, 0, 0, 0, 0, 0, 0, 0, 7, 81
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\tejidoSub.schema.js", "JavaScript", 35, 0, 0, 0, 0, 0, 0, 0, 0, 7, 42
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\exploracionFisicaSchemas\torax.schema.js", "JavaScript", 53, 0, 0, 0, 0, 0, 0, 0, 0, 7, 60
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\historiaClinica.schema.js", "JavaScript", 22, 0, 0, 0, 0, 0, 0, 0, 0, 6, 28
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\historiaLabo.schema.js", "JavaScript", 17, 0, 0, 0, 0, 0, 0, 0, 1, 7, 25
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\laboratorista.schema.js", "JavaScript", 20, 0, 0, 0, 0, 0, 0, 0, 0, 6, 26
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\paciente.schema.js", "JavaScript", 27, 0, 0, 0, 0, 0, 0, 0, 0, 6, 33
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\persona.schema.js", "JavaScript", 36, 0, 0, 0, 0, 0, 0, 0, 0, 6, 42
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\personalAdmin.schema.js", "JavaScript", 28, 0, 0, 0, 0, 0, 0, 0, 4, 6, 38
+"d:\NEIL\SistemaHistoriasClinicas\server\schemas\usuario.schema.js", "JavaScript", 19, 0, 0, 0, 0, 0, 0, 0, 0, 6, 25
+"d:\NEIL\SistemaHistoriasClinicas\server\services\antecedentesF.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 40, 12, 82
+"d:\NEIL\SistemaHistoriasClinicas\server\services\antecedentesP.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 8, 42
+"d:\NEIL\SistemaHistoriasClinicas\server\services\auth.service.js", "JavaScript", 122, 0, 0, 0, 0, 0, 0, 0, 34, 17, 173
+"d:\NEIL\SistemaHistoriasClinicas\server\services\cita.service.js", "JavaScript", 373, 0, 0, 0, 0, 0, 0, 0, 4, 9, 386
+"d:\NEIL\SistemaHistoriasClinicas\server\services\composicionF.service.js", "JavaScript", 26, 0, 0, 0, 0, 0, 0, 0, 3, 7, 36
+"d:\NEIL\SistemaHistoriasClinicas\server\services\doctor.service.js", "JavaScript", 156, 0, 0, 0, 0, 0, 0, 0, 7, 14, 177
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 8, 42
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\abdomen.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 7, 41
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\boca.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 7, 41
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\columna.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 7, 41
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\craneoF.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 8, 42
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\cuello.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 7, 41
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\exNeurologico.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 7, 41
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\genitalesEx.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 7, 41
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\maxMandibula.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 7, 41
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\miembros.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 7, 41
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\musculatura.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 7, 41
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\nariz.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 8, 42
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\ojos.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 8, 42
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\orejas.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 8, 42
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\pielAnexos.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 7, 41
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\tejidoSub.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 7, 41
+"d:\NEIL\SistemaHistoriasClinicas\server\services\exploracionF_Services\torax.service.js", "JavaScript", 30, 0, 0, 0, 0, 0, 0, 0, 4, 7, 41
+"d:\NEIL\SistemaHistoriasClinicas\server\services\historia.service.js", "JavaScript", 225, 0, 0, 0, 0, 0, 0, 0, 92, 22, 339
+"d:\NEIL\SistemaHistoriasClinicas\server\services\historiaLabo.service.js", "JavaScript", 36, 0, 0, 0, 0, 0, 0, 0, 13, 7, 56
+"d:\NEIL\SistemaHistoriasClinicas\server\services\laboratorista.service.js", "JavaScript", 169, 0, 0, 0, 0, 0, 0, 0, 8, 17, 194
+"d:\NEIL\SistemaHistoriasClinicas\server\services\p_creaPac.service.js", "JavaScript", 19, 0, 0, 0, 0, 0, 0, 0, 0, 5, 24
+"d:\NEIL\SistemaHistoriasClinicas\server\services\paciente.service.js", "JavaScript", 166, 0, 0, 0, 0, 0, 0, 0, 25, 10, 201
+"d:\NEIL\SistemaHistoriasClinicas\server\services\persona.service.js", "JavaScript", 35, 0, 0, 0, 0, 0, 0, 0, 0, 9, 44
+"d:\NEIL\SistemaHistoriasClinicas\server\services\personalAdmin.service.js", "JavaScript", 126, 0, 0, 0, 0, 0, 0, 0, 12, 13, 151
+"d:\NEIL\SistemaHistoriasClinicas\server\services\usuario.service.js", "JavaScript", 204, 0, 0, 0, 0, 0, 0, 0, 11, 13, 228
+"Total", "-", 8497, 1005, 12825, 42, 63, 15062, 640, 13, 1475, 1995, 41617

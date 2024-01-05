@@ -1,0 +1,78 @@
+Date : 2023-12-11 13:46:07
+Directory : d:\NEIL\SistemaHistoriasClinicas
+Total : 34 files,  -5307 codes, -116 comments, -206 blanks, all -5629 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| XML            |          1 |         -1 |          0 |          0 |         -1 |
+| HTML           |          1 |        -13 |          0 |         -1 |        -14 |
+| JavaScript     |          6 |       -101 |         -2 |        -13 |       -116 |
+| CSS            |          4 |       -188 |         -2 |        -39 |       -229 |
+| JavaScript JSX |         20 |     -2,388 |       -112 |       -151 |     -2,651 |
+| JSON           |          2 |     -2,616 |          0 |         -2 |     -2,618 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                            | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                               |         34 |     -5,307 |       -116 |       -206 |     -5,629 |
+| client                                                                          |         34 |     -5,307 |       -116 |       -206 |     -5,629 |
+| client (Files)                                                                  |          6 |     -2,648 |         -2 |         -7 |     -2,657 |
+| client\public                                                                   |          1 |         -1 |          0 |          0 |         -1 |
+| client\src                                                                      |         27 |     -2,658 |       -114 |       -199 |     -2,971 |
+| client\src (Files)                                                              |          4 |       -100 |          0 |        -23 |       -123 |
+| client\src\Components                                                           |         10 |     -1,512 |        -92 |        -76 |     -1,680 |
+| client\src\Components (Files)                                                   |          5 |       -209 |        -15 |        -21 |       -245 |
+| client\src\Components\Cards                                                     |          1 |        -70 |         -3 |         -5 |        -78 |
+| client\src\Components\Forms                                                     |          2 |     -1,101 |        -62 |        -33 |     -1,196 |
+| client\src\Components\Modal                                                     |          2 |       -132 |        -12 |        -17 |       -161 |
+| client\src\Context                                                              |          3 |       -208 |        -15 |        -17 |       -240 |
+| client\src\Pages                                                                |          5 |       -608 |         -5 |        -43 |       -656 |
+| client\src\api                                                                  |          1 |        -18 |          0 |         -7 |        -25 |
+| client\src\assets                                                               |          2 |       -148 |         -2 |        -31 |       -181 |
+| client\src\libs                                                                 |          2 |        -64 |          0 |         -2 |        -66 |
++---------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                        | language       | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| d:\NEIL\SistemaHistoriasClinicas\client\index.html                              | HTML           |        -13 |          0 |         -1 |        -14 |
+| d:\NEIL\SistemaHistoriasClinicas\client\package-lock.json                       | JSON           |     -2,583 |          0 |         -1 |     -2,584 |
+| d:\NEIL\SistemaHistoriasClinicas\client\package.json                            | JSON           |        -33 |          0 |         -1 |        -34 |
+| d:\NEIL\SistemaHistoriasClinicas\client\postcss.config.cjs                      | JavaScript     |         -6 |          0 |         -1 |         -7 |
+| d:\NEIL\SistemaHistoriasClinicas\client\public\vite.svg                         | XML            |         -1 |          0 |          0 |         -1 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\App.css                             | CSS            |        -37 |          0 |         -6 |        -43 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\App.jsx                             | JavaScript JSX |        -45 |          0 |        -13 |        -58 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Cards\CardUsuario.jsx    | JavaScript JSX |        -70 |         -3 |         -5 |        -78 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Footer.jsx               | JavaScript JSX |        -33 |          0 |         -3 |        -36 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Forms\FormUser.jsx       | JavaScript JSX |       -545 |        -30 |        -16 |       -591 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Forms\FormUserUpdate.jsx | JavaScript JSX |       -556 |        -32 |        -17 |       -605 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Modal\Modal.jsx          | JavaScript JSX |        -55 |          0 |         -7 |        -62 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Modal\ModalAdd.jsx       | JavaScript JSX |        -77 |        -12 |        -10 |        -99 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Navbar.jsx               | JavaScript JSX |        -33 |          0 |         -3 |        -36 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Protected.jsx            | JavaScript JSX |         -9 |          0 |         -2 |        -11 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Components\TableUsers.jsx           | JavaScript JSX |        -84 |          0 |         -6 |        -90 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Components\TableUsers2.jsx          | JavaScript JSX |        -50 |        -15 |         -7 |        -72 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Context\AdminPageContext.jsx        | JavaScript JSX |         -2 |          0 |         -1 |         -3 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Context\AdminPageProvider.jsx       | JavaScript JSX |       -193 |        -14 |         -9 |       -216 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Context\ContextUser.jsx             | JavaScript JSX |        -13 |         -1 |         -7 |        -21 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\AdminPage.jsx                 | JavaScript JSX |        -44 |          0 |         -5 |        -49 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\ChangePassword.jsx            | JavaScript JSX |       -216 |          0 |        -14 |       -230 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\LoginPage.jsx                 | JavaScript JSX |       -190 |         -5 |        -12 |       -207 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\NotFound.jsx                  | JavaScript JSX |         -6 |          0 |         -1 |         -7 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\RecoveryPage.jsx              | JavaScript JSX |       -152 |          0 |        -11 |       -163 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\api\login.api.js                    | JavaScript     |        -18 |          0 |         -7 |        -25 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\assets\Modal.css                    | CSS            |        -75 |          0 |         -8 |        -83 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\assets\style.css                    | CSS            |        -73 |         -2 |        -23 |        -98 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\index.css                           | CSS            |         -3 |          0 |         -2 |         -5 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\libs\names.lib.js                   | JavaScript     |        -30 |          0 |         -1 |        -31 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\libs\usuario.lib.js                 | JavaScript     |        -34 |          0 |         -1 |        -35 |
+| d:\NEIL\SistemaHistoriasClinicas\client\src\main.jsx                            | JavaScript JSX |        -15 |          0 |         -2 |        -17 |
+| d:\NEIL\SistemaHistoriasClinicas\client\tailwind.config.cjs                     | JavaScript     |         -8 |         -1 |         -1 |        -10 |
+| d:\NEIL\SistemaHistoriasClinicas\client\vite.config.js                          | JavaScript     |         -5 |         -1 |         -2 |         -8 |
+| Total                                                                           |                |     -5,307 |       -116 |       -206 |     -5,629 |
++---------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

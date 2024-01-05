@@ -1,0 +1,179 @@
+Date : 2023-12-11 14:24:39
+Directory : d:\NEIL\SistemaHistoriasClinicas\front_sistemahc
+Total : 118 files,  17612 codes, 573 comments, 701 blanks, all 18886 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JavaScript JSX |         89 |     12,674 |        492 |        542 |     13,708 |
+| JSON           |          2 |      4,072 |          0 |          2 |      4,074 |
+| CSS            |          7 |        452 |         49 |         92 |        593 |
+| JavaScript     |         14 |        323 |         32 |         64 |        419 |
+| XML            |          5 |         62 |          0 |          0 |         62 |
+| HTML           |          1 |         29 |          0 |          1 |         30 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                         | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                            |        118 |     17,612 |        573 |        701 |     18,886 |
+| . (Files)                                                                                                    |          6 |      4,152 |          2 |          8 |      4,162 |
+| public                                                                                                       |          1 |          1 |          0 |          0 |          1 |
+| src                                                                                                          |        111 |     13,459 |        571 |        693 |     14,723 |
+| src (Files)                                                                                                  |          4 |         30 |          0 |          6 |         36 |
+| src\assets                                                                                                   |          1 |          1 |          0 |          0 |          1 |
+| src\components                                                                                               |          2 |        279 |          1 |          8 |        288 |
+| src\context                                                                                                  |          1 |         27 |          1 |          7 |         35 |
+| src\layouts                                                                                                  |         58 |      7,789 |        443 |        446 |      8,678 |
+| src\layouts (Files)                                                                                          |          4 |         79 |          0 |         18 |         97 |
+| src\layouts\charts                                                                                           |          8 |      1,051 |         47 |         80 |      1,178 |
+| src\layouts\css                                                                                              |          6 |        515 |         52 |         93 |        660 |
+| src\layouts\css (Files)                                                                                      |          2 |         72 |          4 |          6 |         82 |
+| src\layouts\css\additional-styles                                                                            |          4 |        443 |         48 |         87 |        578 |
+| src\layouts\images                                                                                           |          3 |         60 |          0 |          0 |         60 |
+| src\layouts\pages                                                                                            |          2 |         73 |          0 |          6 |         79 |
+| src\layouts\partials                                                                                         |         31 |      5,807 |        343 |        222 |      6,372 |
+| src\layouts\partials (Files)                                                                                 |          8 |      3,643 |        234 |         76 |      3,953 |
+| src\layouts\partials\dashboard                                                                               |         17 |      1,509 |         92 |        101 |      1,702 |
+| src\layouts\partials\header                                                                                  |          6 |        655 |         17 |         45 |        717 |
+| src\layouts\utils                                                                                            |          4 |        204 |          1 |         27 |        232 |
+| src\middleware                                                                                               |          1 |         10 |          0 |          4 |         14 |
+| src\routes                                                                                                   |          8 |        162 |         31 |         19 |        212 |
+| src\services                                                                                                 |          9 |        181 |         26 |         53 |        260 |
+| src\views                                                                                                    |         27 |      4,980 |         69 |        150 |      5,199 |
+| src\views (Files)                                                                                            |          4 |        250 |          0 |         17 |        267 |
+| src\views\HistoriaComponents                                                                                 |          9 |        814 |          8 |         36 |        858 |
+| src\views\HistoriaComponents (Files)                                                                         |          8 |        739 |          2 |         30 |        771 |
+| src\views\HistoriaComponents\HistoriaForms                                                                   |          1 |         75 |          6 |          6 |         87 |
+| src\views\LoginComponents                                                                                    |          3 |        532 |          2 |         15 |        549 |
+| src\views\admin                                                                                              |          4 |      1,647 |         16 |         24 |      1,687 |
+| src\views\doctor                                                                                             |          2 |        258 |          9 |         15 |        282 |
+| src\views\personal                                                                                           |          5 |      1,479 |         34 |         43 |      1,556 |
++--------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                                     | language       | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\.eslintrc.cjs                                               | JavaScript     |         18 |          1 |          2 |         21 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\index.html                                                  | HTML           |         29 |          0 |          1 |         30 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\package-lock.json                                           | JSON           |      4,033 |          0 |          1 |      4,034 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\package.json                                                | JSON           |         39 |          0 |          1 |         40 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\postcss.config.js                                           | JavaScript     |          6 |          0 |          1 |          7 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\public\vite.svg                                             | XML            |          1 |          0 |          0 |          1 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\App.css                                                 | CSS            |          0 |          0 |          1 |          1 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\App.jsx                                                 | JavaScript JSX |         14 |          0 |          3 |         17 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\assets\react.svg                                        | XML            |          1 |          0 |          0 |          1 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\components\Modal.jsx                                    | JavaScript JSX |         32 |          1 |          3 |         36 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\components\TablePagination.jsx                          | JavaScript JSX |        247 |          0 |          5 |        252 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\context\UserProfileContext.jsx                          | JavaScript JSX |         27 |          1 |          7 |         35 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\index.css                                               | CSS            |          3 |          0 |          0 |          3 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\AdminLayout.jsx                                 | JavaScript JSX |         23 |          0 |          5 |         28 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\DoctorLayout.jsx                                | JavaScript JSX |         23 |          0 |          5 |         28 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\PersonalAdminLayout.jsx                         | JavaScript JSX |         23 |          0 |          5 |         28 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\SitioLayout.jsx                                 | JavaScript JSX |         10 |          0 |          3 |         13 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\BarChart01.jsx                           | JavaScript JSX |        186 |          8 |         11 |        205 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\BarChart02.jsx                           | JavaScript JSX |        124 |          3 |         10 |        137 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\BarChart03.jsx                           | JavaScript JSX |        148 |          6 |         12 |        166 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\ChartjsConfig.jsx                        | JavaScript JSX |         61 |          6 |          5 |         72 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\DoughnutChart.jsx                        | JavaScript JSX |        123 |          8 |         10 |        141 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\LineChart01.jsx                          | JavaScript JSX |         90 |          3 |         10 |        103 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\LineChart02.jsx                          | JavaScript JSX |        174 |          9 |         10 |        193 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\charts\RealtimeChart.jsx                        | JavaScript JSX |        145 |          4 |         12 |        161 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\css\additional-styles\Modal.css                 | CSS            |         75 |          1 |          8 |         84 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\css\additional-styles\flatpickr.css             | CSS            |        203 |          1 |         34 |        238 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\css\additional-styles\sistema.css               | CSS            |         86 |          4 |         24 |        114 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\css\additional-styles\utility-patterns.css      | CSS            |         79 |         42 |         21 |        142 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\css\style.css                                   | CSS            |          6 |          1 |          4 |         11 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\css\tailwind.config.js                          | JavaScript     |         66 |          3 |          2 |         71 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\images\icon-01.svg                              | XML            |         20 |          0 |          0 |         20 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\images\icon-02.svg                              | XML            |         20 |          0 |          0 |         20 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\images\icon-03.svg                              | XML            |         20 |          0 |          0 |         20 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\pages\NavbarLogin.jsx                           | JavaScript JSX |         35 |          0 |          3 |         38 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\pages\NavbarRecovery.jsx                        | JavaScript JSX |         38 |          0 |          3 |         41 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\Banner.jsx                             | JavaScript JSX |         28 |          0 |          4 |         32 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\Header.jsx                             | JavaScript JSX |         47 |         38 |          6 |         91 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\HeaderPersonal.jsx                     | JavaScript JSX |         66 |          6 |          6 |         78 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\Sidebar.jsx                            | JavaScript JSX |      1,497 |         60 |         14 |      1,571 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\SidebarAdmin.jsx                       | JavaScript JSX |        241 |         35 |         13 |        289 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\SidebarDoctor.jsx                      | JavaScript JSX |      1,502 |         60 |         14 |      1,576 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\SidebarLinkGroup.jsx                   | JavaScript JSX |         16 |          0 |          5 |         21 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\SidebarPersonal.jsx                    | JavaScript JSX |        246 |         35 |         14 |        295 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardAvatars.jsx         | JavaScript JSX |         41 |          0 |          3 |         44 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard01.jsx          | JavaScript JSX |        104 |          7 |          6 |        117 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard02.jsx          | JavaScript JSX |         97 |          7 |          6 |        110 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard03.jsx          | JavaScript JSX |         97 |          7 |          6 |        110 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard04.jsx          | JavaScript JSX |         42 |          5 |          6 |         53 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard05.jsx          | JavaScript JSX |         76 |         14 |         14 |        104 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard06.jsx          | JavaScript JSX |         36 |          3 |          6 |         45 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard07.jsx          | JavaScript JSX |        171 |          8 |          3 |        182 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard08.jsx          | JavaScript JSX |         91 |          6 |          6 |        103 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard09.jsx          | JavaScript JSX |         54 |          5 |          6 |         65 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard10.jsx          | JavaScript JSX |        107 |          3 |          9 |        119 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard11.jsx          | JavaScript JSX |         67 |          3 |          6 |         76 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard12.jsx          | JavaScript JSX |        155 |          8 |          3 |        166 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\DashboardCard13.jsx          | JavaScript JSX |        138 |          8 |          3 |        149 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\WelcomeBanner.jsx            | JavaScript JSX |         63 |          2 |          6 |         71 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\WelcomeBannerDoctor.jsx      | JavaScript JSX |         63 |          2 |          6 |         71 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\dashboard\WelcomeBannerPersonal.jsx    | JavaScript JSX |        107 |          4 |          6 |        117 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\header\DropdownHelp.jsx                | JavaScript JSX |        101 |          2 |          8 |        111 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\header\DropdownNotifications.jsx       | JavaScript JSX |         96 |          2 |          8 |        106 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\header\DropdownProfile.jsx             | JavaScript JSX |        100 |          4 |          9 |        113 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\header\DropdownProfilePersonal.jsx     | JavaScript JSX |         90 |          2 |          9 |        101 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\header\ModalSearch.jsx                 | JavaScript JSX |        228 |          7 |          8 |        243 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\partials\header\ThemeToggle.jsx                 | JavaScript JSX |         40 |          0 |          3 |         43 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\utils\Info.jsx                                  | JavaScript JSX |         45 |          0 |          4 |         49 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\utils\ThemeContext.jsx                          | JavaScript JSX |         29 |          0 |          8 |         37 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\utils\Transition.jsx                            | JavaScript JSX |        105 |          0 |         11 |        116 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\layouts\utils\Utils.js                                  | JavaScript     |         25 |          1 |          4 |         30 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\main.jsx                                                | JavaScript JSX |         13 |          0 |          2 |         15 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\middleware\AuthRol.jsx                                  | JavaScript JSX |         10 |          0 |          4 |         14 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\AdminRoutes.jsx                                  | JavaScript JSX |         22 |          7 |          3 |         32 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\DoctorRoutes.jsx                                 | JavaScript JSX |         28 |          0 |          3 |         31 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\NotFoundRoutes.jsx                               | JavaScript JSX |          6 |          0 |          2 |          8 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\PersonalRoutes.jsx                               | JavaScript JSX |         33 |         14 |          3 |         50 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\ProtectedRoutes.jsx                              | JavaScript JSX |         11 |          0 |          2 |         13 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\RecoveryRoutes.jsx                               | JavaScript JSX |         18 |          0 |          2 |         20 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\SitioRoutes.jsx                                  | JavaScript JSX |          7 |         10 |          2 |         19 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\routes\index.jsx                                        | JavaScript JSX |         37 |          0 |          2 |         39 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\api.js                                         | JavaScript     |         41 |          8 |          7 |         56 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\authService.js                                 | JavaScript     |         16 |          0 |          3 |         19 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\citaService.js                                 | JavaScript     |         28 |          0 |         10 |         38 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\doctorService.js                               | JavaScript     |         19 |          0 |          6 |         25 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\historiaService.js                             | JavaScript     |         10 |         18 |          5 |         33 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\laboratoristaService.js                        | JavaScript     |         19 |          0 |          6 |         25 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\pacienteService.js                             | JavaScript     |         22 |          0 |          7 |         29 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\personalService.js                             | JavaScript     |         19 |          0 |          6 |         25 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\services\profileService.js                              | JavaScript     |          7 |          0 |          3 |         10 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\ChangePassword.jsx                                | JavaScript JSX |         47 |          0 |          7 |         54 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\AntecedenteF.jsx               | JavaScript JSX |         89 |          0 |          6 |         95 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\AntecedentesP.jsx              | JavaScript JSX |        364 |          0 |          3 |        367 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\Cita.jsx                       | JavaScript JSX |         62 |          0 |          3 |         65 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\ComposicionF.jsx               | JavaScript JSX |         23 |          0 |          3 |         26 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\ExploracionF.jsx               | JavaScript JSX |         23 |          0 |          3 |         26 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\Historia.jsx                   | JavaScript JSX |         90 |          2 |          5 |         97 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\HistoriaForms\HistoriaForm.jsx | JavaScript JSX |         75 |          6 |          6 |         87 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\Laboratorio.jsx                | JavaScript JSX |         23 |          0 |          3 |         26 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\HistoriaComponents\Pacientes.jsx                  | JavaScript JSX |         65 |          0 |          4 |         69 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\Login.jsx                                         | JavaScript JSX |         35 |          0 |          3 |         38 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\LoginComponents\FormChangePass.jsx                | JavaScript JSX |        212 |          0 |          3 |        215 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\LoginComponents\FormLogin.jsx                     | JavaScript JSX |        172 |          2 |          9 |        183 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\LoginComponents\FormRecovery.jsx                  | JavaScript JSX |        148 |          0 |          3 |        151 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\NotFound.jsx                                      | JavaScript JSX |        132 |          0 |          3 |        135 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\Recovery.jsx                                      | JavaScript JSX |         36 |          0 |          4 |         40 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\admin\Doctores.jsx                                | JavaScript JSX |        308 |          4 |          5 |        317 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\admin\Laboratorista.jsx                           | JavaScript JSX |        305 |          4 |          5 |        314 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\admin\Personal.jsx                                | JavaScript JSX |        303 |          4 |          5 |        312 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\admin\formAddUser.jsx                             | JavaScript JSX |        731 |          4 |          9 |        744 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\doctor\Citas.jsx                                  | JavaScript JSX |        164 |          5 |          7 |        176 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\doctor\PacienteVista.jsx                          | JavaScript JSX |         94 |          4 |          8 |        106 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\personal\AddCita.jsx                              | JavaScript JSX |        256 |         10 |         10 |        276 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\personal\Citas.jsx                                | JavaScript JSX |        165 |          5 |          7 |        177 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\personal\EditCita.jsx                             | JavaScript JSX |        265 |          7 |         13 |        285 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\personal\FormAddPaciente.jsx                      | JavaScript JSX |        530 |          4 |          6 |        540 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\src\views\personal\Paciente.jsx                             | JavaScript JSX |        263 |          8 |          7 |        278 |
+| d:\NEIL\SistemaHistoriasClinicas\front_sistemahc\vite.config.js                                              | JavaScript     |         27 |          1 |          2 |         30 |
+| Total                                                                                                        |                |     17,612 |        573 |        701 |     18,886 |
++--------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

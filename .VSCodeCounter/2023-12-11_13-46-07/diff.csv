@@ -1,0 +1,36 @@
+"filename", "language", "JavaScript", "XML", "JavaScript JSX", "CSS", "JSON", "HTML", "comment", "blank", "total"
+"d:\NEIL\SistemaHistoriasClinicas\client\index.html", "HTML", 0, 0, 0, 0, 0, -13, 0, -1, -14
+"d:\NEIL\SistemaHistoriasClinicas\client\package-lock.json", "JSON", 0, 0, 0, 0, -2583, 0, 0, -1, -2584
+"d:\NEIL\SistemaHistoriasClinicas\client\package.json", "JSON", 0, 0, 0, 0, -33, 0, 0, -1, -34
+"d:\NEIL\SistemaHistoriasClinicas\client\postcss.config.cjs", "JavaScript", -6, 0, 0, 0, 0, 0, 0, -1, -7
+"d:\NEIL\SistemaHistoriasClinicas\client\public\vite.svg", "XML", 0, -1, 0, 0, 0, 0, 0, 0, -1
+"d:\NEIL\SistemaHistoriasClinicas\client\src\App.css", "CSS", 0, 0, 0, -37, 0, 0, 0, -6, -43
+"d:\NEIL\SistemaHistoriasClinicas\client\src\App.jsx", "JavaScript JSX", 0, 0, -45, 0, 0, 0, 0, -13, -58
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Cards\CardUsuario.jsx", "JavaScript JSX", 0, 0, -70, 0, 0, 0, -3, -5, -78
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Footer.jsx", "JavaScript JSX", 0, 0, -33, 0, 0, 0, 0, -3, -36
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Forms\FormUser.jsx", "JavaScript JSX", 0, 0, -545, 0, 0, 0, -30, -16, -591
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Forms\FormUserUpdate.jsx", "JavaScript JSX", 0, 0, -556, 0, 0, 0, -32, -17, -605
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Modal\Modal.jsx", "JavaScript JSX", 0, 0, -55, 0, 0, 0, 0, -7, -62
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Modal\ModalAdd.jsx", "JavaScript JSX", 0, 0, -77, 0, 0, 0, -12, -10, -99
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Navbar.jsx", "JavaScript JSX", 0, 0, -33, 0, 0, 0, 0, -3, -36
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\Protected.jsx", "JavaScript JSX", 0, 0, -9, 0, 0, 0, 0, -2, -11
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\TableUsers.jsx", "JavaScript JSX", 0, 0, -84, 0, 0, 0, 0, -6, -90
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Components\TableUsers2.jsx", "JavaScript JSX", 0, 0, -50, 0, 0, 0, -15, -7, -72
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Context\AdminPageContext.jsx", "JavaScript JSX", 0, 0, -2, 0, 0, 0, 0, -1, -3
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Context\AdminPageProvider.jsx", "JavaScript JSX", 0, 0, -193, 0, 0, 0, -14, -9, -216
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Context\ContextUser.jsx", "JavaScript JSX", 0, 0, -13, 0, 0, 0, -1, -7, -21
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\AdminPage.jsx", "JavaScript JSX", 0, 0, -44, 0, 0, 0, 0, -5, -49
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\ChangePassword.jsx", "JavaScript JSX", 0, 0, -216, 0, 0, 0, 0, -14, -230
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\LoginPage.jsx", "JavaScript JSX", 0, 0, -190, 0, 0, 0, -5, -12, -207
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\NotFound.jsx", "JavaScript JSX", 0, 0, -6, 0, 0, 0, 0, -1, -7
+"d:\NEIL\SistemaHistoriasClinicas\client\src\Pages\RecoveryPage.jsx", "JavaScript JSX", 0, 0, -152, 0, 0, 0, 0, -11, -163
+"d:\NEIL\SistemaHistoriasClinicas\client\src\api\login.api.js", "JavaScript", -18, 0, 0, 0, 0, 0, 0, -7, -25
+"d:\NEIL\SistemaHistoriasClinicas\client\src\assets\Modal.css", "CSS", 0, 0, 0, -75, 0, 0, 0, -8, -83
+"d:\NEIL\SistemaHistoriasClinicas\client\src\assets\style.css", "CSS", 0, 0, 0, -73, 0, 0, -2, -23, -98
+"d:\NEIL\SistemaHistoriasClinicas\client\src\index.css", "CSS", 0, 0, 0, -3, 0, 0, 0, -2, -5
+"d:\NEIL\SistemaHistoriasClinicas\client\src\libs\names.lib.js", "JavaScript", -30, 0, 0, 0, 0, 0, 0, -1, -31
+"d:\NEIL\SistemaHistoriasClinicas\client\src\libs\usuario.lib.js", "JavaScript", -34, 0, 0, 0, 0, 0, 0, -1, -35
+"d:\NEIL\SistemaHistoriasClinicas\client\src\main.jsx", "JavaScript JSX", 0, 0, -15, 0, 0, 0, 0, -2, -17
+"d:\NEIL\SistemaHistoriasClinicas\client\tailwind.config.cjs", "JavaScript", -8, 0, 0, 0, 0, 0, -1, -1, -10
+"d:\NEIL\SistemaHistoriasClinicas\client\vite.config.js", "JavaScript", -5, 0, 0, 0, 0, 0, -1, -2, -8
+"Total", "-", -101, -1, -2388, -188, -2616, -13, -116, -206, -5629
