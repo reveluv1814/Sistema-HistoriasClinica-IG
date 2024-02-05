@@ -20,13 +20,15 @@ class AntecedenteFService {
   /* async find() {
     const rta = await models.Persona.findAll();
     return rta;
-  }
+  }*/
 
   async findOne(id) {
-    const user = await models.Persona.findByPk(id);
-    if (!user) throw boom.notFound("Persona not found");
-    return user;
-  } */
+    const historia = await models.HistoriaClinica.findByPk(id);
+    if (!historia) throw boom.notFound("Historia not found");
+    const antecedenteF = await models.AntecedentesF.findByPk(historia.antecedenteFId)
+    if (!antecedenteF) throw boom.notFound("Antecedente Familiar not found");
+    return antecedenteF;
+  } 
   async updateAntecedenteF(data, id) {
     // Busca el antecedente por su ID
     const antecedenteF = await models.AntecedentesF.findByPk(id);

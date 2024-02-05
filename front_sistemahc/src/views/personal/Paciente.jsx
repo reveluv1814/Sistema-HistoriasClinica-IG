@@ -208,7 +208,7 @@ const Paciente = () => {
           page={page}
           fetchData={getPacientes}
           handleEdit={editPaciente}
-          handleDelete={deleteId}
+          //handleDelete={deleteId}
           handleCita={handleCita}
           handleHistoria={handleHistoria}
           accionesFlag={true}

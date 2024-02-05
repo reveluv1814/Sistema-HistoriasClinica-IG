@@ -69,7 +69,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   orejasId: {
     field: "orejas_id",
@@ -81,7 +81,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   ojosId: {
     field: "ojos_id",
@@ -93,7 +93,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   narizId: {
     field: "nariz_id",
@@ -105,7 +105,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   maxMandibulaId: {
     field: "maxMandibula_id",
@@ -117,7 +117,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   bocaId: {
     field: "boca_id",
@@ -129,7 +129,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   cuelloId: {
     field: "cuello_id",
@@ -141,7 +141,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   toraxId: {
     field: "torax_id",
@@ -153,7 +153,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   columnaId: {
     field: "columna_id",
@@ -165,7 +165,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   abdomenId: {
     field: "abdomen_id",
@@ -177,7 +177,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   tejidoSubId: {
     field: "tejidoSub_id",
@@ -189,7 +189,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   musculaturaId: {
     field: "musculatura_id",
@@ -201,7 +201,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   exNeurologicoId: {
     field: "exNeurologico_id",
@@ -213,7 +213,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   pielAnexosId: {
     field: "pielAnexos_id",
@@ -225,7 +225,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   genitalesExId: {
     field: "genitalesEx_id",
@@ -237,7 +237,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
   miembrosId: {
     field: "miembros_id",
@@ -249,7 +249,7 @@ const ExploracionFSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "CASCADE",
+    onDelete: "SET NULL",
   },
 };
 

@@ -57,15 +57,26 @@ router.get(
     }
   }
 );
+router.get(
+  "/apartados/:id",
+  checkRoles("admin", "doctor"),
+  validatorHandler(getHistoriaSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const historia = await historiaService.findApartados(id);
+      res.json(historia);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 //routers de las demas tablas
 router.use("/antecedenteF", antecedenteFRouter);
 router.use("/antecedenteP", antecedentePRouter);
 router.use("/composicionF", composicionFRouter);
 router.use("/exploracionF", exploracionFRouter);
 router.use("/laboratorio", laboratorioRouter);
-
-
-
 
 /* router.get(
   "/:id",

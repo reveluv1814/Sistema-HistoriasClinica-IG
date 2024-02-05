@@ -28,7 +28,7 @@ const FormAddPaciente = ({
         .required("Campo requerido")
         .min(5, "Debe tener al menos 5 caracteres"),
       telefono: Yup.string()
-        .required("Campo requerido")
+        .required("Campo requerido").min(6, "Debe tener al menos 6 caracteres")
         .matches(/^\d+$/, "Debe contener solo números"),
       direccion: Yup.string().required("Campo requerido"),
     }),

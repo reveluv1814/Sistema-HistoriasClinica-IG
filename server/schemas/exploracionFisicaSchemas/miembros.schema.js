@@ -11,6 +11,13 @@ const supSindactilia = Joi.boolean().optional().allow(null);
 const supCutanea = Joi.boolean().optional().allow(null);
 const supOsea = Joi.boolean().optional().allow(null);
 const supDedos = Joi.string().allow(null, "").optional();
+const supPliegueSimeano = Joi.boolean().optional().allow(null);
+const supPliegueCompleto = Joi.boolean().optional().allow(null);
+const supPliegueImcompleto = Joi.boolean().optional().allow(null);
+const supPliegueQuinto = Joi.boolean().optional().allow(null);
+const supHipoplasia = Joi.boolean().optional().allow(null);
+const supClinodactilia = Joi.boolean().optional().allow(null);
+const supEspDedos = Joi.string().allow(null, "").optional();
 const supCavalgamiento = Joi.string().allow(null, "").optional();
 const supDeformidad = Joi.boolean().optional().allow(null);
 const supObs = Joi.string().allow(null, "").optional();
@@ -43,6 +50,13 @@ const createMiembrosSchema = Joi.object({
   supCutanea,
   supOsea,
   supDedos,
+  supPliegueSimeano,
+  supPliegueCompleto,
+  supPliegueImcompleto,
+  supPliegueQuinto,
+  supHipoplasia,
+  supClinodactilia,
+  supEspDedos,
   supCavalgamiento,
   supDeformidad,
   supObs,
@@ -76,6 +90,13 @@ const updateMiembrosSchema = Joi.object({
   supCutanea,
   supOsea,
   supDedos,
+  supPliegueSimeano,
+  supPliegueCompleto,
+  supPliegueImcompleto,
+  supPliegueQuinto,
+  supHipoplasia,
+  supClinodactilia,
+  supEspDedos,
   supCavalgamiento,
   supDeformidad,
   supObs,

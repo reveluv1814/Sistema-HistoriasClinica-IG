@@ -27,7 +27,7 @@ const PersonalRoutes = {
     },
     {
       path: "historia/:id",
-      element: <Historia />,
+      element: <Historia atras={"/personal/pacientes"}/>,
     },
     /* {
       path: "laboratoristas",

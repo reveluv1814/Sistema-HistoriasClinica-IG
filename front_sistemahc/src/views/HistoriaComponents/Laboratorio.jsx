@@ -4,15 +4,52 @@ const LaboratorioView = ({ laboratoristas }) => {
   return (
     <>
       <div className="p-4">
-        <div className="border rounded-md p-4 shadow-md flex bg-zinc-100 dark:bg-stone-800 dark:border-stone-500 w-full">
+        <div className="border rounded-md p-4 shadow-md flex bg-zinc-100 dark:bg-stone-800 dark:border-stone-700 w-full">
           <div className="flex flex-col w-full">
-            <h2 className="text-2xl font-semibold mb-1">Examenes de Laboratorio</h2>
-            <hr className="mb-4 border border-sky-700 shadow w-full" style={{ width: "100%" }}/>
+            <h2 className="text-2xl font-semibold mb-1 dark:text-gray-300">
+              Examenes de Laboratorio
+            </h2>
+            <hr
+              className="mb-4 border border-sky-700 shadow w-full dark:border-sky-800"
+              style={{ width: "100%" }}
+            />
             <div className="flex flex-row flex-wrap">
               {laboratoristas.length === 0 ? (
-                <span className="text-xl italic font-medium">Sin datos ...</span>
+                <span className="text-xl italic font-medium">
+                  Sin datos ...
+                </span>
               ) : (
-                <span>Holaaa</span>
+                laboratoristas.map((labHistoria, index) => {
+                  const fecha = new Date(labHistoria.historiaLabo.createdAt);
+                  const dia = fecha.getUTCDate().toString().padStart(2, "0");
+                  const mes = (fecha.getUTCMonth() + 1)
+                    .toString()
+                    .padStart(2, "0");
+                  const año = fecha.getUTCFullYear();
+                  return (
+                    <div
+                      key={index}
+                      className="w-full bg-indigo-100 dark:bg-indigo-800 shadow-md rounded-md p-3  mb-4"
+                    >
+                      <div className="text-sm">
+                        <p className="w-full mb-1">
+                          <span className="font-semibold">Exámen: </span>
+                          {labHistoria.historiaLabo.examen || "sin dato..."}
+                        </p>
+                        <p className="w-full md:w-1/2 lg:w-1/3 mb-3">
+                          <span className="font-semibold">Fecha de creación: </span>
+                          {`${dia}/${mes}/${año}`}
+                        </p>
+
+                        
+                        <p className="w-full italic">
+                          <span className="font-semibold">Laboratorista: </span>
+                          {labHistoria.laboratorista.persona.nombreCompleto}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })
               )}
             </div>
           </div>

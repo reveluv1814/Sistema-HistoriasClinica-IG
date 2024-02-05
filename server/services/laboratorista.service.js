@@ -13,6 +13,9 @@ class LaboratoristaService {
     const offset = (page - 1) * limit;
     const rta = await models.Laboratorista.findAndCountAll({
       where: {
+        usuarioId: {
+          [Op.ne]: null,
+        },
         "$persona.apellidoPaterno$": {
           [Op.iLike]: `%${q}%`,
         },
@@ -41,11 +44,17 @@ class LaboratoristaService {
         ["id"], // ordenar por fecha de creación en orden ascendente
       ],
     });
+    console.log(rta);
     return rta;
   }
 
   async findOne(id) {
     const user = await models.Laboratorista.findByPk(id, {
+      where: {
+        usuarioId: {
+          [Op.ne]: null,
+        },
+      },
       include: [
         {
           model: models.Usuario,
@@ -65,10 +74,7 @@ class LaboratoristaService {
   }
   async findNombre(id) {
     const user = await models.Laboratorista.findByPk(id, {
-      attributes: [
-        "id",
-        
-      ],
+      attributes: ["id"],
       include: [
         {
           model: models.Persona,
@@ -168,10 +174,12 @@ class LaboratoristaService {
     return { id };
   }
   async deleteUsuario(id) {
-    await models.Laboratorista.destroy({
-      where: { usuarioId: id },
-    });
-    return { rta: true };
+    const laboratorista = await models.Laboratorista.findByPk(id);
+    if (!laboratorista) {
+      throw new Error("No se encontró el registro del Doctor");
+    }
+    await models.Usuario.destroy({ where: { id: laboratorista.usuarioId } });
+    return { id };
   }
   //
   async createLaboratorio(data) {

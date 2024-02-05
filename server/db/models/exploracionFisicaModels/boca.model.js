@@ -23,6 +23,7 @@ const BocaSchema = {
   altDental: { allowNull: true, type: DataTypes.BOOLEAN },
   fisuraPalatina: { allowNull: true, type: DataTypes.BOOLEAN },
   paladarOjival: { allowNull: true, type: DataTypes.BOOLEAN },
+  paladarAlto: { allowNull: true, type: DataTypes.BOOLEAN },
   uvulaBifida: { allowNull: true, type: DataTypes.BOOLEAN },
   palpacionPaladar: { allowNull: true, type: DataTypes.BOOLEAN },
   obs: { allowNull: true, type: DataTypes.STRING },

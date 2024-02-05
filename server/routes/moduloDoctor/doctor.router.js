@@ -79,5 +79,40 @@ router.delete(
     }
   }
 );
+//lista una cita 
+router.get(
+  "/cita/:id",
+  checkRoles("admin", "doctor"),
+  validatorHandler(getCitaSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const citas = await citaService.findConsultaDoc(id);
+
+      res.json(citas);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+//edita una consulta
+router.patch(
+  "/cita/:id",
+  checkRoles("admin", "doctor"),
+  validatorHandler(getCitaSchema, "params"),
+  validatorHandlerObjetos(updateCitaSchema, "cita"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const body = req.body;
+
+      const cita = await citaService.update(id, body.cita);
+
+      res.status(200).json(cita);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 module.exports = router;

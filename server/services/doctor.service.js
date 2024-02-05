@@ -1,5 +1,5 @@
 const boom = require("@hapi/boom");
-const { Op,Sequelize } = require("sequelize");
+const { Op, Sequelize } = require("sequelize");
 const { models } = require("../libs/sequelize");
 const UserService = require("./usuario.service");
 
@@ -13,6 +13,9 @@ class DoctorService {
     const offset = (page - 1) * limit;
     const rta = await models.Doctor.findAndCountAll({
       where: {
+        usuarioId: {
+          [Op.ne]: null,
+        },
         "$persona.apellidoPaterno$": {
           [Op.iLike]: `%${q}%`,
         },
@@ -166,10 +169,12 @@ class DoctorService {
     return { id };
   }
   async deleteUsuario(id) {
-    await models.Doctor.destroy({
-      where: { usuarioId: id },
-    });
-    return { rta: true };
+    const doctor = await models.Doctor.findByPk(id);
+    if (!doctor) {
+      throw new Error("No se encontró el registro del Doctor");
+    }
+    await models.Usuario.destroy({ where: { id: doctor.usuarioId } });
+    return { id };
   }
 }
 

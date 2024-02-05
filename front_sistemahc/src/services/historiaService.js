@@ -1,22 +1,31 @@
 import api from "./api";
 
-const ciataService = {
+const historiaService = {
   historiaPaciente: (id) => {
     return api.get(`historia/${id}`);
   },
   historiaFormList: (id) => {
     return api.get(`historia/form/${id}`);
   },
-
+  verApartados:(id)=>{
+    return api.get(`historia/apartados/${id}`);
+  },
+  guardarAntecedenteF: (id,datos) => {
+    return api.post(`historia/antecedenteF/${id}`, datos);
+  },
+  editarAntecedenteF: (id,datos) => {
+    return api.patch(`historia/antecedenteF/${id}`, datos);
+  },
+  motivoConsulta: (id,datos)=>{
+    return api.patch(`/doctor/cita/${id}`,datos)
+  },
   /* doctores: () => {
     return api.get('personal/doctor');
   } ,*/
 
-  /* guardar: (datos) => {
-    return api.post("/personal/cita", datos);
-  },
+   
 
-  mostrar: (id) => {
+  /*mostrar: (id) => {
     return api.get(`/personal/cita/${id}`);
   },
 
@@ -29,4 +38,4 @@ const ciataService = {
   }, */
 };
 
-export default ciataService;
+export default historiaService;

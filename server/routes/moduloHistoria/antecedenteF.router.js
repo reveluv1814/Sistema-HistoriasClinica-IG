@@ -19,10 +19,25 @@ const {getHistoriaSchema } = require("./../../schemas/historiaClinica.schema");
 const router = express.Router();
 const antecedenteFService = new AntecedenteFService();
 
+router.get(
+  "/:id",
+  checkRoles("admin", "doctor"),
+  validatorHandler(getAntecedenteFSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const antecedenteF = await antecedenteFService.findOne(id);
+      res.json(antecedenteF);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 router.post(
   "/:id",
   checkRoles("admin", "doctor"),
-  validatorHandler(getHistoriaSchema, "params"),
+  validatorHandler(getAntecedenteFSchema, "params"),
   validatorHandlerObjetos(createAntecedenteFSchema, "antecedenteF"),
   async (req, res, next) => {
     try {

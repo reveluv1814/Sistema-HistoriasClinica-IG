@@ -9,7 +9,7 @@ GET http://127.0.0.1:4000/personal/paciente/hola
 Authorization: Bearer {{token}}
 Accept: application/json
 ###
-#obtener un usuario
+#obtener un paciente
 GET http://127.0.0.1:4000/personal/paciente/1
 Authorization: Bearer {{token}}
 Accept: application/json
@@ -58,8 +58,8 @@ Accept: application/json
         "procedencia":"oruro"
     }
 }
-### eliminar un personalAd
-DELETE http://127.0.0.1:4000/personal/paciente/2
+### eliminar un paciente
+DELETE http://127.0.0.1:4000/personal/paciente/1
 Authorization: Bearer {{token}}
 Accept: application/json
 
@@ -87,6 +87,7 @@ Accept: application/json
         "pacienteId": 1,
         "doctorId": 1,
         "personalAdId": 1,
+        "motivo":"primera vezz",
         "resumen":"En esta consulta el paciente  se mostro con mejorias y se vio esto y  estofasdf asdfasdfsdfsdfasdfsd asdfadsfasdfasdfsdf",
         "impresionDiag":"Lo veo con impresiones demasiado buenas y mejorandosafas asdf asdffasdfsdf asdfsdfasfas sadfasdfsd",
         "estado":false
@@ -107,7 +108,7 @@ Accept: application/json
     }
 }
 ### Elimina una cita
-DELETE http://127.0.0.1:4000/personal/cita/2
+DELETE http://127.0.0.1:4000/personal/cita/1
 Authorization: Bearer {{token}}
 Accept: application/json
 

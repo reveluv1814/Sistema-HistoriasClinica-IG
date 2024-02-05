@@ -24,8 +24,8 @@ Accept: application/json
 
 {
     "historiaLabo":{
-        "examen": "huesoss ccc",
-        "laboratoristaId": 2
+        "examen": "a verrrr xd",
+        "laboratoristaId": 1
     }
 }
 ### editar un laboratorio de id x

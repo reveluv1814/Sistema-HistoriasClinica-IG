@@ -78,7 +78,7 @@ Authorization: Bearer {{token}}
 Accept: application/json
 
 ### mostrar un personalAd
-GET http://127.0.0.1:4000/admin/personalAd/2
+GET http://127.0.0.1:4000/admin/personalAd/1
 Authorization: Bearer {{token}}
 Accept: application/json
 
@@ -126,7 +126,7 @@ Accept: application/json
     }
 }
 ### eliminar un personalAd
-DELETE http://127.0.0.1:4000/admin/personalAd/2
+DELETE http://127.0.0.1:4000/admin/personalAd/1
 Authorization: Bearer {{token}}
 Accept: application/json
 ###############################################fin personalAd

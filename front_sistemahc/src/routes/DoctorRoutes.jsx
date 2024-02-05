@@ -18,10 +18,10 @@ const DoctorRoutes = {
     },
     {
       path: "historia/:id",
-      element: <Historia />,
+      element: <Historia atras={"/doctor/pacientes"}/>,
     },
     {
-      path: "historiaConsulta/:id",
+      path: "historia/:historiaId/consulta/:consultaId",
       element: <HistoriaForm />,
     },
   ], 

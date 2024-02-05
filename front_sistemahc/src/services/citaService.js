@@ -2,7 +2,7 @@ import api from "./api";
 
 const citaService = {
   listar: (id) => {
-    return api.get(`personal/cita/personalAd/${id}`);
+    return api.get(`personal/cita`);
   },
 
   doctores: () => {
@@ -31,6 +31,12 @@ const citaService = {
 
   docElimina: (id) => {
     return api.delete(`/doctor/cita/${id}`);
+  },
+  docConsulta: (id,datos)=>{
+    return api.patch(`/doctor/cita/${id}`,datos)
+  },
+  verConsulta: (id) => {
+    return api.get(`/doctor/cita/${id}`);
   },
 };
 

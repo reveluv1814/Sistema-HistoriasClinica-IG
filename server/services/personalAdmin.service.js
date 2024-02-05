@@ -13,6 +13,9 @@ class PersonalAdminService {
     const offset = (page - 1) * limit;
     const rta = await models.PersonalAdmin.findAndCountAll({
       where: {
+        usuarioId: {
+          [Op.ne]: null,
+        },
         "$persona.apellidoPaterno$": {
           [Op.iLike]: `%${q}%`,
         },
@@ -134,17 +137,13 @@ class PersonalAdminService {
     return { id };
   }
   async deleteUsuario(id) {
-    await models.PersonalAdmin.destroy({
-      where: { usuarioId: id },
-    });
-    return { rta: true };
+    const personal = await models.PersonalAdmin.findByPk(id);
+    if (!personal) {
+      throw new Error("No se encontró el registro del PersonalAdmin");
+    }
+    await models.Usuario.destroy({ where: { id: personal.usuarioId } });
+    return { id };
   }
-  //crea un paciente
-  /*  async addPaciente(data) {
-    const newPaciente = await models.P_creaPac.create(data);
-
-    return newPaciente;
-  } */
 }
 
 module.exports = PersonalAdminService;

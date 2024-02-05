@@ -33,6 +33,10 @@ const CitaSchema = {
     field: "create_at",
     defaultValue: Sequelize.NOW,
   },
+  motivo: {
+    allowNull: true,
+    type: DataTypes.STRING,
+  },
   resumen: {
     allowNull: true,
     type: DataTypes.STRING,
@@ -51,7 +55,7 @@ const CitaSchema = {
       key: "id",
     },
     onUpdate: "CASCADE",
-    onDelete: "SET NULL",
+    onDelete: "CASCADE",
   },
   historiaId: {
     field: "historia_id",

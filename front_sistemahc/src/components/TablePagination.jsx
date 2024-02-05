@@ -55,7 +55,7 @@ const TablePagination = ({
               <td className="text-sm text-gray-500">
                 {personalMedico && handleHistoria && (
                   <button
-                    className="text-center justify-center py-1 px-2 bg-indigo-500 text-gray-200 hover:bg-indigo-600 rounded ml-2 hover:text-white"
+                    className="text-center justify-center py-1 px-2 bg-indigo-500 text-white hover:bg-indigo-600 rounded ml-2"
                     onClick={() => handleHistoria(reg)}
                   >
                     <span
@@ -177,7 +177,7 @@ const TablePagination = ({
                 <td className="text-sm text-gray-500 flex items-center justify-center pt-1">
                   {handleCita && (
                     <button
-                      className="text-center justify-center py-1 px-2 bg-yellow-500 text-gray-200 hover:bg-yellow-600 rounded ml-2 hover:text-white"
+                      className="text-center justify-center py-1 px-2 bg-amber-500 text-white hover:bg-amber-400 rounded ml-2"
                       onClick={() => handleCita(reg)}
                     >
                       <span
@@ -190,7 +190,7 @@ const TablePagination = ({
                   )}
                   {handleHistoria && (
                     <button
-                      className="text-center justify-center py-1 px-2 bg-indigo-500 text-gray-200 hover:bg-indigo-600 rounded ml-2 hover:text-white"
+                      className="text-center justify-center py-1 px-2 bg-indigo-500 text-white hover:bg-indigo-600 rounded ml-2"
                       onClick={() => handleHistoria(reg)}
                     >
                       <span

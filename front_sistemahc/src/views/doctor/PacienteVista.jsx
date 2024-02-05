@@ -42,7 +42,6 @@ const PacienteVista = () => {
 
   const handleHistoria = async (datos) => {
     try {
-      console.log(datos)
       navigate(`/doctor/historia/${datos.id}`);
     } catch (error) {
       console.log(error);

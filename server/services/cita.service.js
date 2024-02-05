@@ -19,7 +19,8 @@ class CitaService {
   }
 
   async find() {
-    const rta = await models.Cita.findAndCountAll({
+    const rta = await models.Cita.findAll({
+      where: { estado: true },
       include: [
         {
           model: models.Doctor,
@@ -179,6 +180,12 @@ class CitaService {
         },
       ],
     });
+    if (!cita) throw boom.notFound("Cita not found");
+    return cita;
+  }
+  //busca la cita de id x que el doctor quiera
+  async findConsultaDoc(id) {
+    const cita = await models.Cita.findByPk(id);
     if (!cita) throw boom.notFound("Cita not found");
     return cita;
   }
@@ -352,7 +359,7 @@ class CitaService {
     if (!cita) throw boom.notFound("Cita not found");
     return cita;
   }
-  
+
   async update(id, changes) {
     //const cita = await this.findOne(id);
     const rta = await models.Cita.update(changes, {

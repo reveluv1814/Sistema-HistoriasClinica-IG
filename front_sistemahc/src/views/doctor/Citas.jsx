@@ -14,7 +14,6 @@ const Citas = () => {
     try {
       const idUserProfile = localStorage.getItem("id");
       const { data } = await citaService.CitaDoc(idUserProfile);
-      //console.log(data);
       setCitas(data);
     } catch (error) {
       console.log(error);
@@ -44,11 +43,15 @@ const Citas = () => {
     setDeleteId(data.id);
     setModalDeleteCita(true);
   };
-  //edit
-  const handleEdit = async (datos) => {
+  //consulta
+  const handleConsulta = async (datos) => {
     try {
-      navigate(`/doctor/historiaConsulta/${datos.historiaId}`);
-      console.log(datos)
+      await citaService.docConsulta(datos.id, {
+        cita: {
+          estado: false,
+        },
+      });
+      navigate(`/doctor/historia/${datos.historiaId}/consulta/${datos.id}`);
     } catch (error) {
       console.log(error);
     }
@@ -61,7 +64,8 @@ const Citas = () => {
           Citas
         </h3>
         <p className="text-gray-600 mt-2 dark:text-gray-200">
-          En esta sección, encontrarás todas las <b>citas programadas para ser atendidas</b> en consulta.
+          En esta sección, encontrarás todas las{" "}
+          <b>citas programadas para ser atendidas</b> en consulta.
         </p>
       </div>
       <div className="container mx-auto px-4 py-5 bg-cyan-600  dark:bg-slate-400  rounded-xl mt-5">
@@ -113,13 +117,13 @@ const Citas = () => {
                     className=" text-sm bg-rose-500 py-2 px-4 rounded-lg mr-2 text-gray-100 hover:bg-rose-600 hover:text-white "
                     onClick={() => idCitaDelete(cita)}
                   >
-                    Eliminar
+                    Eliminar Cita
                   </button>
                   <button
                     className="text-sm bg-sky-500 py-2 px-4 rounded-lg ml-2 text-gray-100 hover:bg-sky-600 hover:text-white "
-                    onClick={() => handleEdit(cita)}
+                    onClick={() => handleConsulta(cita)}
                   >
-                    Editar
+                    Realizar Consulta
                   </button>
                 </div>
               </div>

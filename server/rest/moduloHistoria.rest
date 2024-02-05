@@ -2,12 +2,23 @@
 @tokenDoc=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbCI6ImRvY3RvciIsImlhdCI6MTY5NjAwMTMxMH0.fQSuKF5en3asffqUOhI4bybBh4rgPDq953QMMb5WjPc
 
 #listar la historia del paciente de id x
-GET http://127.0.0.1:4000/historia/1
+GET http://127.0.0.1:4000/historia/3
 Authorization: Bearer {{token}}
 Accept: application/json
 
-###listar la historia  de id x
+###listar la historia  de id x (para el form)
 GET http://127.0.0.1:4000/historia/form/1
+Authorization: Bearer {{tokenDoc}}
+Accept: application/json
+
+###listar los apartados de la historia  de id x 
+GET http://127.0.0.1:4000/historia/apartados/1
+Authorization: Bearer {{tokenDoc}}
+Accept: application/json
+
+###############################################
+### lista un antecedente familiar de la historia de id x
+GET http://127.0.0.1:4000/historia/antecedenteF/3
 Authorization: Bearer {{tokenDoc}}
 Accept: application/json
 
@@ -38,12 +49,12 @@ Accept: application/json
 
 {
     "antecedenteF":{
-        "nomPadre": "antonio graneros benavides",
+        "fechaNac_Padre": "antonio graneros benavides",
         "nomMadre": "mary flores callisaya"
     }
 }
 ###Elimina un antecendente familiar de id x
-DELETE http://127.0.0.1:4000/historia/antecedenteF/1
+DELETE http://127.0.0.1:4000/historia/antecedenteF/18
 Authorization: Bearer {{tokenDoc}}
 Accept: application/json
 

@@ -121,7 +121,7 @@ const AddCita = () => {
               <div className="bg-gray-100 dark:bg-slate-800 xl:w-2/3 md:w-2/4 p-5 flex items-center justify-center flex-wrap rounded-2xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
                 <Form onSubmit={handleSubmit}>
                   <h3 className="text-center font-inter text-gray-700 dark:text-white font-bold text-2xl mb-5">
-                    "Crear una Cita"
+                    Crear una Cita
                   </h3>
                   <div className=" flex flex-row items-center mb-4">
                     <label

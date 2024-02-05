@@ -89,6 +89,10 @@ Accept: application/json
         "microcefalia": false
     }
 }
+###elimina un craneo
+DELETE http://127.0.0.1:4000/historia/exploracionF/craneoF/1
+Authorization: Bearer {{token}}
+Accept: application/json
 ###crea orejas con la exploracion fisica de id x ###############################################
 POST http://127.0.0.1:4000/historia/exploracionF/orejas/1
 Authorization: Bearer {{token}}
@@ -236,6 +240,7 @@ Accept: application/json
         "altDental": null,
         "fisuraPalatina": null,
         "paladarOjival": null,
+        "paladarAlto": null,
         "uvulaBifida": null,
         "palpacionPaladar": null,
         "obs": ""

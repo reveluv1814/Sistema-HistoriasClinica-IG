@@ -22,7 +22,7 @@ const LaboratoristaSchema = {
   },
   usuarioId: {
     field: "usuario_id",
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.INTEGER,
     unique: true,
     references: {

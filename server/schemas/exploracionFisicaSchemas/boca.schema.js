@@ -15,6 +15,7 @@ const frenillo = Joi.boolean().optional().allow(null);
 const altDental = Joi.boolean().optional().allow(null);
 const fisuraPalatina = Joi.boolean().optional().allow(null);
 const paladarOjival = Joi.boolean().optional().allow(null);
+const paladarAlto= Joi.boolean().optional().allow(null);
 const uvulaBifida = Joi.boolean().optional().allow(null);
 const palpacionPaladar = Joi.boolean().optional().allow(null);
 const obs = Joi.string().allow(null, "").optional();
@@ -33,6 +34,7 @@ const createBocaSchema = Joi.object({
   altDental,
   fisuraPalatina,
   paladarOjival,
+  paladarAlto,
   uvulaBifida,
   palpacionPaladar,
   obs,
@@ -52,6 +54,7 @@ const updateBocaSchema = Joi.object({
   altDental,
   fisuraPalatina,
   paladarOjival,
+  paladarAlto,
   uvulaBifida,
   palpacionPaladar,
   obs,

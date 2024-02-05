@@ -16,3 +16,18 @@ Accept: application/json
 DELETE http://127.0.0.1:4000/doctor/cita/7
 Authorization: Bearer {{token}}
 Accept: application/json
+### Cambiar el estado de la cita cuando el doctor realize la consulta
+PATCH  http://127.0.0.1:4000/doctor/cita/3
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "cita":{
+        "estado":true
+    }
+} 
+### lista una cita de id x
+GET http://127.0.0.1:4000/doctor/cita/3
+Authorization: Bearer {{token}}
+Accept: application/json

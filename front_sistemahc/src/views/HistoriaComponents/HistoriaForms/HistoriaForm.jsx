@@ -3,18 +3,20 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import historiaService from "./../../../services/historiaService";
 import Paciente from "./../Pacientes";
-import Resumenes from "./../Cita";
-
+import Stepp from "../../../components/Stepp";
 function HistoriaForm() {
-  const { id } = useParams();
-  //estados
+  const { historiaId } = useParams();
+  const { consultaId } = useParams();
+  
   const [historia, setHistoria] = useState(null);
 
   //funcion que hace get de la historia
   useEffect(() => {
     const getHistoria = async () => {
       try {
-        const historiaFetch = await historiaService.historiaFormList(id);
+        const historiaFetch = await historiaService.historiaFormList(
+          historiaId
+        );
         console.log(historiaFetch.data);
         setHistoria(historiaFetch.data);
       } catch (error) {
@@ -25,9 +27,9 @@ function HistoriaForm() {
     getHistoria();
   }, []);
   //inica los valores con el get
-   let historiaValue;
-  if (historia != null) { 
-     historiaValue = {
+  let historiaValue;
+  if (historia != null) {
+    historiaValue = {
       arbolGene: historia.historia.arbolGene,
       antecedenteF: historia.historia.antecedenteF,
       antecedenteP: historia.historia.antecedenteP,
@@ -40,10 +42,6 @@ function HistoriaForm() {
   //funciones
   return (
     <>
-      <div>HistoriaForm</div>
-      <div>
-        el id es ={">"} {id}{" "}
-      </div>
       {historia === null ? (
         <p className="text-3xl mt-5 dark:text-white">Cargando...</p>
       ) : (
@@ -55,28 +53,11 @@ function HistoriaForm() {
             <hr className=" h-px my-2 bg-gray-300 border-0 dark:bg-gray-700 shadow-lg" />
           </div>
           <Paciente paciente={historia.historia.paciente} />
-          <Formik
-            enableReinitialize
-            initialValues={historiaValue}
-            //validationSchema={validationSchema}
-            //onSubmit={handleSubmit}
-          >
-            {({
-              values,
-              errors,
-              handleChange,
-              handleSubmit,
-              touched,
-              isValidating,
-              isValid,
-            }) => (
-              <Form onSubmit={handleSubmit} className="flex flex-col px-7 ">
-                <Field type="date" />
-                <p>los{JSON.stringify(historiaValue)}</p>
-              </Form>
-            )}
-          </Formik>
-          <Resumenes citas={historia.historia.citas}/>
+          <div className=" p-4">
+            <div className="border rounded-md p-3 shadow-md bg-zinc-100 dark:bg-stone-800 dark:border-stone-700">
+              <Stepp historia={historia.historia} consultaId={consultaId} />
+            </div>
+          </div>
         </>
       )}
     </>

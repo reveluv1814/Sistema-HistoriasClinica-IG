@@ -100,7 +100,7 @@ router.delete(
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      res.status(200).json(await doctorService.delete(id));
+      res.status(200).json(await doctorService.deleteUsuario(id));
     } catch (error) {
       next(error);
     }

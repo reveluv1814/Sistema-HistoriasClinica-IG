@@ -155,10 +155,41 @@ class HistoriaService {
 
     if (!historiaP) throw boom.notFound("Historia not found");
     //historiaLabo
-    const historiaLabo = await models.HistoriaLabo.findAll({
+    const historiaLaboo = await models.HistoriaLabo.findAll({
       where: { historiaId: rta.historiaId }, // Filtrar por la historia específica
     });
-    
+    const laboratoristasPromises = historiaLaboo.map(async (historiaLabo) => {
+      //console.log("historiaLabo:", historiaLabo);
+      const laboratorista = await models.Laboratorista.findOne({
+        where: { id: historiaLabo.laboratoristaId },
+        attributes: ["especialidad"],
+        include: [
+          {
+            model: models.Persona,
+            as: "persona",
+            attributes: [
+              [
+                Sequelize.fn(
+                  "CONCAT",
+                  Sequelize.col("persona.nombre"),
+                  " ",
+                  Sequelize.col("persona.apellidoPaterno"),
+                  " ",
+                  Sequelize.col("persona.apellidoMaterno")
+                ),
+                "nombreCompleto",
+              ],
+            ],
+          },
+        ],
+      });
+      //console.log("laboratorista:", laboratorista);
+      return {
+        historiaLabo: historiaLabo.get(), // Obtén el objeto plano
+        laboratorista: laboratorista ? laboratorista.get() : null, // Verifica si laboratorista existe
+      };
+    });
+
     //Citas
     const citas = await models.Cita.findAll({
       where: { historiaId: historiaP.id, estado: false },
@@ -190,7 +221,9 @@ class HistoriaService {
       ],
     });
 
-    return { paciente, ...historiaP.toJSON(), historiaLabo, citas };
+    const resultadosLabo = await Promise.all(laboratoristasPromises);
+
+    return { paciente, ...historiaP.toJSON(), resultadosLabo, citas };
   }
 
   async findHis(id) {
@@ -228,19 +261,80 @@ class HistoriaService {
           model: models.ExploracionF,
           as: "exploracionF",
           //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+          include: [
+            {
+              model: models.CraneoF,
+              as: "craneoF",
+              //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+            },
+            {
+              model: models.Orejas,
+              as: "orejas",
+            },
+            {
+              model: models.Ojos,
+              as: "ojos",
+            },
+            {
+              model: models.Nariz,
+              as: "nariz",
+            },
+            {
+              model: models.MaxMandibula,
+              as: "maxMandibula",
+            },
+            {
+              model: models.Boca,
+              as: "boca",
+            },
+            {
+              model: models.Cuello,
+              as: "cuello",
+            },
+            {
+              model: models.Torax,
+              as: "torax",
+            },
+            {
+              model: models.Columna,
+              as: "columna",
+            },
+            {
+              model: models.Abdomen,
+              as: "abdomen",
+            },
+            {
+              model: models.TejidoSub,
+              as: "tejidoSub",
+            },
+            {
+              model: models.Musculatura,
+              as: "musculatura",
+            },
+            {
+              model: models.ExNeurologico,
+              as: "exNeurologico",
+            },
+            {
+              model: models.PielAnexos,
+              as: "pielAnexos",
+            },
+            {
+              model: models.GenitalesEx,
+              as: "genitalesEx",
+            },
+            {
+              model: models.Miembros,
+              as: "miembros",
+            },
+          ],
         },
-        /* {
-          model: models.Laboratorista,
-          through: models.HistoriaLabo,
-          as: "laboratoristas",
-          //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
-        }, */
       ],
     });
 
     if (!historiaP) throw boom.notFound("Historia not found");
 
-    //historiaLabo
+    /* //historiaLabo
     const historiaLabo = await models.HistoriaLabo.findAll({
       where: { historiaId: rta.historiaId }, // Filtrar por la historia específica
     });
@@ -274,9 +368,104 @@ class HistoriaService {
           ],
         },
       ],
+    }); */
+
+    return { paciente, ...historiaP.toJSON() };
+  }
+
+  async findApartados(id) {
+    const historiaP = await models.HistoriaClinica.findOne({
+      where: { id: id },
+      include: [
+        {
+          model: models.AntecedentesF,
+          as: "antecedenteF",
+        },
+        {
+          model: models.AntecedentesP,
+          as: "antecedenteP",
+        },
+        {
+          model: models.ComposicionF,
+          as: "composicionesF",
+        },
+        {
+          model: models.ExploracionF,
+          as: "exploracionF",
+          /* include: [
+            {
+              model: models.CraneoF,
+              as: "craneoF",
+              //attributes: ["id", "email", "rol", "createdAt"], // Especifica los atributos de usuario que deseas mostrar
+            },
+            {
+              model: models.Orejas,
+              as: "orejas",
+            },
+            {
+              model: models.Ojos,
+              as: "ojos",
+            },
+            {
+              model: models.Nariz,
+              as: "nariz",
+            },
+            {
+              model: models.MaxMandibula,
+              as: "maxMandibula",
+            },
+            {
+              model: models.Boca,
+              as: "boca",
+            },
+            {
+              model: models.Cuello,
+              as: "cuello",
+            },
+            {
+              model: models.Torax,
+              as: "torax",
+            },
+            {
+              model: models.Columna,
+              as: "columna",
+            },
+            {
+              model: models.Abdomen,
+              as: "abdomen",
+            },
+            {
+              model: models.TejidoSub,
+              as: "tejidoSub",
+            },
+            {
+              model: models.Musculatura,
+              as: "musculatura",
+            },
+            {
+              model: models.ExNeurologico,
+              as: "exNeurologico",
+            },
+            {
+              model: models.PielAnexos,
+              as: "pielAnexos",
+            },
+            {
+              model: models.GenitalesEx,
+              as: "genitalesEx",
+            },
+            {
+              model: models.Miembros,
+              as: "miembros",
+            },
+          ], */
+        },
+      ],
     });
 
-    return { paciente, ...historiaP.toJSON(), historiaLabo,citas };
+    if (!historiaP) throw boom.notFound("Historia not found");
+
+    return historiaP;
   }
 
   async update(id, changes) {

@@ -10,7 +10,13 @@ const EditCita = () => {
   const { id } = useParams();
   const formikRef = useRef();
 
-  const [citaValue, setCitaValue] = useState({});
+  const [citaValue, setCitaValue] = useState({
+    cita: {
+      fecha: "",
+      hora: "",
+      doctorId: "",
+    },
+  });
 
   //rellena los valores iniciales
   useEffect(() => {
@@ -126,8 +132,6 @@ const EditCita = () => {
           isValid,
         }) => (
           <>
-            <p>los valores aqui:{JSON.stringify(values)}</p>
-
             <div className="bg-indigo-300 dark:bg-slate-700 flex justify-center rounded-xl p-5 mt-4">
               <div className="bg-gray-100 dark:bg-slate-800 xl:w-2/3 md:w-2/4 p-5 flex items-center justify-center flex-wrap rounded-2xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
                 <Form onSubmit={handleSubmit}>
