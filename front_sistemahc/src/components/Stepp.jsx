@@ -57,7 +57,7 @@ const Stepp = ({ historia, consultaId }) => {
               className={step === index + 1 ? "active" : "dark:bg-zinc-500"}
               onClick={() => clickOption(index + 1)}
             >
-              <span className="text-sm max-lg:text-xs max-lg:font-light">
+              <span className="text-sm max-xl:text-xs max-lg:font-light">
                 {text[index]}
               </span>
             </div>
@@ -79,8 +79,8 @@ const Stepp = ({ historia, consultaId }) => {
         {step === 1 && <AntecedenteFForm historiaId={historia.id} />}
         {step === 2 && <MotivoConsulta consultaId={consultaId} />}
         {step === 3 && <AntecedentesPForm historiaId={historia.id} />}
-        {step === 4 && <ComposicionFForm />}
-        {step === 5 && <ArbolG />}
+        {step === 4 && <ComposicionFForm historiaId={historia.id}/>}
+        {step === 5 && <ArbolG historiaId={historia.id}/>}
         {step === 6 && <ExploracionFForm />}
         {step === 7 && <FinalConsulta />}
       </div>

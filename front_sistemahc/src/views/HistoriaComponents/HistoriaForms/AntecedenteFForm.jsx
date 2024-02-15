@@ -8,16 +8,16 @@ const AntecedenteFForm = ({ historiaId }) => {
   const [agregar, setAgregar] = useState(false);
 
   /*carga el apartado */
+  const getApartado = async () => {
+    try {
+      const historiaFetch = await historiaService.verApartados(historiaId);
+      //console.log(historiaFetch.data);
+      setDatos(historiaFetch.data.antecedenteF);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    const getApartado = async () => {
-      try {
-        const historiaFetch = await historiaService.verApartados(historiaId);
-        //console.log(historiaFetch.data);
-        setDatos(historiaFetch.data.antecedenteF);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     getApartado();
   }, []);
   /*funciones para los botones de crear y editar */
@@ -31,14 +31,14 @@ const AntecedenteFForm = ({ historiaId }) => {
   const handlePost = async (values) => {
     try {
       const datosAEnviar = transformarDatosParaEnviar(values);
-      console.log(datosAEnviar);
-      const res = await historiaService.guardarAntecedenteF(historiaId, {
+      await historiaService.guardarAntecedenteF(historiaId, {
         antecedenteF: datosAEnviar,
       });
-      setDatos(res.data);
-      setAgregar(false);
+      getApartado();
     } catch (error) {
       console.log(error);
+    } finally {
+      setAgregar(false);
     }
   };
   const handlePatch = async (values) => {
@@ -47,11 +47,11 @@ const AntecedenteFForm = ({ historiaId }) => {
       await historiaService.editarAntecedenteF(datos.id, {
         antecedenteF: datosAEnviar,
       });
-      const historiaFetch = await historiaService.verApartados(historiaId);
-      setDatos(historiaFetch.data.antecedenteF);
-      setEditando(false);
+      getApartado();
     } catch (error) {
       console.log(error);
+    } finally {
+      setEditando(false);
     }
   };
   //funcion para enviar null si es que no se llena los campos
@@ -120,13 +120,7 @@ const AntecedenteFForm = ({ historiaId }) => {
           initialValues={antecedenteFValues}
           onSubmit={handleFun}
         >
-          {({
-            values,
-            handleSubmit,
-            isValidating,
-            isValid,
-            isSubmitting,
-          }) => (
+          {({ values, handleSubmit, isValidating, isValid, isSubmitting }) => (
             <Form onSubmit={handleSubmit} className="flex flex-col px-7 ">
               <div className="">
                 <div className="flex flex-row justify-evenly mb-2 max-xl:flex-col">
@@ -140,7 +134,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                   <Field
                     type="text"
                     name="nomPadre"
-                    value={values?.nomPadre}
+                    value={values?.nomPadre ?? ""}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-64 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                     disabled={!isCreate && !editando}
                   />
@@ -154,7 +148,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                     type="date"
                     name="fechaNac_Padre"
                     className="p-1 text-base max-xl:text-sm mr-4 text-zinc-700 cursor-pointer shadow-md appearance-none border border-blue-500 bg-blue-300 rounded-lg  dark:bg-sky-800 dark:border-sky-900 dark:text-gray-300 max-xl:w-64"
-                    value={values?.fechaNac_Padre}
+                    value={values?.fechaNac_Padre ?? ""}
                     disabled={!isCreate && !editando}
                   />
                   <label
@@ -166,7 +160,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                   <Field
                     type="text"
                     name="profesionPadre"
-                    value={values?.profesionPadre}
+                    value={values?.profesionPadre ?? ""}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-sm dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:w-64"
                     disabled={!isCreate && !editando}
                   />
@@ -182,7 +176,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                   <Field
                     type="text"
                     name="nomMadre"
-                    value={values?.nomMadre}
+                    value={values?.nomMadre ?? ""}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-64 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                     disabled={!isCreate && !editando}
                   />
@@ -195,7 +189,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                   <Field
                     type="date"
                     name="fechaNac_Madre"
-                    value={values?.fechaNac_Madre}
+                    value={values?.fechaNac_Madre ?? ""}
                     className="p-1 text-base max-xl:text-sm mr-4 text-zinc-700 cursor-pointer shadow appearance-none border border-blue-500 bg-blue-300 rounded-lg max-w-md dark:bg-sky-800 dark:border-sky-900 dark:text-gray-300 max-xl:w-64"
                     disabled={!isCreate && !editando}
                   />
@@ -208,7 +202,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                   <Field
                     type="text"
                     name="profesionMadre"
-                    value={values?.profesionMadre}
+                    value={values?.profesionMadre ?? ""}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-sm dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:w-64"
                     disabled={!isCreate && !editando}
                   />
@@ -287,7 +281,9 @@ const AntecedenteFForm = ({ historiaId }) => {
   return (
     <>
       {datos === "load" ? (
-        <h2 className="p-3 font-inter text-gray-500 dark:text-white" >Cargando ....</h2>
+        <h2 className="p-3 font-inter text-gray-500 dark:text-white">
+          Cargando ....
+        </h2>
       ) : (
         <div className="bg-indigo-200 dark:bg-sky-800 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] rounded-lg mt-3 py-4">
           <h4 className="text-center font-inter font-bold text-lg">

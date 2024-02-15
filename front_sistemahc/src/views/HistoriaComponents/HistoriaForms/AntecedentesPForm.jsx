@@ -7,16 +7,15 @@ const AntecedentesPForm = ({ historiaId }) => {
   const [editando, setEditando] = useState(false);
   const [agregar, setAgregar] = useState(false);
   /*carga el apartado */
+  const getApartado = async () => {
+    try {
+      const historiaFetch = await historiaService.verApartados(historiaId);
+      setAntecedenteP(historiaFetch.data.antecedenteP);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    const getApartado = async () => {
-      try {
-        const historiaFetch = await historiaService.verApartados(historiaId);
-        //console.log(historiaFetch.data);
-        setAntecedenteP(historiaFetch.data.antecedenteP);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     getApartado();
   }, []);
   /*funciones para los botones de crear y editar */
@@ -28,30 +27,30 @@ const AntecedentesPForm = ({ historiaId }) => {
   };
   /*funciones para hacer el fecth post y patch*/
   const handlePost = async (values) => {
-    /* try {
+    try {
       const datosAEnviar = transformarDatosParaEnviar(values);
-      console.log(datosAEnviar);
-      const res = await historiaService.guardarAntecedenteF(historiaId, {
-        antecedenteF: datosAEnviar,
+      await historiaService.guardarAntecedenteP(historiaId, {
+        antecedenteP: datosAEnviar,
       });
-      setDatos(res.data);
-      setAgregar(false);
+      getApartado();
     } catch (error) {
       console.log(error);
-    } */
+    } finally {
+      setAgregar(false);
+    }
   };
   const handlePatch = async (values) => {
-    /* try {
+    try {
       const datosAEnviar = transformarDatosParaEnviar(values);
-      await historiaService.editarAntecedenteF(datos.id, {
-        antecedenteF: datosAEnviar,
+      await historiaService.editarAntecedenteP(antecedenteP.id, {
+        antecedenteP: datosAEnviar,
       });
-      const historiaFetch = await historiaService.verApartados(historiaId);
-      setDatos(historiaFetch.data.antecedenteF);
-      setEditando(false);
+      getApartado();
     } catch (error) {
       console.log(error);
-    } */
+    } finally {
+      setEditando(false);
+    }
   };
   //funcion para enviar null si es que no se llena los campos
   const transformarDatosParaEnviar = (values) => {
@@ -95,62 +94,7 @@ const AntecedentesPForm = ({ historiaId }) => {
 
     return valoresTransformados;
   };
-  /*
-  g_embarazo: { allowNull: true, type: DataTypes.STRING },
-  g_obs: { allowNull: true, type: DataTypes.STRING },
-  pat_fiebre: { allowNull: true, type: DataTypes.BOOLEAN },
-  pat_enfInfec: { allowNull: true, type: DataTypes.BOOLEAN },
-  pat_diabetes: { allowNull: true, type: DataTypes.BOOLEAN },
-  pat_epilepsia: { allowNull: true, type: DataTypes.BOOLEAN },
-  pat_otras: { allowNull: true, type: DataTypes.STRING },
-  factFis_rayosx: { allowNull: true, type: DataTypes.BOOLEAN },
-  factFis_ecografia: { allowNull: true, type: DataTypes.BOOLEAN },
-  factFis_lugar: { allowNull: true, type: DataTypes.STRING },
-  factFis_numVeces: { allowNull: true, type: DataTypes.INTEGER },
-  factQuim_farmacos: { allowNull: true, type: DataTypes.STRING },
-  factQuim_farmOtros: { allowNull: true, type: DataTypes.STRING },
-  factQuim_anticonceptivos: { allowNull: true, type: DataTypes.STRING },
-  fact_Quim_gestagenosAB: { allowNull: true, type: DataTypes.STRING },
-  factQuim_expProfesional: { allowNull: true, type: DataTypes.STRING },
-  factQuim_enolismo: { allowNull: true, type: DataTypes.STRING },
-  gesta: { allowNull: true, type: DataTypes.INTEGER },
-  gesta_para: { allowNull: true, type: DataTypes.INTEGER },
-  gesta_nroNativivos: { allowNull: true, type: DataTypes.INTEGER },
-  gesta_malformados: { allowNull: true, type: DataTypes.INTEGER },
-  gesta_nroNatimortos: { allowNull: true, type: DataTypes.INTEGER },
-  gesta_nroAB: { allowNull: true, type: DataTypes.INTEGER },
-  gesta_exp: { allowNull: true, type: DataTypes.INTEGER },
-  gesta_anticonceptivos: { allowNull: true, type: DataTypes.BOOLEAN },
-  gesta_anticonsTipo: { allowNull: true, type: DataTypes.STRING },
-  gesta_periodo_1_2: { allowNull: true, type: DataTypes.INTEGER },
-  gesta_periodo_2_3: { allowNull: true, type: DataTypes.INTEGER },
-  gesta_periodo_3_4: { allowNull: true, type: DataTypes.INTEGER },
-  gesta_periodoUso: { allowNull: true, type: DataTypes.STRING },
-  parto: { allowNull: true, type: DataTypes.STRING },
-  parto_porque: { allowNull: true, type: DataTypes.STRING },
-  dn_peso: { allowNull: true, type: DataTypes.STRING },
-  dn_talla: { allowNull: true, type: DataTypes.STRING },
-  dn_pc: { allowNull: true, type: DataTypes.DOUBLE },
-  dn_apgar: { allowNull: true, type: DataTypes.STRING },
-  dn_llanto: { allowNull: true, type: DataTypes.STRING },
-  dn_oxigeno: { allowNull: true, type: DataTypes.STRING },
-  dn_ictericia: { allowNull: true, type: DataTypes.STRING },
-  dn_cianosis: { allowNull: true, type: DataTypes.STRING },
-  dn_incubadora: { allowNull: true, type: DataTypes.STRING },
-  dn_fotop: { allowNull: true, type: DataTypes.BOOLEAN },
-  dn_exsanguineo: { allowNull: true, type: DataTypes.BOOLEAN },
-  dn_exsan_fiebre: { allowNull: true, type: DataTypes.BOOLEAN },
-  dn_exsan_convul: { allowNull: true, type: DataTypes.BOOLEAN },
-  dn_hemorragia: { allowNull: true, type: DataTypes.BOOLEAN },
-  dn_hemoIni: { allowNull: true, type: DataTypes.STRING },
-  dn_hemoDura: { allowNull: true, type: DataTypes.STRING },
-  dn_altCriptorquidea: { allowNull: true, type: DataTypes.BOOLEAN },
-  dn_altCardiopatia: { allowNull: true, type: DataTypes.BOOLEAN },
-  dn_altFlap: { allowNull: true, type: DataTypes.BOOLEAN },
-  dn_altAnal: { allowNull: true, type: DataTypes.BOOLEAN },
-  dn_altNeural: { allowNull: true, type: DataTypes.BOOLEAN },
-  dn_altObs: { allowNull: true, type: DataTypes.STRING },
-  */
+
   //formulario
   const Formm = ({ isCreate, handleFun }) => {
     //valores iniciales
@@ -219,7 +163,7 @@ const AntecedentesPForm = ({ historiaId }) => {
           pat_diabetes: null,
           pat_epilepsia: null,
           pat_otras: "",
-          factFis_rayosx: nll,
+          factFis_rayosx: null,
           factFis_ecografia: null,
           factFis_lugar: "",
           factFis_numVeces: null,
@@ -316,6 +260,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     component="textarea"
                     name="g_obs"
                     value={values?.g_obs}
+                    placeholder="..."
                     rows={3}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-full dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                     disabled={!isCreate && !editando}
@@ -406,6 +351,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     component="textarea"
                     name="pat_otras"
                     value={values?.pat_otras}
+                    placeholder="..."
                     rows={2}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-full dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                     disabled={!isCreate && !editando}
@@ -473,6 +419,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     component="textarea"
                     name="factFis_lugar"
                     value={values?.factFis_lugar}
+                    placeholder="..."
                     rows={2}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-full dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                     disabled={!isCreate && !editando}
@@ -486,6 +433,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                   <Field
                     type="number"
                     name="factFis_numVeces"
+                    placeholder="0"
                     value={values?.factFis_numVeces ?? ""}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-32 mr-[52%] dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                     disabled={!isCreate && !editando}
@@ -506,6 +454,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     component="textarea"
                     name="factQuim_farmacos"
                     value={values?.factQuim_farmacos}
+                    placeholder="..."
                     rows={2}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-full dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                     disabled={!isCreate && !editando}
@@ -521,6 +470,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     component="textarea"
                     name="factQuim_farmOtros"
                     value={values?.factQuim_farmOtros}
+                    placeholder="..."
                     rows={1}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-full dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                     disabled={!isCreate && !editando}
@@ -535,6 +485,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                   <Field
                     component="textarea"
                     name="factQuim_anticonceptivos"
+                    placeholder="..."
                     value={values?.factQuim_anticonceptivos}
                     rows={1}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-full dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -550,6 +501,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                   <Field
                     component="textarea"
                     name="fact_Quim_gestagenosAB"
+                    placeholder="..."
                     value={values?.fact_Quim_gestagenosAB}
                     rows={1}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-full dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -566,6 +518,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     component="textarea"
                     name="factQuim_expProfesional"
                     value={values?.factQuim_expProfesional}
+                    placeholder="..."
                     rows={1}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-full dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                     disabled={!isCreate && !editando}
@@ -581,6 +534,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     component="textarea"
                     name="factQuim_enolismo"
                     value={values?.factQuim_enolismo}
+                    placeholder="..."
                     rows={1}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-full dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                     disabled={!isCreate && !editando}
@@ -602,6 +556,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         type="number"
                         name="gesta"
                         value={values?.gesta ?? ""}
+                        placeholder="0"
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
                       />
@@ -616,6 +571,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="number"
                         name="gesta_para"
+                        placeholder="0"
                         value={values?.gesta_para ?? ""}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
@@ -631,6 +587,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="number"
                         name="gesta_nroNativivos"
+                        placeholder="0"
                         value={values?.gesta_nroNativivos ?? ""}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
@@ -646,6 +603,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="number"
                         name="gesta_malformados"
+                        placeholder="0"
                         value={values?.gesta_malformados ?? ""}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
@@ -663,6 +621,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="number"
                         name="gesta_nroNatimortos"
+                        placeholder="0"
                         value={values?.gesta_nroNatimortos ?? ""}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
@@ -678,6 +637,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="number"
                         name="gesta_nroAB"
+                        placeholder="0"
                         value={values?.gesta_nroAB ?? ""}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
@@ -693,6 +653,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="number"
                         name="gesta_exp"
+                        placeholder="0"
                         value={values?.gesta_exp ?? ""}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
@@ -751,6 +712,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="number"
                         name="gesta_periodo_1_2"
+                        placeholder="0"
                         value={values?.gesta_periodo_1_2 ?? ""}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
@@ -766,6 +728,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="number"
                         name="gesta_periodo_2_3"
+                        placeholder="0"
                         value={values?.gesta_periodo_2_3 ?? ""}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
@@ -781,6 +744,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="number"
                         name="gesta_periodo_3_4"
+                        placeholder="0"
                         value={values?.gesta_periodo_3_4 ?? ""}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}

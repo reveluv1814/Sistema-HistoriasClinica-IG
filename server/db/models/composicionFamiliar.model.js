@@ -18,11 +18,16 @@ const ComposicionFSchema = {
   edad: {
     type: DataTypes.VIRTUAL,
     get() {
-      const fechanac = new Date(this.getDataValue("fechanac"));
+      const fechanac = this.getDataValue("fechanac");
+      // Comprueba si fechanac es null
+      if (fechanac === null) {
+        return null;
+      }
+      const fechanacDate = new Date(fechanac);
       const hoy = new Date();
-      let edad = hoy.getFullYear() - fechanac.getFullYear();
-      const mes = hoy.getMonth() - fechanac.getMonth();
-      if (mes < 0 || (mes === 0 && hoy.getDate() < fechanac.getDate())) {
+      let edad = hoy.getFullYear() - fechanacDate.getFullYear();
+      const mes = hoy.getMonth() - fechanacDate.getMonth();
+      if (mes < 0 || (mes === 0 && hoy.getDate() < fechanacDate.getDate())) {
         edad--;
       }
       return edad;

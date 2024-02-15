@@ -150,6 +150,12 @@ Accept: application/json
         "obs": ""
     }
 }
+###Elimina una composicion familiar de id x
+DELETE http://127.0.0.1:4000/historia/composicionF/1
+Authorization: Bearer {{tokenDoc}}
+Content-Type: application/json
+Accept: application/json
+
 ###Edita una composicion familiar de id x
 PATCH http://127.0.0.1:4000/historia/composicionF/1
 Authorization: Bearer {{tokenDoc}}
