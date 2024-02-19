@@ -49,6 +49,10 @@ Accept: application/json
         "peso": 3.55
     }
 }
+###Lista una Exploracion fisica de id x
+GET http://127.0.0.1:4000/historia/exploracionF/5
+Authorization: Bearer {{token}}
+Accept: application/json
 
 ############################## Tablas de Exploracion Fisica #########################
 ###crea craneo facial con la exploracion fisica de id x ###############################################

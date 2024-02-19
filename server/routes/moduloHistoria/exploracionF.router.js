@@ -8,9 +8,12 @@ const {
 } = require("../../middlewares/validator.handler"); //valida los schemas
 const { checkRoles } = require("./../../middlewares/auth.handler"); //para verificar el rol
 //schemas
-const {createExploracionFSchema,getExploracionFSchema,updateExploracionFSchema} = require("./../../schemas/exploracionF.schema");
-const {getHistoriaSchema } = require("./../../schemas/historiaClinica.schema");
-
+const {
+  createExploracionFSchema,
+  getExploracionFSchema,
+  updateExploracionFSchema,
+} = require("./../../schemas/exploracionF.schema");
+const { getHistoriaSchema } = require("./../../schemas/historiaClinica.schema");
 
 //routers de las demás tablas relacionadas
 const craneoFRouter = require("./exploracionF_Routers/craneoF.router");
@@ -34,6 +37,21 @@ const miembrosRouter = require("./exploracionF_Routers/miembros.router");
 const router = express.Router();
 const exploracionFService = new ExploracionFService();
 
+router.get(
+  "/:id",
+  checkRoles("admin", "doctor"),
+  validatorHandler(getExploracionFSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const exploracionF = await exploracionFService.findOne(id);
+      res.json(exploracionF);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 router.post(
   "/:id",
   checkRoles("admin", "doctor"),
@@ -41,14 +59,17 @@ router.post(
   validatorHandlerObjetos(createExploracionFSchema, "exploracionF"),
   async (req, res, next) => {
     try {
-        const { id } = req.params;
-        const {exploracionF} = req.body;
-        const exploracionF_create = await exploracionFService.create(exploracionF,id );
-  
-        res.status(201).json(exploracionF_create);
-      } catch (error) {
-        next(error);
-      }
+      const { id } = req.params;
+      const { exploracionF } = req.body;
+      const exploracionF_create = await exploracionFService.create(
+        exploracionF,
+        id
+      );
+
+      res.status(201).json(exploracionF_create);
+    } catch (error) {
+      next(error);
+    }
   }
 );
 router.patch(
@@ -59,9 +80,12 @@ router.patch(
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      const {exploracionF} = req.body;
+      const { exploracionF } = req.body;
 
-      const exploracionF_update = await exploracionFService.updateExploracionF(exploracionF, id);
+      const exploracionF_update = await exploracionFService.updateExploracionF(
+        exploracionF,
+        id
+      );
 
       res.status(202).json(exploracionF_update);
     } catch (error) {
@@ -70,17 +94,17 @@ router.patch(
   }
 );
 router.delete(
-    "/:id",
-    checkRoles("admin", "doctor"),
-    validatorHandler(getExploracionFSchema, "params"),
-    async (req, res, next) => {
-      try {
-        const { id } = req.params;
-        res.status(200).json(await exploracionFService.deleteExploracionF(id));
-      } catch (error) {
-        next(error);
-      }
+  "/:id",
+  checkRoles("admin", "doctor"),
+  validatorHandler(getExploracionFSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      res.status(200).json(await exploracionFService.deleteExploracionF(id));
+    } catch (error) {
+      next(error);
     }
+  }
 );
 
 //routers de las demas tablas

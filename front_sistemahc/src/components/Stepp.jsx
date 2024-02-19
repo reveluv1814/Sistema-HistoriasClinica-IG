@@ -50,7 +50,7 @@ const Stepp = ({ historia, consultaId }) => {
   return (
     <div>
       {/* numeros de prueba */}
-      <div className="numbers ">
+      <div className="numbers">
         {stepsLine.stpesCount.map((_, index) => (
           <React.Fragment key={`Step ${index + 1}`}>
             <div
@@ -81,7 +81,7 @@ const Stepp = ({ historia, consultaId }) => {
         {step === 3 && <AntecedentesPForm historiaId={historia.id} />}
         {step === 4 && <ComposicionFForm historiaId={historia.id}/>}
         {step === 5 && <ArbolG historiaId={historia.id}/>}
-        {step === 6 && <ExploracionFForm />}
+        {step === 6 && <ExploracionFForm historiaId={historia.id}/>}
         {step === 7 && <FinalConsulta />}
       </div>
       {/* botones prueba */}
