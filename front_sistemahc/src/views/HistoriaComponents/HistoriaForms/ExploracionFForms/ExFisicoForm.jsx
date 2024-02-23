@@ -99,7 +99,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
           {({ values, handleSubmit, isValidating, isValid, isSubmitting }) => (
             <Form onSubmit={handleSubmit} className="flex flex-col px-4 ">
               <div className="">
-                <div className="flex flex-row justify-between mb-3 max-xl:flex-col">
+                <div className="flex flex-row justify-between mb-3 max-md:flex-col">
                   <div className="flex flex-row items-center">
                     <label
                       htmlFor="peso"
@@ -200,7 +200,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </span>
                   </div>
                 </div>
-                <div className="flex flex-row justify-between mb-3 max-xl:flex-col">
+                <div className="flex flex-row justify-between mb-3 max-md:flex-col">
                   <div className="flex flex-row items-center">
                     <label
                       htmlFor="pt"
@@ -287,7 +287,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </span>
                   </div>
                 </div>
-                <div className="flex flex-row justify-between mb-3 max-xl:flex-col">
+                <div className="flex flex-row justify-between mb-3 max-md:flex-col">
                   <div className="flex flex-row items-center">
                     <label
                       htmlFor="seg_sup"
@@ -353,7 +353,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     />
                   </div>
                 </div>
-                <div className="flex flex-row justify-between mb-3 max-xl:flex-col">
+                <div className="flex flex-row justify-between mb-3 max-md:flex-col">
                   <div className="flex flex-row items-center">
                     <label
                       htmlFor="largo_manoD"
@@ -403,7 +403,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     />
                   </div>
                 </div>
-                <div className="flex flex-row justify-between mb-3 max-xl:flex-col">
+                <div className="flex flex-row justify-between mb-3 max-md:flex-col">
                   <div className="flex flex-row items-center">
                     <label
                       htmlFor="largo_manoI"
@@ -453,7 +453,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     />
                   </div>
                 </div>
-                <div className="flex flex-row justify-between mb-3 max-xl:flex-col">
+                <div className="flex flex-row justify-between mb-3 max-md:flex-col">
                   <div className="flex flex-row items-center">
                     <label
                       htmlFor="orejaI"

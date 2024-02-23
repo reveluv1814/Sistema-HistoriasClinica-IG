@@ -16,6 +16,30 @@ const exploracionFisicaService = {
   guardarCraneoF: (id, datos) => {
     return api.post(`historia/exploracionF/craneoF/${id}`, datos);
   },
+  editarOrejas: (id, datos) => {
+    return api.patch(`historia/exploracionF/orejas/${id}`, datos);
+  },
+  guardarOrejas: (id, datos) => {
+    return api.post(`historia/exploracionF/orejas/${id}`, datos);
+  },
+  editarOjos: (id, datos) => {
+    return api.patch(`historia/exploracionF/ojos/${id}`, datos);
+  },
+  guardarOjos: (id, datos) => {
+    return api.post(`historia/exploracionF/ojos/${id}`, datos);
+  },
+  editarNariz: (id, datos) => {
+    return api.patch(`historia/exploracionF/nariz/${id}`, datos);
+  },
+  guardarNariz: (id, datos) => {
+    return api.post(`historia/exploracionF/nariz/${id}`, datos);
+  },
+  editarMaxMandibula: (id, datos) => {
+    return api.patch(`historia/exploracionF/maxMandibula/${id}`, datos);
+  },
+  guardarMaxMandibula: (id, datos) => {
+    return api.post(`historia/exploracionF/maxMandibula/${id}`, datos);
+  },
 };
 
 export default exploracionFisicaService;

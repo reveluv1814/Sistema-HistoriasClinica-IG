@@ -91,7 +91,7 @@ const CraneoFForm = ({ expFisicaId }) => {
           {({ values, handleSubmit, isValidating, isValid, isSubmitting }) => (
             <Form onSubmit={handleSubmit} className="flex flex-col px-4">
               <div className="">
-                <div className="flex flex-row justify-between mb-3 max-xl:flex-col">
+                <div className="flex flex-row justify-between mb-3 max-md:flex-col">
                   <div>
                     <label
                       htmlFor="microcefalia"
@@ -197,7 +197,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     />
                   </div>
                 </div>
-                <div className="flex flex-row justify-between mb-3 max-xl:flex-col">
+                <div className="flex flex-row justify-between mb-3 max-md:flex-col">
                   <div>
                     <label
                       htmlFor="abultamiento_f"
@@ -263,7 +263,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     />
                   </div>
                 </div>
-                <div className="flex flex-row justify-between mb-3 max-xl:flex-col">
+                <div className="flex flex-row justify-between mb-3 max-md:flex-col">
                   <div>
                     <label
                       htmlFor="aplasia_cuero"
