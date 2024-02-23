@@ -40,6 +40,30 @@ const exploracionFisicaService = {
   guardarMaxMandibula: (id, datos) => {
     return api.post(`historia/exploracionF/maxMandibula/${id}`, datos);
   },
+  editarBoca: (id, datos) => {
+    return api.patch(`historia/exploracionF/boca/${id}`, datos);
+  },
+  guardarBoca: (id, datos) => {
+    return api.post(`historia/exploracionF/boca/${id}`, datos);
+  },
+  editarCuello: (id, datos) => {
+    return api.patch(`historia/exploracionF/cuello/${id}`, datos);
+  },
+  guardarCuello: (id, datos) => {
+    return api.post(`historia/exploracionF/cuello/${id}`, datos);
+  },
+  editarTorax: (id, datos) => {
+    return api.patch(`historia/exploracionF/torax/${id}`, datos);
+  },
+  guardarTorax: (id, datos) => {
+    return api.post(`historia/exploracionF/torax/${id}`, datos);
+  },
+  editarColumna: (id, datos) => {
+    return api.patch(`historia/exploracionF/columna/${id}`, datos);
+  },
+  guardarColumna: (id, datos) => {
+    return api.post(`historia/exploracionF/columna/${id}`, datos);
+  },
 };
 
 export default exploracionFisicaService;
