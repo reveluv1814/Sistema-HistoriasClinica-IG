@@ -2,7 +2,7 @@ import React from 'react'
 
 const AbdomenForm = () => {
   return (
-    <div>AbdomenForm  prueba git</div>
+    <div>AbdomenForm  prueba git dos</div>
   )
 }
 
