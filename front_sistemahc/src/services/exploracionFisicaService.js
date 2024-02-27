@@ -64,6 +64,48 @@ const exploracionFisicaService = {
   guardarColumna: (id, datos) => {
     return api.post(`historia/exploracionF/columna/${id}`, datos);
   },
+  editarAbdomen: (id, datos) => {
+    return api.patch(`historia/exploracionF/abdomen/${id}`, datos);
+  },
+  guardarAbdomen: (id, datos) => {
+    return api.post(`historia/exploracionF/abdomen/${id}`, datos);
+  },
+  editarMiembros: (id, datos) => {
+    return api.patch(`historia/exploracionF/miembros/${id}`, datos);
+  },
+  guardarMiembros: (id, datos) => {
+    return api.post(`historia/exploracionF/miembros/${id}`, datos);
+  },
+  editarGenitalesEx: (id, datos) => {
+    return api.patch(`historia/exploracionF/genitalesEx/${id}`, datos);
+  },
+  guardarGenitalesEx: (id, datos) => {
+    return api.post(`historia/exploracionF/genitalesEx/${id}`, datos);
+  },
+  editarTejidoSub: (id, datos) => {
+    return api.patch(`historia/exploracionF/tejidoSub/${id}`, datos);
+  },
+  guardarTejidoSub: (id, datos) => {
+    return api.post(`historia/exploracionF/tejidoSub/${id}`, datos);
+  },
+  editarMusculatura: (id, datos) => {
+    return api.patch(`historia/exploracionF/musculatura/${id}`, datos);
+  },
+  guardarMusculatura: (id, datos) => {
+    return api.post(`historia/exploracionF/musculatura/${id}`, datos);
+  },
+  editarPielAnexos: (id, datos) => {
+    return api.patch(`historia/exploracionF/pielAnexos/${id}`, datos);
+  },
+  guardarPielAnexos: (id, datos) => {
+    return api.post(`historia/exploracionF/pielAnexos/${id}`, datos);
+  },
+  editarExNeurologico: (id, datos) => {
+    return api.patch(`historia/exploracionF/exNeurologico/${id}`, datos);
+  },
+  guardarExNeurologico: (id, datos) => {
+    return api.post(`historia/exploracionF/exNeurologico/${id}`, datos);
+  },
 };
 
 export default exploracionFisicaService;

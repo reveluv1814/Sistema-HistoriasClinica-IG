@@ -11,7 +11,6 @@ const AntecedenteFForm = ({ historiaId }) => {
   const getApartado = async () => {
     try {
       const historiaFetch = await historiaService.verApartados(historiaId);
-      //console.log(historiaFetch.data);
       setDatos(historiaFetch.data.antecedenteF);
     } catch (error) {
       console.log(error);
@@ -30,89 +29,56 @@ const AntecedenteFForm = ({ historiaId }) => {
   /*funciones para hacer el fecth post y patch*/
   const handlePost = async (values) => {
     try {
-      const datosAEnviar = transformarDatosParaEnviar(values);
+      const valoresNoVacios = Object.fromEntries(
+        Object.entries(values).filter(([_, value]) => value !== "")
+      );
       await historiaService.guardarAntecedenteF(historiaId, {
-        antecedenteF: datosAEnviar,
+        antecedenteF: valoresNoVacios,
       });
-      getApartado();
     } catch (error) {
       console.log(error);
     } finally {
+      getApartado();
       setAgregar(false);
     }
   };
   const handlePatch = async (values) => {
     try {
-      const datosAEnviar = transformarDatosParaEnviar(values);
+      //const datosAEnviar = transformarDatosParaEnviar(values);
+      const valoresNoVacios = Object.fromEntries(
+        Object.entries(values).filter(([_, value]) => value !== "")
+      );
       await historiaService.editarAntecedenteF(datos.id, {
-        antecedenteF: datosAEnviar,
+        antecedenteF: valoresNoVacios,
       });
-      getApartado();
     } catch (error) {
       console.log(error);
     } finally {
+      getApartado();
       setEditando(false);
     }
   };
-  //funcion para enviar null si es que no se llena los campos
-  const transformarDatosParaEnviar = (values) => {
-    const camposFechaNula = [
-      "fechaNac_Padre",
-      "fechaNac_Madre",
-      "edadMat_nacP",
-      "edadPat_nacP",
-      "edadAbuela_nacM",
-    ];
 
-    const valoresTransformados = { ...values };
-
-    camposFechaNula.forEach((campo) => {
-      if (valoresTransformados[campo] === "") {
-        valoresTransformados[campo] = null;
-      }
-    });
-
-    return valoresTransformados;
-  };
   //formulario
   const Formm = ({ isCreate, handleFun }) => {
-    //formatea la fecha si es que existe
-    const fechaFormateadaPat = datos
-      ? datos.fechaNac_Padre
-        ? new Date(datos.fechaNac_Padre).toISOString().split("T")[0]
-        : ""
-      : "";
+    const formatearFecha = (fecha) => {
+      return fecha ? new Date(fecha).toISOString().split("T")[0] : "";
+    };
 
-    const fechaFormateadaMat = datos
-      ? datos.fechaNac_Madre
-        ? new Date(datos.fechaNac_Madre).toISOString().split("T")[0]
-        : ""
-      : "";
+    const fechaFormateadaPat = formatearFecha(datos?.fechaNac_Padre);
+    const fechaFormateadaMat = formatearFecha(datos?.fechaNac_Madre);
     //valores iniciales
-    const antecedenteFValues = datos
-      ? {
-          nomPadre: datos.nomPadre,
-          fechaNac_Padre: fechaFormateadaPat,
-          profesionPadre: datos.profesionPadre,
-          nomMadre: datos.nomMadre,
-          fechaNac_Madre: fechaFormateadaMat,
-          profesionMadre: datos.profesionMadre,
-          edadMat_nacP: datos.edadMat_nacP,
-          edadPat_nacP: datos.edadPat_nacP,
-          edadAbuela_nacM: datos.edadAbuela_nacM,
-        }
-      : {
-          nomPadre: "",
-          fechaNac_Padre: "",
-          profesionPadre: "",
-          nomMadre: "",
-          fechaNac_Madre: "",
-          profesionMadre: "",
-          edadMat_nacP: null,
-          edadPat_nacP: null,
-          edadAbuela_nacM: null,
-        };
-
+    const antecedenteFValues = {
+      nomPadre: datos ? datos.nomPadre ?? "" : "",
+      fechaNac_Padre: datos ? fechaFormateadaPat ?? "" : "",
+      profesionPadre: datos ? datos.profesionPadre ?? "" : "",
+      nomMadre: datos ? datos.nomMadre ?? "" : "",
+      fechaNac_Madre: datos ? fechaFormateadaMat ?? "" : "",
+      profesionMadre: datos ? datos.profesionMadre ?? "" : "",
+      edadMat_nacP: datos ? datos.edadMat_nacP ?? "" : "",
+      edadPat_nacP: datos ? datos.edadPat_nacP ?? "" : "",
+      edadAbuela_nacM: datos ? datos.edadAbuela_nacM ?? "" : "",
+    };
     return (
       <div className="bg-blue-100 dark:bg-sky-900 rounded-lg py-4 shadow-lg">
         <Formik
@@ -133,8 +99,9 @@ const AntecedenteFForm = ({ historiaId }) => {
 
                   <Field
                     type="text"
+                    placeholder="..."
                     name="nomPadre"
-                    value={values?.nomPadre ?? ""}
+                    value={values?.nomPadre}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-64 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                     disabled={!isCreate && !editando}
                   />
@@ -142,25 +109,29 @@ const AntecedenteFForm = ({ historiaId }) => {
                     htmlFor="fechaNac_Padre"
                     className=" ml-4 pt-2 mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300 max-xl:ml-0"
                   >
-                    Fecha Nac.:
+                    Fecha Nac.Padre:{" "}
+                    <span className="font-light italic text-xs">
+                      (mes/día/año)
+                    </span>
                   </label>
                   <Field
                     type="date"
                     name="fechaNac_Padre"
                     className="p-1 text-base max-xl:text-sm mr-4 text-zinc-700 cursor-pointer shadow-md appearance-none border border-blue-500 bg-blue-300 rounded-lg  dark:bg-sky-800 dark:border-sky-900 dark:text-gray-300 max-xl:w-64"
-                    value={values?.fechaNac_Padre ?? ""}
+                    value={values?.fechaNac_Padre}
                     disabled={!isCreate && !editando}
                   />
                   <label
                     htmlFor="profesionPadre"
                     className="pt-2 mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300 max-xl:w-32"
                   >
-                    Profesión:
+                    Profesión Padre:
                   </label>
                   <Field
                     type="text"
                     name="profesionPadre"
-                    value={values?.profesionPadre ?? ""}
+                    placeholder="..."
+                    value={values?.profesionPadre}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-sm dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:w-64"
                     disabled={!isCreate && !editando}
                   />
@@ -176,7 +147,8 @@ const AntecedenteFForm = ({ historiaId }) => {
                   <Field
                     type="text"
                     name="nomMadre"
-                    value={values?.nomMadre ?? ""}
+                    placeholder="..."
+                    value={values?.nomMadre}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-64 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                     disabled={!isCreate && !editando}
                   />
@@ -184,12 +156,15 @@ const AntecedenteFForm = ({ historiaId }) => {
                     htmlFor="fechaNac_Madre"
                     className="ml-4 pt-2 mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300 max-xl:ml-0"
                   >
-                    Fecha Nac.:
+                    Fecha Nac. Madre:{" "}
+                    <span className="font-light italic text-xs">
+                      (mes/día/año)
+                    </span>
                   </label>
                   <Field
                     type="date"
                     name="fechaNac_Madre"
-                    value={values?.fechaNac_Madre ?? ""}
+                    value={values?.fechaNac_Madre}
                     className="p-1 text-base max-xl:text-sm mr-4 text-zinc-700 cursor-pointer shadow appearance-none border border-blue-500 bg-blue-300 rounded-lg max-w-md dark:bg-sky-800 dark:border-sky-900 dark:text-gray-300 max-xl:w-64"
                     disabled={!isCreate && !editando}
                   />
@@ -197,17 +172,18 @@ const AntecedenteFForm = ({ historiaId }) => {
                     htmlFor="profesionMadre"
                     className="pt-2 mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"
                   >
-                    Profesión:
+                    Profesión Madre:
                   </label>
                   <Field
                     type="text"
                     name="profesionMadre"
-                    value={values?.profesionMadre ?? ""}
+                    placeholder="..."
+                    value={values?.profesionMadre}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-sm dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:w-64"
                     disabled={!isCreate && !editando}
                   />
                 </div>
-                <div className="flex flex-row items-center justify-between mb-2 max-xl:flex-col max-xl:justify-start">
+                <div className="flex flex-row items-center justify-between mb-2 max-md:flex-col max-md:justify-start">
                   <label
                     htmlFor="edadMat_nacP"
                     className="mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"
@@ -217,12 +193,13 @@ const AntecedenteFForm = ({ historiaId }) => {
                   <Field
                     type="number"
                     name="edadMat_nacP"
-                    value={values?.edadMat_nacP ?? ""}
+                    placeholder="años..."
+                    value={values?.edadMat_nacP}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-32 mr-[52%] dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                     disabled={!isCreate && !editando}
                   />
                 </div>
-                <div className="flex flex-row items-center justify-between mb-2 max-xl:flex-col max-xl:justify-start">
+                <div className="flex flex-row items-center justify-between mb-2 max-md:flex-col max-md::justify-start">
                   <label
                     htmlFor="edadPat_nacP"
                     className="mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"
@@ -232,12 +209,13 @@ const AntecedenteFForm = ({ historiaId }) => {
                   <Field
                     type="number"
                     name="edadPat_nacP"
-                    value={values?.edadPat_nacP ?? ""}
+                    placeholder="años..."
+                    value={values?.edadPat_nacP}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-32 mr-[52%] dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                     disabled={!isCreate && !editando}
                   />
                 </div>
-                <div className="flex flex-row items-center justify-between mb-2 max-xl:flex-col max-xl:justify-start">
+                <div className="flex flex-row items-center justify-between mb-2 max-md:flex-col max-md:justify-start">
                   <label
                     htmlFor="edadAbuela_nacM"
                     className="mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"
@@ -247,7 +225,8 @@ const AntecedenteFForm = ({ historiaId }) => {
                   <Field
                     type="number"
                     name="edadAbuela_nacM"
-                    value={values?.edadAbuela_nacM ?? ""}
+                    placeholder="años..."
+                    value={values?.edadAbuela_nacM}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-32 mr-[52%] dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                     disabled={!isCreate && !editando}
                   />

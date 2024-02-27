@@ -29,9 +29,13 @@ const AntecedentesPForm = ({ historiaId }) => {
   const handlePost = async (values) => {
     try {
       const datosAEnviar = transformarDatosParaEnviar(values);
-      await historiaService.guardarAntecedenteP(historiaId, {
-        antecedenteP: datosAEnviar,
-      });
+      const valoresNoVacios = Object.fromEntries(
+        Object.entries(values).filter(([_, value]) => value !== "")
+      );
+      console.log(valoresNoVacios)
+      // await historiaService.guardarAntecedenteP(historiaId, {
+      //   antecedenteP: datosAEnviar,
+      // });
       getApartado();
     } catch (error) {
       console.log(error);
@@ -42,9 +46,13 @@ const AntecedentesPForm = ({ historiaId }) => {
   const handlePatch = async (values) => {
     try {
       const datosAEnviar = transformarDatosParaEnviar(values);
-      await historiaService.editarAntecedenteP(antecedenteP.id, {
-        antecedenteP: datosAEnviar,
-      });
+      const valoresNoVacios = Object.fromEntries(
+        Object.entries(values).filter(([_, value]) => value !== "")
+      );
+      console.log(valoresNoVacios)
+      // await historiaService.editarAntecedenteP(antecedenteP.id, {
+      //   antecedenteP: datosAEnviar,
+      // });
       getApartado();
     } catch (error) {
       console.log(error);
@@ -98,120 +106,96 @@ const AntecedentesPForm = ({ historiaId }) => {
   //formulario
   const Formm = ({ isCreate, handleFun }) => {
     //valores iniciales
-    const antecedentePValues = antecedenteP
-      ? {
-          g_embarazo: antecedenteP.g_embarazo,
-          g_obs: antecedenteP.g_obs,
-          pat_fiebre: antecedenteP.pat_fiebre,
-          pat_enfInfec: antecedenteP.pat_enfInfec,
-          pat_diabetes: antecedenteP.pat_diabetes,
-          pat_epilepsia: antecedenteP.pat_epilepsia,
-          pat_otras: antecedenteP.pat_otras,
-          factFis_rayosx: antecedenteP.factFis_rayosx,
-          factFis_ecografia: antecedenteP.factFis_ecografia,
-          factFis_lugar: antecedenteP.factFis_lugar,
-          factFis_numVeces: antecedenteP.factFis_numVeces,
-          factQuim_farmacos: antecedenteP.factQuim_farmacos,
-          factQuim_farmOtros: antecedenteP.factQuim_farmOtros,
-          factQuim_anticonceptivos: antecedenteP.factQuim_anticonceptivos,
-          fact_Quim_gestagenosAB: antecedenteP.fact_Quim_gestagenosAB,
-          factQuim_expProfesional: antecedenteP.factQuim_expProfesional,
-          factQuim_enolismo: antecedenteP.factQuim_enolismo,
-          gesta: antecedenteP.gesta,
-          gesta_para: antecedenteP.gesta_para,
-          gesta_nroNativivos: antecedenteP.gesta_nroNativivos,
-          gesta_malformados: antecedenteP.gesta_malformados,
-          gesta_nroNatimortos: antecedenteP.gesta_nroNatimortos,
-          gesta_nroAB: antecedenteP.gesta_nroAB,
-          gesta_exp: antecedenteP.gesta_exp,
-          gesta_anticonceptivos: antecedenteP.gesta_anticonceptivos,
-          gesta_anticonsTipo: antecedenteP.gesta_anticonsTipo,
-          gesta_periodo_1_2: antecedenteP.gesta_periodo_1_2,
-          gesta_periodo_2_3: antecedenteP.gesta_periodo_2_3,
-          gesta_periodo_3_4: antecedenteP.gesta_periodo_3_4,
-          gesta_periodoUso: antecedenteP.gesta_periodoUso,
-          parto: antecedenteP.parto,
-          parto_porque: antecedenteP.parto_porque,
-          dn_peso: antecedenteP.dn_peso,
-          dn_talla: antecedenteP.dn_talla,
-          dn_pc: antecedenteP.dn_pc,
-          dn_apgar: antecedenteP.dn_apgar,
-          dn_llanto: antecedenteP.dn_llanto,
-          dn_oxigeno: antecedenteP.dn_oxigeno,
-          dn_ictericia: antecedenteP.dn_ictericia,
-          dn_cianosis: antecedenteP.dn_cianosis,
-          dn_incubadora: antecedenteP.dn_incubadora,
-          dn_fotop: antecedenteP.dn_fotop,
-          dn_exsanguineo: antecedenteP.dn_exsanguineo,
-          dn_exsan_fiebre: antecedenteP.dn_exsan_fiebre,
-          dn_exsan_convul: antecedenteP.dn_exsan_convul,
-          dn_hemorragia: antecedenteP.dn_hemorragia,
-          dn_hemoIni: antecedenteP.dn_hemoIni,
-          dn_hemoDura: antecedenteP.dn_hemoDura,
-          dn_altCriptorquidea: antecedenteP.dn_altCriptorquidea,
-          dn_altCardiopatia: antecedenteP.dn_altCardiopatia,
-          dn_altFlap: antecedenteP.dn_altFlap,
-          dn_altAnal: antecedenteP.dn_altAnal,
-          dn_altNeural: antecedenteP.dn_altNeural,
-          dn_altObs: antecedenteP.dn_altObs,
-        }
-      : {
-          g_embarazo: "",
-          g_obs: "",
-          pat_fiebre: null,
-          pat_enfInfec: null,
-          pat_diabetes: null,
-          pat_epilepsia: null,
-          pat_otras: "",
-          factFis_rayosx: null,
-          factFis_ecografia: null,
-          factFis_lugar: "",
-          factFis_numVeces: null,
-          factQuim_farmacos: "",
-          factQuim_farmOtros: "",
-          factQuim_anticonceptivos: "",
-          fact_Quim_gestagenosAB: "",
-          factQuim_expProfesional: "",
-          factQuim_enolismo: "",
-          gesta: null,
-          gesta_para: null,
-          gesta_nroNativivos: null,
-          gesta_malformados: null,
-          gesta_nroNatimortos: null,
-          gesta_nroAB: null,
-          gesta_exp: null,
-          gesta_anticonceptivos: null,
-          gesta_anticonsTipo: "",
-          gesta_periodo_1_2: null,
-          gesta_periodo_2_3: null,
-          gesta_periodo_3_4: null,
-          gesta_periodoUso: "",
-          parto: "",
-          parto_porque: "",
-          dn_peso: "",
-          dn_talla: "",
-          dn_pc: null,
-          dn_apgar: "",
-          dn_llanto: "",
-          dn_oxigeno: "",
-          dn_ictericia: "",
-          dn_cianosis: "",
-          dn_incubadora: "",
-          dn_fotop: null,
-          dn_exsanguineo: null,
-          dn_exsan_fiebre: null,
-          dn_exsan_convul: null,
-          dn_hemorragia: null,
-          dn_hemoIni: "",
-          dn_hemoDura: "",
-          dn_altCriptorquidea: null,
-          dn_altCardiopatia: null,
-          dn_altFlap: null,
-          dn_altAnal: null,
-          dn_altNeural: null,
-          dn_altObs: "",
-        };
-
+    const antecedentePValues = {
+      g_embarazo: antecedenteP ? antecedenteP.g_embarazo ?? "" : "",
+      g_obs: antecedenteP ? antecedenteP.g_obs ?? "" : "",
+      pat_fiebre: antecedenteP ? antecedenteP.pat_fiebre ?? "" : "",
+      pat_enfInfec: antecedenteP ? antecedenteP.pat_enfInfec ?? "" : "",
+      pat_diabetes: antecedenteP ? antecedenteP.pat_diabetes ?? "" : "",
+      pat_epilepsia: antecedenteP ? antecedenteP.pat_epilepsia ?? "" : "",
+      pat_otras: antecedenteP ? antecedenteP.pat_otras ?? "" : "",
+      factFis_rayosx: antecedenteP ? antecedenteP.factFis_rayosx ?? "" : "",
+      factFis_ecografia: antecedenteP
+        ? antecedenteP.factFis_ecografia ?? ""
+        : "",
+      factFis_lugar: antecedenteP ? antecedenteP.factFis_lugar ?? "" : "",
+      factFis_numVeces: antecedenteP ? antecedenteP.factFis_numVeces ?? "" : "",
+      factQuim_farmacos: antecedenteP
+        ? antecedenteP.factQuim_farmacos ?? ""
+        : "",
+      factQuim_farmOtros: antecedenteP
+        ? antecedenteP.factQuim_farmOtros ?? ""
+        : "",
+      factQuim_anticonceptivos: antecedenteP
+        ? antecedenteP.factQuim_anticonceptivos ?? ""
+        : "",
+      fact_Quim_gestagenosAB: antecedenteP
+        ? antecedenteP.fact_Quim_gestagenosAB ?? ""
+        : "",
+      factQuim_expProfesional: antecedenteP
+        ? antecedenteP.factQuim_expProfesional ?? ""
+        : "",
+      factQuim_enolismo: antecedenteP
+        ? antecedenteP.factQuim_enolismo ?? ""
+        : "",
+      gesta: antecedenteP ? antecedenteP.gesta ?? "" : "",
+      gesta_para: antecedenteP ? antecedenteP.gesta_para ?? "" : "",
+      gesta_nroNativivos: antecedenteP
+        ? antecedenteP.gesta_nroNativivos ?? ""
+        : "",
+      gesta_malformados: antecedenteP
+        ? antecedenteP.gesta_malformados ?? ""
+        : "",
+      gesta_nroNatimortos: antecedenteP
+        ? antecedenteP.gesta_nroNatimortos ?? ""
+        : "",
+      gesta_nroAB: antecedenteP ? antecedenteP.gesta_nroAB ?? "" : "",
+      gesta_exp: antecedenteP ? antecedenteP.gesta_exp ?? "" : "",
+      gesta_anticonceptivos: antecedenteP
+        ? antecedenteP.gesta_anticonceptivos ?? ""
+        : "",
+      gesta_anticonsTipo: antecedenteP
+        ? antecedenteP.gesta_anticonsTipo ?? ""
+        : "",
+      gesta_periodo_1_2: antecedenteP
+        ? antecedenteP.gesta_periodo_1_2 ?? ""
+        : "",
+      gesta_periodo_2_3: antecedenteP
+        ? antecedenteP.gesta_periodo_2_3 ?? ""
+        : "",
+      gesta_periodo_3_4: antecedenteP
+        ? antecedenteP.gesta_periodo_3_4 ?? ""
+        : "",
+      gesta_periodoUso: antecedenteP ? antecedenteP.gesta_periodoUso ?? "" : "",
+      parto: antecedenteP ? antecedenteP.parto ?? "" : "",
+      parto_porque: antecedenteP ? antecedenteP.parto_porque ?? "" : "",
+      dn_peso: antecedenteP ? antecedenteP.dn_peso ?? "" : "",
+      dn_talla: antecedenteP ? antecedenteP.dn_talla ?? "" : "",
+      dn_pc: antecedenteP ? antecedenteP.dn_pc ?? "" : "",
+      dn_apgar: antecedenteP ? antecedenteP.dn_apgar ?? "" : "",
+      dn_llanto: antecedenteP ? antecedenteP.dn_llanto ?? "" : "",
+      dn_oxigeno: antecedenteP ? antecedenteP.dn_oxigeno ?? "" : "",
+      dn_ictericia: antecedenteP ? antecedenteP.dn_ictericia ?? "" : "",
+      dn_cianosis: antecedenteP ? antecedenteP.dn_cianosis ?? "" : "",
+      dn_incubadora: antecedenteP ? antecedenteP.dn_incubadora ?? "" : "",
+      dn_fotop: antecedenteP ? antecedenteP.dn_fotop ?? "" : "",
+      dn_exsanguineo: antecedenteP ? antecedenteP.dn_exsanguineo ?? "" : "",
+      dn_exsan_fiebre: antecedenteP ? antecedenteP.dn_exsan_fiebre ?? "" : "",
+      dn_exsan_convul: antecedenteP ? antecedenteP.dn_exsan_convul ?? "" : "",
+      dn_hemorragia: antecedenteP ? antecedenteP.dn_hemorragia ?? "" : "",
+      dn_hemoIni: antecedenteP ? antecedenteP.dn_hemoIni ?? "" : "",
+      dn_hemoDura: antecedenteP ? antecedenteP.dn_hemoDura ?? "" : "",
+      dn_altCriptorquidea: antecedenteP
+        ? antecedenteP.dn_altCriptorquidea ?? ""
+        : "",
+      dn_altCardiopatia: antecedenteP
+        ? antecedenteP.dn_altCardiopatia ?? ""
+        : "",
+      dn_altFlap: antecedenteP ? antecedenteP.dn_altFlap ?? "" : "",
+      dn_altAnal: antecedenteP ? antecedenteP.dn_altAnal ?? "" : "",
+      dn_altNeural: antecedenteP ? antecedenteP.dn_altNeural ?? "" : "",
+      dn_altObs: antecedenteP ? antecedenteP.dn_altObs ?? "" : "",
+    };
     return (
       <div className="bg-blue-100 dark:bg-sky-900 rounded-lg py-4 shadow-lg w-9/12">
         <Formik
@@ -282,7 +266,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="checkbox"
                         name="pat_fiebre"
-                        value={values?.pat_fiebre ?? ""}
+                        value={values?.pat_fiebre}
                         checked={values?.pat_fiebre ?? false}
                         className=" text-base max-xl:text-sm text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                         disabled={!isCreate && !editando}
@@ -299,7 +283,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="checkbox"
                         name="pat_enfInfec"
-                        value={values?.pat_enfInfec ?? ""}
+                        value={values?.pat_enfInfec}
                         checked={values?.pat_enfInfec ?? false}
                         className=" text-base max-xl:text-sm text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 "
                         disabled={!isCreate && !editando}
@@ -316,7 +300,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="checkbox"
                         name="pat_diabetes"
-                        value={values?.pat_diabetes ?? ""}
+                        value={values?.pat_diabetes}
                         checked={values?.pat_diabetes ?? false}
                         className=" text-base max-xl:text-sm text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 "
                         disabled={!isCreate && !editando}
@@ -333,7 +317,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="checkbox"
                         name="pat_epilepsia"
-                        value={values?.pat_epilepsia ?? ""}
+                        value={values?.pat_epilepsia}
                         checked={values?.pat_epilepsia ?? false}
                         className=" text-base max-xl:text-sm text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 "
                         disabled={!isCreate && !editando}
@@ -376,7 +360,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         name="factFis_rayosx"
                         className="px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                         disabled={!isCreate && !editando}
-                        value={values?.factFis_rayosx ?? ""}
+                        value={values?.factFis_rayosx}
                       >
                         <option value="" disabled hidden>
                           Selecciona
@@ -398,7 +382,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         name="factFis_ecografia"
                         className="px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                         disabled={!isCreate && !editando}
-                        value={values?.factFis_ecografia ?? ""}
+                        value={values?.factFis_ecografia}
                       >
                         <option value="" disabled hidden>
                           Selecciona
@@ -434,7 +418,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     type="number"
                     name="factFis_numVeces"
                     placeholder="0"
-                    value={values?.factFis_numVeces ?? ""}
+                    value={values?.factFis_numVeces}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-32 mr-[52%] dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                     disabled={!isCreate && !editando}
                   />
@@ -555,7 +539,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="number"
                         name="gesta"
-                        value={values?.gesta ?? ""}
+                        value={values?.gesta}
                         placeholder="0"
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
@@ -572,7 +556,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         type="number"
                         name="gesta_para"
                         placeholder="0"
-                        value={values?.gesta_para ?? ""}
+                        value={values?.gesta_para}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
                       />
@@ -588,7 +572,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         type="number"
                         name="gesta_nroNativivos"
                         placeholder="0"
-                        value={values?.gesta_nroNativivos ?? ""}
+                        value={values?.gesta_nroNativivos}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
                       />
@@ -604,7 +588,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         type="number"
                         name="gesta_malformados"
                         placeholder="0"
-                        value={values?.gesta_malformados ?? ""}
+                        value={values?.gesta_malformados}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
                       />
@@ -622,7 +606,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         type="number"
                         name="gesta_nroNatimortos"
                         placeholder="0"
-                        value={values?.gesta_nroNatimortos ?? ""}
+                        value={values?.gesta_nroNatimortos}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
                       />
@@ -638,7 +622,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         type="number"
                         name="gesta_nroAB"
                         placeholder="0"
-                        value={values?.gesta_nroAB ?? ""}
+                        value={values?.gesta_nroAB}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
                       />
@@ -654,7 +638,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         type="number"
                         name="gesta_exp"
                         placeholder="0"
-                        value={values?.gesta_exp ?? ""}
+                        value={values?.gesta_exp}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
                       />
@@ -674,7 +658,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         name="gesta_anticonceptivos"
                         className="px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                         disabled={!isCreate && !editando}
-                        value={values?.gesta_anticonceptivos ?? ""}
+                        value={values?.gesta_anticonceptivos}
                       >
                         <option value="" disabled hidden>
                           Selecciona
@@ -713,7 +697,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         type="number"
                         name="gesta_periodo_1_2"
                         placeholder="0"
-                        value={values?.gesta_periodo_1_2 ?? ""}
+                        value={values?.gesta_periodo_1_2}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
                       />
@@ -729,7 +713,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         type="number"
                         name="gesta_periodo_2_3"
                         placeholder="0"
-                        value={values?.gesta_periodo_2_3 ?? ""}
+                        value={values?.gesta_periodo_2_3}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
                       />
@@ -745,7 +729,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         type="number"
                         name="gesta_periodo_3_4"
                         placeholder="0"
-                        value={values?.gesta_periodo_3_4 ?? ""}
+                        value={values?.gesta_periodo_3_4}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
                       />
@@ -864,7 +848,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         step="0.1"
                         placeholder="0.0..."
                         name="dn_pc"
-                        value={values?.dn_pc ?? ""}
+                        value={values?.dn_pc}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
                         disabled={!isCreate && !editando}
                       />
@@ -1013,7 +997,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         name="dn_fotop"
                         className="px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                         disabled={!isCreate && !editando}
-                        value={values?.dn_fotop ?? ""}
+                        value={values?.dn_fotop}
                       >
                         <option value="" disabled hidden>
                           Selecciona
@@ -1037,7 +1021,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         name="dn_exsanguineo"
                         className="px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                         disabled={!isCreate && !editando}
-                        value={values?.dn_exsanguineo ?? ""}
+                        value={values?.dn_exsanguineo}
                       >
                         <option value="" disabled hidden>
                           Selecciona
@@ -1057,7 +1041,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="checkbox"
                         name="dn_exsan_fiebre"
-                        value={values?.dn_exsan_fiebre ?? ""}
+                        value={values?.dn_exsan_fiebre}
                         checked={values?.dn_exsan_fiebre ?? false}
                         className=" text-base max-xl:text-sm text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                         disabled={!isCreate && !editando}
@@ -1074,7 +1058,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="checkbox"
                         name="dn_exsan_convul"
-                        value={values?.dn_exsan_convul ?? ""}
+                        value={values?.dn_exsan_convul}
                         checked={values?.dn_exsan_convul ?? false}
                         className=" text-base max-xl:text-sm text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                         disabled={!isCreate && !editando}
@@ -1093,7 +1077,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         name="dn_hemorragia"
                         className="px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                         disabled={!isCreate && !editando}
-                        value={values?.dn_hemorragia ?? ""}
+                        value={values?.dn_hemorragia}
                       >
                         <option value="" disabled hidden>
                           Selecciona
@@ -1154,7 +1138,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="checkbox"
                         name="dn_altCriptorquidea"
-                        value={values?.dn_altCriptorquidea ?? ""}
+                        value={values?.dn_altCriptorquidea}
                         checked={values?.dn_altCriptorquidea ?? false}
                         className=" text-base max-xl:text-sm text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                         disabled={!isCreate && !editando}
@@ -1171,7 +1155,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="checkbox"
                         name="dn_altCardiopatia"
-                        value={values?.dn_altCardiopatia ?? ""}
+                        value={values?.dn_altCardiopatia}
                         checked={values?.dn_altCardiopatia ?? false}
                         className=" text-base max-xl:text-sm text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                         disabled={!isCreate && !editando}
@@ -1188,7 +1172,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="checkbox"
                         name="dn_altFlap"
-                        value={values?.dn_altFlap ?? ""}
+                        value={values?.dn_altFlap}
                         checked={values?.dn_altFlap ?? false}
                         className=" text-base max-xl:text-sm text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                         disabled={!isCreate && !editando}
@@ -1205,7 +1189,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="checkbox"
                         name="dn_altAnal"
-                        value={values?.dn_altAnal ?? ""}
+                        value={values?.dn_altAnal}
                         checked={values?.dn_altAnal ?? false}
                         className=" text-base max-xl:text-sm text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                         disabled={!isCreate && !editando}
@@ -1222,7 +1206,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="checkbox"
                         name="dn_altNeural"
-                        value={values?.dn_altNeural ?? ""}
+                        value={values?.dn_altNeural}
                         checked={values?.dn_altNeural ?? false}
                         className=" text-base max-xl:text-sm text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                         disabled={!isCreate && !editando}

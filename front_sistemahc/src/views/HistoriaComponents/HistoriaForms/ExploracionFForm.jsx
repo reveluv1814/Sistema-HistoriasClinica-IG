@@ -39,7 +39,7 @@ const ExploracionFForm = ({ historiaId }) => {
               </div>
               {exploracionF && (
                 <div className="mt-4">
-                  <h3 className="font-semibold dark:text-zinc-200 max-xl:text-xs">
+                  <h3 className="font-semibold dark:text-zinc-200 max-md:text-sm">
                     Exploraciones complementarias
                   </h3>
                   <hr className="mb-2 border-0 h-px  bg-gray-400  shadow w-full dark:bg-gray-300/60" />

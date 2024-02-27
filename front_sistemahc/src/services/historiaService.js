@@ -32,6 +32,9 @@ const historiaService = {
   eliminarComposicionF: (id,datos) => {
     return api.delete(`historia/composicionF/${id}`);
   },
+  finalConsulta: (id,datos)=>{
+    return api.patch(`/doctor/cita/${id}`,datos)
+  },
 
   /* doctores: () => {
     return api.get('personal/doctor');

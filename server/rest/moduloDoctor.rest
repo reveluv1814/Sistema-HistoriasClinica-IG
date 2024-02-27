@@ -28,6 +28,6 @@ Accept: application/json
     }
 } 
 ### lista una cita de id x
-GET http://127.0.0.1:4000/doctor/cita/3
+GET http://127.0.0.1:4000/doctor/cita/1
 Authorization: Bearer {{token}}
 Accept: application/json

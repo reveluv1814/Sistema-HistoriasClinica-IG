@@ -82,7 +82,7 @@ const Stepp = ({ historia, consultaId }) => {
         {step === 4 && <ComposicionFForm historiaId={historia.id}/>}
         {step === 5 && <ArbolG historiaId={historia.id}/>}
         {step === 6 && <ExploracionFForm historiaId={historia.id}/>}
-        {step === 7 && <FinalConsulta />}
+        {step === 7 && <FinalConsulta consultaId={consultaId}/>}
       </div>
       {/* botones prueba */}
       <div className="buttons">
