@@ -262,7 +262,7 @@ const ComposicionFForm = ({ historiaId }) => {
                               className=" px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300 "
                             >
                               <option value="" disabled>
-                                Seleccione una opción
+                                Seleccione
                               </option>
                               <option value="Masculino">Masculino</option>
                               <option value="Femenino">Femenino</option>

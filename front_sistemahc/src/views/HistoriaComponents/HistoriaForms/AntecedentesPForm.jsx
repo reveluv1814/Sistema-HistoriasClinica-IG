@@ -28,14 +28,12 @@ const AntecedentesPForm = ({ historiaId }) => {
   /*funciones para hacer el fecth post y patch*/
   const handlePost = async (values) => {
     try {
-      const datosAEnviar = transformarDatosParaEnviar(values);
       const valoresNoVacios = Object.fromEntries(
         Object.entries(values).filter(([_, value]) => value !== "")
       );
-      console.log(valoresNoVacios)
-      // await historiaService.guardarAntecedenteP(historiaId, {
-      //   antecedenteP: datosAEnviar,
-      // });
+      await historiaService.guardarAntecedenteP(historiaId, {
+        antecedenteP: valoresNoVacios,
+      });
       getApartado();
     } catch (error) {
       console.log(error);
@@ -45,62 +43,18 @@ const AntecedentesPForm = ({ historiaId }) => {
   };
   const handlePatch = async (values) => {
     try {
-      const datosAEnviar = transformarDatosParaEnviar(values);
       const valoresNoVacios = Object.fromEntries(
         Object.entries(values).filter(([_, value]) => value !== "")
       );
-      console.log(valoresNoVacios)
-      // await historiaService.editarAntecedenteP(antecedenteP.id, {
-      //   antecedenteP: datosAEnviar,
-      // });
+      await historiaService.editarAntecedenteP(antecedenteP.id, {
+        antecedenteP: valoresNoVacios,
+      });
       getApartado();
     } catch (error) {
       console.log(error);
     } finally {
       setEditando(false);
     }
-  };
-  //funcion para enviar null si es que no se llena los campos
-  const transformarDatosParaEnviar = (values) => {
-    const camposNulos = [
-      "pat_fiebre",
-      "pat_enfInfec",
-      "pat_diabetes",
-      "pat_epilepsia",
-      "factFis_rayosx",
-      "factFis_ecografia",
-      "factFis_numVeces",
-      "gesta",
-      "gesta_para",
-      "gesta_nroNativivos",
-      "gesta_malformados",
-      "gesta_nroNatimortos",
-      "gesta_nroAB",
-      "gesta_exp",
-      "gesta_anticonceptivos",
-      "gesta_periodo_1_2",
-      "gesta_periodo_2_3",
-      "gesta_periodo_3_4",
-      "dn_pc",
-      "dn_fotop",
-      "dn_exsanguineo",
-      "dn_exsan_fiebre",
-      "dn_exsan_convul",
-      "dn_hemorragia",
-      "dn_altCriptorquidea",
-      "dn_altCardiopatia",
-      "dn_altFlap",
-      "dn_altAnal",
-      "dn_altNeural",
-    ];
-    const valoresTransformados = { ...values };
-    camposNulos.forEach((campo) => {
-      if (valoresTransformados[campo] === "") {
-        valoresTransformados[campo] = null;
-      }
-    });
-
-    return valoresTransformados;
   };
 
   //formulario
@@ -206,8 +160,8 @@ const AntecedentesPForm = ({ historiaId }) => {
           {({ values, handleSubmit, isValidating, isValid, isSubmitting }) => (
             <Form onSubmit={handleSubmit} className="flex flex-col px-7 ">
               <div className="">
-                <div className="flex flex-col justify-evenly mb-2 max-xl:flex-col">
-                  <span className="font-inter font-semibold text-gray-600 text-lg dark:text-white/75">
+                <div className="flex flex-col justify-evenly mb-3 max-xl:flex-col">
+                  <span className="font-inter font-semibold text-gray-600 text-lg max-xl:text-sm dark:text-white/75">
                     1 Gestación:
                   </span>
                   <div className="flex flex-row max-xl:flex-col">
@@ -250,8 +204,8 @@ const AntecedentesPForm = ({ historiaId }) => {
                     disabled={!isCreate && !editando}
                   />
                 </div>
-                <div className="flex flex-col">
-                  <span className="font-inter font-semibold text-gray-600 text-lg dark:text-white/75">
+                <div className="flex flex-col mb-3">
+                  <span className="font-inter font-semibold text-gray-600 text-lg max-xl:text-sm dark:text-white/75">
                     2 Patologías en el embarazo:
                   </span>
                   <div className="flex flex-row mt-3 mb-2 max-xl:flex-col items-center justify-evenly">
@@ -341,7 +295,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     disabled={!isCreate && !editando}
                   />
                 </div>
-                <div className="flex flex-col justify-evenly mb-2 max-xl:flex-col">
+                <div className="flex flex-col justify-evenly mb-3 max-xl:flex-col">
                   <span className="font-inter font-semibold text-gray-600 text-lg max-xl:text-sm dark:text-white/75">
                     3 Factores físicos durante el embarazo:
                   </span>
@@ -423,7 +377,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     disabled={!isCreate && !editando}
                   />
                 </div>
-                <div className="flex flex-col justify-evenly mb-2 max-xl:flex-col">
+                <div className="flex flex-col justify-evenly mb-3 max-xl:flex-col">
                   <span className="font-inter font-semibold text-gray-600 text-lg max-xl:text-sm dark:text-white/75">
                     4 Factores químicos durante la gestación:
                   </span>
@@ -524,7 +478,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     disabled={!isCreate && !editando}
                   />
                 </div>
-                <div className="flex flex-col justify-evenly mb-2 max-xl:flex-col">
+                <div className="flex flex-col justify-evenly mb-3 max-xl:flex-col">
                   <span className="font-inter font-semibold text-gray-600 text-lg max-xl:text-sm dark:text-white/75">
                     5 Gesta:
                   </span>
@@ -752,7 +706,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     disabled={!isCreate && !editando}
                   />
                 </div>
-                <div className="flex flex-col justify-evenly mb-2 max-xl:flex-col">
+                <div className="flex flex-col justify-evenly mb-3 max-xl:flex-col">
                   <span className="font-inter font-semibold text-gray-600 text-lg max-xl:text-sm dark:text-white/75">
                     6 Parto:
                   </span>
@@ -797,7 +751,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     />
                   </div>
                 </div>
-                <div className="flex flex-col justify-evenly mb-2 max-xl:flex-col">
+                <div className="flex flex-col justify-evenly mb-3 max-xl:flex-col">
                   <span className="font-inter font-semibold text-gray-600 text-lg max-xl:text-sm dark:text-white/75">
                     7 Datos del Nacimiento:
                   </span>
@@ -1087,8 +1041,8 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </Field>
                     </div>
                   </div>
-                  <div className="flex flex-row mt-3 mb-2 max-xl:flex-col items-center justify-between">
-                    <div className="flex items-center">
+                  <div className="flex flex-col mt-3 mb-2">
+                    <div className="flex flex-col">
                       <label
                         htmlFor="dn_hemoIni"
                         className=" mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"
@@ -1105,7 +1059,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         disabled={!isCreate && !editando}
                       />
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex mt-2 flex-col">
                       <label
                         htmlFor="dn_hemoDura"
                         className=" mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"

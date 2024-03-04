@@ -89,7 +89,7 @@ const AntecedenteFForm = ({ historiaId }) => {
           {({ values, handleSubmit, isValidating, isValid, isSubmitting }) => (
             <Form onSubmit={handleSubmit} className="flex flex-col px-7 ">
               <div className="">
-                <div className="flex flex-row justify-evenly mb-2 max-xl:flex-col">
+                <div className="flex flex-col justify-evenly mb-2 max-xl:flex-row">
                   <label
                     htmlFor="nomPadre"
                     className="pt-2 mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"
@@ -109,10 +109,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                     htmlFor="fechaNac_Padre"
                     className=" ml-4 pt-2 mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300 max-xl:ml-0"
                   >
-                    Fecha Nac.Padre:{" "}
-                    <span className="font-light italic text-xs">
-                      (mes/día/año)
-                    </span>
+                    Fecha Nac.Padre:
                   </label>
                   <Field
                     type="date"
@@ -136,7 +133,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                     disabled={!isCreate && !editando}
                   />
                 </div>
-                <div className="flex flex-row justify-evenly mb-2 max-xl:flex-col">
+                <div className="flex flex-col justify-evenly mb-2 max-xl:flex-row">
                   <label
                     htmlFor="nomMadre"
                     className="pt-2 mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"
@@ -157,9 +154,6 @@ const AntecedenteFForm = ({ historiaId }) => {
                     className="ml-4 pt-2 mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300 max-xl:ml-0"
                   >
                     Fecha Nac. Madre:{" "}
-                    <span className="font-light italic text-xs">
-                      (mes/día/año)
-                    </span>
                   </label>
                   <Field
                     type="date"
@@ -183,7 +177,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                     disabled={!isCreate && !editando}
                   />
                 </div>
-                <div className="flex flex-row items-center justify-between mb-2 max-md:flex-col max-md:justify-start">
+                <div className="flex flex-col items-center justify-between mb-2 max-md:flex-row max-md:justify-start">
                   <label
                     htmlFor="edadMat_nacP"
                     className="mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"
@@ -199,7 +193,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                     disabled={!isCreate && !editando}
                   />
                 </div>
-                <div className="flex flex-row items-center justify-between mb-2 max-md:flex-col max-md::justify-start">
+                <div className="flex flex-col items-center justify-between mb-2 max-md:flex-row max-md::justify-start">
                   <label
                     htmlFor="edadPat_nacP"
                     className="mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"
@@ -215,7 +209,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                     disabled={!isCreate && !editando}
                   />
                 </div>
-                <div className="flex flex-row items-center justify-between mb-2 max-md:flex-col max-md:justify-start">
+                <div className="flex flex-col items-center justify-between mb-2 max-md:flex-row max-md:justify-start">
                   <label
                     htmlFor="edadAbuela_nacM"
                     className="mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"
