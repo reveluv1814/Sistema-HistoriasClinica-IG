@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useParams } from "react-router-dom";
 import historiaService from "./../../../services/historiaService";
 import Paciente from "./../Pacientes";
 import Stepp from "../../../components/Stepp";
 function HistoriaForm() {
   const { historiaId } = useParams();
   const { consultaId } = useParams();
-  
+
   const [historia, setHistoria] = useState(null);
 
   //funcion que hace get de la historia

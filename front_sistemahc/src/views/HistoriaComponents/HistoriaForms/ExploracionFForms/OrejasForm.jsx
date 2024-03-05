@@ -94,6 +94,7 @@ const OrejasForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       as="select"
+                      id="implantacion"
                       name="implantacion"
                       className="px-1 py-0 text-sm max-xl:text-xs cursor-pointer text-zinc-700 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                       disabled={!isCreate && !editando}
@@ -116,6 +117,7 @@ const OrejasForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="microtia"
                       name="microtia"
                       value={values?.microtia}
                       checked={values?.microtia ?? false}
@@ -133,6 +135,7 @@ const OrejasForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="pabellon_mal"
                       name="pabellon_mal"
                       value={values?.pabellon_mal}
                       checked={values?.pabellon_mal ?? false}
@@ -150,6 +153,7 @@ const OrejasForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="apendice"
                       name="apendice"
                       value={values?.apendice}
                       checked={values?.apendice ?? false}
@@ -168,6 +172,7 @@ const OrejasForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="auriculares"
                       name="auriculares"
                       value={values?.auriculares}
                       checked={values?.auriculares ?? false}
@@ -184,6 +189,7 @@ const OrejasForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="ausencia_cae"
                       name="ausencia_cae"
                       value={values?.ausencia_cae}
                       checked={values?.ausencia_cae ?? false}
@@ -201,6 +207,7 @@ const OrejasForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="estenosis_cae"
+                      id="estenosis_cae"
                       value={values?.estenosis_cae}
                       checked={values?.estenosis_cae ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -216,6 +223,7 @@ const OrejasForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="fistula"
                       name="fistula"
                       value={values?.fistula}
                       checked={values?.fistula ?? false}
@@ -234,6 +242,7 @@ const OrejasForm = ({ expFisicaId }) => {
 
                   <Field
                     component="textarea"
+                    id="obs"
                     name="obs"
                     value={values?.obs}
                     placeholder="..."

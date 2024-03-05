@@ -125,6 +125,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="supManosP"
                       name="supManosP"
                       value={values?.supManosP}
                       checked={values?.supManosP ?? false}
@@ -142,6 +143,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="supBraquiactilia"
                       name="supBraquiactilia"
                       value={values?.supBraquiactilia}
                       checked={values?.supBraquiactilia ?? false}
@@ -159,6 +161,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="supAracnodactilia"
                       name="supAracnodactilia"
                       value={values?.supAracnodactilia}
                       checked={values?.supAracnodactilia ?? false}
@@ -176,6 +179,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="supPolidactilia"
                       name="supPolidactilia"
                       value={values?.supPolidactilia}
                       checked={values?.supPolidactilia ?? false}
@@ -193,6 +197,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="supTipoPoli"
                     name="supTipoPoli"
                     value={values?.supTipoPoli}
                     placeholder="..."
@@ -212,6 +217,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="supSindactilia"
                       name="supSindactilia"
                       value={values?.supSindactilia}
                       checked={values?.supSindactilia ?? false}
@@ -229,6 +235,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="supCutanea"
                       name="supCutanea"
                       value={values?.supCutanea}
                       checked={values?.supCutanea ?? false}
@@ -246,6 +253,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="supOsea"
                       name="supOsea"
                       value={values?.supOsea}
                       checked={values?.supOsea ?? false}
@@ -263,6 +271,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="supDedos"
                     name="supDedos"
                     value={values?.supDedos}
                     placeholder="..."
@@ -282,6 +291,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="supPliegueSimeano"
                       name="supPliegueSimeano"
                       value={values?.supPliegueSimeano}
                       checked={values?.supPliegueSimeano ?? false}
@@ -299,6 +309,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="supPliegueCompleto"
                       name="supPliegueCompleto"
                       value={values?.supPliegueCompleto}
                       checked={values?.supPliegueCompleto ?? false}
@@ -316,6 +327,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="supPliegueImcompleto"
                       name="supPliegueImcompleto"
                       value={values?.supPliegueImcompleto}
                       checked={values?.supPliegueImcompleto ?? false}
@@ -333,6 +345,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="supPliegueQuinto"
                       name="supPliegueQuinto"
                       value={values?.supPliegueQuinto}
                       checked={values?.supPliegueQuinto ?? false}
@@ -352,6 +365,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="supHipoplasia"
                       name="supHipoplasia"
                       value={values?.supHipoplasia}
                       checked={values?.supHipoplasia ?? false}
@@ -369,6 +383,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="supClinodactilia"
                       name="supClinodactilia"
                       value={values?.supClinodactilia}
                       checked={values?.supClinodactilia ?? false}
@@ -386,6 +401,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="supEspDedos"
                     name="supEspDedos"
                     value={values?.supEspDedos}
                     placeholder="..."
@@ -403,6 +419,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="supCavalgamiento"
                     name="supCavalgamiento"
                     value={values?.supCavalgamiento}
                     placeholder="..."
@@ -421,6 +438,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                   <Field
                     as="select"
                     name="supDeformidad"
+                    id="supDeformidad"
                     className="px-1 py-0 text-sm max-xl:text-xs cursor-pointer text-zinc-700 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                     disabled={!isCreate && !editando}
                     value={values?.supDeformidad ?? ""}
@@ -441,6 +459,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="supObs"
                     name="supObs"
                     value={values?.supObs}
                     placeholder="..."
@@ -463,6 +482,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="infPiePeque"
                       name="infPiePeque"
                       value={values?.infPiePeque}
                       checked={values?.infPiePeque ?? false}
@@ -480,6 +500,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="infPolidactilia"
                       name="infPolidactilia"
                       value={values?.infPolidactilia}
                       checked={values?.infPolidactilia ?? false}
@@ -498,6 +519,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="infImplantacion"
+                    id="infImplantacion"
                     value={values?.infImplantacion}
                     placeholder="..."
                     rows={1}
@@ -516,6 +538,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="infSindactilia"
                       name="infSindactilia"
                       value={values?.infSindactilia}
                       checked={values?.infSindactilia ?? false}
@@ -533,6 +556,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="infCutanea"
                       name="infCutanea"
                       value={values?.infCutanea}
                       checked={values?.infCutanea ?? false}
@@ -550,6 +574,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="infOsea"
                       name="infOsea"
                       value={values?.infOsea}
                       checked={values?.infOsea ?? false}
@@ -568,6 +593,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="infDedos"
+                    id="infDedos"
                     value={values?.infDedos}
                     placeholder="..."
                     rows={1}
@@ -589,6 +615,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="infCavo"
                       name="infCavo"
                       value={values?.infCavo}
                       checked={values?.infCavo ?? false}
@@ -606,6 +633,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="infCalcaneo"
                       name="infCalcaneo"
                       value={values?.infCalcaneo}
                       checked={values?.infCalcaneo ?? false}
@@ -623,6 +651,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="infEquino"
                       name="infEquino"
                       value={values?.infEquino}
                       checked={values?.infEquino ?? false}
@@ -640,6 +669,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="infVaro"
                       name="infVaro"
                       value={values?.infVaro}
                       checked={values?.infVaro ?? false}
@@ -657,6 +687,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="infValgo"
                       name="infValgo"
                       value={values?.infValgo}
                       checked={values?.infValgo ?? false}
@@ -674,6 +705,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="infPiePlano"
                       name="infPiePlano"
                       value={values?.infPiePlano}
                       checked={values?.infPiePlano ?? false}
@@ -692,6 +724,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     as="select"
+                    id="infDistancia"
                     name="infDistancia"
                     className="px-1 py-0 text-sm max-xl:text-xs cursor-pointer text-zinc-700 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                     disabled={!isCreate && !editando}
@@ -714,6 +747,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="infObs"
+                    id="infObs"
                     value={values?.infObs}
                     placeholder="..."
                     rows={1}
@@ -734,6 +768,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="artiLimitaciones"
+                    id="artiLimitaciones"
                     value={values?.artiLimitaciones}
                     placeholder="..."
                     rows={1}
@@ -750,6 +785,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="artiHiperex"
                     name="artiHiperex"
                     value={values?.artiHiperex}
                     placeholder="..."
@@ -769,6 +805,7 @@ const MiembrosForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="artiContracion"
+                    id="artiContracion"
                     value={values?.artiContracion}
                     placeholder="..."
                     rows={1}

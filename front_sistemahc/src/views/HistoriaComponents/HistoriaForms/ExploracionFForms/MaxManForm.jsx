@@ -90,6 +90,7 @@ const MaxManForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hipoplasiaMaxS"
                       name="hipoplasiaMaxS"
                       value={values?.hipoplasiaMaxS}
                       checked={values?.hipoplasiaMaxS ?? false}
@@ -107,6 +108,7 @@ const MaxManForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="micrognatia"
                       name="micrognatia"
                       value={values?.micrognatia}
                       checked={values?.micrognatia ?? false}
@@ -124,6 +126,7 @@ const MaxManForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="prognatismo"
                       name="prognatismo"
                       value={values?.prognatismo}
                       checked={values?.prognatismo ?? false}
@@ -141,6 +144,7 @@ const MaxManForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="retronagtismo"
                       name="retronagtismo"
                       value={values?.retronagtismo}
                       checked={values?.retronagtismo ?? false}
@@ -158,6 +162,7 @@ const MaxManForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="obs"
                     name="obs"
                     value={values?.obs}
                     placeholder="..."

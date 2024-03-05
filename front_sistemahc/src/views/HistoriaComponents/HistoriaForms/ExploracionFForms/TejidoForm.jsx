@@ -91,6 +91,7 @@ const TejidoForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       as="select"
+                      id="espesor"
                       name="espesor"
                       className="px-1 py-0 text-sm max-xl:text-xs cursor-pointer text-zinc-700 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                       disabled={!isCreate && !editando}
@@ -115,6 +116,7 @@ const TejidoForm = ({ expFisicaId }) => {
                     <Field
                       as="select"
                       name="turgor"
+                      id="turgor"
                       className="px-1 py-0 text-sm max-xl:text-xs cursor-pointer text-zinc-700 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                       disabled={!isCreate && !editando}
                       value={values?.turgor ?? ""}
@@ -140,6 +142,7 @@ const TejidoForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="edemaManos"
                       name="edemaManos"
                       value={values?.edemaManos}
                       checked={values?.edemaManos ?? false}
@@ -157,6 +160,7 @@ const TejidoForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="edemaPies"
                       name="edemaPies"
                       value={values?.edemaPies}
                       checked={values?.edemaPies ?? false}
@@ -175,6 +179,7 @@ const TejidoForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="edemaOtros"
+                    id="edemaOtros"
                     value={values?.edemaOtros}
                     placeholder="..."
                     rows={1}
@@ -192,6 +197,7 @@ const TejidoForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="ganglios"
+                    id="ganglios"
                     value={values?.ganglios}
                     placeholder="..."
                     rows={1}
@@ -209,6 +215,7 @@ const TejidoForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="obs"
+                    id="obs"
                     value={values?.obs}
                     placeholder="..."
                     rows={1}

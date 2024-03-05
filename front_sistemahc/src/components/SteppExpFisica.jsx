@@ -116,14 +116,14 @@ const Stepp = ({ expFisicaId }) => {
       {/* botones prueba */}
       <div className="buttonsExp">
         <button
-          className={step > 1 ? "activeExp" : "noactiveExp"}
+          className={step > 1 ? "activeExp dark:bg-[#7077A1]" : "noactiveExp"}
           onClick={() => handleBack()}
         >
           <span>Atrás</span>
         </button>
         <button
           className={
-            step < stepsLine.stpesCount.length ? "activeExp" : "noactiveExp"
+            step < stepsLine.stpesCount.length ? "activeExp dark:bg-[#7077A1]" : "noactiveExp"
           }
           onClick={() => handleNext()}
         >

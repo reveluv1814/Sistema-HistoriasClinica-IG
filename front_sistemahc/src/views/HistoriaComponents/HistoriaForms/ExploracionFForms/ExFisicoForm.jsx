@@ -110,6 +110,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     <Field
                       type="number"
                       name="peso"
+                      id="peso"
                       placeholder="0.0"
                       value={values?.peso}
                       className="p-1 text-sm max-xl:text-xs text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-12 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -124,6 +125,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     <Field
                       type="number"
                       name="peso_porcentaje"
+                      id="peso_porcentaje"
                       placeholder="0.0"
                       value={values?.peso_porcentaje}
                       className="p-1 text-sm max-xl:text-xs text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-12 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -142,6 +144,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="talla"
                       name="talla"
                       placeholder="0.0"
                       value={values?.talla}
@@ -156,6 +159,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="talla_porcentaje"
                       name="talla_porcentaje"
                       placeholder="0.0"
                       value={values?.talla_porcentaje}
@@ -175,6 +179,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="pc"
                       name="pc"
                       placeholder="0.0"
                       value={values?.pc}
@@ -189,6 +194,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="pc_porcentaje"
                       name="pc_porcentaje"
                       placeholder="0.0"
                       value={values?.pc_porcentaje}
@@ -210,6 +216,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="pt"
                       name="pt"
                       placeholder="0.0"
                       value={values?.pt}
@@ -224,6 +231,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="pt_porcentaje"
                       name="pt_porcentaje"
                       placeholder="0.0"
                       value={values?.pt_porcentaje}
@@ -243,6 +251,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="envergadura"
                       name="envergadura"
                       placeholder="0.0"
                       value={values?.envergadura}
@@ -263,6 +272,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     <Field
                       type="number"
                       name="dii"
+                      id="dii"
                       placeholder="0.0"
                       value={values?.dii}
                       className="p-1 text-sm max-xl:text-xs text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-14 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -276,6 +286,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="dii_porcentaje"
                       name="dii_porcentaje"
                       placeholder="0.0"
                       value={values?.dii_porcentaje}
@@ -298,6 +309,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     <Field
                       type="number"
                       name="seg_sup"
+                      id="seg_sup"
                       placeholder="0.0"
                       value={values?.seg_sup}
                       className="p-1 text-sm max-xl:text-xs text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-12 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -313,6 +325,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="seg_inf"
                       name="seg_inf"
                       placeholder="0.0"
                       value={values?.seg_inf}
@@ -329,6 +342,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="distancia_inter"
                       name="distancia_inter"
                       placeholder="0.0"
                       value={values?.distancia_inter}
@@ -345,6 +359,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="bregma"
                       name="bregma"
                       placeholder="0.0"
                       value={values?.bregma}
@@ -363,6 +378,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="largo_manoD"
                       name="largo_manoD"
                       placeholder="0.0"
                       value={values?.largo_manoD}
@@ -379,6 +395,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="largo_dedoMD"
                       name="largo_dedoMD"
                       placeholder="0.0"
                       value={values?.largo_dedoMD}
@@ -395,6 +412,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="distancia_intercantal"
                       name="distancia_intercantal"
                       placeholder="0.0"
                       value={values?.distancia_intercantal}
@@ -414,6 +432,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     <Field
                       type="number"
                       name="largo_manoI"
+                      id="largo_manoI"
                       placeholder="0.0"
                       value={values?.largo_manoI}
                       className="p-1 text-sm max-xl:text-xs text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-12 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -429,6 +448,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="largo_dedoMI"
                       name="largo_dedoMI"
                       placeholder="0.0"
                       value={values?.largo_dedoMI}
@@ -446,6 +466,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     <Field
                       type="number"
                       name="orejaD"
+                      id="orejaD"
                       placeholder="0.0"
                       value={values?.orejaD}
                       className="p-1 text-sm max-xl:text-xs text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-12 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -463,6 +484,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="orejaI"
                       name="orejaI"
                       placeholder="0.0"
                       value={values?.orejaI}
@@ -480,6 +502,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     <Field
                       type="number"
                       name="pieD"
+                      id="pieD"
                       placeholder="0.0"
                       value={values?.pieD}
                       className="p-1 text-sm max-xl:text-xs text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-12 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -495,6 +518,7 @@ const ExFisicoForm = ({ historiaId, expComplementarias }) => {
                     </label>
                     <Field
                       type="number"
+                      id="pieI"
                       name="pieI"
                       placeholder="0.0"
                       value={values?.pieI}

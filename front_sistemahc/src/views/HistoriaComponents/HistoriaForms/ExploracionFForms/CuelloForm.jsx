@@ -92,6 +92,7 @@ const CuelloForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="corto"
                       name="corto"
                       value={values?.corto}
                       checked={values?.corto ?? false}
@@ -109,6 +110,7 @@ const CuelloForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="quistes"
                       name="quistes"
                       value={values?.quistes}
                       checked={values?.quistes ?? false}
@@ -126,6 +128,7 @@ const CuelloForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="fistula"
                       name="fistula"
                       value={values?.fistula}
                       checked={values?.fistula ?? false}
@@ -145,6 +148,7 @@ const CuelloForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="colli"
                       name="colli"
                       value={values?.colli}
                       checked={values?.colli ?? false}
@@ -162,6 +166,7 @@ const CuelloForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="torticolis"
                       name="torticolis"
                       value={values?.torticolis}
                       checked={values?.torticolis ?? false}
@@ -179,6 +184,7 @@ const CuelloForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="tiroides"
                       name="tiroides"
                       value={values?.tiroides}
                       checked={values?.tiroides ?? false}
@@ -196,6 +202,7 @@ const CuelloForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="obs"
                     name="obs"
                     value={values?.obs}
                     placeholder="..."

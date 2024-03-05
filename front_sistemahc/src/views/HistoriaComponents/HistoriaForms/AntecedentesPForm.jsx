@@ -173,6 +173,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     </label>
                     <Field
                       as="select"
+                      id="g_embarazo"
                       name="g_embarazo"
                       value={values?.g_embarazo}
                       disabled={!isCreate && !editando}
@@ -197,6 +198,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                   <Field
                     component="textarea"
                     name="g_obs"
+                    id="g_obs"
                     value={values?.g_obs}
                     placeholder="..."
                     rows={3}
@@ -219,6 +221,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="checkbox"
+                        id="pat_fiebre"
                         name="pat_fiebre"
                         value={values?.pat_fiebre}
                         checked={values?.pat_fiebre ?? false}
@@ -236,6 +239,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="checkbox"
+                        id="pat_enfInfec"
                         name="pat_enfInfec"
                         value={values?.pat_enfInfec}
                         checked={values?.pat_enfInfec ?? false}
@@ -253,6 +257,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="checkbox"
+                        id="pat_diabetes"
                         name="pat_diabetes"
                         value={values?.pat_diabetes}
                         checked={values?.pat_diabetes ?? false}
@@ -270,6 +275,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="checkbox"
+                        id="pat_epilepsia"
                         name="pat_epilepsia"
                         value={values?.pat_epilepsia}
                         checked={values?.pat_epilepsia ?? false}
@@ -288,6 +294,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                   <Field
                     component="textarea"
                     name="pat_otras"
+                    id="pat_otras"
                     value={values?.pat_otras}
                     placeholder="..."
                     rows={2}
@@ -312,6 +319,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         as="select"
                         name="factFis_rayosx"
+                        id="factFis_rayosx"
                         className="px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                         disabled={!isCreate && !editando}
                         value={values?.factFis_rayosx}
@@ -334,6 +342,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         as="select"
                         name="factFis_ecografia"
+                        id="factFis_ecografia"
                         className="px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                         disabled={!isCreate && !editando}
                         value={values?.factFis_ecografia}
@@ -356,6 +365,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                   <Field
                     component="textarea"
                     name="factFis_lugar"
+                    id="factFis_lugar"
                     value={values?.factFis_lugar}
                     placeholder="..."
                     rows={2}
@@ -370,6 +380,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                   </label>
                   <Field
                     type="number"
+                    id="factFis_numVeces"
                     name="factFis_numVeces"
                     placeholder="0"
                     value={values?.factFis_numVeces}
@@ -390,6 +401,7 @@ const AntecedentesPForm = ({ historiaId }) => {
 
                   <Field
                     component="textarea"
+                    id="factQuim_farmacos"
                     name="factQuim_farmacos"
                     value={values?.factQuim_farmacos}
                     placeholder="..."
@@ -406,6 +418,7 @@ const AntecedentesPForm = ({ historiaId }) => {
 
                   <Field
                     component="textarea"
+                    id="factQuim_farmOtros"
                     name="factQuim_farmOtros"
                     value={values?.factQuim_farmOtros}
                     placeholder="..."
@@ -423,6 +436,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                   <Field
                     component="textarea"
                     name="factQuim_anticonceptivos"
+                    id="factQuim_anticonceptivos"
                     placeholder="..."
                     value={values?.factQuim_anticonceptivos}
                     rows={1}
@@ -438,6 +452,7 @@ const AntecedentesPForm = ({ historiaId }) => {
 
                   <Field
                     component="textarea"
+                    id="fact_Quim_gestagenosAB"
                     name="fact_Quim_gestagenosAB"
                     placeholder="..."
                     value={values?.fact_Quim_gestagenosAB}
@@ -455,6 +470,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                   <Field
                     component="textarea"
                     name="factQuim_expProfesional"
+                    id="factQuim_expProfesional"
                     value={values?.factQuim_expProfesional}
                     placeholder="..."
                     rows={1}
@@ -470,6 +486,7 @@ const AntecedentesPForm = ({ historiaId }) => {
 
                   <Field
                     component="textarea"
+                    id="factQuim_enolismo"
                     name="factQuim_enolismo"
                     value={values?.factQuim_enolismo}
                     placeholder="..."
@@ -492,6 +509,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="number"
+                        id="gesta"
                         name="gesta"
                         value={values?.gesta}
                         placeholder="0"
@@ -508,6 +526,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="number"
+                        id="gesta_para"
                         name="gesta_para"
                         placeholder="0"
                         value={values?.gesta_para}
@@ -524,6 +543,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="number"
+                        id="gesta_nroNativivos"
                         name="gesta_nroNativivos"
                         placeholder="0"
                         value={values?.gesta_nroNativivos}
@@ -541,6 +561,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         type="number"
                         name="gesta_malformados"
+                        id="gesta_malformados"
                         placeholder="0"
                         value={values?.gesta_malformados}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
@@ -558,6 +579,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="number"
+                        id="gesta_nroNatimortos"
                         name="gesta_nroNatimortos"
                         placeholder="0"
                         value={values?.gesta_nroNatimortos}
@@ -574,6 +596,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="number"
+                        id="gesta_nroAB"
                         name="gesta_nroAB"
                         placeholder="0"
                         value={values?.gesta_nroAB}
@@ -590,6 +613,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="number"
+                        id="gesta_exp"
                         name="gesta_exp"
                         placeholder="0"
                         value={values?.gesta_exp}
@@ -609,6 +633,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         as="select"
+                        id="gesta_anticonceptivos"
                         name="gesta_anticonceptivos"
                         className="px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                         disabled={!isCreate && !editando}
@@ -630,6 +655,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         component="textarea"
+                        id="gesta_anticonsTipo"
                         name="gesta_anticonsTipo"
                         value={values?.gesta_anticonsTipo}
                         rows={1}
@@ -649,6 +675,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="number"
+                        id="gesta_periodo_1_2"
                         name="gesta_periodo_1_2"
                         placeholder="0"
                         value={values?.gesta_periodo_1_2}
@@ -665,6 +692,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="number"
+                        id="gesta_periodo_2_3"
                         name="gesta_periodo_2_3"
                         placeholder="0"
                         value={values?.gesta_periodo_2_3}
@@ -681,6 +709,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="number"
+                        id="gesta_periodo_3_4"
                         name="gesta_periodo_3_4"
                         placeholder="0"
                         value={values?.gesta_periodo_3_4}
@@ -699,6 +728,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                   <Field
                     component="textarea"
                     name="gesta_periodoUso"
+                    id="gesta_periodoUso"
                     placeholder="..."
                     value={values?.gesta_periodoUso}
                     rows={1}
@@ -719,6 +749,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     </label>
                     <Field
                       as="select"
+                      id="parto"
                       name="parto"
                       value={values?.parto}
                       disabled={!isCreate && !editando}
@@ -743,6 +774,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                     <Field
                       component="textarea"
                       name="parto_porque"
+                      id="parto_porque"
                       placeholder="..."
                       value={values?.parto_porque}
                       rows={1}
@@ -765,6 +797,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         component="textarea"
+                        id="dn_peso"
                         name="dn_peso"
                         value={values?.dn_peso}
                         rows={1}
@@ -782,6 +815,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         component="textarea"
+                        id="dn_talla"
                         name="dn_talla"
                         value={values?.dn_talla}
                         rows={1}
@@ -801,6 +835,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                         type="number"
                         step="0.1"
                         placeholder="0.0..."
+                        id="dn_pc"
                         name="dn_pc"
                         value={values?.dn_pc}
                         className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-20 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
@@ -816,6 +851,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         component="textarea"
+                        id="dn_apgar"
                         name="dn_apgar"
                         value={values?.dn_apgar}
                         rows={1}
@@ -835,6 +871,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         as="select"
+                        id="dn_llanto"
                         name="dn_llanto"
                         value={values?.dn_llanto}
                         disabled={!isCreate && !editando}
@@ -858,6 +895,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         as="select"
                         name="dn_oxigeno"
+                        id="dn_oxigeno"
                         value={values?.dn_oxigeno}
                         disabled={!isCreate && !editando}
                         className=" px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300 "
@@ -880,6 +918,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       <Field
                         as="select"
                         name="dn_ictericia"
+                        id="dn_ictericia"
                         value={values?.dn_ictericia}
                         disabled={!isCreate && !editando}
                         className=" px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300 "
@@ -903,6 +942,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         as="select"
+                        id="dn_cianosis"
                         name="dn_cianosis"
                         value={values?.dn_cianosis}
                         disabled={!isCreate && !editando}
@@ -925,6 +965,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         as="select"
+                        id="dn_incubadora"
                         name="dn_incubadora"
                         value={values?.dn_incubadora}
                         disabled={!isCreate && !editando}
@@ -948,6 +989,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         as="select"
+                        id="dn_fotop"
                         name="dn_fotop"
                         className="px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                         disabled={!isCreate && !editando}
@@ -972,6 +1014,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         as="select"
+                        id="dn_exsanguineo"
                         name="dn_exsanguineo"
                         className="px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                         disabled={!isCreate && !editando}
@@ -994,6 +1037,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="checkbox"
+                        id="dn_exsan_fiebre"
                         name="dn_exsan_fiebre"
                         value={values?.dn_exsan_fiebre}
                         checked={values?.dn_exsan_fiebre ?? false}
@@ -1011,6 +1055,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="checkbox"
+                        id="dn_exsan_convul"
                         name="dn_exsan_convul"
                         value={values?.dn_exsan_convul}
                         checked={values?.dn_exsan_convul ?? false}
@@ -1028,6 +1073,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         as="select"
+                        id="dn_hemorragia"
                         name="dn_hemorragia"
                         className="px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                         disabled={!isCreate && !editando}
@@ -1051,6 +1097,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         component="textarea"
+                        id="dn_hemoIni"
                         name="dn_hemoIni"
                         value={values?.dn_hemoIni}
                         rows={1}
@@ -1068,6 +1115,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         component="textarea"
+                        id="dn_hemoDura"
                         name="dn_hemoDura"
                         value={values?.dn_hemoDura}
                         rows={1}
@@ -1091,6 +1139,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="checkbox"
+                        id="dn_altCriptorquidea"
                         name="dn_altCriptorquidea"
                         value={values?.dn_altCriptorquidea}
                         checked={values?.dn_altCriptorquidea ?? false}
@@ -1108,6 +1157,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="checkbox"
+                        id="dn_altCardiopatia"
                         name="dn_altCardiopatia"
                         value={values?.dn_altCardiopatia}
                         checked={values?.dn_altCardiopatia ?? false}
@@ -1125,6 +1175,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="checkbox"
+                        id="dn_altFlap"
                         name="dn_altFlap"
                         value={values?.dn_altFlap}
                         checked={values?.dn_altFlap ?? false}
@@ -1142,6 +1193,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="checkbox"
+                        id="dn_altAnal"
                         name="dn_altAnal"
                         value={values?.dn_altAnal}
                         checked={values?.dn_altAnal ?? false}
@@ -1159,6 +1211,7 @@ const AntecedentesPForm = ({ historiaId }) => {
                       </label>
                       <Field
                         type="checkbox"
+                        id="dn_altNeural"
                         name="dn_altNeural"
                         value={values?.dn_altNeural}
                         checked={values?.dn_altNeural ?? false}
@@ -1176,6 +1229,7 @@ const AntecedentesPForm = ({ historiaId }) => {
 
                   <Field
                     component="textarea"
+                    id="dn_altObs"
                     name="dn_altObs"
                     placeholder="..."
                     value={values?.dn_altObs}

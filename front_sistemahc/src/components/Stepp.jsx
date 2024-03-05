@@ -87,13 +87,13 @@ const Stepp = ({ historia, consultaId }) => {
       {/* botones prueba */}
       <div className="buttons">
         <button
-          className={step > 1 ? "active" : "noactive"}
+          className={step > 1 ? "active" : "noactive dark:bg-zinc-400/10"}
           onClick={() => handleBack()}
         >
           <span>Atrás</span>
         </button>
         <button
-          className={step < stepsLine.stpesCount.length ? "active" : "noactive"}
+          className={step < stepsLine.stpesCount.length ? "active" : "noactive dark:bg-zinc-400/10"}
           onClick={() => handleNext()}
         >
           <span>Siguiente</span>

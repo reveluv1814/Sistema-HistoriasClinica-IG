@@ -103,6 +103,7 @@ const BocaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="leporino"
+                      id="leporino"
                       value={values?.leporino}
                       checked={values?.leporino ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -120,6 +121,7 @@ const BocaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="vol"
+                      id="vol"
                       value={values?.vol}
                       checked={values?.vol ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -137,6 +139,7 @@ const BocaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="fosetasInf"
+                      id="fosetasInf"
                       value={values?.fosetasInf}
                       checked={values?.fosetasInf ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -154,6 +157,7 @@ const BocaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="comisuras"
+                      id="comisuras"
                       value={values?.comisuras}
                       checked={values?.comisuras ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -172,6 +176,7 @@ const BocaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="microstomia"
                       name="microstomia"
                       value={values?.microstomia}
                       checked={values?.microstomia ?? false}
@@ -189,6 +194,7 @@ const BocaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="macrostomia"
                       name="macrostomia"
                       value={values?.macrostomia}
                       checked={values?.macrostomia ?? false}
@@ -207,6 +213,7 @@ const BocaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="macroglosia"
+                      id="macroglosia"
                       value={values?.macroglosia}
                       checked={values?.macroglosia ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -224,6 +231,7 @@ const BocaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="lenguaHendida"
+                      id="lenguaHendida"
                       value={values?.lenguaHendida}
                       checked={values?.lenguaHendida ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -241,6 +249,7 @@ const BocaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="lenguaGeo"
+                      id="lenguaGeo"
                       value={values?.lenguaGeo}
                       checked={values?.lenguaGeo ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -259,6 +268,7 @@ const BocaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="frenillo"
                       name="frenillo"
                       value={values?.frenillo}
                       checked={values?.frenillo ?? false}
@@ -277,6 +287,7 @@ const BocaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="altDental"
+                      id="altDental"
                       value={values?.altDental}
                       checked={values?.altDental ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -294,6 +305,7 @@ const BocaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="fisuraPalatina"
+                      id="fisuraPalatina"
                       value={values?.fisuraPalatina}
                       checked={values?.fisuraPalatina ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -311,6 +323,7 @@ const BocaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="paladarOjival"
+                      id="paladarOjival"
                       value={values?.paladarOjival}
                       checked={values?.paladarOjival ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -329,6 +342,7 @@ const BocaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="paladarAlto"
                       name="paladarAlto"
                       value={values?.paladarAlto}
                       checked={values?.paladarAlto ?? false}
@@ -346,6 +360,7 @@ const BocaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="uvulaBifida"
                       name="uvulaBifida"
                       value={values?.uvulaBifida}
                       checked={values?.uvulaBifida ?? false}
@@ -364,6 +379,7 @@ const BocaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="palpacionPaladar"
+                      id="palpacionPaladar"
                       value={values?.palpacionPaladar}
                       checked={values?.palpacionPaladar ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -381,6 +397,7 @@ const BocaForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="obs"
+                    id="obs"
                     value={values?.obs}
                     placeholder="..."
                     rows={1}

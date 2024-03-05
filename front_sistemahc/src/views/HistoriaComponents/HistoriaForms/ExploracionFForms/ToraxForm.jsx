@@ -99,6 +99,7 @@ const ToraxForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="cajaPequeña"
+                      id="cajaPequeña"
                       value={values?.cajaPequeña}
                       checked={values?.cajaPequeña ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -116,6 +117,7 @@ const ToraxForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="esternonCorto"
+                      id="esternonCorto"
                       value={values?.esternonCorto}
                       checked={values?.esternonCorto ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -133,6 +135,7 @@ const ToraxForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="escavado"
+                      id="escavado"
                       value={values?.escavado}
                       checked={values?.escavado ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -150,6 +153,7 @@ const ToraxForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="quilla"
+                      id="quilla"
                       value={values?.quilla}
                       checked={values?.quilla ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -169,6 +173,7 @@ const ToraxForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="mamasAnormales"
+                      id="mamasAnormales"
                       value={values?.mamasAnormales}
                       checked={values?.mamasAnormales ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -186,6 +191,7 @@ const ToraxForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="politelia"
+                      id="politelia"
                       value={values?.politelia}
                       checked={values?.politelia ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -203,6 +209,7 @@ const ToraxForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="defectosCostales"
+                      id="defectosCostales"
                       value={values?.defectosCostales}
                       checked={values?.defectosCostales ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -220,6 +227,7 @@ const ToraxForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="obs"
+                    id="obs"
                     value={values?.obs}
                     placeholder="..."
                     rows={1}
@@ -237,6 +245,7 @@ const ToraxForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="pulmones"
+                    id="pulmones"
                     value={values?.pulmones}
                     placeholder="..."
                     rows={1}
@@ -255,6 +264,7 @@ const ToraxForm = ({ expFisicaId }) => {
                     <Field
                       type="number"
                       name="cardioTa"
+                      id="cardioTa"
                       placeholder="0.0"
                       value={values?.cardioTa}
                       className="p-1 text-sm max-xl:text-xs text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-12 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -270,6 +280,7 @@ const ToraxForm = ({ expFisicaId }) => {
                     <Field
                       type="number"
                       name="cardioTaSobre"
+                      id="cardioTaSobre"
                       placeholder="0.0"
                       value={values?.cardioTaSobre}
                       className="p-1 text-sm max-xl:text-xs text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-12 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -285,6 +296,7 @@ const ToraxForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="number"
+                      id="cardioFc"
                       name="cardioFc"
                       placeholder="0.0"
                       value={values?.cardioFc}
@@ -302,6 +314,7 @@ const ToraxForm = ({ expFisicaId }) => {
                     <Field
                       component="textarea"
                       name="cardioBM"
+                      id="cardioBM"
                       value={values?.cardioBM}
                       placeholder="..."
                       rows={1}

@@ -104,6 +104,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="tanner"
                     name="tanner"
                     value={values?.tanner}
                     placeholder="..."
@@ -123,6 +124,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="ambiguos"
                       name="ambiguos"
                       value={values?.ambiguos}
                       checked={values?.ambiguos ?? false}
@@ -140,6 +142,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="criptorquidea"
                       name="criptorquidea"
                       value={values?.criptorquidea}
                       checked={values?.criptorquidea ?? false}
@@ -157,6 +160,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="testiculoRetractil"
                       name="testiculoRetractil"
                       value={values?.testiculoRetractil}
                       checked={values?.testiculoRetractil ?? false}
@@ -174,6 +178,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hipoMay"
                       name="hipoMay"
                       value={values?.hipoMay}
                       checked={values?.hipoMay ?? false}
@@ -193,6 +198,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hipoMen"
                       name="hipoMen"
                       value={values?.hipoMen}
                       checked={values?.hipoMen ?? false}
@@ -210,6 +216,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hipertrofiaClitoris"
                       name="hipertrofiaClitoris"
                       value={values?.hipertrofiaClitoris}
                       checked={values?.hipertrofiaClitoris ?? false}
@@ -227,6 +234,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hidrocele"
                       name="hidrocele"
                       value={values?.hidrocele}
                       checked={values?.hidrocele ?? false}
@@ -249,6 +257,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="meato"
                       name="meato"
                       value={values?.meato}
                       checked={values?.meato ?? false}
@@ -266,6 +275,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="peneal"
                       name="peneal"
                       value={values?.peneal}
                       checked={values?.peneal ?? false}
@@ -283,6 +293,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="peneoescrotal"
                       name="peneoescrotal"
                       value={values?.peneoescrotal}
                       checked={values?.peneoescrotal ?? false}
@@ -300,6 +311,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="perineal"
                       name="perineal"
                       value={values?.perineal}
                       checked={values?.perineal ?? false}
@@ -317,6 +329,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="epispadia"
                       name="epispadia"
                       value={values?.epispadia}
                       checked={values?.epispadia ?? false}
@@ -334,6 +347,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="fimosis"
                       name="fimosis"
                       value={values?.fimosis}
                       checked={values?.fimosis ?? false}
@@ -352,6 +366,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                   <Field
                     type="number"
                     name="tamanioPene"
+                    id="tamanioPene"
                     placeholder="0.0"
                     value={values?.tamanioPene}
                     className="p-1 text-sm max-xl:text-xs text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-32 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -367,6 +382,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="testiculoDMay"
                     name="testiculoDMay"
                     value={values?.testiculoDMay}
                     placeholder="..."
@@ -384,6 +400,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="testiculoDMen"
                     name="testiculoDMen"
                     value={values?.testiculoDMen}
                     placeholder="..."
@@ -401,6 +418,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="testiculoIMay"
                     name="testiculoIMay"
                     value={values?.testiculoIMay}
                     placeholder="..."
@@ -418,6 +436,7 @@ const GenitalesForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="testiculoIMen"
                     name="testiculoIMen"
                     value={values?.testiculoIMen}
                     placeholder="..."

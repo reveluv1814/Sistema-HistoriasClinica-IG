@@ -28,7 +28,8 @@ const FormAddPaciente = ({
         .required("Campo requerido")
         .min(5, "Debe tener al menos 5 caracteres"),
       telefono: Yup.string()
-        .required("Campo requerido").min(6, "Debe tener al menos 6 caracteres")
+        .required("Campo requerido")
+        .min(6, "Debe tener al menos 6 caracteres")
         .matches(/^\d+$/, "Debe contener solo números"),
       direccion: Yup.string().required("Campo requerido"),
     }),
@@ -160,6 +161,7 @@ const FormAddPaciente = ({
                   </label>
                   <Field
                     type="text"
+                    id="persona.nombre"
                     name="persona.nombre"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.nombre && errors.persona?.nombre
@@ -180,6 +182,7 @@ const FormAddPaciente = ({
                   </label>
                   <Field
                     type="text"
+                    id="persona.apellidoPaterno"
                     name="persona.apellidoPaterno"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.apellidoPaterno &&
@@ -201,6 +204,7 @@ const FormAddPaciente = ({
                   </label>
                   <Field
                     type="text"
+                    id="persona.apellidoMaterno"
                     name="persona.apellidoMaterno"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.apellidoMaterno &&
@@ -222,6 +226,7 @@ const FormAddPaciente = ({
                   </label>
                   <Field
                     type="text"
+                    id="persona.ci"
                     name="persona.ci"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.ci && errors.persona?.ci
@@ -242,6 +247,7 @@ const FormAddPaciente = ({
                   </label>
                   <Field
                     type="text"
+                    id="persona.telefono"
                     name="persona.telefono"
                     className={`p-2 esteInput text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.telefono && errors.persona?.telefono
@@ -262,6 +268,7 @@ const FormAddPaciente = ({
                   </label>
                   <Field
                     type="text"
+                    id="persona.direccion"
                     name="persona.direccion"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.direccion && errors.persona?.direccion
@@ -325,6 +332,7 @@ const FormAddPaciente = ({
                   <Field
                     type="date"
                     name="paciente.fechanac"
+                    id="paciente.fechanac"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.paciente?.fechanac && touched.paciente?.fechanac
                         ? "border-red-500 dark:border-red-300"
@@ -344,6 +352,7 @@ const FormAddPaciente = ({
                   </label>
                   <Field
                     as="select"
+                    id="paciente.sexo"
                     name="paciente.sexo"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.paciente?.sexo && touched.paciente?.sexo
@@ -370,6 +379,7 @@ const FormAddPaciente = ({
                   </label>
                   <Field
                     type="text"
+                    id="paciente.raza"
                     name="paciente.raza"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.paciente?.raza && touched.paciente?.raza
@@ -390,6 +400,7 @@ const FormAddPaciente = ({
                   </label>
                   <Field
                     type="text"
+                    id="paciente.procedencia"
                     name="paciente.procedencia"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.paciente?.procedencia &&
@@ -411,6 +422,7 @@ const FormAddPaciente = ({
                   </label>
                   <Field
                     type="text"
+                    id="paciente.residencia"
                     name="paciente.residencia"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.paciente?.residencia &&

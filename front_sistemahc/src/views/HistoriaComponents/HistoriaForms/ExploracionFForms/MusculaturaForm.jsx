@@ -96,6 +96,7 @@ const MusculaturaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="normotrofica"
+                      id="normotrofica"
                       value={values?.normotrofica}
                       checked={values?.normotrofica ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -112,6 +113,7 @@ const MusculaturaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hipotrofica"
                       name="hipotrofica"
                       value={values?.hipotrofica}
                       checked={values?.hipotrofica ?? false}
@@ -129,6 +131,7 @@ const MusculaturaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hipertrofica"
                       name="hipertrofica"
                       value={values?.hipertrofica}
                       checked={values?.hipertrofica ?? false}
@@ -146,6 +149,7 @@ const MusculaturaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="normotonica"
                       name="normotonica"
                       value={values?.normotonica}
                       checked={values?.normotonica ?? false}
@@ -163,6 +167,7 @@ const MusculaturaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hipotonica"
                       name="hipotonica"
                       value={values?.hipotonica}
                       checked={values?.hipotonica ?? false}
@@ -180,6 +185,7 @@ const MusculaturaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hipertonica"
                       name="hipertonica"
                       value={values?.hipertonica}
                       checked={values?.hipertonica ?? false}
@@ -198,6 +204,7 @@ const MusculaturaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       as="select"
+                      id="fuerzaMus"
                       name="fuerzaMus"
                       className="px-1 py-0 text-sm max-xl:text-xs cursor-pointer text-zinc-700 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                       disabled={!isCreate && !editando}
@@ -221,6 +228,7 @@ const MusculaturaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="agenesia"
                       name="agenesia"
                       value={values?.agenesia}
                       checked={values?.agenesia ?? false}
@@ -238,6 +246,7 @@ const MusculaturaForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="agenesiaEspeci"
                     name="agenesiaEspeci"
                     value={values?.agenesiaEspeci}
                     placeholder="..."
@@ -256,6 +265,7 @@ const MusculaturaForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="obs"
+                    id="obs"
                     value={values?.obs}
                     placeholder="..."
                     rows={1}

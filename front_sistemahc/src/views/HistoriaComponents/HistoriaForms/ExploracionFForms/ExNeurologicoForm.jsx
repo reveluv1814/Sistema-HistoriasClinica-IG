@@ -94,6 +94,7 @@ const ExNeurologicoForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="facies"
+                    id="facies"
                     value={values?.facies}
                     placeholder="..."
                     rows={1}
@@ -110,6 +111,7 @@ const ExNeurologicoForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="motricidad"
                     name="motricidad"
                     value={values?.motricidad}
                     placeholder="..."
@@ -128,6 +130,7 @@ const ExNeurologicoForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="sencibilidad"
+                    id="sencibilidad"
                     value={values?.sencibilidad}
                     placeholder="..."
                     rows={1}
@@ -144,6 +147,7 @@ const ExNeurologicoForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="coordinacion"
                     name="coordinacion"
                     value={values?.coordinacion}
                     placeholder="..."
@@ -161,6 +165,7 @@ const ExNeurologicoForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="movInvo"
                     name="movInvo"
                     value={values?.movInvo}
                     placeholder="..."
@@ -178,6 +183,7 @@ const ExNeurologicoForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="equilibrio"
                     name="equilibrio"
                     value={values?.equilibrio}
                     placeholder="..."
@@ -195,6 +201,7 @@ const ExNeurologicoForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="lenguaje"
                     name="lenguaje"
                     value={values?.lenguaje}
                     placeholder="..."
@@ -212,6 +219,7 @@ const ExNeurologicoForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="reflejos"
                     name="reflejos"
                     value={values?.reflejos}
                     placeholder="..."
@@ -229,6 +237,7 @@ const ExNeurologicoForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="paresCra"
                     name="paresCra"
                     value={values?.paresCra}
                     placeholder="..."
@@ -246,6 +255,7 @@ const ExNeurologicoForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="maniNeurovege"
                     name="maniNeurovege"
                     value={values?.maniNeurovege}
                     placeholder="..."

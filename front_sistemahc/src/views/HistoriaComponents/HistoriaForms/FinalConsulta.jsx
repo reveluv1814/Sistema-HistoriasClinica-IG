@@ -83,6 +83,7 @@ const FinalConsulta = ({ consultaId }) => {
 
                           <Field
                             component="textarea"
+                            id="resumen"
                             name="resumen"
                             value={values?.resumen}
                             placeholder={"Ingrese el resumen de la consulta..."}
@@ -101,6 +102,7 @@ const FinalConsulta = ({ consultaId }) => {
 
                           <Field
                             component="textarea"
+                            id="impresionDiag"
                             name="impresionDiag"
                             value={values?.impresionDiag}
                             placeholder={

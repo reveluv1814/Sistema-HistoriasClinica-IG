@@ -187,6 +187,7 @@ const FormAdduser = ({
                   </label>
                   <Field
                     type="email"
+                    id="usuario.email"
                     name="usuario.email"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.usuario?.email && touched.usuario?.email
@@ -263,6 +264,7 @@ const FormAdduser = ({
                   </label>
                   <Field
                     type="email"
+                    id="usuario.rol"
                     name="usuario.rol"
                     className={
                       "p-2 text-base capitalize-first text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md  dark:bg-slate-800 dark:text-gray-400"
@@ -288,6 +290,7 @@ const FormAdduser = ({
                   <Field
                     type="text"
                     name="persona.nombre"
+                    id="persona.nombre"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.nombre && errors.persona?.nombre
                         ? "border-red-500 dark:border-red-300"
@@ -307,6 +310,7 @@ const FormAdduser = ({
                   </label>
                   <Field
                     type="text"
+                    id="persona.apellidoPaterno"
                     name="persona.apellidoPaterno"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.apellidoPaterno &&
@@ -328,6 +332,7 @@ const FormAdduser = ({
                   </label>
                   <Field
                     type="text"
+                    id="persona.apellidoMaterno"
                     name="persona.apellidoMaterno"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.apellidoMaterno &&
@@ -349,6 +354,7 @@ const FormAdduser = ({
                   </label>
                   <Field
                     type="text"
+                    id="persona.ci"
                     name="persona.ci"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.ci && errors.persona?.ci
@@ -369,6 +375,7 @@ const FormAdduser = ({
                   </label>
                   <Field
                     type="text"
+                    id="persona.telefono"
                     name="persona.telefono"
                     className={`p-2 esteInput text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.telefono && errors.persona?.telefono
@@ -389,6 +396,7 @@ const FormAdduser = ({
                   </label>
                   <Field
                     type="text"
+                    id="persona.direccion"
                     name="persona.direccion"
                     className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                       errors.persona?.direccion && errors.persona?.direccion
@@ -453,6 +461,7 @@ const FormAdduser = ({
                       </label>
                       <Field
                         type="text"
+                        id="doctor.unidad"
                         name="doctor.unidad"
                         className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                           errors.doctor?.unidad && errors.doctor?.unidad
@@ -473,6 +482,7 @@ const FormAdduser = ({
                       </label>
                       <Field
                         type="text"
+                        id="doctor.especialidad"
                         name="doctor.especialidad"
                         className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                           errors.doctor?.especialidad &&
@@ -494,6 +504,7 @@ const FormAdduser = ({
                       </label>
                       <Field
                         type="text"
+                        id="doctor.numeroMatricula"
                         name="doctor.numeroMatricula"
                         className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                           errors.doctor?.numeroMatricula &&
@@ -519,6 +530,7 @@ const FormAdduser = ({
                       </label>
                       <Field
                         type="text"
+                        id="personalAdmin.cargo"
                         name="personalAdmin.cargo"
                         className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                           errors.personalAdmin?.cargo &&
@@ -545,6 +557,7 @@ const FormAdduser = ({
                       <Field
                         type="text"
                         name="laboratorista.especialidad"
+                        id="laboratorista.especialidad"
                         className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                           errors.laboratorista?.especialidad &&
                           errors.laboratorista?.especialidad
@@ -565,6 +578,7 @@ const FormAdduser = ({
                       </label>
                       <Field
                         type="text"
+                        id="laboratorista.matriculaProf"
                         name="laboratorista.matriculaProf"
                         className={`p-2 text-base text-zinc-900 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg max-w-md dark:bg-slate-800 dark:text-gray-400 ${
                           errors.laboratorista?.matriculaProf &&

@@ -93,6 +93,7 @@ const NarizForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="puentenasal"
+                      id="puentenasal"
                       value={values?.puentenasal}
                       checked={values?.puentenasal ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -108,6 +109,7 @@ const NarizForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       as="select"
+                      id="stenosis"
                       name="stenosis"
                       className="px-1 py-0 text-sm max-xl:text-xs cursor-pointer text-zinc-700 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                       disabled={!isCreate && !editando}
@@ -130,6 +132,7 @@ const NarizForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="tabique"
                       name="tabique"
                       value={values?.tabique}
                       checked={values?.tabique ?? false}
@@ -149,6 +152,7 @@ const NarizForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hipoplasis"
                       name="hipoplasis"
                       value={values?.hipoplasis}
                       checked={values?.hipoplasis ?? false}
@@ -166,6 +170,7 @@ const NarizForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="narizProminente"
                       name="narizProminente"
                       value={values?.narizProminente}
                       checked={values?.narizProminente ?? false}
@@ -184,6 +189,7 @@ const NarizForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="tipoNariz"
+                    id="tipoNariz"
                     value={values?.tipoNariz}
                     placeholder="..."
                     rows={1}
@@ -200,6 +206,7 @@ const NarizForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="obs"
                     name="obs"
                     value={values?.obs}
                     placeholder="..."

@@ -44,7 +44,6 @@ const AntecedenteFForm = ({ historiaId }) => {
   };
   const handlePatch = async (values) => {
     try {
-      //const datosAEnviar = transformarDatosParaEnviar(values);
       const valoresNoVacios = Object.fromEntries(
         Object.entries(values).filter(([_, value]) => value !== "")
       );
@@ -101,6 +100,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                     type="text"
                     placeholder="..."
                     name="nomPadre"
+                    id="nomPadre"
                     value={values?.nomPadre}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-64 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
                     disabled={!isCreate && !editando}
@@ -113,6 +113,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                   </label>
                   <Field
                     type="date"
+                    id="fechaNac_Padre"
                     name="fechaNac_Padre"
                     className="p-1 text-base max-xl:text-sm mr-4 text-zinc-700 cursor-pointer shadow-md appearance-none border border-blue-500 bg-blue-300 rounded-lg  dark:bg-sky-800 dark:border-sky-900 dark:text-gray-300 max-xl:w-64"
                     value={values?.fechaNac_Padre}
@@ -126,6 +127,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                   </label>
                   <Field
                     type="text"
+                    id="profesionPadre"
                     name="profesionPadre"
                     placeholder="..."
                     value={values?.profesionPadre}
@@ -144,6 +146,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                   <Field
                     type="text"
                     name="nomMadre"
+                    id="nomMadre"
                     placeholder="..."
                     value={values?.nomMadre}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-64 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -157,6 +160,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                   </label>
                   <Field
                     type="date"
+                    id="fechaNac_Madre"
                     name="fechaNac_Madre"
                     value={values?.fechaNac_Madre}
                     className="p-1 text-base max-xl:text-sm mr-4 text-zinc-700 cursor-pointer shadow appearance-none border border-blue-500 bg-blue-300 rounded-lg max-w-md dark:bg-sky-800 dark:border-sky-900 dark:text-gray-300 max-xl:w-64"
@@ -170,6 +174,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                   </label>
                   <Field
                     type="text"
+                    id="profesionMadre"
                     name="profesionMadre"
                     placeholder="..."
                     value={values?.profesionMadre}
@@ -187,6 +192,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                   <Field
                     type="number"
                     name="edadMat_nacP"
+                    id="edadMat_nacP"
                     placeholder="años..."
                     value={values?.edadMat_nacP}
                     className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-32 mr-[52%] dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:mr-10"
@@ -202,6 +208,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                   </label>
                   <Field
                     type="number"
+                    id="edadPat_nacP"
                     name="edadPat_nacP"
                     placeholder="años..."
                     value={values?.edadPat_nacP}
@@ -218,6 +225,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                   </label>
                   <Field
                     type="number"
+                    id="edadAbuela_nacM"
                     name="edadAbuela_nacM"
                     placeholder="años..."
                     value={values?.edadAbuela_nacM}

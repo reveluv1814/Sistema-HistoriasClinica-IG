@@ -109,6 +109,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="pigmentacion"
+                      id="pigmentacion"
                       value={values?.pigmentacion}
                       checked={values?.pigmentacion ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -125,6 +126,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="aumentoGen"
                       name="aumentoGen"
                       value={values?.aumentoGen}
                       checked={values?.aumentoGen ?? false}
@@ -142,6 +144,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="disminucionGen"
                       name="disminucionGen"
                       value={values?.disminucionGen}
                       checked={values?.disminucionGen ?? false}
@@ -164,6 +167,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="albinTotal"
                       name="albinTotal"
                       value={values?.albinTotal}
                       checked={values?.albinTotal ?? false}
@@ -181,6 +185,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="albinParcial"
                       name="albinParcial"
                       value={values?.albinParcial}
                       checked={values?.albinParcial ?? false}
@@ -199,6 +204,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="vitiligo"
+                      id="vitiligo"
                       value={values?.vitiligo}
                       checked={values?.vitiligo ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -215,6 +221,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="manchasCL"
                       name="manchasCL"
                       value={values?.manchasCL}
                       checked={values?.manchasCL ?? false}
@@ -232,6 +239,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="maculas"
                       name="maculas"
                       value={values?.maculas}
                       checked={values?.maculas ?? false}
@@ -251,6 +259,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="otrasManchas"
                       name="otrasManchas"
                       value={values?.otrasManchas}
                       checked={values?.otrasManchas ?? false}
@@ -269,6 +278,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="hemanTela"
+                      id="hemanTela"
                       value={values?.hemanTela}
                       checked={values?.hemanTela ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -290,6 +300,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="alopesiaGen"
                       name="alopesiaGen"
                       value={values?.alopesiaGen}
                       checked={values?.alopesiaGen ?? false}
@@ -307,6 +318,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="alopesiaPar"
                       name="alopesiaPar"
                       value={values?.alopesiaPar}
                       checked={values?.alopesiaPar ?? false}
@@ -325,6 +337,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="irsutismo"
+                      id="irsutismo"
                       value={values?.irsutismo}
                       checked={values?.irsutismo ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -347,6 +360,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="hipoDisManos"
+                      id="hipoDisManos"
                       value={values?.hipoDisManos}
                       checked={values?.hipoDisManos ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -363,6 +377,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hipoDisPies"
                       name="hipoDisPies"
                       value={values?.hipoDisPies}
                       checked={values?.hipoDisPies ?? false}
@@ -381,6 +396,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="hipoDisTumo"
+                      id="hipoDisTumo"
                       value={values?.hipoDisTumo}
                       checked={values?.hipoDisTumo ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -398,6 +414,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="vellosFaciales"
+                    id="vellosFaciales"
                     value={values?.vellosFaciales}
                     placeholder="..."
                     rows={1}
@@ -415,6 +432,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="vellosAxilares"
+                    id="vellosAxilares"
                     value={values?.vellosAxilares}
                     placeholder="..."
                     rows={1}
@@ -432,6 +450,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="vellosPubi"
+                    id="vellosPubi"
                     value={values?.vellosPubi}
                     placeholder="..."
                     rows={1}
@@ -449,6 +468,7 @@ const PielAnexosForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="vellosCorpo"
+                    id="vellosCorpo"
                     value={values?.vellosCorpo}
                     placeholder="..."
                     rows={1}

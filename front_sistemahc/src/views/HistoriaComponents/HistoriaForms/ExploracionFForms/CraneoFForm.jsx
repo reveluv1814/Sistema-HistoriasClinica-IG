@@ -102,6 +102,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="microcefalia"
                       name="microcefalia"
                       value={values?.microcefalia}
                       checked={values?.microcefalia ?? false}
@@ -119,6 +120,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="macrocefalia"
                       name="macrocefalia"
                       value={values?.macrocefalia}
                       checked={values?.macrocefalia ?? false}
@@ -136,6 +138,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hidrocefalia"
                       name="hidrocefalia"
                       value={values?.hidrocefalia}
                       checked={values?.hidrocefalia ?? false}
@@ -153,6 +156,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="craneossino"
                       name="craneossino"
                       value={values?.craneossino}
                       checked={values?.craneossino ?? false}
@@ -173,6 +177,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="occipital_p"
+                      id="occipital_p"
                       value={values?.occipital_p}
                       checked={values?.occipital_p ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -190,6 +195,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="prominente"
+                      id="prominente"
                       value={values?.prominente}
                       checked={values?.prominente ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -207,6 +213,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="abultamiento_f"
                       name="abultamiento_f"
                       value={values?.abultamiento_f}
                       checked={values?.abultamiento_f ?? false}
@@ -224,6 +231,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="glabela_p"
+                      id="glabela_p"
                       value={values?.glabela_p}
                       checked={values?.glabela_p ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -239,6 +247,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="asimetria_c"
                       name="asimetria_c"
                       value={values?.asimetria_c}
                       checked={values?.asimetria_c ?? false}
@@ -255,6 +264,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="braquicefalia"
                       name="braquicefalia"
                       value={values?.braquicefalia}
                       checked={values?.braquicefalia ?? false}
@@ -273,6 +283,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="aplasia_cuero"
                       name="aplasia_cuero"
                       value={values?.aplasia_cuero}
                       checked={values?.aplasia_cuero ?? false}
@@ -289,6 +300,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       as="select"
+                      id="implantación_cabello"
                       name="implantación_cabello"
                       className="px-1 py-0 text-sm max-xl:text-xs cursor-pointer text-zinc-700 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                       disabled={!isCreate && !editando}
@@ -311,6 +323,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hipoplasia"
                       name="hipoplasia"
                       value={values?.hipoplasia}
                       checked={values?.hipoplasia ?? false}
@@ -327,6 +340,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="suturas"
                       name="suturas"
                       value={values?.suturas}
                       checked={values?.suturas ?? false}
@@ -347,6 +361,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     <Field
                       component="textarea"
                       name="suturas_des"
+                      id="suturas_des"
                       value={values?.suturas_des}
                       placeholder="..."
                       rows={1}
@@ -365,6 +380,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     <Field
                       component="textarea"
                       name="facies"
+                      id="facies"
                       value={values?.facies}
                       placeholder="..."
                       rows={1}
@@ -383,6 +399,7 @@ const CraneoFForm = ({ expFisicaId }) => {
                     <Field
                       component="textarea"
                       name="obs"
+                      id="obs"
                       value={values?.obs}
                       placeholder="..."
                       rows={1}

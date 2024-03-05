@@ -109,8 +109,9 @@ button.active {
     color: #fff;
 }
 button.noactive{
-    cursor: initial;
     box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08);
+    background-color: #d4d4d88e;
+    cursor: none;
 }
 button.noactive:hover{
     cursor: initial;
@@ -129,21 +130,24 @@ button.noactive:hover{
 
 .buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-top: 20px;
+    
 }
 
 .buttons button {
     border: none;
     cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 100px;
+    padding: 15px 15px;
+    border-radius: 5px;
     font-size: 14px;
     font-weight: bold;
-
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 49%;
+    
+    justify-content: center;
 }
 
 .buttons button span {

@@ -74,6 +74,7 @@ const MotivoConsulta = ({ consultaId }) => {
                           <Field
                             component="textarea"
                             name="motivo"
+                            id="motivo"
                             value={values?.motivo}
                             placeholder={"Ingrese el motivo de la consulta..."}
                             rows={6}

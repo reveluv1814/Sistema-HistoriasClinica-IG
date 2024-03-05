@@ -229,6 +229,7 @@ const ComposicionFForm = ({ historiaId }) => {
                           </label>
                           <Field
                             type="number"
+                            id="nrogestacion"
                             name="nrogestacion"
                             placeholder="0"
                             className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-24 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -243,6 +244,7 @@ const ComposicionFForm = ({ historiaId }) => {
                           </label>
                           <Field
                             type="text"
+                            id="nomHijo"
                             name="nomHijo"
                             placeholder="..."
                             className="p-2 text-base max-xl:text-sm text-zinc-700 shadow appearance-none border border-gray-300 bg-stone-200 rounded-lg w-1/2 dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600 max-xl:w-64"
@@ -259,6 +261,7 @@ const ComposicionFForm = ({ historiaId }) => {
                             <Field
                               as="select"
                               name="sexo"
+                              id="sexo"
                               className=" px-2 text-base cursor-pointer max-xl:text-sm text-zinc-500 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300 "
                             >
                               <option value="" disabled>
@@ -277,6 +280,7 @@ const ComposicionFForm = ({ historiaId }) => {
                             </label>
                             <Field
                               type="date"
+                              id="fechanac"
                               name="fechanac"
                               className="p-1 text-base max-xl:text-sm text-zinc-700 cursor-pointer shadow-md appearance-none border border-blue-500 bg-blue-300 rounded-lg  dark:bg-sky-800 dark:border-sky-900 dark:text-gray-300 max-xl:w-64"
                             />
@@ -290,6 +294,7 @@ const ComposicionFForm = ({ historiaId }) => {
                         </label>
                         <Field
                           component="textarea"
+                          id="obs"
                           name="obs"
                           placeholder="..."
                           rows={3}

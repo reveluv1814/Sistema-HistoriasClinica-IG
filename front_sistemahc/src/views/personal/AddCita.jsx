@@ -133,6 +133,7 @@ const AddCita = () => {
                     <div className="flex flex-col">
                       <Field
                         type="date"
+                        id="cita.fecha"
                         name="cita.fecha"
                         className={`p-1 text-base mr-2 text-zinc-800 cursor-pointer shadow appearance-none border border-blue-500 bg-blue-300 rounded-lg max-w-md dark:bg-sky-800 dark:border-sky-900 dark:text-gray-300 ${
                           errors.cita?.fecha && touched.cita?.fecha
@@ -156,6 +157,7 @@ const AddCita = () => {
                     <div className="flex flex-col">
                       <Field
                         type="time"
+                        id="cita.hora"
                         name="cita.hora"
                         className={`p-1 text-base text-zinc-800 cursor-pointer shadow appearance-none border border-blue-500 bg-blue-300 rounded-lg max-w-md dark:bg-sky-800 dark:border-sky-900 dark:text-gray-300 ${
                           errors.cita?.hora && touched.cita?.hora
@@ -180,6 +182,7 @@ const AddCita = () => {
                     </label>
                     <Field
                       as="select"
+                      id="cita.doctorId"
                       name="cita.doctorId"
                       className={`p-1 pl-2 text-base cursor-pointer text-zinc-900 shadow appearance-none border border-gray-300 bg-blue-300 rounded-lg max-w-xl dark:bg-sky-800 dark:border-sky-900 dark:text-gray-300 ${
                         errors.cita?.doctorId

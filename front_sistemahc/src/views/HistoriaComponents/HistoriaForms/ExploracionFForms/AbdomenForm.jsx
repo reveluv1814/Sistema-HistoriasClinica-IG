@@ -91,6 +91,7 @@ const AbdomenForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="campoHerniaUmbilical"
                       name="herniaUmbilical"
                       value={values?.herniaUmbilical}
                       checked={values?.herniaUmbilical ?? false}
@@ -109,6 +110,7 @@ const AbdomenForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="herniaInguinal"
+                      id="herniaInguinal"
                       value={values?.herniaInguinal}
                       checked={values?.herniaInguinal ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -126,6 +128,7 @@ const AbdomenForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="diastasis"
+                      id="diastasis"
                       value={values?.diastasis}
                       checked={values?.diastasis ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -143,6 +146,7 @@ const AbdomenForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="tumoraciones"
+                      id="tumoraciones"
                       value={values?.tumoraciones}
                       checked={values?.tumoraciones ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -160,6 +164,7 @@ const AbdomenForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="semiologia"
+                    id="semiologia"
                     value={values?.semiologia}
                     placeholder="..."
                     rows={1}
@@ -177,6 +182,7 @@ const AbdomenForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="obs"
+                    id="obs"
                     value={values?.obs}
                     placeholder="..."
                     rows={1}

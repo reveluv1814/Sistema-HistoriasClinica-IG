@@ -92,6 +92,7 @@ const ColumnaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="cifosis"
+                      id="cifosis"
                       value={values?.cifosis}
                       checked={values?.cifosis ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -108,6 +109,7 @@ const ColumnaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="escoliosis"
                       name="escoliosis"
                       value={values?.escoliosis}
                       checked={values?.escoliosis ?? false}
@@ -125,6 +127,7 @@ const ColumnaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="lordosis"
                       name="lordosis"
                       value={values?.lordosis}
                       checked={values?.lordosis ?? false}
@@ -143,6 +146,7 @@ const ColumnaForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="apendice"
+                      id="apendice"
                       value={values?.apendice}
                       checked={values?.apendice ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -159,6 +163,7 @@ const ColumnaForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="fovea"
                       name="fovea"
                       value={values?.fovea}
                       checked={values?.fovea ?? false}
@@ -176,6 +181,7 @@ const ColumnaForm = ({ expFisicaId }) => {
                   </label>
                   <Field
                     component="textarea"
+                    id="obs"
                     name="obs"
                     value={values?.obs}
                     placeholder="..."

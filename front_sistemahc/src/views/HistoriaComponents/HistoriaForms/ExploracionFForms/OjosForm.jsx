@@ -106,6 +106,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="sinofiris"
                       name="sinofiris"
                       value={values?.sinofiris}
                       checked={values?.sinofiris ?? false}
@@ -123,6 +124,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="ptosis_p"
                       name="ptosis_p"
                       value={values?.ptosis_p}
                       checked={values?.ptosis_p ?? false}
@@ -140,6 +142,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="estrabismo"
                       name="estrabismo"
                       value={values?.estrabismo}
                       checked={values?.estrabismo ?? false}
@@ -158,6 +161,7 @@ const OjosForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="convergente"
+                      id="convergente"
                       value={values?.convergente}
                       checked={values?.convergente ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -174,6 +178,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="divergente"
                       name="divergente"
                       value={values?.divergente}
                       checked={values?.divergente ?? false}
@@ -193,6 +198,7 @@ const OjosForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="infeccion"
+                      id="infeccion"
                       value={values?.infeccion}
                       checked={values?.infeccion ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -208,6 +214,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="epifora"
                       name="epifora"
                       value={values?.epifora}
                       checked={values?.epifora ?? false}
@@ -224,6 +231,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="anoftalmina"
                       name="anoftalmina"
                       value={values?.anoftalmina}
                       checked={values?.anoftalmina ?? false}
@@ -240,6 +248,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="microftalmina"
                       name="microftalmina"
                       value={values?.microftalmina}
                       checked={values?.microftalmina ?? false}
@@ -256,6 +265,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="hipertelorismo"
                       name="hipertelorismo"
                       value={values?.hipertelorismo}
                       checked={values?.hipertelorismo ?? false}
@@ -275,6 +285,7 @@ const OjosForm = ({ expFisicaId }) => {
                     <Field
                       type="checkbox"
                       name="epicanto"
+                      id="epicanto"
                       value={values?.epicanto}
                       checked={values?.epicanto ?? false}
                       className="text-sm max-xl:text-xs text-sky-600 shadow appearance-none border border-gray-300 bg-stone-200 rounded-sm  dark:bg-slate-800 dark:text-gray-400 dark:border-slate-600"
@@ -290,6 +301,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       as="select"
+                      id="angulo_oblicuos"
                       name="angulo_oblicuos"
                       className="px-1 py-0 text-sm max-xl:text-xs cursor-pointer text-zinc-700 shadow appearance-none border border-gray-300 bg-zinc-200 rounded-lg w-32 dark:bg-zinc-600 dark:border-zinc-700 dark:text-gray-300"
                       disabled={!isCreate && !editando}
@@ -311,6 +323,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="exoftalmina"
                       name="exoftalmina"
                       value={values?.exoftalmina}
                       checked={values?.exoftalmina ?? false}
@@ -327,6 +340,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="nistagmus"
                       name="nistagmus"
                       value={values?.nistagmus}
                       checked={values?.nistagmus ?? false}
@@ -345,6 +359,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="escleras_azul"
                       name="escleras_azul"
                       value={values?.escleras_azul}
                       checked={values?.escleras_azul ?? false}
@@ -361,6 +376,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="coloboma"
                       name="coloboma"
                       value={values?.coloboma}
                       checked={values?.coloboma ?? false}
@@ -377,6 +393,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="aniridia"
                       name="aniridia"
                       value={values?.aniridia}
                       checked={values?.aniridia ?? false}
@@ -393,6 +410,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="maculas_iris"
                       name="maculas_iris"
                       value={values?.maculas_iris}
                       checked={values?.maculas_iris ?? false}
@@ -409,6 +427,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="catarata"
                       name="catarata"
                       value={values?.catarata}
                       checked={values?.catarata ?? false}
@@ -425,6 +444,7 @@ const OjosForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
+                      id="leucoma"
                       name="leucoma"
                       value={values?.leucoma}
                       checked={values?.leucoma ?? false}
@@ -443,6 +463,7 @@ const OjosForm = ({ expFisicaId }) => {
                   <Field
                     component="textarea"
                     name="obs"
+                    id="obs"
                     value={values?.obs}
                     placeholder="..."
                     rows={1}

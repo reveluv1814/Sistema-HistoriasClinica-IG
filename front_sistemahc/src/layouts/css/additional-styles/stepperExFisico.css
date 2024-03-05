@@ -27,44 +27,20 @@
     cursor: pointer;
     margin-top: 10px;
     padding: 1px 0px 1px 0px;
-}  
-/* .numbersExp {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px; 
-    width: 100%;
-  }
-  
-  .rowt {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-  }
-  
-  .numbersExp > .rowt > div {
-    height: 50px;
-    width: 100%; 
-    background-color: #e7e7e7;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 1px 0px 1px 0px;
-  }  */
-
+}
 .numbersExp .activeExp,
 button.activeExp {
     background-color: #4D7CAE;
     color: #fff;
 }
+button.activeExp {
+    background-color: #50727B;
+}
 button.noactiveExp{
     cursor: initial;
     box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08);
+    background-color: #00000015;
+    border: 1px solid white;
 }
 button.noactiveExp:hover{
     cursor: initial;
@@ -83,14 +59,14 @@ button.noactiveExp:hover{
 
 .buttonsExp {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-top: 20px;
 }
 
 .buttonsExp button {
     border: none;
     cursor: pointer;
-    padding: 10px 15px;
+    padding: 25px 15px;
     border-radius: 10px;
     font-size: 14px;
     font-weight: bold;
@@ -98,6 +74,8 @@ button.noactiveExp:hover{
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 30%;
+    justify-content: center;
 }
 
 .buttonsExp button span {
