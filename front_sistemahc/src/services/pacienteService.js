@@ -7,6 +7,9 @@ const pacienteService = {
   listarDoc: (q = "", page = 1, limit = 10) => {
     return api.get(`/doctor/pacientes?q=${q}&page=${page}&limit=${limit}`);
   },
+  listarLaboratorista: (q = "", page = 1, limit = 10) => {
+    return api.get(`/laboratorista/pacientes?q=${q}&page=${page}&limit=${limit}`);
+  },
 
   guardar: (datos) => {
     return api.post("/personal/paciente", datos);

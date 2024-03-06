@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import SidebarDoctor from "./partials/SidebarDoctor";
+import SidebarLaboratorista from "./partials/SidebarLaboratorista";
 import Header from "./partials/HeaderPersonal";
 import Banner from "./partials/dashboard/WelcomeBannerPersonal";
 
-const DoctorLayout = () => {
+const LaboratoristaLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <div className="flex h-screen overflow-hidden">
-      <SidebarDoctor sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <SidebarLaboratorista sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
@@ -24,4 +24,4 @@ const DoctorLayout = () => {
   );
 };
 
-export default DoctorLayout;
+export default LaboratoristaLayout;

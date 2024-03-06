@@ -11,7 +11,7 @@ const {
 const { checkRoles } = require("./../../middlewares/auth.handler"); //para verificar el rol
 //schemas
 const { getPacienteSchema } = require("../../schemas/paciente.schema");
-const {getCitaSchema,createCitaSchema,updateCitaSchema,} = require("../../schemas/cita.schema");
+const {getCitaSchema,updateCitaSchema,} = require("../../schemas/cita.schema");
 
 //inicializando
 const router = express.Router();
@@ -33,7 +33,7 @@ router.get(
   }
 );
 router.get(
-  "/paciente:id",
+  "/paciente/:id",
   checkRoles("admin", "doctor"),
   validatorHandler(getPacienteSchema, "params"),
   async (req, res, next) => {

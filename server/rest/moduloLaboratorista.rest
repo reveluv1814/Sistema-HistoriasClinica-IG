@@ -1,5 +1,14 @@
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInJvbCI6ImxhYm9yYXRvcmlzdGEiLCJpYXQiOjE3MDAyMzgyMDl9.EcdmVCrTCaYGd7skVGkTdL8hVq-S0nSfexuKPJ7namg
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbCI6ImxhYm9yYXRvcmlzdGEiLCJpYXQiOjE3MDk2NzMzMzJ9.-g0cY_Tc5cgsguIHhdUSssH2iBOiMcC7U0D6uVcgbEA
 
+
+#listar pacientes
+GET http://127.0.0.1:4000/laboratorista/pacientes?q=&page=1&limit=10
+Authorization: Bearer {{token}}
+Accept: application/json
+### obtener un paciente
+GET http://127.0.0.1:4000/laboratorista/paciente/1
+Authorization: Bearer {{token}}
+Accept: application/json
 ####################################################
 ###listar la historia del paciente de id x
 GET http://127.0.0.1:4000/historia/1
@@ -12,7 +21,7 @@ Authorization: Bearer {{token}}
 Accept: application/json
 
 ### ver nombre del laboratorista de id x
-GET http://127.0.0.1:4000/historia/laboratorio/nombre/2
+GET http://127.0.0.1:4000/historia/laboratorio/nombre/1
 Authorization: Bearer {{token}}
 Accept: application/json
 ###################################################################

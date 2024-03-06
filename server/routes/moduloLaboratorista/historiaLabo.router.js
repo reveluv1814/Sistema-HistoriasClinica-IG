@@ -1,6 +1,7 @@
 const express = require("express");
 const HistoriaLaboService = require("../../services/historiaLabo.service");
 const LaboratoristaService = require("../../services/laboratorista.service");
+const PacienteService = require("../../services/paciente.service");
 
 //middlewares
 const {
@@ -16,11 +17,13 @@ const {
 } = require("../../schemas/historiaLabo.schema");
 const { getHistoriaSchema } = require("../../schemas/historiaClinica.schema");
 const { getLaboratoristaSchema } = require("../../schemas/laboratorista.schema");
+const { getPacienteSchema } = require("../../schemas/paciente.schema");
 
 //inicializando
 const router = express.Router();
 const historiaLaboService = new HistoriaLaboService();
 const laboratoristaService = new LaboratoristaService();
+const pacienteService = new PacienteService();
 
 router.post(
   "/:id",
@@ -89,6 +92,40 @@ router.delete(
     try {
       const { id } = req.params;
       res.status(200).json(await historiaLaboService.deleteHistoriaLabo(id));
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+//listar todos los pacientes
+router.get(
+  "/pacientes",
+  checkRoles("admin", "laboratorista"),
+  async (req, res, next) => {
+    try {
+      const pacientes = await pacienteService.find(req);
+      res.json({
+        pacientes,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+//listar un paciente
+router.get(
+  "/paciente/:id",
+  checkRoles("admin", "laboratorista"),
+  validatorHandler(getPacienteSchema, "params"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const paciente = await pacienteService.findOne(id);
+
+      res.json({
+        paciente,
+      });
     } catch (error) {
       next(error);
     }

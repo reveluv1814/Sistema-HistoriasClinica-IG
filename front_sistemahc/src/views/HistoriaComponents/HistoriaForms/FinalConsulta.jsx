@@ -75,7 +75,7 @@ const FinalConsulta = ({ consultaId }) => {
                       <div className="">
                         <div className="flex flex-col justify-evenly mb-2 ">
                           <label
-                            htmlFor="motivo"
+                            htmlFor="resumen"
                             className="pt-2 mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"
                           >
                             Resumen de los Hallazgos:
@@ -94,7 +94,7 @@ const FinalConsulta = ({ consultaId }) => {
                         </div>
                         <div className="flex flex-col justify-evenly mb-2 ">
                           <label
-                            htmlFor="motivo"
+                            htmlFor="impresionDiag"
                             className="pt-2 mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"
                           >
                             Impresión Diagnóstica:

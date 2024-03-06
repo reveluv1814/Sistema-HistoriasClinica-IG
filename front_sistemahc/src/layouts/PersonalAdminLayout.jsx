@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Sidebar from "./partials/SidebarPersonal";
 import Banner from "./partials/dashboard/WelcomeBannerPersonal";
 import Header from "./partials/HeaderPersonal";
 
-const AdminLayout = () => {
+const PersonalAdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <div className="flex h-screen overflow-hidden">
@@ -24,4 +24,4 @@ const AdminLayout = () => {
   );
 };
 
-export default AdminLayout;
+export default PersonalAdminLayout;

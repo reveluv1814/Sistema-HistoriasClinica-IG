@@ -5,6 +5,7 @@ import SitioRoutes from "./SitioRoutes";
 import AdminRoutes from "./AdminRoutes";
 import PersonalRoutes from "./PersonalRoutes";
 import DoctorRoutes from "./DoctorRoutes";
+import LaboratoristaRoutes from "./LaboratoristaRoutes";
 import RecoveryRoutes from "./RecoveryRoutes";
 import NotFoundRoutes from "./NotFoundRoutes";
 
@@ -13,6 +14,7 @@ const ThemeRoutes = () => {
   const admin = localStorage.getItem("rol") === "admin";
   const personal = localStorage.getItem("rol") === "personalAdmin";
   const doctor = localStorage.getItem("rol") === "doctor";
+  const laboratorista = localStorage.getItem("rol") === "laboratorista";
   return useRoutes([
     SitioRoutes,
     RecoveryRoutes,
@@ -28,6 +30,10 @@ const ThemeRoutes = () => {
     {
       element: <ProtectedRoute isAllowed={user && (admin || doctor)} />,
       children: [DoctorRoutes],
+    },
+    {
+      element: <ProtectedRoute isAllowed={user && (admin || laboratorista)} />,
+      children: [LaboratoristaRoutes],
     },
     {
       path: "*",

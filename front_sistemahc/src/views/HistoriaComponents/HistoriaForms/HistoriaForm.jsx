@@ -16,7 +16,6 @@ function HistoriaForm() {
         const historiaFetch = await historiaService.historiaFormList(
           historiaId
         );
-        console.log(historiaFetch.data);
         setHistoria(historiaFetch.data);
       } catch (error) {
         console.log(error);

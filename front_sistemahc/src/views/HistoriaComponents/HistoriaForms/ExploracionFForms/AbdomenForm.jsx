@@ -91,7 +91,7 @@ const AbdomenForm = ({ expFisicaId }) => {
                     </label>
                     <Field
                       type="checkbox"
-                      id="campoHerniaUmbilical"
+                      id="herniaUmbilical"
                       name="herniaUmbilical"
                       value={values?.herniaUmbilical}
                       checked={values?.herniaUmbilical ?? false}
