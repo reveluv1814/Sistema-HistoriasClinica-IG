@@ -305,7 +305,7 @@ const MusculaturaForm = ({ expFisicaId }) => {
           Cargando ....
         </h2>
       ) : (
-        <div className="bg-indigo-300 dark:bg-sky-700 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] rounded-lg mt-3 py-4">
+        <div className="bg-[#b2d3f8] dark:bg-sky-700 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] rounded-lg mt-3 py-4">
           <h3 className="text-lg font-semibold mb-1 ml-8 dark:text-zinc-100">
             15. Musculatura
           </h3>
