@@ -15,6 +15,8 @@ const TablePagination = ({
   handleHistoria,
   accionesFlag,
   personalMedico,
+  laboratoristaAdd,
+  handleLaboratorio
 }) => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
@@ -63,6 +65,19 @@ const TablePagination = ({
                       style={{ margin: 0 }}
                     >
                       Ver Historia
+                    </span>
+                  </button>
+                )}
+                {laboratoristaAdd && (
+                  <button
+                    className="text-center justify-center py-1 px-2 bg-indigo-500 text-white hover:bg-indigo-600 rounded ml-2"
+                    onClick={() => handleLaboratorio(reg)}
+                  >
+                    <span
+                      className="align-middle text-xs"
+                      style={{ margin: 0 }}
+                    >
+                      Agregar laboratorio
                     </span>
                   </button>
                 )}

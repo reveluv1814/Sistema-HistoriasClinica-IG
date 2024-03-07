@@ -47,6 +47,14 @@ const Pacientes = () => {
       console.log(error);
     }
   };
+  const handleLaboratorio = async (datos) => {
+    try {
+      //navigate(`/laboratorista/historia/${datos.id}`);
+      console.log(datos)
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <div className="max-w-full">
@@ -94,6 +102,8 @@ const Pacientes = () => {
           page={page}
           fetchData={getPacientes}
           handleHistoria={handleHistoria}
+          handleLaboratorio={handleLaboratorio}
+          laboratoristaAdd={true}
           personalMedico={true}
         ></TablePagination>
       </div>
