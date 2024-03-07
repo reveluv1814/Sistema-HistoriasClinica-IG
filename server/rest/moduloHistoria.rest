@@ -2,7 +2,7 @@
 @tokenDoc=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbCI6ImRvY3RvciIsImlhdCI6MTY5NjAwMTMxMH0.fQSuKF5en3asffqUOhI4bybBh4rgPDq953QMMb5WjPc
 
 #listar la historia del paciente de id x
-GET http://127.0.0.1:4000/historia/3
+GET http://127.0.0.1:4000/historia/1
 Authorization: Bearer {{token}}
 Accept: application/json
 

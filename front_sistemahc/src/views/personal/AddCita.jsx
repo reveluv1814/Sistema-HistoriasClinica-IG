@@ -115,6 +115,7 @@ const AddCita = () => {
           touched,
           isValidating,
           isValid,
+          isSubmitting
         }) => (
           <>
             <div className="bg-indigo-300 dark:bg-slate-700 flex justify-center rounded-xl p-5 mt-4">
@@ -212,9 +213,9 @@ const AddCita = () => {
                     <button
                       type="submit"
                       className="bg-emerald-500 py-2 px-4 rounded-lg text-gray-200 hover:bg-emerald-600 hover:text-white shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]"
-                      disabled={isValidating || !isValid}
+                      disabled={isSubmitting || isValidating || !isValid}
                     >
-                      Enviar
+                      {isSubmitting ? "Registrando" : "Registrar"}
                     </button>
                   </div>
                 </Form>

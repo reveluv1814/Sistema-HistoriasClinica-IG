@@ -1,8 +1,7 @@
 import LaboratoristaLayout from "../layouts/LaboratoristaLayout";
 import Paciente from "../views/laboratorista/Pacientes";
-import Citas from "../views/doctor/Citas";
 import Historia from "../views/HistoriaComponents/Historia";
-import HistoriaForm from "../views/HistoriaComponents/HistoriaForms/HistoriaForm";
+import Laboratorio from '../views/laboratorista/Laboratorio'
 
 const DoctorRoutes = {
   path: "/laboratorista",
@@ -12,18 +11,14 @@ const DoctorRoutes = {
       path: "pacientes",
       element: <Paciente />,
     },
-    // {
-    //   path: "citas",
-    //   element: <Citas />,
-    // },
+    {
+      path: "laboratorio/:id",
+      element: <Laboratorio />,
+    },
     {
       path: "historia/:id",
       element: <Historia atras={"/laboratorista/pacientes"} />,
     },
-    // {
-    //   path: "historia/:historiaId/consulta/:consultaId",
-    //   element: <HistoriaForm />,
-    // },
   ],
 };
 

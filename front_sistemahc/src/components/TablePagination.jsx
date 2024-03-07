@@ -57,7 +57,7 @@ const TablePagination = ({
               <td className="text-sm text-gray-500">
                 {personalMedico && handleHistoria && (
                   <button
-                    className="text-center justify-center py-1 px-2 bg-indigo-500 text-white hover:bg-indigo-600 rounded ml-2"
+                    className="text-center justify-center py-1 px-2 bg-indigo-500 text-white hover:bg-indigo-600 rounded ml-2 lg:my-1"
                     onClick={() => handleHistoria(reg)}
                   >
                     <span
@@ -70,7 +70,7 @@ const TablePagination = ({
                 )}
                 {laboratoristaAdd && (
                   <button
-                    className="text-center justify-center py-1 px-2 bg-indigo-500 text-white hover:bg-indigo-600 rounded ml-2"
+                    className="text-center justify-center py-1 px-2 bg-sky-500 text-white hover:bg-sky-600 rounded ml-2 text-wrap lg:my-2"
                     onClick={() => handleLaboratorio(reg)}
                   >
                     <span

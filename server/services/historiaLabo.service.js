@@ -4,23 +4,16 @@ const { models } = require("../libs/sequelize");
 
 class HistoriaLaboService {
   constructor() {}
-  async createHistoriaLabo(data, idHistoriaClinica) {
+  async createHistoriaLabo(data, idPaciente) {
     try {
-      /* const { historiaLabo } = data;
-  
-      const historia = await models.HistoriaClinica.findByPk(historiaLabo.historiaId);
-      if (!historia) {
-        throw new Error("Historia clínica no encontrada");
-      }
-  
-      const laboratorista = await models.Laboratorista.findByPk(historiaLabo.laboratoristaId);
-      if (!laboratorista) {
-        throw new Error("Laboratorista no encontrado");
-      } */
+      const rta = await models.P_creaPac.findOne({
+        where: { pacienteId: idPaciente },
+      });
+      if (!rta) throw boom.notFound("Historia not found");
 
       const newHistoriaLabo = await models.HistoriaLabo.create({
         ...data,
-        historiaId: idHistoriaClinica,
+        historiaId: rta.historiaId,
       });
 
       return newHistoriaLabo;

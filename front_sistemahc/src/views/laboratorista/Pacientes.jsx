@@ -49,7 +49,7 @@ const Pacientes = () => {
   };
   const handleLaboratorio = async (datos) => {
     try {
-      //navigate(`/laboratorista/historia/${datos.id}`);
+      navigate(`/laboratorista/laboratorio/${datos.id}`);
       console.log(datos)
     } catch (error) {
       console.log(error);

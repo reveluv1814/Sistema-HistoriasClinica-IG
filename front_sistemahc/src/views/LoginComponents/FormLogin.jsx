@@ -7,15 +7,13 @@ import Modal from "../../components/Modal";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Correo invalido").required("Campo requerido"),
-  password: Yup.string()
-    .min(6, "La contraseña debe tener 6 caracteres o más caracteres")
-    .required("Campo requerido"),
+  password: Yup.string().required("Campo requerido"),
 });
 const LoginForm = () => {
   //e.preventDefault()
   const navigate = useNavigate();
   const [modalOpen, setOpenModal] = useState(false);
-  
+
   const resetData = () => {
     setOpenModal(false);
   };
@@ -23,12 +21,12 @@ const LoginForm = () => {
   const handleSubmit = async (values, actions) => {
     try {
       const { data } = await authService.loginConNode(values);
-      
+
       localStorage.setItem("access_token", data.token);
       localStorage.setItem("rol", data.user.rol);
       localStorage.setItem("id", data.user.idRol);
       const rol = localStorage.getItem("rol");
-      
+
       switch (rol) {
         case "admin":
           navigate("/admin");
@@ -60,7 +58,13 @@ const LoginForm = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
+        {({
+          values,
+          errors,
+          handleChange,
+          handleSubmit,
+          isSubmitting,
+        }) => (
           <>
             <Form onSubmit={handleSubmit} className="flex flex-col">
               <label className="font-semibold text-lg">Correo:</label>

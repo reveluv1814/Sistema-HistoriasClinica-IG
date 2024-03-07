@@ -25,7 +25,7 @@ GET http://127.0.0.1:4000/historia/laboratorio/nombre/1
 Authorization: Bearer {{token}}
 Accept: application/json
 ###################################################################
-### crear un laboratorio en la historia de id X
+### crear un laboratorio del paciente de id X
 POST http://127.0.0.1:4000/historia/laboratorio/1
 Authorization: Bearer {{token}}
 Content-Type: application/json
@@ -33,7 +33,7 @@ Accept: application/json
 
 {
     "historiaLabo":{
-        "examen": "a verrrr xd",
+        "examen": "a verrrr xd hola",
         "laboratoristaId": 1
     }
 }
