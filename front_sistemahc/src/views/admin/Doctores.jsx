@@ -41,9 +41,6 @@ const Doctores = () => {
   const getDoctores = async (nroPage = 1, limit = 10) => {
     setPage(nroPage);
     const { data } = await doctorService.listar(q, nroPage, limit);
-    /* console.log(data.doctores);
-    console.log("TOTAL:", data.doctores.count);
-    console.log("Registros:", data.doctores.rows); */
     setTotal(data.doctores.count);
     setDoctores(data.doctores.rows);
   };

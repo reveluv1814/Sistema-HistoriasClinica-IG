@@ -42,9 +42,6 @@ const Personal = () => {
   const getPersonalAd = async (nroPage = 1, limit = 10) => {
     setPage(nroPage);
     const { data } = await personalService.listar(q, nroPage, limit);
-    /* console.log(data.personal);
-    console.log("TOTAL:", data.personal.count);
-    console.log("Registros:", data.personal.rows); */
     setTotal(data.personal.count);
     setPersonalAd(data.personal.rows);
   };

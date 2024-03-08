@@ -41,9 +41,6 @@ const Laboratorista = () => {
   const getLaboratoristas = async (nroPage = 1, limit = 10) => {
     setPage(nroPage);
     const { data } = await laboratoristaService.listar(q, nroPage, limit);
-    /* console.log(data.laboratoristas);
-    console.log("TOTAL:", data.laboratoristas.count);
-    console.log("Registros:", data.laboratoristas.rows); */
     setTotal(data.laboratoristas.count);
     setLaboratorista(data.laboratoristas.rows);
   };
