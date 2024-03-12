@@ -1,12 +1,14 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import laboratoristaService from "./../../services/laboratoristaService";
+import Modal from "../../components/Modal";
 
 const Laboratorio = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [laboModal, setLaboModal] = useState(false);
   //yup
   const validationSchema = Yup.object().shape({
     examen: Yup.string().required("El examen es requerido"),
@@ -25,6 +27,9 @@ const Laboratorio = () => {
     } finally {
       navigate("/laboratorista/pacientes");
     }
+  };
+  const closeLaboModal = () => {
+    setLaboModal(false);
   };
   return (
     <div>
@@ -109,12 +114,62 @@ const Laboratorio = () => {
                       />
                     </div>
                     <button
-                      type="submit"
+                      type="button"
                       className="bg-emerald-600 py-2 px-4 rounded-lg mt-3 text-gray-200 hover:bg-emerald-700 hover:text-white shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]"
                       disabled={isSubmitting || isValidating || !isValid}
+                      onClick={() => setLaboModal(true)}
                     >
                       {isSubmitting ? "Registrando" : "Registrar"}
                     </button>
+
+                    <Modal
+                      modalOpen={laboModal}
+                      setOpenModal={closeLaboModal}
+                      title={"Registrar examen laboratorio"}
+                      contenido={"shadow shadow-amber-500/40"}
+                    >
+                      <div className=" py-4 shadow-lg">
+                        <div className="flex items-center justify-center flex-col">
+                          <div className="text-amber-700 dark:text-amber-500">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-16 "
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z"
+                              />
+                            </svg>
+                          </div>
+                          <h4 className="text-center text-gray-700 text-lg font-bold dark:text-gray-300">
+                            Desea registrar el examen laboratorio?
+                          </h4>
+                          <div className="w-full flex flex-row space-x-2 mt-3">
+                            <button
+                              type="button"
+                              onClick={() => setLaboModal(false)}
+                              className="text-white text-sm shadow-lg font-bold py-2 px-4 w-full rounded-md bg-rose-500 hover:bg-rose-700 dark:bg-rose-700 dark:hover:bg-rose-600"
+                            >
+                              Cancelar
+                            </button>
+                            <button
+                              type="submit"
+                              className="bg-emerald-600 py-2 px-4 w-full text-sm rounded-lg font-bold text-gray-200 hover:bg-emerald-700 hover:text-white shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]"
+                              disabled={
+                                isSubmitting || isValidating || !isValid
+                              }
+                            >
+                              {isSubmitting ? "Registrando" : "Registrar"}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </Modal>
                   </Form>
                 )}
               </Formik>

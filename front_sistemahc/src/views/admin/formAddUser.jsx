@@ -13,6 +13,7 @@ const FormAdduser = ({
 }) => {
   const [step, setStep] = useState(1);
   const [showError, setShowError] = useState(false);
+  const [fotoSubida, setFotoSubida] = useState();
   const [stepsLine, setStepLine] = useState({
     stpesCount: [1, 2, 3],
     currentStep: 1,
@@ -80,14 +81,25 @@ const FormAdduser = ({
   };
   const agregar = async (values, actions) => {
     try {
-      await userService.guardar(values);
+      // console.log({
+      //   ...values,
+      //   persona: {
+      //     ...values.persona,
+      //     foto: fotoSubida,
+      //   },
+      // });
+      //await userService.guardar(values);
+      const formData = new FormData();
+      formData.append("file", fotoSubida);
+      const res = await userService.foto(formData);
+      console.log(res);
       setStep(step + 1);
     } catch (error) {
       setShowError(true);
       console.error(error);
     } finally {
-      actions.resetForm();
-      listar();
+      // actions.resetForm();
+      // listar();
     }
   };
   const editar = async (values, actions) => {
@@ -421,16 +433,26 @@ const FormAdduser = ({
                 </div>
 
                 {/*foto */}
-                <label className="mb-1 text-base font-medium text-gray-800 dark:text-gray-300">
+                <label
+                  htmlFor="persona.foto"
+                  className="mb-1 text-base font-medium text-gray-800 dark:text-gray-300"
+                >
                   Foto:
                 </label>
                 <div className="flex items-center justify-center w-full">
                   <label
-                    htmlFor="dropzone-file"
+                    htmlFor="persona.foto"
                     className="flex flex-col items-center justify-center w-full h-28 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                   >
                     <div className="flex flex-col items-center justify-center pt-8 pb-6">
-                      <input id="dropzone-file" type="file" />
+                      <input
+                        type="file"
+                        onChange={(e) =>
+                          setFotoSubida(e.currentTarget.files[0])
+                        }
+                        id="persona.foto"
+                        name="persona.foto"
+                      />
                       <svg
                         className="w-8 h-8 mb-0 text-gray-500 dark:text-gray-400"
                         aria-hidden="true"

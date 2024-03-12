@@ -70,7 +70,7 @@ const Doctores = () => {
         ci: "",
         telefono: "",
         direccion: "",
-        foto: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+        foto: "",
         es_persona: false,
       },
       doctor: {

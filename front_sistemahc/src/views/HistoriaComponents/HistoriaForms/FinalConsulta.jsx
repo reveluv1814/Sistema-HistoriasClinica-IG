@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react";
 import citaService from "./../../../services/citaService";
 import historiaService from "./../../../services/historiaService";
 import { Field, Form, Formik } from "formik";
+import Modal from "../../../components/Modal";
+import { useNavigate } from "react-router-dom";
 
 const FinalConsulta = ({ consultaId }) => {
+  const navigate = useNavigate();
   const [finalConsulta, setFinalConsulta] = useState("load");
   const [agregar, setAgregar] = useState(false);
+  const [finalConsultaModal, setFinalConsultaModal] = useState(false);
 
   const getFinalConsulta = async () => {
     const res = await citaService.verConsulta(consultaId);
@@ -19,15 +23,20 @@ const FinalConsulta = ({ consultaId }) => {
   useEffect(() => {
     getFinalConsulta();
   }, []);
+
+  const closeFinalConsultaModal = () => {
+    setFinalConsultaModal(false);
+  };
+
   const handlePost = async (values) => {
     try {
       const valoresNoVacios = Object.fromEntries(
         Object.entries(values).filter(([_, value]) => value !== "")
       );
-      console.log(valoresNoVacios);
       await historiaService.finalConsulta(consultaId, {
         cita: valoresNoVacios,
       });
+      navigate("/doctor/pacientes");
       getFinalConsulta();
       setAgregar(true);
     } catch (error) {
@@ -115,13 +124,8 @@ const FinalConsulta = ({ consultaId }) => {
                         </div>
                         <div className="flex justify-center mt-4">
                           <button
-                            type="submit"
-                            disabled={
-                              isSubmitting ||
-                              isValidating ||
-                              !isValid ||
-                              agregar
-                            }
+                            type="button"
+                            onClick={() => setFinalConsultaModal(true)}
                             className={`text-white text-sm shadow-lg font-bold py-2 px-2 w-full rounded-md ${
                               agregar
                                 ? "bg-gray-400/40 dark:bg-gray-500/70"
@@ -134,6 +138,63 @@ const FinalConsulta = ({ consultaId }) => {
                           </button>
                         </div>
                       </div>
+                      <Modal
+                        modalOpen={finalConsultaModal}
+                        setOpenModal={closeFinalConsultaModal}
+                        title={"Final de la Consulta"}
+                        contenido={"shadow shadow-amber-500/40"}
+                      >
+                        <div className=" py-4 shadow-lg">
+                          <div className="flex items-center justify-center flex-col">
+                            <div className="text-amber-700 dark:text-amber-500">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-16 "
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z"
+                                />
+                              </svg>
+                            </div>
+                            <h4 className="text-center text-gray-700 text-lg font-bold dark:text-gray-300">
+                              Desea Finalizar la consulta?
+                            </h4>
+                            <div className="w-full flex flex-row space-x-2 mt-3">
+                              <button
+                                type="button"
+                                onClick={() => setFinalConsultaModal(false)}
+                                className="text-white text-sm shadow-lg font-bold py-2 px-2 w-full rounded-md bg-rose-500 hover:bg-rose-700 dark:bg-rose-700 dark:hover:bg-rose-600"
+                              >
+                                Cancelar
+                              </button>
+                              <button
+                                type="submit"
+                                disabled={
+                                  isSubmitting ||
+                                  isValidating ||
+                                  !isValid ||
+                                  agregar
+                                }
+                                className={`text-white text-sm shadow-lg font-bold py-2 px-2 w-full rounded-md ${
+                                  agregar
+                                    ? "bg-gray-400/40 dark:bg-gray-500/70"
+                                    : "bg-emerald-500 hover:bg-emerald-700 dark:bg-emerald-700 dark:hover:bg-emerald-600"
+                                }`}
+                              >
+                                {isSubmitting
+                                  ? "Finalizando..."
+                                  : "Finalizar consulta"}
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </Modal>
                     </Form>
                   )}
                 </Formik>

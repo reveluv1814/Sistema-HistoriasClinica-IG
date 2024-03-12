@@ -49,6 +49,15 @@ const ComposicionFForm = ({ historiaId }) => {
       getApartado();
     }
   };
+  const fechaFormateada = (fechaProp) => {
+    if (fechaProp === null) return null;
+    const fecha = new Date(fechaProp);
+    const dia = fecha.getUTCDate().toString().padStart(2, "0");
+    const mes = (fecha.getUTCMonth() + 1).toString().padStart(2, "0");
+    const año = fecha.getUTCFullYear();
+
+    return `${dia}/${mes}/${año}`;
+  };
   const ButtonAddFamiliar = () => {
     return (
       <button
@@ -125,22 +134,6 @@ const ComposicionFForm = ({ historiaId }) => {
                       </thead>
                       <tbody>
                         {composicionesF.map((compF) => {
-                          const fechaFormateada =
-                            compF.fechanac !== null
-                              ? (() => {
-                                  const fecha = new Date(compF.fechanac);
-                                  const dia = fecha
-                                    .getUTCDate()
-                                    .toString()
-                                    .padStart(2, "0");
-                                  const mes = (fecha.getUTCMonth() + 1)
-                                    .toString()
-                                    .padStart(2, "0");
-                                  const año = fecha.getUTCFullYear();
-                                  return `${dia}/${mes}/${año}`;
-                                })()
-                              : null;
-
                           return (
                             <tr
                               key={`tr-${compF.id}`}
@@ -159,7 +152,7 @@ const ComposicionFForm = ({ historiaId }) => {
                                 {compF.edad || "sin dato"}
                               </td>
                               <td className="px-6 py-4">
-                                {fechaFormateada || "sin dato"}
+                                {fechaFormateada(compF.fechanac) || "sin dato"}
                               </td>
                               <td className="px-6 py-4 whitespace-normal">
                                 {compF.obs || "sin dato"}

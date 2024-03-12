@@ -1,6 +1,15 @@
 import React from "react";
 
 const ComposicionFView = ({ composicionesF }) => {
+  const fechaFormateada = (fechaProp) => {
+    if (fechaProp === null) return null;
+    const fecha = new Date(fechaProp);
+    const dia = fecha.getUTCDate().toString().padStart(2, "0");
+    const mes = (fecha.getUTCMonth() + 1).toString().padStart(2, "0");
+    const año = fecha.getUTCFullYear();
+
+    return `${dia}/${mes}/${año}`;
+  };
   return (
     <>
       <div className="p-4">
@@ -47,7 +56,10 @@ const ComposicionFView = ({ composicionesF }) => {
 
                       <tbody>
                         {composicionesF.map((compF) => (
-                          <tr key={compF.id} className="border-b dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-600">
+                          <tr
+                            key={compF.id}
+                            className="border-b dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-600"
+                          >
                             <td className="px-6 py-4">
                               {compF.nrogestacion || "sin dato"}
                             </td>
@@ -61,7 +73,7 @@ const ComposicionFView = ({ composicionesF }) => {
                               {compF.edad || "sin dato"}
                             </td>
                             <td className="px-6 py-4">
-                              {compF.fechanac || "sin dato"}
+                              {fechaFormateada(compF.fechanac) || "sin dato"}
                             </td>
                             <td className="px-6 py-4 whitespace-normal">
                               {compF.obs || "sin dato"}

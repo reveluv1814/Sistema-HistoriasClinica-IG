@@ -29,8 +29,12 @@ const Pacientes = () => {
   //FUNCIONES
   const getPacientes = async (nroPage = 1, limit = 10) => {
     setPage(nroPage);
-    const { data } = await pacienteService.listarLaboratorista(q, nroPage, limit);
-   /*  console.log(data.pacientes);
+    const { data } = await pacienteService.listarLaboratorista(
+      q,
+      nroPage,
+      limit
+    );
+    /*  console.log(data.pacientes);
     console.log("TOTAL:", data.pacientes.count);
     console.log("Registros:", data.pacientes.rows);  */
     setTotal(data.pacientes.count);
@@ -50,7 +54,6 @@ const Pacientes = () => {
   const handleLaboratorio = async (datos) => {
     try {
       navigate(`/laboratorista/laboratorio/${datos.id}`);
-      console.log(datos)
     } catch (error) {
       console.log(error);
     }

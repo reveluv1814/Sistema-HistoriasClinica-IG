@@ -88,7 +88,7 @@ const AntecedenteFForm = ({ historiaId }) => {
           {({ values, handleSubmit, isValidating, isValid, isSubmitting }) => (
             <Form onSubmit={handleSubmit} className="flex flex-col px-7 ">
               <div className="">
-                <div className="flex flex-col justify-evenly mb-2 xl:flex-row">
+                <div className="flex flex-col justify-evenly mb-2 2xl:flex-row">
                   <label
                     htmlFor="nomPadre"
                     className="pt-2 mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"
@@ -135,7 +135,7 @@ const AntecedenteFForm = ({ historiaId }) => {
                     disabled={!isCreate && !editando}
                   />
                 </div>
-                <div className="flex flex-col justify-evenly mb-2 xl:flex-row">
+                <div className="flex flex-col justify-evenly mb-2 2xl:flex-row">
                   <label
                     htmlFor="nomMadre"
                     className="pt-2 mr-2 text-base max-xl:text-sm font-medium text-gray-800 dark:text-gray-300"

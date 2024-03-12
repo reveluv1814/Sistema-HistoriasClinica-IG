@@ -1,6 +1,15 @@
 import React from "react";
 
 const AntecedenteFView = ({ antecedenteF }) => {
+  const fechaFormateada = (fechaProp) => {
+    if (fechaProp === null) return null;
+    const fecha = new Date(fechaProp);
+    const dia = fecha.getUTCDate().toString().padStart(2, "0");
+    const mes = (fecha.getUTCMonth() + 1).toString().padStart(2, "0");
+    const año = fecha.getUTCFullYear();
+
+    return `${dia}/${mes}/${año}`;
+  };
   return (
     <>
       <div className="p-4">
@@ -20,13 +29,6 @@ const AntecedenteFView = ({ antecedenteF }) => {
                 </span>
               ) : (
                 (() => {
-                  const fecha = new Date(antecedenteF.createdAt);
-                  const dia = fecha.getUTCDate().toString().padStart(2, "0");
-                  const mes = (fecha.getUTCMonth() + 1)
-                    .toString()
-                    .padStart(2, "0");
-                  const año = fecha.getUTCFullYear();
-                  const fechaFormateada = `${dia}/${mes}/${año}`;
                   return (
                     <div className="flex flex-col w-full">
                       <div className="flex flex-row flex-wrap">
@@ -40,7 +42,8 @@ const AntecedenteFView = ({ antecedenteF }) => {
                           <span className="font-semibold dark:text-gray-300">
                             Fecha Nac.:
                           </span>{" "}
-                          {antecedenteF.fechaNac_Padre || "sin dato..."}
+                          {fechaFormateada(antecedenteF.fechaNac_Padre) ||
+                            "sin dato..."}
                         </p>
                         <p className="w-full md:w-1/2 lg:w-1/3 mb-2 text-base capitalize">
                           <span className="font-semibold dark:text-gray-300">
@@ -59,7 +62,8 @@ const AntecedenteFView = ({ antecedenteF }) => {
                           <span className="font-semibold dark:text-gray-300">
                             Fecha Nac.:
                           </span>{" "}
-                          {antecedenteF.fechaNac_Madre || "sin dato..."}
+                          {fechaFormateada(antecedenteF.fechaNac_Madre) ||
+                            "sin dato..."}
                         </p>
                         <p className="w-full md:w-1/2 lg:w-1/3 mb-2 text-base capitalize">
                           <span className="font-semibold dark:text-gray-300">
@@ -92,7 +96,8 @@ const AntecedenteFView = ({ antecedenteF }) => {
                           <span className="font-semibold dark:text-gray-300">
                             Última modificación:
                           </span>{" "}
-                          {fechaFormateada || "sin dato..."}
+                          {fechaFormateada(antecedenteF.createdAt) ||
+                            "sin dato..."}
                         </p>
                       </div>
                     </div>

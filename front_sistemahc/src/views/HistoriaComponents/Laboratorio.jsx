@@ -1,6 +1,15 @@
 import React from "react";
 
 const LaboratorioView = ({ laboratoristas }) => {
+  const fechaFormateada = (fechaProp) => {
+    if (fechaProp === null) return null;
+    const fecha = new Date(fechaProp);
+    const dia = fecha.getUTCDate().toString().padStart(2, "0");
+    const mes = (fecha.getUTCMonth() + 1).toString().padStart(2, "0");
+    const año = fecha.getUTCFullYear();
+
+    return `${dia}/${mes}/${año}`;
+  };
   return (
     <>
       <div className="p-4">
@@ -20,12 +29,6 @@ const LaboratorioView = ({ laboratoristas }) => {
                 </span>
               ) : (
                 laboratoristas.map((labHistoria, index) => {
-                  const fecha = new Date(labHistoria.historiaLabo.createdAt);
-                  const dia = fecha.getUTCDate().toString().padStart(2, "0");
-                  const mes = (fecha.getUTCMonth() + 1)
-                    .toString()
-                    .padStart(2, "0");
-                  const año = fecha.getUTCFullYear();
                   return (
                     <div
                       key={index}
@@ -37,11 +40,12 @@ const LaboratorioView = ({ laboratoristas }) => {
                           {labHistoria.historiaLabo.examen || "sin dato..."}
                         </p>
                         <p className="w-full md:w-1/2 lg:w-1/3 mb-3">
-                          <span className="font-semibold">Fecha de creación: </span>
-                          {`${dia}/${mes}/${año}`}
+                          <span className="font-semibold">
+                            Fecha de creación:{" "}
+                          </span>
+                          {fechaFormateada(labHistoria.historiaLabo.createdAt)}
                         </p>
 
-                        
                         <p className="w-full italic">
                           <span className="font-semibold">Laboratorista: </span>
                           {labHistoria.laboratorista.persona.nombreCompleto}
