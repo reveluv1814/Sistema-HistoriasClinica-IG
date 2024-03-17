@@ -81,25 +81,18 @@ const FormAdduser = ({
   };
   const agregar = async (values, actions) => {
     try {
-      // console.log({
-      //   ...values,
-      //   persona: {
-      //     ...values.persona,
-      //     foto: fotoSubida,
-      //   },
-      // });
-      //await userService.guardar(values);
+      const res = await userService.guardar(values); //
+      const idPersona = res.data;
       const formData = new FormData();
-      formData.append("file", fotoSubida);
-      const res = await userService.foto(formData);
-      console.log(res);
+      formData.append("fileHC", fotoSubida);
+      await userService.foto(idPersona, formData);
       setStep(step + 1);
     } catch (error) {
       setShowError(true);
       console.error(error);
     } finally {
-      // actions.resetForm();
-      // listar();
+      actions.resetForm();
+      listar();
     }
   };
   const editar = async (values, actions) => {
@@ -194,7 +187,16 @@ const FormAdduser = ({
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ values, errors, handleSubmit, touched, isValidating, isValid }) => (
+        {({
+          values,
+          errors,
+          handleSubmit,
+          touched,
+          isValidating,
+          isValid,
+          handleChange,
+          setFieldValue,
+        }) => (
           <Form onSubmit={handleSubmit} className="flex flex-col px-7 ">
             {step === 1 && (
               <div className="p-2">
@@ -283,7 +285,7 @@ const FormAdduser = ({
                 style={{
                   overflowY: "scroll",
                 }}
-                className="px-3 pt-2 rounded-md h-[476px] xl:h-[300px] bg-zinc-100/50 dark:bg-gray-600/50"
+                className="px-3 pt-2 rounded-md h-[250px] xl:h-[300px] bg-zinc-100/50 dark:bg-gray-600/50"
               >
                 <div className="flex flex-col mb-3">
                   <label
@@ -451,7 +453,14 @@ const FormAdduser = ({
                           setFotoSubida(e.currentTarget.files[0])
                         }
                         id="persona.foto"
-                        name="persona.foto"
+                        //name="persona.foto"
+                        //onChange={handleChange}
+                        // onChange={(e) =>
+                        //   setFieldValue(
+                        //     "persona.foto",
+                        //     e.currentTarget.files[0]
+                        //   )
+                        // }
                       />
                       <svg
                         className="w-8 h-8 mb-0 text-gray-500 dark:text-gray-400"
@@ -563,7 +572,7 @@ const FormAdduser = ({
                   </div>
                 )}
                 {values.usuario.rol === "personalAdmin" && (
-                  <div className="flex flex-col mb-3">
+                  <div className="flex flex-col mb-3 mx-9">
                     <label
                       htmlFor="personalAdmin.cargo"
                       className="mb-1 text-base font-medium text-gray-800  dark:text-gray-300"
@@ -590,7 +599,7 @@ const FormAdduser = ({
                   </div>
                 )}
                 {values.usuario.rol === "laboratorista" && (
-                  <div>
+                  <div className="">
                     <div className="flex flex-col mb-3">
                       <label
                         htmlFor="laboratorista.especialidad"

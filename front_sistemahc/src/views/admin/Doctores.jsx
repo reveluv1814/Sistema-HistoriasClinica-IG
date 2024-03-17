@@ -264,43 +264,53 @@ const Doctores = () => {
           <div className="flex items-center justify-center">
             <div className="bg-white shadow-md rounded-lg p-4 dark:bg-slate-800/50">
               <img
-                className="w-32 h-32 rounded-full mx-auto mb-4"
-                src={showDoctor.doctor?.persona?.foto}
+                className="w-20 h-20 xl:w-24 xl:h-24 rounded-full mx-auto mb-4"
+                src={
+                  showDoctor.doctor?.persona?.foto
+                    ? import.meta.env.VITE_URL_BACK_SERVICE +
+                      showDoctor.doctor.persona.foto
+                    : "/doctor-default.jpg"
+                }
+                onError={(e) => (e.target.src = "/doctor-default.jpg")}
                 alt={`${showDoctor.doctor?.persona?.nombre} ${showDoctor.doctor?.persona?.apellidoPaterno}`}
               />
-              <h3 className="text-lg font-semibold capitalize">
+              <h3 className="text-base xl:text-lg font-semibold capitalize">
                 {showDoctor.doctor?.persona?.nombre}{" "}
                 {showDoctor.doctor?.persona?.apellidoPaterno}{" "}
                 {showDoctor.doctor?.persona?.apellidoMaterno}
               </h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                CI: {showDoctor.doctor?.persona?.ci}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300 mt-2">
+                <strong>CI:</strong> {showDoctor.doctor?.persona?.ci}
               </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Dirección: {showDoctor.doctor?.persona?.direccion}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong> Dirección:</strong>{" "}
+                {showDoctor.doctor?.persona?.direccion}
               </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Teléfono: {showDoctor.doctor?.persona?.telefono}
-              </p>
-              <hr className="border-t-2 bg-gray-700 my-2 dark:border-t-gray-600" />
-              <p className="text-gray-700 dark:text-gray-300">
-                Email: {showDoctor.doctor?.usuario?.email}
-              </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Rol: {showDoctor.doctor?.usuario?.rol}
-              </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Fecha de creación: {showDoctor.doctor?.usuario?.createdAt}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong> Teléfono:</strong>{" "}
+                {showDoctor.doctor?.persona?.telefono}
               </p>
               <hr className="border-t-2 bg-gray-700 my-2 dark:border-t-gray-600" />
-              <p className="text-gray-700 dark:text-gray-300">
-                Unidad: {showDoctor.doctor?.unidad}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Email:</strong> {showDoctor.doctor?.usuario?.email}
               </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Especialidad: {showDoctor.doctor?.especialidad}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Rol:</strong> {showDoctor.doctor?.usuario?.rol}
               </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Número de Matrícula: {showDoctor.doctor?.numeroMatricula}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong> Fecha de creación:</strong>{" "}
+                {showDoctor.doctor?.usuario?.createdAt}
+              </p>
+              <hr className="border-t-2 bg-gray-700 my-2 dark:border-t-gray-600" />
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Unidad:</strong> {showDoctor.doctor?.unidad}
+              </p>
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Especialidad:</strong> {showDoctor.doctor?.especialidad}
+              </p>
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong> Número de Matrícula:</strong>{" "}
+                {showDoctor.doctor?.numeroMatricula}
               </p>
             </div>
           </div>

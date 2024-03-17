@@ -9,6 +9,10 @@ const laboratoristaService = {
     return api.post("/admin/laboratorista", datos);
   },
 
+  foto: (id, datos) => {
+    return api.post(`/admin/laboratorista/${id}/foto`, datos);
+  },
+
   mostrar: (id) => {
     return api.get(`/admin/laboratorista/${id}`);
   },

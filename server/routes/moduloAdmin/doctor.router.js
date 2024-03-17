@@ -1,5 +1,7 @@
 const express = require("express");
 const DoctorService = require("./../../services/doctor.service");
+const configureMulter = require("./../../libs/uploadImages");
+const { config } = require("../../config/config");
 
 //middlewares
 const {
@@ -25,6 +27,11 @@ const {
 //inicializando
 const router = express.Router();
 const doctorService = new DoctorService();
+
+//configuracon de multer con las rutas y nombre, en este caso ruta doctor y nombre doctor
+const upload = configureMulter(config.urlImagenes + "doctores", "doctor");
+
+///peticiones
 
 router.get("/", checkRoles("admin"), async (req, res, next) => {
   try {
@@ -65,8 +72,23 @@ router.post(
     try {
       const body = req.body;
       const user = await doctorService.create(body);
-
       res.status(201).json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+///imagenes post
+router.post(
+  "/:id/foto",
+  checkRoles("admin"),
+  upload.single("fileHC"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const result = await doctorService.fotoDoctor(id, req.file);
+      res.status(201).json(result);
     } catch (error) {
       next(error);
     }

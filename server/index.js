@@ -14,9 +14,12 @@ const {
 
 const app = express();
 
-app.use(cors({ origin: "http://localhost:5173" }));
+const urlFrontend = process.env.URL_FRONT_SERVICE || "http://localhost:5173";
+app.use(cors({ origin: urlFrontend }));
 app.use(express.json());
 const port = process.env.PORT_SERVER || 4000;
+console.log(__dirname);
+app.use(express.static("server/public")); //archivos estaticos
 require("./auth");
 routerApi(app);
 app.use(logErrors);

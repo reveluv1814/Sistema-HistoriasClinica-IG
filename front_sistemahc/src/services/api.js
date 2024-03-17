@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const url_base = "http://127.0.0.1:4000/";
+const url_base =
+  import.meta.env.VITE_URL_BACK_SERVICE || "http://127.0.0.1:4000/";
 
 const api = axios.create({
   baseURL: url_base,
@@ -35,7 +36,11 @@ api.interceptors.response.use(
   (error) => {
     if (error.response.status === 401) {
       localStorage.removeItem("access_token");
-      if (window.location.pathname !== "/" && window.location.pathname !=="/recovery/recovery-password" && window.location.pathname !=="/recovery/change-password") {
+      if (
+        window.location.pathname !== "/" &&
+        window.location.pathname !== "/recovery/recovery-password" &&
+        window.location.pathname !== "/recovery/change-password"
+      ) {
         window.location.href = "/";
       }
     }

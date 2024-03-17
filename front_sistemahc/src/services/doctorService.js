@@ -8,8 +8,8 @@ const doctorService = {
     guardar: (datos) => {
         return api.post("/admin/doctor", datos)
     },
-    foto: (datos) => {
-        return api.post("/admin/doctor/foto", datos)
+    foto: (id,datos) => {
+        return api.post(`/admin/doctor/${id}/foto`, datos)
     },    
     mostrar: (id) => {
         return api.get(`/admin/doctor/${id}`)

@@ -2,6 +2,7 @@ const boom = require("@hapi/boom");
 const { Op, Sequelize } = require("sequelize");
 const { models } = require("../libs/sequelize");
 const UserService = require("./usuario.service");
+const { config } = require("../config/config");
 
 class DoctorService {
   constructor() {}
@@ -124,7 +125,7 @@ class DoctorService {
       usuarioId: newUsuario.id,
       personaId: newPersona.id,
     });
-    return newDoctor;
+    return newPersona.id;
   }
 
   async update(id, changes) {
@@ -175,6 +176,16 @@ class DoctorService {
     }
     await models.Usuario.destroy({ where: { id: doctor.usuarioId } });
     return { id };
+  }
+  async fotoDoctor(id, req) {
+    let datos = {};
+    if (req) {
+      datos.foto = config.urlImagenesBD + "doctores/" + req.filename;
+    }
+    await models.Persona.update(datos, {
+      where: { id: id },
+    });
+    return datos.foto;
   }
 }
 

@@ -1,5 +1,7 @@
 const express = require("express");
 const LaboratoristaService = require("./../../services/laboratorista.service");
+const configureMulter = require("./../../libs/uploadImages");
+const { config } = require("../../config/config");
 
 //middlewares
 const {
@@ -26,12 +28,19 @@ const {
 const router = express.Router();
 const laboratoristaService = new LaboratoristaService();
 
+//configuracon de multer con las rutas y nombre
+const upload = configureMulter(
+  config.urlImagenes + "laboratoristas",
+  "laboratorista"
+);
+
+//peticiones
 router.get("/", checkRoles("admin"), async (req, res, next) => {
   try {
     const laboratoristas = await laboratoristaService.find(req);
 
     res.json({
-        laboratoristas,
+      laboratoristas,
     });
   } catch (error) {
     next(error);
@@ -67,6 +76,22 @@ router.post(
       const user = await laboratoristaService.create(body);
 
       res.status(201).json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+///imagenes post
+router.post(
+  "/:id/foto",
+  checkRoles("admin"),
+  upload.single("fileHC"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const result = await laboratoristaService.fotoLaboratorista(id, req.file);
+      res.status(201).json(result);
     } catch (error) {
       next(error);
     }

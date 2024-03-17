@@ -2,6 +2,7 @@ const boom = require("@hapi/boom");
 const { Op, Sequelize } = require("sequelize");
 const { models } = require("../libs/sequelize");
 const UserService = require("./usuario.service");
+const { config } = require("../config/config");
 
 class LaboratoristaService {
   constructor() {}
@@ -44,7 +45,6 @@ class LaboratoristaService {
         ["id"], // ordenar por fecha de creación en orden ascendente
       ],
     });
-    console.log(rta);
     return rta;
   }
 
@@ -126,7 +126,7 @@ class LaboratoristaService {
       usuarioId: newUsuario.id,
       personaId: newPersona.id,
     });
-    return newLaboratorista;
+    return newPersona.id;
   }
 
   async update(id, changes) {
@@ -180,6 +180,16 @@ class LaboratoristaService {
     }
     await models.Usuario.destroy({ where: { id: laboratorista.usuarioId } });
     return { id };
+  }
+  async fotoLaboratorista(id, req) {
+    let datos = {};
+    if (req) {
+      datos.foto = config.urlImagenesBD + "laboratoristas/" + req.filename;
+    }
+    await models.Persona.update(datos, {
+      where: { id: id },
+    });
+    return datos.foto;
   }
   //
   async createLaboratorio(data) {

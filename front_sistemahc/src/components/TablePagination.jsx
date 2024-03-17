@@ -16,7 +16,7 @@ const TablePagination = ({
   accionesFlag,
   personalMedico,
   laboratoristaAdd,
-  handleLaboratorio
+  handleLaboratorio,
 }) => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
@@ -54,7 +54,7 @@ const TablePagination = ({
                   {eval("reg." + col.key)}
                 </td>
               ))}
-              <td className="text-sm text-gray-500">
+              <td className="text-sm text-gray-500 gap-2">
                 {personalMedico && handleHistoria && (
                   <button
                     className="text-center justify-center py-1 px-2 bg-indigo-500 text-white hover:bg-indigo-600 rounded ml-2 lg:my-1"
@@ -125,7 +125,7 @@ const TablePagination = ({
                 )}
                 {handleEdit && (
                   <button
-                    className="py-1 px-2 bg-emerald-500 text-white hover:bg-emerald-600 rounded ml-2"
+                    className="py-1 px-2 bg-emerald-500 text-white hover:bg-emerald-600 rounded"
                     onClick={() => handleEdit(reg.id)}
                   >
                     <svg
@@ -146,7 +146,7 @@ const TablePagination = ({
                 )}
                 {handleDelete && (
                   <button
-                    className="py-1 px-2 bg-rose-500 text-white hover:bg-rose-600 rounded ml-2"
+                    className="py-1 px-2 bg-rose-500 text-white hover:bg-rose-600 rounded"
                     onClick={() => handleDelete(reg)}
                   >
                     <svg
@@ -165,7 +165,6 @@ const TablePagination = ({
                     </svg>
                   </button>
                 )}
-
                 {handlePDF && (
                   <button
                     className="py-1 px-2 bg-red-500 text-white hover:bg-red-600 rounded"

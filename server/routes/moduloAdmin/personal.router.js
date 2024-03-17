@@ -1,5 +1,7 @@
 const express = require("express");
 const PersonalService = require("./../../services/personalAdmin.service");
+const configureMulter = require("./../../libs/uploadImages");
+const { config } = require("../../config/config");
 
 //middlewares
 const {
@@ -26,12 +28,16 @@ const {
 const router = express.Router();
 const personalService = new PersonalService();
 
+//configuracon de multer con las rutas y nombre
+const upload = configureMulter(config.urlImagenes + "personal", "personal");
+
+//peticiones
 router.get("/", checkRoles("admin"), async (req, res, next) => {
   try {
     const personal = await personalService.find(req);
 
     res.json({
-        personal,
+      personal,
     });
   } catch (error) {
     next(error);
@@ -67,6 +73,22 @@ router.post(
       const user = await personalService.create(body);
 
       res.status(201).json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+///imagenes post
+router.post(
+  "/:id/foto",
+  checkRoles("admin"),
+  upload.single("fileHC"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const result = await personalService.fotoPersonal(id, req.file);
+      res.status(201).json(result);
     } catch (error) {
       next(error);
     }

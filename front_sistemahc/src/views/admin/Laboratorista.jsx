@@ -70,7 +70,7 @@ const Laboratorista = () => {
         ci: "",
         telefono: "",
         direccion: "",
-        foto: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+        foto: "",
         es_persona: false,
       },
       laboratorista: {
@@ -261,42 +261,54 @@ const Laboratorista = () => {
           <div className="flex items-center justify-center">
             <div className="bg-white shadow-md rounded-lg p-4 dark:bg-slate-800/50">
               <img
-                className="w-32 h-32 rounded-full mx-auto mb-4"
-                src={showLaboratorista.laboratorista?.persona?.foto}
+                className="w-20 h-20 xl:w-24 xl:h-24 rounded-full mx-auto mb-4"
+                src={
+                  showLaboratorista.laboratorista?.persona?.foto
+                    ? import.meta.env.VITE_URL_BACK_SERVICE +
+                      showLaboratorista.laboratorista.persona.foto
+                    : "/laboratorista-default.jpg"
+                }
+                onError={(e) => (e.target.src = "/laboratorista-default.jpg")}
                 alt={`${showLaboratorista.laboratorista?.persona?.nombre} ${showLaboratorista.laboratorista?.persona?.apellidoPaterno}`}
               />
-              <h3 className="text-lg font-semibold capitalize">
+              <h3 className="text-base xl:text-lg font-semibold capitalize">
                 {showLaboratorista.laboratorista?.persona?.nombre}{" "}
                 {showLaboratorista.laboratorista?.persona?.apellidoPaterno}{" "}
                 {showLaboratorista.laboratorista?.persona?.apellidoMaterno}
               </h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                CI: {showLaboratorista.laboratorista?.persona?.ci}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>CI:</strong>{" "}
+                {showLaboratorista.laboratorista?.persona?.ci}
               </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Dirección: {showLaboratorista.laboratorista?.persona?.direccion}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Dirección:</strong>{" "}
+                {showLaboratorista.laboratorista?.persona?.direccion}
               </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Teléfono: {showLaboratorista.laboratorista?.persona?.telefono}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Teléfono:</strong>{" "}
+                {showLaboratorista.laboratorista?.persona?.telefono}
               </p>
               <hr className="border-t-2 bg-gray-700 my-2 dark:border-t-gray-600" />
-              <p className="text-gray-700 dark:text-gray-300">
-                Email: {showLaboratorista.laboratorista?.usuario?.email}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Email:</strong>{" "}
+                {showLaboratorista.laboratorista?.usuario?.email}
               </p>
 
-              <p className="text-gray-700 dark:text-gray-300">
-                Rol: {showLaboratorista.laboratorista?.usuario?.rol}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Rol:</strong>{" "}
+                {showLaboratorista.laboratorista?.usuario?.rol}
               </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Fecha de creación:{" "}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Fecha de creación:</strong>{" "}
                 {showLaboratorista.laboratorista?.usuario?.createdAt}
               </p>
               <hr className="border-t-2 bg-gray-700 my-2 dark:border-t-gray-600" />
-              <p className="text-gray-700 dark:text-gray-300">
-                Especialidad: {showLaboratorista.laboratorista?.especialidad}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Especialidad:</strong>{" "}
+                {showLaboratorista.laboratorista?.especialidad}
               </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Matrícula Profesional:{" "}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Matrícula Profesional:</strong>{" "}
                 {showLaboratorista.laboratorista?.matriculaProf}
               </p>
             </div>

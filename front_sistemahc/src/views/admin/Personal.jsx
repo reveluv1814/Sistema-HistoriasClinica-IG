@@ -71,7 +71,7 @@ const Personal = () => {
         ci: "",
         telefono: "",
         direccion: "",
-        foto: "https://rickandmortyapi.com/api/character/avatar/15.jpeg",
+        foto: "",
         es_persona: false,
       },
       personalAdmin: {
@@ -262,40 +262,49 @@ const Personal = () => {
           contenido={" shadow shadow-sky-500/40"}
         >
           <div className="flex items-center justify-center">
-            <div className="bg-white shadow-md rounded-lg p-4 dark:bg-slate-800/50">
+            <div className="bg-white shadow-md rounded-lg p-4 dark:bg-slate-800/50 ">
               <img
-                className="w-32 h-32 rounded-full mx-auto mb-4"
-                src={showPersonal.personalAdmin?.persona?.foto}
+                className="w-20 h-20 xl:w-24 xl:h-24 rounded-full mx-auto mb-4"
+                src={
+                  showPersonal.personalAdmin?.persona?.foto
+                    ? import.meta.env.VITE_URL_BACK_SERVICE +
+                      showPersonal.personalAdmin.persona.foto
+                    : "/personal-default.jpg"
+                }
+                onError={(e) => (e.target.src = "/personal-default.jpg")}
                 alt={`${showPersonal.personalAdmin?.persona?.nombre} ${showPersonal.personalAdmin?.persona?.apellidoPaterno}`}
               />
-              <h3 className="text-lg font-semibold capitalize">
+              <h3 className="text-base xl:text-lg font-semibold capitalize">
                 {showPersonal.personalAdmin?.persona?.nombre}{" "}
                 {showPersonal.personalAdmin?.persona?.apellidoPaterno}{" "}
                 {showPersonal.personalAdmin?.persona?.apellidoMaterno}
               </h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                CI: {showPersonal.personalAdmin?.persona?.ci}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300 mt-2">
+                <strong>CI:</strong> {showPersonal.personalAdmin?.persona?.ci}
               </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Dirección: {showPersonal.personalAdmin?.persona?.direccion}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Dirección:</strong>{" "}
+                {showPersonal.personalAdmin?.persona?.direccion}
               </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Teléfono: {showPersonal.personalAdmin?.persona?.telefono}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Teléfono:</strong>{" "}
+                {showPersonal.personalAdmin?.persona?.telefono}
               </p>
               <hr className="border-t-2 bg-gray-700 my-2 dark:border-t-gray-600" />
-              <p className="text-gray-700 dark:text-gray-300">
-                Email: {showPersonal.personalAdmin?.usuario?.email}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Email:</strong>{" "}
+                {showPersonal.personalAdmin?.usuario?.email}
               </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Rol: {showPersonal.personalAdmin?.usuario?.rol}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Rol:</strong> {showPersonal.personalAdmin?.usuario?.rol}
               </p>
-              <p className="text-gray-700 dark:text-gray-300">
-                Fecha de creación:{" "}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Fecha de creación:</strong>{" "}
                 {showPersonal.personalAdmin?.usuario?.createdAt}
               </p>
               <hr className="border-t-2 bg-gray-700 my-2 dark:border-t-gray-600" />
-              <p className="text-gray-700 dark:text-gray-300">
-                Cargo: {showPersonal.personalAdmin?.cargo}
+              <p className="text-gray-700 text-sm xl:text-base dark:text-gray-300">
+                <strong>Cargo:</strong> {showPersonal.personalAdmin?.cargo}
               </p>
             </div>
           </div>

@@ -9,7 +9,7 @@ const telefono = Joi.string()
   .min(6)
   .max(15);
 const direccion = Joi.string().min(5).max(200);
-const foto = Joi.string().uri();
+const foto = Joi.any();
 const es_persona = Joi.boolean();
 const ci = Joi.string().min(2).max(10);
 
