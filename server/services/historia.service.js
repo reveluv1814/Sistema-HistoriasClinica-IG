@@ -2,6 +2,8 @@ const boom = require("@hapi/boom");
 const { Op, Sequelize } = require("sequelize");
 const { models } = require("./../libs/sequelize");
 const PacienteService = require("./paciente.service");
+const { config } = require("../config/config");
+const fs = require("fs");
 
 class HistoriaService {
   constructor() {}
@@ -485,6 +487,28 @@ class HistoriaService {
     });
     return { citaId };
   } */
+  async actualizarArbolG(id, file) {
+    const historiaP = await models.HistoriaClinica.findOne({
+      where: { id },
+    });
+
+    const imagenEliminar = historiaP.arbolGene;
+
+    let datos = {};
+    if (file) {
+      datos.arbolGene = config.urlImagenesBD + "arbolGene/" + file.filename;
+    }
+
+    await models.HistoriaClinica.update(datos, {
+      where: { id: historiaP.id },
+    });
+
+    if (imagenEliminar !== "") {
+      fs.unlinkSync(config.urlImagenesEliminarRuta + imagenEliminar);
+    }
+
+    return datos.foto;
+  }
 }
 /*
 para crear un antecedente familiar:

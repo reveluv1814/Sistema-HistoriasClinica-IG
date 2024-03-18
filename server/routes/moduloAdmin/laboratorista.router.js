@@ -97,6 +97,21 @@ router.post(
     }
   }
 );
+//imagenes edit
+router.post(
+  "/:id/actualizar-foto",
+  checkRoles("admin"),
+  upload.single("fileHC"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const result = await laboratoristaService.actualizarFotoLaboratorista(id, req.file);
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 router.patch(
   "/:id",

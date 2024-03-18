@@ -10,7 +10,7 @@ const Modal = ({ children, modalOpen, setOpenModal, title, contenido }) => {
             onClick={() => setOpenModal(false)}
           />
           <div
-            className={`modal-content bg-white p-0 w-auto sm:mt-[40%] md:mt-[30%] lg:mt-[35%] xl:mt-[25%] ${contenido} dark:bg-slate-600`}
+            className={`modal-content bg-white p-0 w-auto lg:w-2/6 xl:w-2/5 sm:mt-[40%] md:mt-[30%] lg:mt-[35%] xl:mt-[25%] ${contenido} dark:bg-slate-600`}
           >
             <div className="modal-header dark:bg-slate-700 dark:border-b-slate-800">
               <h4 className="modal-title dark:text-slate-200 ">{title}</h4>

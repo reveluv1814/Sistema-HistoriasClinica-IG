@@ -3,6 +3,7 @@ const { Op } = require("sequelize");
 const { models } = require("../libs/sequelize");
 const UserService = require("./usuario.service");
 const { config } = require("../config/config");
+const fs = require("fs");
 
 class PersonalAdminService {
   constructor() {}
@@ -153,6 +154,38 @@ class PersonalAdminService {
     await models.Persona.update(datos, {
       where: { id: id },
     });
+    return datos.foto;
+  }
+  async actualizarFotoPersonal(id, file) {
+    const personalBuscado = await models.PersonalAdmin.findOne({
+      where: { id },
+    });
+    if (!personalBuscado) {
+      throw new Error("No se encontró el PersonalAdmin");
+    }
+
+    const personaBuscada = await models.Persona.findOne({
+      where: { id: personalBuscado.personaId },
+    });
+    if (!personaBuscada) {
+      throw new Error("No se encontró la Persona asociada al PersonalAdmin");
+    }
+
+    const imagenEliminar = personaBuscada.foto;
+
+    let datos = {};
+    if (file) {
+      datos.foto = config.urlImagenesBD + "personal/" + file.filename;
+    }
+
+    await models.Persona.update(datos, {
+      where: { id: personalBuscado.personaId },
+    });
+
+    if (imagenEliminar !== "") {
+      fs.unlinkSync(config.urlImagenesEliminarRuta + imagenEliminar);
+    }
+
     return datos.foto;
   }
 }

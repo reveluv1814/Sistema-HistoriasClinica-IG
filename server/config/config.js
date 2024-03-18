@@ -16,6 +16,7 @@ const config = {
   //carpeta imagenes
   urlImagenes: process.env.IMAGE_ROUTE,
   urlImagenesBD: process.env.IMAGE_ROUTE_BD,
+  urlImagenesEliminarRuta: process.env.IMAGE_ROUTE_ELIMINAR,
   //url front
   urlFrontService: process.env.URL_FRONT_SERVICE,
 };

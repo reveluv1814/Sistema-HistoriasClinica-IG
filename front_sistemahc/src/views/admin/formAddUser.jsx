@@ -98,6 +98,9 @@ const FormAdduser = ({
   const editar = async (values, actions) => {
     try {
       await userService.modificar(idEdit, values);
+      const formData = new FormData();
+      formData.append("fileHC", fotoSubida);
+      await userService.actualizarFoto(idEdit, formData);
       setStep(step + 1);
     } catch (error) {
       setShowError(true);
@@ -195,6 +198,7 @@ const FormAdduser = ({
           isValidating,
           isValid,
           handleChange,
+          isSubmitting,
           setFieldValue,
         }) => (
           <Form onSubmit={handleSubmit} className="flex flex-col px-7 ">
@@ -444,24 +448,9 @@ const FormAdduser = ({
                 <div className="flex items-center justify-center w-full">
                   <label
                     htmlFor="persona.foto"
-                    className="flex flex-col items-center justify-center w-full h-28 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                    className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                   >
                     <div className="flex flex-col items-center justify-center pt-8 pb-6">
-                      <input
-                        type="file"
-                        onChange={(e) =>
-                          setFotoSubida(e.currentTarget.files[0])
-                        }
-                        id="persona.foto"
-                        //name="persona.foto"
-                        //onChange={handleChange}
-                        // onChange={(e) =>
-                        //   setFieldValue(
-                        //     "persona.foto",
-                        //     e.currentTarget.files[0]
-                        //   )
-                        // }
-                      />
                       <svg
                         className="w-8 h-8 mb-0 text-gray-500 dark:text-gray-400"
                         aria-hidden="true"
@@ -477,16 +466,30 @@ const FormAdduser = ({
                           d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                         />
                       </svg>
-                      <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                        <span className="font-semibold">
-                          Haga clic para subir
-                        </span>{" "}
-                        o arrastre y suelte la imagen
-                      </p>
+                      {fotoSubida?.name ? (
+                        <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                          <span className="font-bold">{fotoSubida.name}</span> 
+                        </p>
+                      ) : (
+                        <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                          <span className="font-semibold">
+                            Haga clic para subir
+                          </span>{" "}
+                          o arrastre y suelte la imagen
+                        </p>
+                      )}
+
                       <p className="text-xs text-gray-500 dark:text-gray-400">
-                        SVG, PNG, JPG or GIF (MAX. 800x400px)
+                        SVG, PNG, JPG or JPEG (MAX. 800x400px)
                       </p>
                     </div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => setFotoSubida(e.currentTarget.files[0])}
+                      id="persona.foto"
+                      className="hidden"
+                    />
                   </label>
                 </div>
               </div>
@@ -707,10 +710,10 @@ const FormAdduser = ({
                   </button>
                   <button
                     type="submit"
-                    disabled={isValidating || !isValid}
+                    disabled={isValidating || !isValid || isSubmitting}
                     className="ml-2  bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-2 rounded-md w-[49%]"
                   >
-                    Guardar
+                    {isSubmitting ? "Guardando" : "Guardar"}
                   </button>
                 </div>
               </div>

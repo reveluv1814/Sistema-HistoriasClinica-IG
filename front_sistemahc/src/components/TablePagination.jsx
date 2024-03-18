@@ -37,7 +37,10 @@ const TablePagination = ({
               Opciones
             </th>
             {accionesFlag && (
-              <th className="py-2 pt-3 px-4 text-left text-sm font-medium uppercase">
+              <th
+                className="py-2 pt-3 px-4 text-left text-sm font-medium uppercase"
+                id="acciones"
+              >
                 Acciones
               </th>
             )}
@@ -54,7 +57,7 @@ const TablePagination = ({
                   {eval("reg." + col.key)}
                 </td>
               ))}
-              <td className="text-sm text-gray-500 gap-2">
+              <td className="text-sm text-gray-500 gap-1 py-2 px-2 flex flex-row">
                 {personalMedico && handleHistoria && (
                   <button
                     className="text-center justify-center py-1 px-2 bg-indigo-500 text-white hover:bg-indigo-600 rounded ml-2 lg:my-1"
@@ -188,33 +191,35 @@ const TablePagination = ({
                 )}
               </td>
               {accionesFlag && (
-                <td className="text-sm text-gray-500 flex items-center justify-center pt-1">
-                  {handleCita && (
-                    <button
-                      className="text-center justify-center py-1 px-2 bg-amber-500 text-white hover:bg-amber-400 rounded ml-2"
-                      onClick={() => handleCita(reg)}
-                    >
-                      <span
-                        className="align-middle text-xs"
-                        style={{ margin: 0 }}
+                <td className="text-sm text-gray-500" headers="encabezado1">
+                  <div className="flex flex-col xl:flex-row px-2 gap-1">
+                    {handleCita && (
+                      <button
+                        className="text-center justify-center py-1 px-2 bg-amber-500 text-white hover:bg-amber-400 rounded"
+                        onClick={() => handleCita(reg)}
                       >
-                        Crear Cita
-                      </span>
-                    </button>
-                  )}
-                  {handleHistoria && (
-                    <button
-                      className="text-center justify-center py-1 px-2 bg-indigo-500 text-white hover:bg-indigo-600 rounded ml-2"
-                      onClick={() => handleHistoria(reg)}
-                    >
-                      <span
-                        className="align-middle text-xs"
-                        style={{ margin: 0 }}
+                        <span
+                          className="align-middle text-xs"
+                          style={{ margin: 0 }}
+                        >
+                          Crear Cita
+                        </span>
+                      </button>
+                    )}
+                    {handleHistoria && (
+                      <button
+                        className="text-center justify-center py-1 px-2 bg-indigo-500 text-white hover:bg-indigo-600 rounded"
+                        onClick={() => handleHistoria(reg)}
                       >
-                        Ver Historia
-                      </span>
-                    </button>
-                  )}
+                        <span
+                          className="align-middle text-xs"
+                          style={{ margin: 0 }}
+                        >
+                          Ver Historia
+                        </span>
+                      </button>
+                    )}
+                  </div>
                 </td>
               )}
             </tr>

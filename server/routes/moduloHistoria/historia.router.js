@@ -1,18 +1,13 @@
 const express = require("express");
 
 const HistoriaService = require("../../services/historia.service");
+const configureMulter = require("./../../libs/uploadImages");
+const { config } = require("../../config/config");
 //middlewares
-const {
-  validatorHandlerObjetos,
-  validatorHandler,
-} = require("../../middlewares/validator.handler"); //valida los schemas
+const { validatorHandler } = require("../../middlewares/validator.handler"); //valida los schemas
 const { checkRoles } = require("../../middlewares/auth.handler"); //para verificar el rol
 //schemas
-const {
-  getHistoriaSchema,
-  createHistoriaSchema,
-  updateHistoriaSchema,
-} = require("../../schemas/historiaClinica.schema");
+const { getHistoriaSchema } = require("../../schemas/historiaClinica.schema");
 
 //routers de las demás tablas
 const antecedenteFRouter = require("./antecedenteF.router");
@@ -24,6 +19,9 @@ const laboratorioRouter = require("./../moduloLaboratorista/historiaLabo.router"
 //inicializando
 const router = express.Router();
 const historiaService = new HistoriaService();
+
+//configuracon de multer con las rutas y nombre, en este caso ruta doctor y nombre doctor
+const upload = configureMulter(config.urlImagenes + "arbolGene", "arbolG");
 
 router.get(
   "/:id",
@@ -71,88 +69,28 @@ router.get(
     }
   }
 );
+
+//imagenes edit
+router.post(
+  "/:id/actualizar-foto",
+  checkRoles("admin", "doctor"),
+  upload.single("fileHC"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const result = await historiaService.actualizarArbolG(id, req.file);
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 //routers de las demas tablas
 router.use("/antecedenteF", antecedenteFRouter);
 router.use("/antecedenteP", antecedentePRouter);
 router.use("/composicionF", composicionFRouter);
 router.use("/exploracionF", exploracionFRouter);
 router.use("/laboratorio", laboratorioRouter);
-
-/* router.get(
-  "/:id",
-  checkRoles("admin", "personalAdmin"),
-  validatorHandler(getCitaSchema, "params"),
-  async (req, res, next) => {
-    try {
-      const { id } = req.params;
-      const cita = await citaService.findOne(id);
-
-      res.json(cita);
-    } catch (error) {
-      next(error);
-    }
-  }
-);
-router.get(
-  "/personalAd/:id",
-  checkRoles("admin", "personalAdmin"),
-  validatorHandler(getCitaSchema, "params"),
-  async (req, res, next) => {
-    try {
-      const { id } = req.params;
-      const citas = await citaService.findPersonal(id);
-
-      res.json(citas);
-    } catch (error) {
-      next(error);
-    }
-  }
-);
-router.post(
-  "/",
-  checkRoles("admin", "personalAdmin"),
-  validatorHandlerObjetos(createCitaSchema, "cita"),
-  async (req, res, next) => {
-    try {
-      const body = req.body;
-      const cita = await citaService.create(body);
-
-      res.status(201).json(cita);
-    } catch (error) {
-      next(error);
-    }
-  }
-);
-router.patch(
-  "/:id",
-  checkRoles("admin", "personalAdmin"),
-  validatorHandler(getCitaSchema, "params"),
-  validatorHandlerObjetos(updateCitaSchema, "cita"),
-  async (req, res, next) => {
-    try {
-      const { id } = req.params;
-      const body = req.body;
-
-      const cita = await citaService.update(id, body.cita);
-
-      res.status(201).json(cita);
-    } catch (error) {
-      next(error);
-    }
-  }
-);
-router.delete(
-  "/:id",
-  checkRoles("admin", "personalAdmin"),
-  validatorHandler(getCitaSchema, "params"),
-  async (req, res, next) => {
-    try {
-      const { id } = req.params;
-      res.status(200).json(await citaService.delete(id));
-    } catch (error) {
-      next(error);
-    }
-  }
-); */
 
 module.exports = router;

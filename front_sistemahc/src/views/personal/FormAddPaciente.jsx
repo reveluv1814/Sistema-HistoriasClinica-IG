@@ -13,6 +13,7 @@ const FormAddPaciente = ({
 }) => {
   const [step, setStep] = useState(1);
   const [showError, setShowError] = useState(false);
+  const [fotoSubida, setFotoSubida] = useState();
 
   const [stepsLine, setStepLine] = useState({
     stpesCount: [1, 2],
@@ -49,7 +50,11 @@ const FormAddPaciente = ({
   };
   const agregar = async (values, actions) => {
     try {
-      await pacienteService.guardar(values);
+      const res = await pacienteService.guardar(values);
+      const idPersona = res.data;
+      const formData = new FormData();
+      formData.append("fileHC", fotoSubida);
+      await pacienteService.foto(idPersona, formData);
       setStep(step + 1);
     } catch (error) {
       setShowError(true);
@@ -62,6 +67,9 @@ const FormAddPaciente = ({
   const editar = async (values, actions) => {
     try {
       await pacienteService.modificar(idEdit, values);
+      const formData = new FormData();
+      formData.append("fileHC", fotoSubida);
+      await pacienteService.actualizarFoto(idEdit, formData);
       setStep(step + 1);
     } catch (error) {
       setShowError(true);
@@ -308,16 +316,18 @@ const FormAddPaciente = ({
                     />
                   </div>
                   {/*foto */}
-                  <label className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300">
+                  <label
+                    htmlFor="persona.foto"
+                    className="mb-1 text-base font-medium text-gray-700 dark:text-gray-300"
+                  >
                     Foto:
                   </label>
                   <div className="flex items-center justify-center w-full">
                     <label
-                      htmlFor="dropzone-file"
-                      className="flex flex-col items-center justify-center w-full h-28 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                      htmlFor="persona.foto"
+                      className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                     >
                       <div className="flex flex-col items-center justify-center pt-8 pb-6">
-                        <input id="dropzone-file" type="file" />
                         <svg
                           className="w-8 h-8 mb-0 text-gray-500 dark:text-gray-400"
                           aria-hidden="true"
@@ -333,16 +343,31 @@ const FormAddPaciente = ({
                             d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                           />
                         </svg>
-                        <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                          <span className="font-semibold">
-                            Haga clic para subir
-                          </span>{" "}
-                          o arrastre y suelte la imagen
-                        </p>
+                        {fotoSubida?.name ? (
+                          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                            <span className="font-bold">{fotoSubida.name}</span>
+                          </p>
+                        ) : (
+                          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                            <span className="font-semibold">
+                              Haga clic para subir
+                            </span>{" "}
+                            o arrastre y suelte la imagen
+                          </p>
+                        )}
                         <p className="text-xs text-gray-500 dark:text-gray-400">
                           SVG, PNG, JPG or GIF (MAX. 800x400px)
                         </p>
                       </div>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) =>
+                          setFotoSubida(e.currentTarget.files[0])
+                        }
+                        id="persona.foto"
+                        className="hidden"
+                      />
                     </label>
                   </div>
                 </div>

@@ -1,6 +1,8 @@
 const boom = require("@hapi/boom");
 const { Op, Sequelize } = require("sequelize");
 const { models } = require("./../libs/sequelize");
+const { config } = require("../config/config");
+const fs = require("fs");
 
 class PacienteService {
   constructor() {}
@@ -149,12 +151,12 @@ class PacienteService {
       personaId: newPersona.id,
     });
     const newHistoria = await models.HistoriaClinica.create({ arbolGene: "" });
-    const newP_Crea = await models.P_creaPac.create({
+    await models.P_creaPac.create({
       ...personalAdmin,
       pacienteId: newPaciente.id,
       historiaId: newHistoria.id,
     });
-    return newP_Crea;
+    return newPersona.id;
   }
   async update(id, changes) {
     const { paciente, persona } = changes;
@@ -194,6 +196,49 @@ class PacienteService {
       where: { id: pacienteId },
     });
     return { pacienteId };
+  }
+
+  //foto
+
+  async fotoPaciente(id, req) {
+    let datos = {};
+    if (req) {
+      datos.foto = config.urlImagenesBD + "pacientes/" + req.filename;
+    }
+    await models.Persona.update(datos, {
+      where: { id: id },
+    });
+    return datos.foto;
+  }
+  async actualizarFotoPaciente(id, file) {
+    const pacienteBuscado = await models.Paciente.findOne({ where: { id } });
+    if (!pacienteBuscado) {
+      throw new Error("No se encontró el Paciente");
+    }
+
+    const personaBuscada = await models.Persona.findOne({
+      where: { id: pacienteBuscado.personaId },
+    });
+    if (!personaBuscada) {
+      throw new Error("No se encontró la Persona asociada al Paciente");
+    }
+
+    const imagenEliminar = personaBuscada.foto;
+
+    let datos = {};
+    if (file) {
+      datos.foto = config.urlImagenesBD + "pacientes/" + file.filename;
+    }
+
+    await models.Persona.update(datos, {
+      where: { id: personaBuscada.id },
+    });
+
+    if (imagenEliminar !== "") {
+      fs.unlinkSync(config.urlImagenesEliminarRuta + imagenEliminar);
+    }
+
+    return datos.foto;
   }
 }
 

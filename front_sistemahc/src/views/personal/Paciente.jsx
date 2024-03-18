@@ -136,7 +136,6 @@ const Paciente = () => {
   };
   const handleHistoria = async (datos) => {
     try {
-      //console.log(datos)
       navigate(`/personal/historia/${datos.id}`);
     } catch (error) {
       console.log(error);

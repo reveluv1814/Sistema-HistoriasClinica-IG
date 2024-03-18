@@ -38,7 +38,7 @@ Accept: application/json
       "ci": "12345687",
       "telefono": "152879522",
       "direccion": "villa copa ",
-      "foto": "https://picsum.photos/id/237/200/300",
+      "foto": "",
       "es_persona": false
     },
     "doctor":{
@@ -101,7 +101,7 @@ Accept: application/json
       "ci": "12345687",
       "telefono": "152879522",
       "direccion": "villa copa ",
-      "foto": "http://placehold.it/32x32",
+      "foto": "",
       "es_persona": false
     },
     "personalAdmin":{
@@ -159,7 +159,7 @@ Accept: application/json
       "ci": "12345687",
       "telefono": "152879522",
       "direccion": "villa copa ",
-      "foto": "http://placehold.it/32x32",
+      "foto": "",
       "es_persona": false
     },
     "laboratorista":{

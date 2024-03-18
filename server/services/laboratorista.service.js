@@ -3,6 +3,7 @@ const { Op, Sequelize } = require("sequelize");
 const { models } = require("../libs/sequelize");
 const UserService = require("./usuario.service");
 const { config } = require("../config/config");
+const fs = require("fs");
 
 class LaboratoristaService {
   constructor() {}
@@ -189,6 +190,36 @@ class LaboratoristaService {
     await models.Persona.update(datos, {
       where: { id: id },
     });
+    return datos.foto;
+  }
+  async actualizarFotoLaboratorista(id, file) {
+    const laboBuscado = await models.Laboratorista.findOne({ where: { id } });
+    if (!laboBuscado) {
+      throw new Error("No se encontró el Laboratorista");
+    }
+
+    const personaBuscada = await models.Persona.findOne({
+      where: { id: laboBuscado.personaId },
+    });
+    if (!personaBuscada) {
+      throw new Error("No se encontró la Persona asociada al Laboratorista");
+    }
+
+    const imagenEliminar = personaBuscada.foto;
+
+    let datos = {};
+    if (file) {
+      datos.foto = config.urlImagenesBD + "laboratoristas/" + file.filename;
+    }
+
+    await models.Persona.update(datos, {
+      where: { id: laboBuscado.personaId },
+    });
+
+    if (imagenEliminar !== "") {
+      fs.unlinkSync(config.urlImagenesEliminarRuta + imagenEliminar);
+    }
+
     return datos.foto;
   }
   //

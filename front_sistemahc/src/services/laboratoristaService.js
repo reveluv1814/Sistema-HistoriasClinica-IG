@@ -13,6 +13,10 @@ const laboratoristaService = {
     return api.post(`/admin/laboratorista/${id}/foto`, datos);
   },
 
+  actualizarFoto: (id, datos) => {
+    return api.post(`/admin/laboratorista/${id}/actualizar-foto`, datos);
+  },
+
   mostrar: (id) => {
     return api.get(`/admin/laboratorista/${id}`);
   },

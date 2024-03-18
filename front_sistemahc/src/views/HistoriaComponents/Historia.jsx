@@ -9,7 +9,7 @@ import ExploracionF from "./ExploracionF";
 import Cita from "./Cita";
 import Laboratorio from "./Laboratorio";
 
-const Historia = ({atras}) => {
+const Historia = ({ atras }) => {
   //consigue el id de params
   const { id } = useParams();
   const navigate = useNavigate();
@@ -58,7 +58,6 @@ const Historia = ({atras}) => {
         <p className="text-3xl mt-5 dark:text-white">Cargando...</p>
       ) : (
         <>
-          {/* <p>los valores aqui:{JSON.stringify(historia)}</p> */}
           <Pacientes paciente={historia.historia.paciente} />
           <AntecedenteF antecedenteF={historia.historia.antecedenteF} />
           <AntecedenteP antecedenteP={historia.historia.antecedenteP} />
@@ -72,11 +71,30 @@ const Historia = ({atras}) => {
                 <hr className="mb-4 border border-sky-700 shadow dark:border-sky-800" />
                 <div className="flex items-center justify-center w-full">
                   <div className=" h-96 w-96">
-                    <img
-                      src="https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg"
-                      alt=""
-                      className="max-h-full max-w-full object-cover"
-                    />
+                    <a
+                      href={
+                        historia.historia.arbolGene
+                          ? import.meta.env.VITE_URL_BACK_SERVICE +
+                            historia.historia.arbolGene
+                          : "/imagePlaceholder.jpg"
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src={
+                          historia.historia.arbolGene
+                            ? import.meta.env.VITE_URL_BACK_SERVICE +
+                              historia.historia.arbolGene
+                            : "/imagePlaceholder.jpg"
+                        }
+                        alt="Árbol genealógico"
+                        onError={(e) =>
+                          (e.target.src = "/imagePlaceholder.jpg")
+                        }
+                        className=" object-cover rounded-md shadow-sm"
+                      />
+                    </a>
                   </div>
                 </div>
               </div>

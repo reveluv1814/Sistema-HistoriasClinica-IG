@@ -2,6 +2,9 @@ const express = require("express");
 
 const PacienteService = require("../../services/paciente.service");
 const PcreaPacService = require("../../services/p_creaPac.service");
+const configureMulter = require("./../../libs/uploadImages");
+const { config } = require("../../config/config");
+
 //const HistoriaService = require("../../services/historia.service");
 
 //middlewares
@@ -11,12 +14,7 @@ const {
 } = require("../../middlewares/validator.handler"); //valida los schemas
 const { checkRoles } = require("./../../middlewares/auth.handler"); //para verificar el rol
 //schemas
-const {
-  getPersonalAdminSchema,
-  createPersonalAdminSchema,
-  updatePersonalAdminSchema,
-  addCreaPaciente,
-} = require("../../schemas/personalAdmin.schema");
+const { addCreaPaciente } = require("../../schemas/personalAdmin.schema");
 const {
   updatePersonaSchema,
   createPersonaSchema,
@@ -26,15 +24,14 @@ const {
   createPacienteSchema,
   updatePacienteSchema,
 } = require("../../schemas/paciente.schema");
-const {
-  getHistoriaSchema,
-  updateHistoriaSchema,
-} = require("../../schemas/historiaClinica.schema");
 
 //inicializando
 const router = express.Router();
 const pacienteService = new PacienteService();
 const pcreaPacService = new PcreaPacService();
+
+//configuracon de multer con las rutas y nombre, en este caso ruta doctor y nombre doctor
+const upload = configureMulter(config.urlImagenes + "pacientes", "paciente");
 
 router.get(
   "/",
@@ -84,6 +81,38 @@ router.post(
     }
   }
 );
+
+///imagenes post
+router.post(
+  "/:id/foto",
+  checkRoles("admin", "personalAdmin"),
+  upload.single("fileHC"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const result = await pacienteService.fotoPaciente(id, req.file);
+      res.status(201).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+//imagenes edit
+router.post(
+  "/:id/actualizar-foto",
+  checkRoles("admin", "personalAdmin"),
+  upload.single("fileHC"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const result = await pacienteService.actualizarFotoPaciente(id, req.file);
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 router.patch(
   "/:id",
   checkRoles("admin", "personalAdmin"),

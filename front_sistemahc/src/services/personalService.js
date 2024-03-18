@@ -13,6 +13,10 @@ const personalService = {
     return api.post(`/admin/personalAd/${id}/foto`, datos);
   },
 
+  actualizarFoto: (id, datos) => {
+    return api.post(`/admin/personalAd/${id}/actualizar-foto`, datos);
+  },
+
   mostrar: (id) => {
     return api.get(`/admin/personalAd/${id}`);
   },
