@@ -16,7 +16,7 @@ const LaboratorioView = ({ laboratoristas }) => {
         <div className="border rounded-md p-4 shadow-md flex bg-zinc-100 dark:bg-stone-800 dark:border-stone-700 w-full">
           <div className="flex flex-col w-full">
             <h2 className="text-2xl font-semibold mb-1 dark:text-gray-300">
-              Examenes de Laboratorio
+              Exámenes de Laboratorio
             </h2>
             <hr
               className="mb-4 border border-sky-700 shadow w-full dark:border-sky-800"

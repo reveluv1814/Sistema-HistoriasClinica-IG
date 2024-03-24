@@ -30,7 +30,7 @@ const PacienteVista = () => {
   const getPacientes = async (nroPage = 1, limit = 10) => {
     setPage(nroPage);
     const { data } = await pacienteService.listarDoc(q, nroPage, limit);
-   /*  console.log(data.pacientes);
+    /*  console.log(data.pacientes);
     console.log("TOTAL:", data.pacientes.count);
     console.log("Registros:", data.pacientes.rows);  */
     setTotal(data.pacientes.count);
