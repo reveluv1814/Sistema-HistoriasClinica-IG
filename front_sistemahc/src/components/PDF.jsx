@@ -157,7 +157,7 @@ const PDF = ({ historiaData }) => {
                   import.meta.env.VITE_URL_BACK_SERVICE + historiaData.arbolGene
                 }
                 style={styles.arbolG}
-              />{" "}
+              />
             </View>
           )}
           <Text style={styles.subTitle}>VI. Exploración Física</Text>
