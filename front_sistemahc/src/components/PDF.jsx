@@ -14,6 +14,8 @@ import OpenSBold from "./../font/OpenSans_Condensed-Bold.ttf";
 import OpenS from "./../font/OpenSans-Regular.ttf";
 import AntecedentesFPDF from "./PDF-Componentes/AntecedentesF_PDF";
 import AntecedentesPPDF from "./PDF-Componentes/AntecedentesP_PDF";
+import ComposicionFPDF from "./PDF-Componentes/ComposicionF_PDF";
+import ExploracionFPDF from "./PDF-Componentes/ExploracionF_PDF";
 
 Font.register({
   family: "Opensans",
@@ -33,6 +35,10 @@ const styles = StyleSheet.create({
     paddingLeft: "2.54cm", // Margen izquierdo
     paddingRight: "2.54cm", // Margen derecho
     position: "relative",
+  },
+  textApartado: {
+    fontSize: 9,
+    marginBottom: 2,
   },
   headerContainer: {
     flexDirection: "row",
@@ -57,6 +63,10 @@ const styles = StyleSheet.create({
   logo: {
     width: 40,
     height: 40,
+  },
+  arbolG: {
+    width: 300,
+    height: 350,
   },
   hr: {
     borderBottomColor: "black",
@@ -106,25 +116,56 @@ const PDF = ({ historiaData }) => {
         <Text style={styles.title}>Historia Clínica</Text>
         <View>
           <Text style={styles.subTitle}>I. Filiación</Text>
-          <FiliacionPDF paciente={historiaData.paciente} />
+          {historiaData.paciente !== null ? (
+            <FiliacionPDF paciente={historiaData.paciente} />
+          ) : (
+            <Text style={styles.textApartado}>sin datos...</Text>
+          )}
           <View style={styles.sectionHr} />
           <Text style={styles.subTitle}>II. Antecedentes Familiares</Text>
-          <AntecedentesFPDF antecedenteF={historiaData.antecedenteF} />
+          {historiaData.antecedenteF !== null ? (
+            <AntecedentesFPDF antecedenteF={historiaData.antecedenteF} />
+          ) : (
+            <Text style={styles.textApartado}>sin datos...</Text>
+          )}
           <View style={styles.sectionHr} />
           <Text style={styles.subTitle}>III. Antecedentes Personales</Text>
-          <AntecedentesPPDF antecedenteP={historiaData.antecedenteP} />
+          {historiaData.antecedenteP !== null ? (
+            <AntecedentesPPDF antecedenteP={historiaData.antecedenteP} />
+          ) : (
+            <Text style={styles.textApartado}>sin datos...</Text>
+          )}
           <View style={styles.sectionHr} />
           <Text style={styles.subTitle}>IV. Composición de la Familia</Text>
-          {/* Datos omitidos... */}
-          <Text>hola</Text>
-          <View style={styles.sectionHr} />
+          {historiaData.composicionesF.length === 0 ? (
+            <Text style={styles.textApartado}>sin datos...</Text>
+          ) : (
+            <ComposicionFPDF composicionesF={historiaData.composicionesF} />
+          )}
+
           <Text style={styles.subTitle}>V. Árbol Genealógico</Text>
-          {/* Imagen omitida... */}
-          <Text>hola</Text>
-          <View style={styles.sectionHr} />
+          {historiaData.arbolGene !== "" && (
+            <View
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: 5,
+              }}
+            >
+              <Image
+                src={
+                  import.meta.env.VITE_URL_BACK_SERVICE + historiaData.arbolGene
+                }
+                style={styles.arbolG}
+              />{" "}
+            </View>
+          )}
           <Text style={styles.subTitle}>VI. Exploración Física</Text>
-          {/* Tablas omitidas... */}
-          <Text>hola</Text>
+          {historiaData.exploracionF !== null ? (
+            <ExploracionFPDF exploracionF={historiaData.exploracionF} />
+          ) : (
+            <Text style={styles.textApartado}>sin datos...</Text>
+          )}
           <View style={styles.sectionHr} />
           <Text style={styles.subTitle}>
             VII. Resumen de Consultas Realizadas

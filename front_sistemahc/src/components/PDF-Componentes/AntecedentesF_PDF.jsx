@@ -47,7 +47,7 @@ const AntecedentesFPDF = ({ antecedenteF }) => {
       <View style={styles.filaAntecedentesFamiliares}>
         <Text style={styles.textAntecedentesFamiliares}>
           <Text style={{ fontWeight: 700 }}>Padre: </Text>
-          {antecedenteF.nomPadre || ""}
+          {antecedenteF.nomPadre || "sin dato..."}
         </Text>
         <Text style={styles.textAntecedentesFamiliares}>
           <Text style={{ fontWeight: 700 }}>Fecha nac.: </Text>

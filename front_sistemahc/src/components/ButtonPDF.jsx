@@ -1,5 +1,5 @@
 import PDF from "./PDF";
-import { PDFDownloadLink, Font } from "@react-pdf/renderer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const ButtonPDF = ({ historiaData }) => {
   return (
