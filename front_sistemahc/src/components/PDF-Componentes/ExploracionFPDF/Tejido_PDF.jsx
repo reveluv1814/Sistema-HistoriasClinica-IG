@@ -9,6 +9,13 @@ const styles = StyleSheet.create({
     marginBottom: 2,
     fontFamily: "Opensans",
   },
+  textoDescripcion: {
+    fontSize: 9,
+    fontFamily: "Opensans",
+    color: "#344955",
+    fontWeight: 700,
+    marginBottom: 3,
+  },
   textSubApartado: {
     fontSize: 10,
     fontFamily: "Opensans",
@@ -42,50 +49,34 @@ const styles = StyleSheet.create({
     height: 5,
   },
 });
-const NarizPDF = ({ nariz }) => {
+const TejidoPDF = ({ tejidoSub }) => {
+  //     espesor: "Espesor:",
+  //     turgor: "Turgor:",
+  //     edemaManos: "Manos:",
+  //     edemaPies: "Pies:",
+  //     edemaOtros: "Otros:",
+  //     ganglios: "Gánglios:",
+  //     obs: "Obs.",
+
+  //     espesor: { allowNull: true, type: DataTypes.STRING },
+  //   turgor: { allowNull: true, type: DataTypes.STRING },
+  //   edemaManos: { allowNull: true, type: DataTypes.BOOLEAN },
+  //   edemaPies: { allowNull: true, type: DataTypes.BOOLEAN },
+  //   edemaOtros: { allowNull: true, type: DataTypes.STRING },
+  //   ganglios: { allowNull: true, type: DataTypes.STRING },
+  //   obs: { allowNull: true, type: DataTypes.STRING },
   return (
     <View style={styles.sectionApartado}>
-      <Text style={styles.textSubApartado}>5. Nariz</Text>
-      <View style={styles.filaApartado}>
-        <View
-          style={[
-            styles.textApartado,
-            { flexDirection: "row", alignItems: "center" },
-          ]}
-        >
-          <Text style={{ fontWeight: 700 }}>Puente nasal bajo: </Text>
-          <View style={styles.checkbox}>
-            <View
-              style={[
-                nariz.puentenasal === null || !nariz.puentenasal
-                  ? styles.unchecked
-                  : styles.checked,
-              ]}
-            />
-          </View>
-        </View>
-        <Text style={styles.textApartado}>
-          <Text style={{ fontWeight: 700 }}>Estenosis de coanas: </Text>
-          {nariz.stenosis || "sin dato..."}
-        </Text>
-        <View
-          style={[
-            styles.textApartado,
-            { flexDirection: "row", alignItems: "center" },
-          ]}
-        >
-          <Text style={{ fontWeight: 700 }}>Desviación del Tabique: </Text>
-          <View style={styles.checkbox}>
-            <View
-              style={[
-                nariz.tabique === null || !nariz.tabique
-                  ? styles.unchecked
-                  : styles.checked,
-              ]}
-            />
-          </View>
-        </View>
-      </View>
+      <Text style={styles.textSubApartado}>14. Tejido Celular Subcutáneo</Text>
+      <Text style={styles.textApartado}>
+        <Text style={{ fontWeight: 700 }}>Espesor: </Text>
+        {tejidoSub.espesor || "sin dato..."}
+      </Text>
+      <Text style={styles.textApartado}>
+        <Text style={{ fontWeight: 700 }}>Turgor: </Text>
+        {tejidoSub.turgor || "sin dato..."}
+      </Text>
+      <Text style={styles.textoDescripcion}>Edema:</Text>
       <View style={[styles.filaApartado, { width: "60%" }]}>
         <View
           style={[
@@ -93,11 +84,11 @@ const NarizPDF = ({ nariz }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Hipoplasia alar: </Text>
+          <Text style={{ fontWeight: 700 }}>Manos: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                nariz.hipoplasis === null || !nariz.hipoplasis
+                tejidoSub.edemaManos === null || !tejidoSub.edemaManos
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -110,11 +101,11 @@ const NarizPDF = ({ nariz }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Nariz prominente: </Text>
+          <Text style={{ fontWeight: 700 }}>Pies: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                nariz.narizProminente === null || !nariz.narizProminente
+                tejidoSub.edemaPies === null || !tejidoSub.edemaPies
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -123,15 +114,19 @@ const NarizPDF = ({ nariz }) => {
         </View>
       </View>
       <Text style={styles.textApartado}>
-        <Text style={{ fontWeight: 700 }}>Tipo de nariz: </Text>
-        {nariz.tipoNariz || "sin dato..."}
+        <Text style={{ fontWeight: 700 }}>Otros: </Text>
+        {tejidoSub.edemaOtros || "sin dato..."}
+      </Text>
+      <Text style={styles.textApartado}>
+        <Text style={{ fontWeight: 700 }}>Gánglios: </Text>
+        {tejidoSub.ganglios || "sin dato..."}
       </Text>
       <Text style={styles.textApartado}>
         <Text style={{ fontWeight: 700 }}>Obs: </Text>
-        {nariz.obs || "sin dato..."}
+        {tejidoSub.obs || "sin dato..."}
       </Text>
     </View>
   );
 };
 
-export default NarizPDF;
+export default TejidoPDF;

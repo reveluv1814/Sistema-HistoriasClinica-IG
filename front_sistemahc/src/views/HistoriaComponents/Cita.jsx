@@ -29,12 +29,6 @@ const CitaView = ({ citas }) => {
                 </span>
               ) : (
                 citas.map((cita, index) => {
-                  // const fecha = new Date(cita.fecha);
-                  // const dia = fecha.getUTCDate().toString().padStart(2, "0");
-                  // const mes = (fecha.getUTCMonth() + 1)
-                  //   .toString()
-                  //   .padStart(2, "0");
-                  // const año = fecha.getUTCFullYear();
                   return (
                     <div
                       key={index}

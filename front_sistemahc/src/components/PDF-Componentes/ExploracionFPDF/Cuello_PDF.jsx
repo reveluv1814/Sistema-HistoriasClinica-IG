@@ -42,10 +42,11 @@ const styles = StyleSheet.create({
     height: 5,
   },
 });
-const NarizPDF = ({ nariz }) => {
+
+const CuelloPDF = ({ cuello }) => {
   return (
     <View style={styles.sectionApartado}>
-      <Text style={styles.textSubApartado}>5. Nariz</Text>
+      <Text style={styles.textSubApartado}>8. Cuello</Text>
       <View style={styles.filaApartado}>
         <View
           style={[
@@ -53,32 +54,45 @@ const NarizPDF = ({ nariz }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Puente nasal bajo: </Text>
+          <Text style={{ fontWeight: 700 }}>Corto: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                nariz.puentenasal === null || !nariz.puentenasal
+                cuello.corto === null || !cuello.corto
                   ? styles.unchecked
                   : styles.checked,
               ]}
             />
           </View>
         </View>
-        <Text style={styles.textApartado}>
-          <Text style={{ fontWeight: 700 }}>Estenosis de coanas: </Text>
-          {nariz.stenosis || "sin dato..."}
-        </Text>
         <View
           style={[
             styles.textApartado,
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Desviación del Tabique: </Text>
+          <Text style={{ fontWeight: 700 }}>Quistes: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                nariz.tabique === null || !nariz.tabique
+                cuello.quistes === null || !cuello.quistes
+                  ? styles.unchecked
+                  : styles.checked,
+              ]}
+            />
+          </View>
+        </View>
+        <View
+          style={[
+            styles.textApartado,
+            { flexDirection: "row", alignItems: "center" },
+          ]}
+        >
+          <Text style={{ fontWeight: 700 }}>Fístula: </Text>
+          <View style={styles.checkbox}>
+            <View
+              style={[
+                cuello.fistula === null || !cuello.fistula
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -86,18 +100,18 @@ const NarizPDF = ({ nariz }) => {
           </View>
         </View>
       </View>
-      <View style={[styles.filaApartado, { width: "60%" }]}>
+      <View style={styles.filaApartado}>
         <View
           style={[
             styles.textApartado,
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Hipoplasia alar: </Text>
+          <Text style={{ fontWeight: 700 }}>Pterigium colli: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                nariz.hipoplasis === null || !nariz.hipoplasis
+                cuello.colli === null || !cuello.colli
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -110,11 +124,28 @@ const NarizPDF = ({ nariz }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Nariz prominente: </Text>
+          <Text style={{ fontWeight: 700 }}>Tortícolis congénita: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                nariz.narizProminente === null || !nariz.narizProminente
+                cuello.torticolis === null || !cuello.torticolis
+                  ? styles.unchecked
+                  : styles.checked,
+              ]}
+            />
+          </View>
+        </View>
+        <View
+          style={[
+            styles.textApartado,
+            { flexDirection: "row", alignItems: "center" },
+          ]}
+        >
+          <Text style={{ fontWeight: 700 }}>Tiroides: </Text>
+          <View style={styles.checkbox}>
+            <View
+              style={[
+                cuello.tiroides === null || !cuello.tiroides
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -122,16 +153,12 @@ const NarizPDF = ({ nariz }) => {
           </View>
         </View>
       </View>
-      <Text style={styles.textApartado}>
-        <Text style={{ fontWeight: 700 }}>Tipo de nariz: </Text>
-        {nariz.tipoNariz || "sin dato..."}
-      </Text>
       <Text style={styles.textApartado}>
         <Text style={{ fontWeight: 700 }}>Obs: </Text>
-        {nariz.obs || "sin dato..."}
+        {cuello.obs || "sin dato..."}
       </Text>
     </View>
   );
 };
 
-export default NarizPDF;
+export default CuelloPDF;

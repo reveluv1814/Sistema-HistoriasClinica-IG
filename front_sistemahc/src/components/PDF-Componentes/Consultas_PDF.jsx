@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, Font } from "@react-pdf/renderer";
+import { Text, View, StyleSheet } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
   sectionApartado: {
@@ -49,8 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 7,
   },
 });
-
-const ComposicionFPDF = ({ composicionesF }) => {
+const ConsultasPDF = ({ citas }) => {
   const fechaFormateada = (fechaProp) => {
     if (fechaProp === null) return null;
     const fecha = new Date(fechaProp);
@@ -63,56 +62,50 @@ const ComposicionFPDF = ({ composicionesF }) => {
   return (
     <View style={styles.sectionApartado}>
       <View style={styles.table}>
-        {/* Table Header */}
+        {/* Cabecera de la tabla */}
         <View style={styles.tableRow}>
           <View style={styles.tableColHeader}>
-            <Text style={styles.tableCellHeader}>Gestación Nº</Text>
+            <Text style={styles.tableCellHeader}>Fecha</Text>
           </View>
           <View style={styles.tableColHeader}>
-            <Text style={styles.tableCellHeader}>Nombre del hijo</Text>
+            <Text style={styles.tableCellHeader}>Motivo de Consulta</Text>
           </View>
           <View style={styles.tableColHeader}>
-            <Text style={styles.tableCellHeader}>Sexo</Text>
+            <Text style={styles.tableCellHeader}>Resumen</Text>
           </View>
           <View style={styles.tableColHeader}>
-            <Text style={styles.tableCellHeader}>Edad</Text>
+            <Text style={styles.tableCellHeader}>Impresión Diagnóstica</Text>
           </View>
           <View style={styles.tableColHeader}>
-            <Text style={styles.tableCellHeader}>Fecha nac.</Text>
-          </View>
-          <View style={styles.tableColHeader}>
-            <Text style={styles.tableCellHeader}>Obs.</Text>
+            <Text style={styles.tableCellHeader}>Doctor</Text>
           </View>
         </View>
-        {/* Table Rows */}
-        {composicionesF.map((fila, index) => (
+        {/* Filas de datos */}
+        {citas.map((cita, index) => (
           <View key={index} style={styles.tableRow}>
             <View style={styles.tableCol}>
               <Text style={styles.tableCell}>
-                {fila.nrogestacion || "sin dato"}
+                {fechaFormateada(cita.fecha)}
+              </Text>
+            </View>
+            <View style={styles.tableCol}>
+              <Text style={styles.tableCell}>
+                {cita.motivo || "sin dato..."}
+              </Text>
+            </View>
+            <View style={styles.tableCol}>
+              <Text style={styles.tableCell}>
+                {cita.resumen || "sin dato..."}
+              </Text>
+            </View>
+            <View style={styles.tableCol}>
+              <Text style={styles.tableCell}>
+                {cita.impresionDiag || "sin dato..."}
               </Text>
             </View>
             <View style={styles.tableCol}>
               <Text style={[styles.tableCell, { textTransform: "capitalize" }]}>
-                {fila.nomHijo || "sin dato"}
-              </Text>
-            </View>
-            <View style={styles.tableCol}>
-              <Text style={styles.tableCell}>{fila.sexo || "sin dato"}</Text>
-            </View>
-            <View style={styles.tableCol}>
-              <Text style={styles.tableCell}>{fila.edad || "sin dato"}</Text>
-            </View>
-            <View style={styles.tableCol}>
-              <Text style={styles.tableCell}>
-                {fechaFormateada(fila.fechanac)}
-              </Text>
-            </View>
-            <View style={[styles.tableCol, { alignItems: "flex-start" }]}>
-              <Text
-                style={[styles.tableCell, { justifyContent: "flex-start" }]}
-              >
-                {fila.obs}
+                {cita.doctor.persona.nombreCompleto}
               </Text>
             </View>
           </View>
@@ -122,4 +115,4 @@ const ComposicionFPDF = ({ composicionesF }) => {
   );
 };
 
-export default ComposicionFPDF;
+export default ConsultasPDF;

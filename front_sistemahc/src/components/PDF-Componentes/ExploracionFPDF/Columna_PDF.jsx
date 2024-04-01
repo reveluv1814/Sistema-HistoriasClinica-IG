@@ -42,10 +42,10 @@ const styles = StyleSheet.create({
     height: 5,
   },
 });
-const NarizPDF = ({ nariz }) => {
+const ColumnaPDF = ({ columna }) => {
   return (
     <View style={styles.sectionApartado}>
-      <Text style={styles.textSubApartado}>5. Nariz</Text>
+      <Text style={styles.textSubApartado}>10. Columna</Text>
       <View style={styles.filaApartado}>
         <View
           style={[
@@ -53,32 +53,45 @@ const NarizPDF = ({ nariz }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Puente nasal bajo: </Text>
+          <Text style={{ fontWeight: 700 }}>Cifosis: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                nariz.puentenasal === null || !nariz.puentenasal
+                columna.cifosis === null || !columna.cifosis
                   ? styles.unchecked
                   : styles.checked,
               ]}
             />
           </View>
         </View>
-        <Text style={styles.textApartado}>
-          <Text style={{ fontWeight: 700 }}>Estenosis de coanas: </Text>
-          {nariz.stenosis || "sin dato..."}
-        </Text>
         <View
           style={[
             styles.textApartado,
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Desviación del Tabique: </Text>
+          <Text style={{ fontWeight: 700 }}>Escoliosis: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                nariz.tabique === null || !nariz.tabique
+                columna.escoliosis === null || !columna.escoliosis
+                  ? styles.unchecked
+                  : styles.checked,
+              ]}
+            />
+          </View>
+        </View>
+        <View
+          style={[
+            styles.textApartado,
+            { flexDirection: "row", alignItems: "center" },
+          ]}
+        >
+          <Text style={{ fontWeight: 700 }}>Lordosis: </Text>
+          <View style={styles.checkbox}>
+            <View
+              style={[
+                columna.lordosis === null || !columna.lordosis
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -86,18 +99,18 @@ const NarizPDF = ({ nariz }) => {
           </View>
         </View>
       </View>
-      <View style={[styles.filaApartado, { width: "60%" }]}>
+      <View style={[styles.filaApartado, { width: "59%" }]}>
         <View
           style={[
             styles.textApartado,
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Hipoplasia alar: </Text>
+          <Text style={{ fontWeight: 700 }}>Apéndice presacral: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                nariz.hipoplasis === null || !nariz.hipoplasis
+                columna.apendice === null || !columna.apendice
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -110,11 +123,11 @@ const NarizPDF = ({ nariz }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Nariz prominente: </Text>
+          <Text style={{ fontWeight: 700 }}>Fóvea Coccigea: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                nariz.narizProminente === null || !nariz.narizProminente
+                columna.fovea === null || !columna.fovea
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -122,16 +135,12 @@ const NarizPDF = ({ nariz }) => {
           </View>
         </View>
       </View>
-      <Text style={styles.textApartado}>
-        <Text style={{ fontWeight: 700 }}>Tipo de nariz: </Text>
-        {nariz.tipoNariz || "sin dato..."}
-      </Text>
       <Text style={styles.textApartado}>
         <Text style={{ fontWeight: 700 }}>Obs: </Text>
-        {nariz.obs || "sin dato..."}
+        {columna.obs || "sin dato..."}
       </Text>
     </View>
   );
 };
 
-export default NarizPDF;
+export default ColumnaPDF;

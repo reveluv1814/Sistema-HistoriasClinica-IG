@@ -89,7 +89,6 @@ const FiliacionPDF = ({ paciente }) => {
         </Text>
       </View>
       <View style={styles.filaFiliacion}>
-        {" "}
         <Text style={styles.textFiliacion}>
           <Text style={{ fontWeight: 700 }}>Dirección: </Text>
           {paciente?.persona?.direccion || ""}

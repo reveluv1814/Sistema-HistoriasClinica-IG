@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   },
   textApartado: {
     fontSize: 9,
-    marginBottom: 4,
+    marginBottom: 2,
     fontFamily: "Opensans",
   },
   textSubApartado: {
@@ -42,10 +42,10 @@ const styles = StyleSheet.create({
     height: 5,
   },
 });
-const OjosPDF = ({ ojos }) => {
+const BocaPDF = ({ boca }) => {
   return (
     <View style={styles.sectionApartado}>
-      <Text style={styles.textSubApartado}>4. Ojos</Text>
+      <Text style={styles.textSubApartado}>7. Boca</Text>
       <View style={styles.filaApartado}>
         <View
           style={[
@@ -53,11 +53,11 @@ const OjosPDF = ({ ojos }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Sinofiris: </Text>
+          <Text style={{ fontWeight: 700 }}>Labio leporino: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                ojos.sinofiris === null || !ojos.sinofiris
+                boca.leporino === null || !boca.leporino
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -70,11 +70,11 @@ const OjosPDF = ({ ojos }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Ptosis parpebral: </Text>
+          <Text style={{ fontWeight: 700 }}>Labio vol.: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                ojos.ptosis_p === null || !ojos.ptosis_p
+                boca.vol === null || !boca.vol
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -87,11 +87,11 @@ const OjosPDF = ({ ojos }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Estrabismo: </Text>
+          <Text style={{ fontWeight: 700 }}>Fosetas en labio inf.: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                ojos.estrabismo === null || !ojos.estrabismo
+                boca.fosetasInf === null || !boca.fosetasInf
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -106,159 +106,13 @@ const OjosPDF = ({ ojos }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Convergente: </Text>
-          <View style={styles.checkbox}>
-            <View
-              style={[
-                ojos.convergente === null || !ojos.convergente
-                  ? styles.unchecked
-                  : styles.checked,
-              ]}
-            />
-          </View>
-        </View>
-        <View
-          style={[
-            styles.textApartado,
-            { flexDirection: "row", alignItems: "center" },
-          ]}
-        >
-          <Text style={{ fontWeight: 700 }}>Divergente: </Text>
-          <View style={styles.checkbox}>
-            <View
-              style={[
-                ojos.divergente === null || !ojos.divergente
-                  ? styles.unchecked
-                  : styles.checked,
-              ]}
-            />
-          </View>
-        </View>
-        <View
-          style={[
-            styles.textApartado,
-            { flexDirection: "row", alignItems: "center" },
-          ]}
-        >
-          <Text style={{ fontWeight: 700 }}>Infección: </Text>
-          <View style={styles.checkbox}>
-            <View
-              style={[
-                ojos.infeccion === null || !ojos.infeccion
-                  ? styles.unchecked
-                  : styles.checked,
-              ]}
-            />
-          </View>
-        </View>
-      </View>
-      <View style={styles.filaApartado}>
-        <View
-          style={[
-            styles.textApartado,
-            { flexDirection: "row", alignItems: "center" },
-          ]}
-        >
-          <Text style={{ fontWeight: 700 }}>Epífora: </Text>
-          <View style={styles.checkbox}>
-            <View
-              style={[
-                ojos.epifora === null || !ojos.epifora
-                  ? styles.unchecked
-                  : styles.checked,
-              ]}
-            />
-          </View>
-        </View>
-        <View
-          style={[
-            styles.textApartado,
-            { flexDirection: "row", alignItems: "center" },
-          ]}
-        >
-          <Text style={{ fontWeight: 700 }}>Anoftalmina: </Text>
-          <View style={styles.checkbox}>
-            <View
-              style={[
-                ojos.anoftalmina === null || !ojos.anoftalmina
-                  ? styles.unchecked
-                  : styles.checked,
-              ]}
-            />
-          </View>
-        </View>
-        <View
-          style={[
-            styles.textApartado,
-            { flexDirection: "row", alignItems: "center" },
-          ]}
-        >
-          <Text style={{ fontWeight: 700 }}>Microftalmina: </Text>
-          <View style={styles.checkbox}>
-            <View
-              style={[
-                ojos.microftalmina === null || !ojos.microftalmina
-                  ? styles.unchecked
-                  : styles.checked,
-              ]}
-            />
-          </View>
-        </View>
-      </View>
-      <View style={styles.filaApartado}>
-        <View
-          style={[
-            styles.textApartado,
-            { flexDirection: "row", alignItems: "center" },
-          ]}
-        >
-          <Text style={{ fontWeight: 700 }}>Hipertelorismo: </Text>
-          <View style={styles.checkbox}>
-            <View
-              style={[
-                ojos.hipertelorismo === null || !ojos.hipertelorismo
-                  ? styles.unchecked
-                  : styles.checked,
-              ]}
-            />
-          </View>
-        </View>
-        <View
-          style={[
-            styles.textApartado,
-            { flexDirection: "row", alignItems: "center" },
-          ]}
-        >
-          <Text style={{ fontWeight: 700 }}>Epicanto: </Text>
-          <View style={styles.checkbox}>
-            <View
-              style={[
-                ojos.epicanto === null || !ojos.epicanto
-                  ? styles.unchecked
-                  : styles.checked,
-              ]}
-            />
-          </View>
-        </View>
-        <Text style={styles.textApartado}>
           <Text style={{ fontWeight: 700 }}>
-            Ángulos parpebrales oblicuos:{" "}
+            Comisuras desviadas, hacia abajo:{" "}
           </Text>
-          {ojos.angulo_oblicuos || "sin dato..."}
-        </Text>
-      </View>
-      <View style={styles.filaApartado}>
-        <View
-          style={[
-            styles.textApartado,
-            { flexDirection: "row", alignItems: "center" },
-          ]}
-        >
-          <Text style={{ fontWeight: 700 }}>Exoftalmina: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                ojos.exoftalmina === null || !ojos.exoftalmina
+                boca.comisuras === null || !boca.comisuras
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -271,11 +125,11 @@ const OjosPDF = ({ ojos }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Nistagmus: </Text>
+          <Text style={{ fontWeight: 700 }}>Microstomía: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                ojos.nistagmus === null || !ojos.nistagmus
+                boca.microstomia === null || !boca.microstomia
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -288,11 +142,11 @@ const OjosPDF = ({ ojos }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Escleras azules: </Text>
+          <Text style={{ fontWeight: 700 }}>Macrostomía: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                ojos.escleras_azul === null || !ojos.escleras_azul
+                boca.macrostomia === null || !boca.macrostomia
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -307,11 +161,11 @@ const OjosPDF = ({ ojos }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Coloboma: </Text>
+          <Text style={{ fontWeight: 700 }}>Macroglosia: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                ojos.coloboma === null || !ojos.coloboma
+                boca.macroglosia === null || !boca.macroglosia
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -324,11 +178,11 @@ const OjosPDF = ({ ojos }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Aniridia: </Text>
+          <Text style={{ fontWeight: 700 }}>Lengua hendida: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                ojos.aniridia === null || !ojos.aniridia
+                boca.lenguaHendida === null || !boca.lenguaHendida
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -341,11 +195,11 @@ const OjosPDF = ({ ojos }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Máculas en iris: </Text>
+          <Text style={{ fontWeight: 700 }}>Lengua geografica: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                ojos.maculas_iris === null || !ojos.maculas_iris
+                boca.lenguaGeo === null || !boca.lenguaGeo
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -360,11 +214,11 @@ const OjosPDF = ({ ojos }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Catarata: </Text>
+          <Text style={{ fontWeight: 700 }}>Frenillo corto: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                ojos.catarata === null || !ojos.catarata
+                boca.frenillo === null || !boca.frenillo
                   ? styles.unchecked
                   : styles.checked,
               ]}
@@ -377,24 +231,111 @@ const OjosPDF = ({ ojos }) => {
             { flexDirection: "row", alignItems: "center" },
           ]}
         >
-          <Text style={{ fontWeight: 700 }}>Leucoma: </Text>
+          <Text style={{ fontWeight: 700 }}>Alt. dental: </Text>
           <View style={styles.checkbox}>
             <View
               style={[
-                ojos.leucoma === null || !ojos.leucoma
+                boca.altDental === null || !boca.altDental
                   ? styles.unchecked
                   : styles.checked,
               ]}
             />
           </View>
+        </View>
+        <View
+          style={[
+            styles.textApartado,
+            { flexDirection: "row", alignItems: "center" },
+          ]}
+        >
+          <Text style={{ fontWeight: 700 }}>Fisura palatina: </Text>
+          <View style={styles.checkbox}>
+            <View
+              style={[
+                boca.fisuraPalatina === null || !boca.fisuraPalatina
+                  ? styles.unchecked
+                  : styles.checked,
+              ]}
+            />
+          </View>
+        </View>
+      </View>
+      <View style={styles.filaApartado}>
+        <View
+          style={[
+            styles.textApartado,
+            { flexDirection: "row", alignItems: "center" },
+          ]}
+        >
+          <Text style={{ fontWeight: 700 }}>Paladar ojival: </Text>
+          <View style={styles.checkbox}>
+            <View
+              style={[
+                boca.paladarOjival === null || !boca.paladarOjival
+                  ? styles.unchecked
+                  : styles.checked,
+              ]}
+            />
+          </View>
+        </View>
+        <View
+          style={[
+            styles.textApartado,
+            { flexDirection: "row", alignItems: "center" },
+          ]}
+        >
+          <Text style={{ fontWeight: 700 }}>Paladar alto: </Text>
+          <View style={styles.checkbox}>
+            <View
+              style={[
+                boca.paladarAlto === null || !boca.paladarAlto
+                  ? styles.unchecked
+                  : styles.checked,
+              ]}
+            />
+          </View>
+        </View>
+        <View
+          style={[
+            styles.textApartado,
+            { flexDirection: "row", alignItems: "center" },
+          ]}
+        >
+          <Text style={{ fontWeight: 700 }}>Úvula bífida: </Text>
+          <View style={styles.checkbox}>
+            <View
+              style={[
+                boca.uvulaBifida === null || !boca.uvulaBifida
+                  ? styles.unchecked
+                  : styles.checked,
+              ]}
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        style={[
+          styles.textApartado,
+          { flexDirection: "row", alignItems: "center" },
+        ]}
+      >
+        <Text style={{ fontWeight: 700 }}>Palpación del paladar: </Text>
+        <View style={styles.checkbox}>
+          <View
+            style={[
+              boca.palpacionPaladar === null || !boca.palpacionPaladar
+                ? styles.unchecked
+                : styles.checked,
+            ]}
+          />
         </View>
       </View>
       <Text style={styles.textApartado}>
         <Text style={{ fontWeight: 700 }}>Obs: </Text>
-        {ojos.obs || "sin dato..."}
+        {boca.obs || "sin dato..."}
       </Text>
     </View>
   );
 };
 
-export default OjosPDF;
+export default BocaPDF;

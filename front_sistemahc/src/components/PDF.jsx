@@ -16,6 +16,8 @@ import AntecedentesFPDF from "./PDF-Componentes/AntecedentesF_PDF";
 import AntecedentesPPDF from "./PDF-Componentes/AntecedentesP_PDF";
 import ComposicionFPDF from "./PDF-Componentes/ComposicionF_PDF";
 import ExploracionFPDF from "./PDF-Componentes/ExploracionF_PDF";
+import ConsultasPDF from "./PDF-Componentes/Consultas_PDF";
+import LaboratorioPDF from "./PDF-Componentes/Laboratorio_PDF";
 
 Font.register({
   family: "Opensans",
@@ -65,8 +67,8 @@ const styles = StyleSheet.create({
     height: 40,
   },
   arbolG: {
-    width: 300,
-    height: 350,
+    width: 'auto',
+    height: 250,
   },
   hr: {
     borderBottomColor: "black",
@@ -119,26 +121,26 @@ const PDF = ({ historiaData }) => {
           {historiaData.paciente !== null ? (
             <FiliacionPDF paciente={historiaData.paciente} />
           ) : (
-            <Text style={styles.textApartado}>sin datos...</Text>
+            <Text style={styles.textApartado}>Sin datos...</Text>
           )}
           <View style={styles.sectionHr} />
           <Text style={styles.subTitle}>II. Antecedentes Familiares</Text>
           {historiaData.antecedenteF !== null ? (
             <AntecedentesFPDF antecedenteF={historiaData.antecedenteF} />
           ) : (
-            <Text style={styles.textApartado}>sin datos...</Text>
+            <Text style={styles.textApartado}>Sin datos...</Text>
           )}
           <View style={styles.sectionHr} />
           <Text style={styles.subTitle}>III. Antecedentes Personales</Text>
           {historiaData.antecedenteP !== null ? (
             <AntecedentesPPDF antecedenteP={historiaData.antecedenteP} />
           ) : (
-            <Text style={styles.textApartado}>sin datos...</Text>
+            <Text style={styles.textApartado}>Sin datos...</Text>
           )}
           <View style={styles.sectionHr} />
           <Text style={styles.subTitle}>IV. Composición de la Familia</Text>
           {historiaData.composicionesF.length === 0 ? (
-            <Text style={styles.textApartado}>sin datos...</Text>
+            <Text style={styles.textApartado}>Sin datos...</Text>
           ) : (
             <ComposicionFPDF composicionesF={historiaData.composicionesF} />
           )}
@@ -164,18 +166,24 @@ const PDF = ({ historiaData }) => {
           {historiaData.exploracionF !== null ? (
             <ExploracionFPDF exploracionF={historiaData.exploracionF} />
           ) : (
-            <Text style={styles.textApartado}>sin datos...</Text>
+            <Text style={styles.textApartado}>Sin datos...</Text>
           )}
           <View style={styles.sectionHr} />
           <Text style={styles.subTitle}>
             VII. Resumen de Consultas Realizadas
           </Text>
-          {/* Tabla omitida... */}
-          <Text>hola</Text>
+          {historiaData.citas.length === 0 ? (
+            <Text style={styles.textApartado}>Sin datos...</Text>
+          ) : (
+            <ConsultasPDF citas={historiaData.citas} />
+          )}
           <View style={styles.sectionHr} />
           <Text style={styles.subTitle}>VIII. Exámenes de Laboratorio</Text>
-          {/* Tabla omitida... */}
-          <Text>hola</Text>
+          {historiaData.resultadosLabo.length === 0 ? (
+            <Text style={styles.textApartado}>Sin datos...</Text>
+          ) : (
+            <LaboratorioPDF laboratoristas={historiaData.resultadosLabo} />
+          )}
           <View style={styles.sectionHr} />
         </View>
         <Text

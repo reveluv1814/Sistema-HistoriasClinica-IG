@@ -8,7 +8,7 @@ const Musculatura = ({ musculatura }) => {
     normotrofica: "Normotrófica:",
     hipotrofica: "Hipotrófica:",
     hipertrofica: "Hipertrófica:",
-    normotonica: "Normotónica::",
+    normotonica: "Normotónica:",
     hipotonica: "Hipotónica:",
     hipertonica: "Hipertónica:",
     fuerzaMus: "Fuerza muscular:",

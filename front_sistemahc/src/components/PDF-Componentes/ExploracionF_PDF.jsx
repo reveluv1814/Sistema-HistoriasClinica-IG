@@ -4,6 +4,18 @@ import CraneoFPDF from "./ExploracionFPDF/CraneoF_PDF";
 import OrejasPDF from "./ExploracionFPDF/Orejas_PDF";
 import OjosPDF from "./ExploracionFPDF/Ojos_PDF";
 import NarizPDF from "./ExploracionFPDF/Nariz_PDF";
+import MaxManPDF from "./ExploracionFPDF/MaxMan_PDF";
+import BocaPDF from "./ExploracionFPDF/Boca_PDF";
+import CuelloPDF from "./ExploracionFPDF/Cuello_PDF";
+import ToraxPDF from "./ExploracionFPDF/Torax_PDF";
+import ColumnaPDF from "./ExploracionFPDF/Columna_PDF";
+import AbdomenPDF from "./ExploracionFPDF/Abdomen_PDF";
+import MiembrosPDF from "./ExploracionFPDF/Miembros_PDF";
+import GenitalesExtPDF from "./ExploracionFPDF/GenitalesExt_PDF";
+import TejidoPDF from "./ExploracionFPDF/Tejido_PDF";
+import MusculaturaPDF from "./ExploracionFPDF/Musculatura_PDF";
+import PielAnexosPDF from "./ExploracionFPDF/PielAnexos_PDF";
+import ExNeurologicoPDF from "./ExploracionFPDF/ExNeurologico_PDF";
 
 const styles = StyleSheet.create({
   sectionApartado: {
@@ -165,6 +177,77 @@ const ExploracionFPDF = ({ exploracionF }) => {
         <Text style={styles.textApartado}>sin datos...</Text>
       )}
       <View style={styles.hr} />
+      {exploracionF.maxMandibula !== null ? (
+        <MaxManPDF maxMandibula={exploracionF.maxMandibula} />
+      ) : (
+        <Text style={styles.textApartado}>sin datos...</Text>
+      )}
+      <View style={styles.hr} />
+      {exploracionF.boca !== null ? (
+        <BocaPDF boca={exploracionF.boca} />
+      ) : (
+        <Text style={styles.textApartado}>sin datos...</Text>
+      )}
+      <View style={styles.hr} />
+      {exploracionF.cuello !== null ? (
+        <CuelloPDF cuello={exploracionF.cuello} />
+      ) : (
+        <Text style={styles.textApartado}>sin datos...</Text>
+      )}
+      <View style={styles.hr} />
+      {exploracionF.cuello !== null ? (
+        <ToraxPDF torax={exploracionF.torax} />
+      ) : (
+        <Text style={styles.textApartado}>sin datos...</Text>
+      )}
+      <View style={styles.hr} />
+      {exploracionF.cuello !== null ? (
+        <ColumnaPDF columna={exploracionF.columna} />
+      ) : (
+        <Text style={styles.textApartado}>sin datos...</Text>
+      )}
+      <View style={styles.hr} />
+      {exploracionF.abdomen !== null ? (
+        <AbdomenPDF abdomen={exploracionF.abdomen} />
+      ) : (
+        <Text style={styles.textApartado}>sin datos...</Text>
+      )}
+      <View style={styles.hr} />
+      {exploracionF.miembros !== null ? (
+        <MiembrosPDF miembros={exploracionF.miembros} />
+      ) : (
+        <Text style={styles.textApartado}>sin datos...</Text>
+      )}
+      <View style={styles.hr} />
+      {exploracionF.genitalesEx !== null ? (
+        <GenitalesExtPDF genitalesEx={exploracionF.genitalesEx} />
+      ) : (
+        <Text style={styles.textApartado}>sin datos...</Text>
+      )}
+      <View style={styles.hr} />
+      {exploracionF.tejidoSub !== null ? (
+        <TejidoPDF tejidoSub={exploracionF.tejidoSub} />
+      ) : (
+        <Text style={styles.textApartado}>sin datos...</Text>
+      )}
+      <View style={styles.hr} />
+      {exploracionF.musculatura !== null ? (
+        <MusculaturaPDF musculatura={exploracionF.musculatura} />
+      ) : (
+        <Text style={styles.textApartado}>sin datos...</Text>
+      )}
+      <View style={styles.hr} />
+      {exploracionF.pielAnexos !== null ? (
+        <PielAnexosPDF pielAnexos={exploracionF.pielAnexos} />
+      ) : (
+        <Text style={styles.textApartado}>sin datos...</Text>
+      )}
+      <View style={styles.hr} />
+      {exploracionF.exNeurologico !== null ? (
+        <ExNeurologicoPDF exNeurologico={exploracionF.exNeurologico} />
+      ) : (
+        <Text style={styles.textApartado}>sin datos...</Text>
+      )}
     </View>
   );
 };

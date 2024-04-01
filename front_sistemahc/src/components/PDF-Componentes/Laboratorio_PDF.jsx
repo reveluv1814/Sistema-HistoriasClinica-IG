@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, Font } from "@react-pdf/renderer";
+import { Text, View, StyleSheet } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
   sectionApartado: {
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     display: "table",
     width: "auto",
     borderStyle: "solid",
-    borderColor: "#bfbfbf",
+    borderColor: "#ccc",
     borderWidth: 1,
     borderRightWidth: 0,
     borderBottomWidth: 0,
@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   tableColHeader: {
-    width: "20%",
+    width: "34%",
     borderStyle: "solid",
-    borderColor: "#bfbfbf",
+    borderColor: "#ccc",
     borderBottomColor: "#000",
     borderWidth: 1,
     borderLeftWidth: 0,
@@ -30,9 +30,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   tableCol: {
-    width: "20%",
+    width: "34%",
     borderStyle: "solid",
-    borderColor: "#bfbfbf",
+    borderColor: "#ccc",
     borderWidth: 1,
     borderLeftWidth: 0,
     borderTopWidth: 0,
@@ -40,17 +40,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   tableCellHeader: {
-    margin: 4,
-    fontSize: 7,
+    margin: 5,
+    fontSize: 10,
     fontWeight: "bold",
   },
   tableCell: {
-    margin: 4,
-    fontSize: 7,
+    margin: 5,
+    fontSize: 8,
   },
 });
-
-const ComposicionFPDF = ({ composicionesF }) => {
+const LaboratorioPDF = ({ laboratoristas }) => {
   const fechaFormateada = (fechaProp) => {
     if (fechaProp === null) return null;
     const fecha = new Date(fechaProp);
@@ -63,56 +62,34 @@ const ComposicionFPDF = ({ composicionesF }) => {
   return (
     <View style={styles.sectionApartado}>
       <View style={styles.table}>
-        {/* Table Header */}
+        {/* Cabecera de la tabla */}
         <View style={styles.tableRow}>
           <View style={styles.tableColHeader}>
-            <Text style={styles.tableCellHeader}>Gestación Nº</Text>
+            <Text style={styles.tableCellHeader}>Exámen</Text>
           </View>
           <View style={styles.tableColHeader}>
-            <Text style={styles.tableCellHeader}>Nombre del hijo</Text>
+            <Text style={styles.tableCellHeader}>Fecha de creación</Text>
           </View>
           <View style={styles.tableColHeader}>
-            <Text style={styles.tableCellHeader}>Sexo</Text>
-          </View>
-          <View style={styles.tableColHeader}>
-            <Text style={styles.tableCellHeader}>Edad</Text>
-          </View>
-          <View style={styles.tableColHeader}>
-            <Text style={styles.tableCellHeader}>Fecha nac.</Text>
-          </View>
-          <View style={styles.tableColHeader}>
-            <Text style={styles.tableCellHeader}>Obs.</Text>
+            <Text style={styles.tableCellHeader}>Laboratorista</Text>
           </View>
         </View>
-        {/* Table Rows */}
-        {composicionesF.map((fila, index) => (
+        {/* Filas de datos */}
+        {laboratoristas.map((labHistoria, index) => (
           <View key={index} style={styles.tableRow}>
             <View style={styles.tableCol}>
               <Text style={styles.tableCell}>
-                {fila.nrogestacion || "sin dato"}
+                {labHistoria.historiaLabo.examen || "sin dato..."}
+              </Text>
+            </View>
+            <View style={styles.tableCol}>
+              <Text style={styles.tableCell}>
+                {fechaFormateada(labHistoria.historiaLabo.createdAt)}
               </Text>
             </View>
             <View style={styles.tableCol}>
               <Text style={[styles.tableCell, { textTransform: "capitalize" }]}>
-                {fila.nomHijo || "sin dato"}
-              </Text>
-            </View>
-            <View style={styles.tableCol}>
-              <Text style={styles.tableCell}>{fila.sexo || "sin dato"}</Text>
-            </View>
-            <View style={styles.tableCol}>
-              <Text style={styles.tableCell}>{fila.edad || "sin dato"}</Text>
-            </View>
-            <View style={styles.tableCol}>
-              <Text style={styles.tableCell}>
-                {fechaFormateada(fila.fechanac)}
-              </Text>
-            </View>
-            <View style={[styles.tableCol, { alignItems: "flex-start" }]}>
-              <Text
-                style={[styles.tableCell, { justifyContent: "flex-start" }]}
-              >
-                {fila.obs}
+                {labHistoria.laboratorista.persona.nombreCompleto}
               </Text>
             </View>
           </View>
@@ -122,4 +99,4 @@ const ComposicionFPDF = ({ composicionesF }) => {
   );
 };
 
-export default ComposicionFPDF;
+export default LaboratorioPDF;

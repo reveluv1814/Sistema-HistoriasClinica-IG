@@ -13,7 +13,7 @@ const GenitalesExt = ({ genitalesEx }) => {
     hipoMen: "Hipo. Lab. Men.:",
     hipertrofiaClitoris: "Hipertrofia de clítoris:",
     hidrocele: "Hidrocele congénito:",
-    meato: "Hipospadia: Meato balanoprepucial:",
+    meato: "Meato balanoprepucial:",
     peneal: "Peneal:",
     peneoescrotal: "Peneoescrotal:",
     perineal: "Perineal:",
@@ -21,8 +21,8 @@ const GenitalesExt = ({ genitalesEx }) => {
     fimosis: "Fimosis:",
     tamanioPene: "Tamaño del Pene (en cm):",
     testiculoDMay: "Testículo D (eje mayor):",
-    testiculoDMen: "Testículo I (eje mayor):",
-    testiculoIMay: "Testículo D (eje menor):",
+    testiculoIMay: "Testículo I (eje mayor):",
+    testiculoDMen: "Testículo D (eje menor):",
     testiculoIMen: "Testículo I (eje menor):",
   };
   return (
@@ -40,8 +40,8 @@ const GenitalesExt = ({ genitalesEx }) => {
             key === "tanner" ||
             key === "tamanioPene" ||
             key === "testiculoDMay" ||
-            key === "testiculoDMen" ||
             key === "testiculoIMay" ||
+            key === "testiculoDMen" ||
             key === "testiculoIMen" ? (
               genitalesEx[key] || "sin dato..."
             ) : genitalesEx[key] !== null ? (

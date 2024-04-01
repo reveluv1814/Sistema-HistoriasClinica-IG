@@ -121,15 +121,6 @@ const Miembros = ({ miembros }) => {
             ) : (
               ""
             );
-          const detalles =
-            key === "infDedos" ? (
-              <span className="font-semibold text-indigo-500 dark:text-indigo-600">
-                {" "}
-                Alt. congénita:
-              </span>
-            ) : (
-              ""
-            );
 
           return (
             <div
@@ -142,11 +133,17 @@ const Miembros = ({ miembros }) => {
                 {displayName}{" "}
               </span>{" "}
               {renderContent}
-              {detalles}
               {renderApartados}
-              {key==="supDedos"?(<h3 className="text-base font-semibold mt-2 w-full text-indigo-500 dark:text-indigo-600">
+              {key === "supDedos" && (
+                <h3 className="text-base font-semibold mt-2 w-full text-indigo-500 dark:text-indigo-600">
                   Pliegue:
-                </h3>):""}
+                </h3>
+              )}
+              {key === "infDedos" && (
+                <h3 className="text-base font-semibold mt-2 w-full text-indigo-500 dark:text-indigo-600">
+                  Alt. congénita:
+                </h3>
+              )}
             </div>
           );
         })}

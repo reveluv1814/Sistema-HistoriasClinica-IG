@@ -16,7 +16,7 @@ const PielAnexos = ({ pielAnexos }) => {
     otrasManchas: "Otras manchas:",
     hemanTela: "Hemangiomas y Telangieotasias:",
     alopesiaGen: "Generalizada:",
-    alopesiaPar: "Parcial",
+    alopesiaPar: "Parcial:",
     irsutismo: "Irsutismo:",
     hipoDisManos: "Uñas de manos:",
     hipoDisPies: "Pies:",
@@ -87,7 +87,7 @@ const PielAnexos = ({ pielAnexos }) => {
             ) : (
               ""
             );
-            const Apartado3 =
+          const Apartado3 =
             key === "irsutismo" ? (
               <p
                 key={key}
