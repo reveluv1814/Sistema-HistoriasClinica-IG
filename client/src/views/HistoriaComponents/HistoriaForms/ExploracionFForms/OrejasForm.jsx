@@ -48,7 +48,6 @@ const OrejasForm = ({ expFisicaId }) => {
       const valoresNoVacios = Object.fromEntries(
         Object.entries(values).filter(([_, value]) => value !== "")
       );
-      console.log(valoresNoVacios)
       await exploracionFisicaService.editarOrejas(datos.id, {
         orejas: valoresNoVacios,
       });

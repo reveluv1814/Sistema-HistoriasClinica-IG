@@ -11,7 +11,7 @@ const telefono = Joi.string()
 const direccion = Joi.string().min(5).max(200);
 const foto = Joi.any();
 const es_persona = Joi.boolean();
-const ci = Joi.string().min(2).max(10);
+const ci = Joi.string().min(2).max(15);
 
 const getPersonaSchema = Joi.object({
   id: id.required(),

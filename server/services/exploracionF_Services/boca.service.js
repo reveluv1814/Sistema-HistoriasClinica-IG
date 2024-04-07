@@ -1,34 +1,46 @@
 const boom = require("@hapi/boom");
-const { models } = require("./../../libs/sequelize");
+const { models, sequelize } = require("./../../libs/sequelize");
 
 class BocaService {
   constructor() {}
 
   async create(data, exploracionFId) {
-    // Primero, crea la boca
-    const newBoca = await models.Boca.create(data);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const newBoca = await models.Boca.create(data, { transaction });
 
-    // Luego, actualiza la exploracion fisica con el ID de la boca creada
-    await models.ExploracionF.update(
-      { bocaId: newBoca.id },
-      { where: { id: exploracionFId } }
-    );
-
-    return newBoca;
+      // Luego, actualiza la exploracion fisica con el ID de la boca creada
+      await models.ExploracionF.update(
+        { bocaId: newBoca.id },
+        { where: { id: exploracionFId }, transaction }
+      );
+      await transaction.commit();
+      return newBoca;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
+    }
   }
   async updateBoca(data, id) {
-    // Busca la boca por su ID
-    const boca = await models.Boca.findByPk(id);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const boca = await models.Boca.findByPk(id, { transaction });
 
-    if (!boca) {
-      throw boom.notFound("Boca not found");
+      if (!boca) {
+        throw boom.notFound("Boca not found");
+      }
+      const newBoca = await boca.update(data, { transaction });
+      await transaction.commit();
+      return newBoca;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
     }
-    const newBoca = await boca.update(data);
-
-    return newBoca;
   }
   async deleteBoca(id) {
-   //busca la boca para eliminarlo
+    //busca la boca para eliminarlo
     const boca = await models.Boca.findByPk(id);
     if (!boca) {
       throw boom.notFound("Boca not found");

@@ -1,7 +1,7 @@
 import LaboratoristaLayout from "../layouts/LaboratoristaLayout";
 import Paciente from "../views/laboratorista/Pacientes";
 import Historia from "../views/HistoriaComponents/Historia";
-import Laboratorio from '../views/laboratorista/Laboratorio'
+import Laboratorio from "../views/laboratorista/Laboratorio";
 
 const DoctorRoutes = {
   path: "/laboratorista",

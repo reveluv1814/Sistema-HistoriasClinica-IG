@@ -20,7 +20,7 @@ const PacienteVista = () => {
     { key: "persona.telefono", label: "CEL/TEL" },
     { key: "sexo", label: "SEXO" },
     { key: "personalAd[0].persona.nombreCompleto", label: "CREADO POR" },
-    { key: "createdAt", label: "CRADO EN" },
+    { key: "createdAt", label: "CREADO EN" },
   ];
   useEffect(() => {
     getPacientes();
@@ -42,7 +42,9 @@ const PacienteVista = () => {
 
   const handleHistoria = async (datos) => {
     try {
-      navigate(`/doctor/historia/${datos.id}`);
+      if (localStorage.getItem("rol") === "admin")
+        navigate(`/admin/doctor/historia/${datos.id}`);
+      else navigate(`/doctor/historia/${datos.id}`);
     } catch (error) {
       console.log(error);
     }

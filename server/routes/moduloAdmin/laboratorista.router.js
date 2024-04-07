@@ -119,7 +119,7 @@ router.patch(
   validatorHandler(getLaboratoristaSchema, "params"),
   validatorHandlerObjetos(updateUsuarioSchema, "usuario"),
   validatorHandlerObjetos(updatePersonaSchema, "persona"),
-  validatorHandlerObjetos(updateLaboratoristaSchema, "doctor"),
+  validatorHandlerObjetos(updateLaboratoristaSchema, "laboratorista"),
   async (req, res, next) => {
     try {
       const { id } = req.params;

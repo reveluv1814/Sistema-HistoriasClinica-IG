@@ -19,6 +19,15 @@ const TablePagination = ({
   handleLaboratorio,
 }) => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const fechaFormateada = (fechaProp) => {
+    if (fechaProp === null) return null;
+    const fecha = new Date(fechaProp);
+    const dia = fecha.getUTCDate().toString().padStart(2, "0");
+    const mes = (fecha.getUTCMonth() + 1).toString().padStart(2, "0");
+    const año = fecha.getUTCFullYear();
+
+    return `${dia}/${mes}/${año}`;
+  };
 
   return (
     <>
@@ -54,7 +63,13 @@ const TablePagination = ({
                   className="py-2 px-4 text-sm text-gray-500 font-inter dark:text-gray-300"
                   key={pos}
                 >
-                  {eval("reg." + col.key)}
+                  {col.key === "createdAt" || col.key === "usuario.createdAt"
+                    ? fechaFormateada(
+                        col.key === "createdAt"
+                          ? reg.createdAt
+                          : reg.usuario.createdAt
+                      )
+                    : eval("reg." + col.key)}
                 </td>
               ))}
               <td className="text-sm text-gray-500 gap-1 py-2 px-2 flex flex-row">

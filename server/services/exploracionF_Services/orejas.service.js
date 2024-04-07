@@ -1,34 +1,46 @@
 const boom = require("@hapi/boom");
-const { models } = require("./../../libs/sequelize");
+const { models, sequelize } = require("./../../libs/sequelize");
 
 class OrejasService {
   constructor() {}
 
   async create(data, exploracionFId) {
-    // Primero, crea orejas
-    const newOrejas = await models.Orejas.create(data);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const newOrejas = await models.Orejas.create(data, { transaction });
 
-    // Luego, actualiza la exploracion fisica con el ID de las orejas creadas
-    await models.ExploracionF.update(
-      { orejasId: newOrejas.id },
-      { where: { id: exploracionFId } }
-    );
-
-    return newOrejas;
+      // Luego, actualiza la exploracion fisica con el ID de las orejas creadas
+      await models.ExploracionF.update(
+        { orejasId: newOrejas.id },
+        { where: { id: exploracionFId }, transaction }
+      );
+      await transaction.commit();
+      return newOrejas;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
+    }
   }
   async updateOrejas(data, id) {
-    // Busca orejas por su ID
-    const orejas = await models.Orejas.findByPk(id);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const orejas = await models.Orejas.findByPk(id, { transaction });
 
-    if (!orejas) {
-      throw boom.notFound("Orejas not found");
+      if (!orejas) {
+        throw boom.notFound("Orejas not found");
+      }
+      const newOrejas = await orejas.update(data, { transaction });
+      await transaction.commit();
+      return newOrejas;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
     }
-    const newOrejas = await orejas.update(data);
-
-    return newOrejas;
   }
   async deleteOrejas(id) {
-   //busca orejas para eliminarlo
+    //busca orejas para eliminarlo
     const orejas = await models.Orejas.findByPk(id);
     if (!orejas) {
       throw boom.notFound("Orejas not found");

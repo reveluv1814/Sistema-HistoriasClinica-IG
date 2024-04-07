@@ -43,14 +43,16 @@ const AddCita = () => {
       hora: Yup.string().required("La hora es requerida"),
       doctorId: Yup.number()
         .required("El Doctor es requerido")
-        .positive("El ID debe ser un número positivo"),
+        .positive("El Doctor es requerido"),
     }),
   });
 
   //funciones
   const switchAddCita = () => {
     setModalAddCita(false);
-    navigate("/personal/pacientes");
+    if (localStorage.getItem("rol") === "admin")
+      navigate("/admin/personal/pacientes");
+    else navigate("/personal/pacientes");
   };
   const handleSubmit = async (values, actions) => {
     try {
@@ -71,7 +73,11 @@ const AddCita = () => {
   return (
     <>
       <a
-        onClick={() => navigate("/personal/pacientes")}
+        onClick={() => {
+          if (localStorage.getItem("rol") === "admin")
+            navigate("/admin/personal/pacientes");
+          else navigate("/personal/pacientes");
+        }}
         className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-indigo-600 rounded-lg shadow-md group cursor-pointer bg-indigo-500 dark:bg-indigo-800 dark:border-indigo-900"
       >
         <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-indigo-400 dark:bg-indigo-700 group-hover:translate-x-0 ease">
@@ -184,9 +190,15 @@ const AddCita = () => {
                           : ""
                       }`}
                     >
-                      <option value="">Seleccione una opción</option>
+                      <option value="" hidden>
+                        Seleccione una opción
+                      </option>
                       {optionsDoc.rows.map((option) => (
-                        <option key={option.id} value={option.id}>
+                        <option
+                          key={option.id}
+                          value={option.id}
+                          className="capitalize"
+                        >
                           {option.persona.nombreCompleto}
                         </option>
                       ))}
@@ -205,7 +217,11 @@ const AddCita = () => {
                     )}
                     <button
                       type="submit"
-                      className="bg-emerald-500 py-2 px-4 rounded-lg text-gray-200 hover:bg-emerald-600 hover:text-white shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]"
+                      className={` py-2 px-4 rounded-lg text-gray-200  ${
+                        isValidating || !isValid
+                          ? "bg-gray-400"
+                          : "bg-emerald-500 hover:bg-emerald-600"
+                      } hover:text-white shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]`}
                       disabled={isSubmitting || isValidating || !isValid}
                     >
                       {isSubmitting ? "Registrando" : "Registrar"}

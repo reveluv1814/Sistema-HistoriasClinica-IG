@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   arbolG: {
     width: 'auto',
-    height: 250,
+    height: 230,
   },
   hr: {
     borderBottomColor: "black",

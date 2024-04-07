@@ -1,34 +1,46 @@
 const boom = require("@hapi/boom");
-const { models } = require("./../../libs/sequelize");
+const { models, sequelize } = require("./../../libs/sequelize");
 
 class CuelloService {
   constructor() {}
 
   async create(data, exploracionFId) {
-    // Primero, crea el cuello
-    const newCuello= await models.Cuello.create(data);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const newCuello = await models.Cuello.create(data, { transaction });
 
-    // Luego, actualiza la exploracion fisica con el ID de el cuello creado
-    await models.ExploracionF.update(
-      { cuelloId: newCuello.id },
-      { where: { id: exploracionFId } }
-    );
-
-    return newCuello;
+      // Luego, actualiza la exploracion fisica con el ID de el cuello creado
+      await models.ExploracionF.update(
+        { cuelloId: newCuello.id },
+        { where: { id: exploracionFId }, transaction }
+      );
+      await transaction.commit();
+      return newCuello;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
+    }
   }
   async updateCuello(data, id) {
-    // Busca el cuello por su ID
-    const cuello = await models.Cuello.findByPk(id);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const cuello = await models.Cuello.findByPk(id, { transaction });
 
-    if (!cuello) {
-      throw boom.notFound("Cuello not found");
+      if (!cuello) {
+        throw boom.notFound("Cuello not found");
+      }
+      const newCuello = await cuello.update(data, { transaction });
+      await transaction.commit();
+      return newCuello;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
     }
-    const newCuello = await cuello.update(data);
-
-    return newCuello;
   }
   async deleteCuello(id) {
-   //busca el cuello para eliminarlo
+    //busca el cuello para eliminarlo
     const cuello = await models.Cuello.findByPk(id);
     if (!cuello) {
       throw boom.notFound("Cuello not found");

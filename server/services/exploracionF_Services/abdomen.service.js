@@ -1,34 +1,47 @@
 const boom = require("@hapi/boom");
-const { models } = require("./../../libs/sequelize");
+const { models, sequelize } = require("./../../libs/sequelize");
 
 class AbdomenService {
   constructor() {}
 
   async create(data, exploracionFId) {
-    // Primero, crea el abdomen
-    const newAbdomen= await models.Abdomen.create(data);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const newAbdomen = await models.Abdomen.create(data, { transaction });
 
-    // Luego, actualiza la exploracion fisica con el ID de el abdomen creado
-    await models.ExploracionF.update(
-      { abdomenId: newAbdomen.id },
-      { where: { id: exploracionFId } }
-    );
-
-    return newAbdomen;
+      // Luego, actualiza la exploracion fisica con el ID de el abdomen creado
+      await models.ExploracionF.update(
+        { abdomenId: newAbdomen.id },
+        { where: { id: exploracionFId }, transaction }
+      );
+      await transaction.commit();
+      return newAbdomen;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
+    }
   }
   async updateAbdomen(data, id) {
-    // Busca el abdomen por su ID
-    const abdomen = await models.Abdomen.findByPk(id);
+    let transaction;
 
-    if (!abdomen) {
-      throw boom.notFound("Abdomen not found");
+    try {
+      transaction = await sequelize.transaction();
+      const abdomen = await models.Abdomen.findByPk(id, { transaction });
+
+      if (!abdomen) {
+        throw boom.notFound("Abdomen not found");
+      }
+      const newAbdomen = await abdomen.update(data, { transaction });
+      await transaction.commit();
+      return newAbdomen;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
     }
-    const newAbdomen = await abdomen.update(data);
-
-    return newAbdomen;
   }
   async deleteAbdomen(id) {
-   //busca el abdomen para eliminarlo
+    //busca el abdomen para eliminarlo
     const abdomen = await models.Abdomen.findByPk(id);
     if (!abdomen) {
       throw boom.notFound("Abdomen not found");
@@ -38,4 +51,4 @@ class AbdomenService {
   }
 }
 
-module.exports = AbdomenService ;
+module.exports = AbdomenService;

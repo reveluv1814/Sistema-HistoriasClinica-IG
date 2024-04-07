@@ -1,6 +1,6 @@
 const boom = require("@hapi/boom");
 const { Op, Sequelize } = require("sequelize");
-const { models } = require("../libs/sequelize");
+const { models, sequelize } = require("../libs/sequelize");
 const UserService = require("./usuario.service");
 const { config } = require("../config/config");
 const fs = require("fs");
@@ -116,50 +116,79 @@ class LaboratoristaService {
     return rta;
   }
   async create(data) {
-    const userService = new UserService();
-    const { usuario, persona, laboratorista } = data;
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
 
-    const newUsuario = await userService.createUser(usuario);
-    const newPersona = await models.Persona.create(persona);
+      const userService = new UserService();
+      const { usuario, persona, laboratorista } = data;
 
-    const newLaboratorista = await models.Laboratorista.create({
-      ...laboratorista,
-      usuarioId: newUsuario.id,
-      personaId: newPersona.id,
-    });
-    return newPersona.id;
+      const newUsuario = await userService.createUser(usuario, { transaction });
+      const newPersona = await models.Persona.create(persona, { transaction });
+
+      await models.Laboratorista.create(
+        {
+          ...laboratorista,
+          usuarioId: newUsuario.id,
+          personaId: newPersona.id,
+        },
+        { transaction }
+      );
+      await transaction.commit();
+      return newPersona.id;
+    } catch (error) {
+      if (transaction) {
+        await transaction.rollback();
+      }
+      throw error;
+    }
   }
 
   async update(id, changes) {
-    const { laboratorista, usuario, persona } = changes;
-    const laboBuscado = await models.Laboratorista.findOne({ where: { id } });
-
-    // Actualiza el registro de Usuario
-    await models.Usuario.update(usuario, {
-      where: { id: laboBuscado.usuarioId }, // Utiliza el ID del Usuario asociado al Doctor
-    });
-
-    // Actualiza el registro de Persona
-    await models.Persona.update(persona, {
-      where: { id: laboBuscado.personaId }, // Utiliza el ID de la Persona asociada al Doctor
-    });
-
-    // Actualiza el registro de Doctor
-    const updatedLaboratorista = await models.Laboratorista.update(
-      laboratorista,
-      {
-        where: { id },
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const { laboratorista, usuario, persona } = changes;
+      const laboBuscado = await models.Laboratorista.findOne({ where: { id } });
+      if (!laboBuscado) {
+        throw new Error("No se encontró el registro del Laboratorista");
       }
-    );
 
-    const [rowCount] = updatedLaboratorista; // Obtiene la cantidad de filas actualizadas
-    if (rowCount === 0) {
-      // Manejo de error: No se encontró el registro para actualizar
-      throw new Error("No se encontró el registro para actualizar");
+      // Actualiza el registro de Usuario
+      await models.Usuario.update(usuario, {
+        where: { id: laboBuscado.usuarioId },
+        transaction,
+      });
+
+      // Actualiza el registro de Persona
+      await models.Persona.update(persona, {
+        where: { id: laboBuscado.personaId },
+        transaction,
+      });
+
+      // Actualiza el registro de Doctor
+      const updatedLaboratorista = await models.Laboratorista.update(
+        laboratorista,
+        {
+          where: { id },
+          transaction,
+        }
+      );
+
+      const [rowCount] = updatedLaboratorista; // Obtiene la cantidad de filas actualizadas
+      if (rowCount === 0) {
+        // Manejo de error: No se encontró el registro para actualizar
+        throw new Error("No se encontró el registro para actualizar");
+      }
+      await transaction.commit();
+      /* const updatedRecord = await models.Doctor.findByPk(id); // Consulta el registro actualizado */
+      return updatedLaboratorista;
+    } catch (error) {
+      if (transaction) {
+        await transaction.rollback();
+      }
+      throw error;
     }
-
-    /* const updatedRecord = await models.Doctor.findByPk(id); // Consulta el registro actualizado */
-    return updatedLaboratorista;
   }
   async delete(id) {
     const laboratorista = await models.Laboratorista.findByPk(id);

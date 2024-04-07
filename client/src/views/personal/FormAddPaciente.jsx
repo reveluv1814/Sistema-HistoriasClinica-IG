@@ -158,7 +158,15 @@ const FormAddPaciente = ({
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ values, errors, handleSubmit, touched, isValidating, isValid }) => (
+        {({
+          values,
+          errors,
+          handleSubmit,
+          touched,
+          isValidating,
+          isValid,
+          isSubmitting,
+        }) => (
           <>
             <Form onSubmit={handleSubmit} className="flex flex-col px-7 ">
               {step === 1 && (
@@ -417,8 +425,8 @@ const FormAddPaciente = ({
                       <option disabled value="">
                         Seleccione una opción
                       </option>
-                      <option value="hombre">Hombre</option>
-                      <option value="mujer">Mujer</option>
+                      <option value="Hombre">Hombre</option>
+                      <option value="Mujer">Mujer</option>
                     </Field>
                     <ErrorMessage
                       name="paciente.sexo"
@@ -536,10 +544,14 @@ const FormAddPaciente = ({
                     </button>
                     <button
                       type="submit"
-                      disabled={isValidating || !isValid}
-                      className="ml-2  bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-2 rounded-md w-[49%]"
+                      disabled={isValidating || !isValid || isSubmitting}
+                      className={`ml-2   ${
+                        isValidating || !isValid
+                          ? "bg-gray-400 hover:bg-gray-700"
+                          : "bg-emerald-500 hover:bg-emerald-700"
+                      } text-white font-bold py-2 px-2 rounded-md w-[49%]`}
                     >
-                      Guardar
+                      {isSubmitting ? "Guardando" : "Guardar"}
                     </button>
                   </div>
                 </div>

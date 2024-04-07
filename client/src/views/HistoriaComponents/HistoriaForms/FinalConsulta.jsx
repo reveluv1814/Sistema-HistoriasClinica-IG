@@ -36,7 +36,11 @@ const FinalConsulta = ({ consultaId }) => {
       await historiaService.finalConsulta(consultaId, {
         cita: valoresNoVacios,
       });
-      navigate("/doctor/pacientes");
+
+      if (localStorage.getItem("rol") === "admin")
+        navigate("/admin/doctor/pacientes");
+      else navigate("/doctor/pacientes");
+
       getFinalConsulta();
       setAgregar(true);
     } catch (error) {

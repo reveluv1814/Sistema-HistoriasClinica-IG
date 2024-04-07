@@ -3,6 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 
 import SidebarLinkGroup from "./SidebarLinkGroup";
 import "./../css/additional-styles/sistema.css";
+import adminService from "../../services/adminService";
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const location = useLocation();
@@ -41,6 +42,55 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
     document.addEventListener("keydown", keyHandler);
     return () => document.removeEventListener("keydown", keyHandler);
   });
+
+  const cambioDoctor = async () => {
+    try {
+      if (localStorage.getItem("idResp") !== null) {
+        const idRespaldo = localStorage.getItem("idResp");
+        const roles = await adminService.rolesAdmin(idRespaldo);
+        localStorage.setItem("id", roles.data.usuario.doctor.id);
+      } else {
+        const idUserProfile = localStorage.getItem("id");
+        const roles = await adminService.rolesAdmin(idUserProfile);
+        localStorage.setItem("idResp", idUserProfile);
+        localStorage.setItem("id", roles.data.usuario.doctor.id);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const cambioPersonal = async () => {
+    try {
+      if (localStorage.getItem("idResp") !== null) {
+        const idRespaldo = localStorage.getItem("idResp");
+        const roles = await adminService.rolesAdmin(idRespaldo);
+        localStorage.setItem("id", roles.data.usuario.personalAdmin.id);
+      } else {
+        const idUserProfile = localStorage.getItem("id");
+        const roles = await adminService.rolesAdmin(idUserProfile);
+        localStorage.setItem("idResp", idUserProfile);
+        localStorage.setItem("id", roles.data.usuario.personalAdmin.id);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const cambioLaboratorista = async () => {
+    try {
+      if (localStorage.getItem("idResp") !== null) {
+        const idRespaldo = localStorage.getItem("idResp");
+        const roles = await adminService.rolesAdmin(idRespaldo);
+        localStorage.setItem("id", roles.data.usuario.laboratorista.id);
+      } else {
+        const idUserProfile = localStorage.getItem("id");
+        const roles = await adminService.rolesAdmin(idUserProfile);
+        localStorage.setItem("idResp", idUserProfile);
+        localStorage.setItem("id", roles.data.usuario.laboratorista.id);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     localStorage.setItem("sidebar-expanded", sidebarExpanded);
@@ -91,28 +141,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           {/* Logo */}
           <NavLink end to="/" className="block">
             <div className="logoHeader  w-16 h-16 sm:h-11 sm:w-11"></div>
-            {/* <svg width="32" height="32" viewBox="0 0 32 32">
-              <defs>
-                <linearGradient x1="28.538%" y1="20.229%" x2="100%" y2="108.156%" id="logo-a">
-                  <stop stopColor="#A5B4FC" stopOpacity="0" offset="0%" />
-                  <stop stopColor="#A5B4FC" offset="100%" />
-                </linearGradient>
-                <linearGradient x1="88.638%" y1="29.267%" x2="22.42%" y2="100%" id="logo-b">
-                  <stop stopColor="#fFDD" stopOpacity="0" offset="0%" />
-                  <stop stopColor="#38BDF8" offset="100%" />
-                </linearGradient>
-              </defs>
-              <rect fill="#6366F1" width="32" height="32" rx="16" />
-              <path d="M18.277.16C26.035 1.267 32 7.938 32 16c0 8.837-7.163 16-16 16a15.937 15.937 0 01-10.426-3.863L18.277.161z" fill="#4F46E5" />
-              <path
-                d="M7.404 2.503l18.339 26.19A15.93 15.93 0 0116 32C7.163 32 0 24.837 0 16 0 10.327 2.952 5.344 7.404 2.503z"
-                fill="url(#logo-a)"
-              />
-              <path
-                d="M2.223 24.14L29.777 7.86A15.926 15.926 0 0132 16c0 8.837-7.163 16-16 16-5.864 0-10.991-3.154-13.777-7.86z"
-                fill="url(#logo-b)"
-              />
-            </svg> */}
           </NavLink>
         </div>
 
@@ -249,17 +277,353 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               </SidebarLinkGroup>
             </ul>
           </div>
-          {/* More group */}
-          <div>
-            <h3 className="text-xs uppercase text-slate-200 font-semibold pl-3">
-              <span
-                className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center w-6"
-                aria-hidden="true"
-              >
-                •••
-              </span>
-            </h3>
-          </div>
+        </div>
+
+        <div>
+          <h3 className="text-xs uppercase text-slate-200 font-semibold pl-3">
+            <span
+              className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center w-6"
+              aria-hidden="true"
+            >
+              •••
+            </span>
+            <span className="lg:hidden lg:sidebar-expanded:block 2xl:block font-inter">
+              Módulos
+            </span>
+          </h3>
+          <ul className="mt-3">
+            {/* Modulo de Doctor */}
+            <SidebarLinkGroup activecondition={pathname.includes("doctor")}>
+              {(handleClick, open) => {
+                return (
+                  <React.Fragment>
+                    <a
+                      href="#0"
+                      className={`block text-slate-200 truncate transition duration-150 ${
+                        pathname.includes("doctor")
+                          ? "hover:text-slate-200"
+                          : "hover:text-white"
+                      }`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        sidebarExpanded
+                          ? handleClick()
+                          : setSidebarExpanded(true);
+                      }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                          <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                            <circle
+                              className={`fill-current ${
+                                pathname.includes("doctor")
+                                  ? "text-indigo-300"
+                                  : "text-slate-300"
+                              }`}
+                              cx="18.5"
+                              cy="5.5"
+                              r="4.5"
+                            />
+                            <circle
+                              className={`fill-current ${
+                                pathname.includes("doctor")
+                                  ? "text-indigo-500"
+                                  : "text-slate-500"
+                              }`}
+                              cx="5.5"
+                              cy="5.5"
+                              r="4.5"
+                            />
+                            <circle
+                              className={`fill-current ${
+                                pathname.includes("doctor")
+                                  ? "text-indigo-500"
+                                  : "text-slate-500"
+                              }`}
+                              cx="18.5"
+                              cy="18.5"
+                              r="4.5"
+                            />
+                            <circle
+                              className={`fill-current ${
+                                pathname.includes("doctor")
+                                  ? "text-indigo-300"
+                                  : "text-slate-300"
+                              }`}
+                              cx="5.5"
+                              cy="18.5"
+                              r="4.5"
+                            />
+                          </svg>
+                          <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            Módulo de Doctor
+                          </span>
+                        </div>
+                        {/* Icon */}
+                        <div className="flex shrink-0 ml-2">
+                          <svg
+                            className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-200 ${
+                              open && "rotate-180"
+                            }`}
+                            viewBox="0 0 12 12"
+                          >
+                            <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </a>
+                    <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
+                      <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
+                        <li className="mb-1 last:mb-0">
+                          <NavLink
+                            end
+                            onClick={() => {
+                              cambioDoctor();
+                            }}
+                            to="/admin/doctor/pacientes"
+                            className={({ isActive }) =>
+                              "block transition duration-150 truncate " +
+                              (isActive
+                                ? "text-indigo-500"
+                                : "text-slate-300 hover:text-slate-200")
+                            }
+                          >
+                            <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                              Pacientes - Doctor
+                            </span>
+                          </NavLink>
+                        </li>
+                        <li className="mb-1 last:mb-0">
+                          <NavLink
+                            end
+                            to="/admin/doctor/citas"
+                            className={({ isActive }) =>
+                              "block transition duration-150 truncate " +
+                              (isActive
+                                ? "text-indigo-500"
+                                : "text-slate-300 hover:text-slate-200")
+                            }
+                          >
+                            <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                              Citas - Doctor
+                            </span>
+                          </NavLink>
+                        </li>
+                      </ul>
+                    </div>
+                  </React.Fragment>
+                );
+              }}
+            </SidebarLinkGroup>
+            {/* Modulo de Laboratorista */}
+            <SidebarLinkGroup
+              activecondition={pathname.includes("laboratorista")}
+            >
+              {(handleClick, open) => {
+                return (
+                  <React.Fragment>
+                    <a
+                      href="#0"
+                      className={`block text-slate-200 truncate transition duration-150 ${
+                        pathname.includes("laboratorista")
+                          ? "hover:text-slate-200"
+                          : "hover:text-white"
+                      }`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        sidebarExpanded
+                          ? handleClick()
+                          : setSidebarExpanded(true);
+                      }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                          <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                            <path
+                              className={`fill-current ${
+                                pathname.includes("laboratorista")
+                                  ? "text-indigo-300"
+                                  : "text-slate-300"
+                              }`}
+                              d="M13 15l11-7L11.504.136a1 1 0 00-1.019.007L0 7l13 8z"
+                            />
+                            <path
+                              className={`fill-current ${
+                                pathname.includes("laboratorista")
+                                  ? "text-indigo-600"
+                                  : "text-slate-500"
+                              }`}
+                              d="M13 15L0 7v9c0 .355.189.685.496.864L13 24v-9z"
+                            />
+                            <path
+                              className={`fill-current ${
+                                pathname.includes("laboratorista")
+                                  ? "text-indigo-500"
+                                  : "text-slate-400"
+                              }`}
+                              d="M13 15.047V24l10.573-7.181A.999.999 0 0024 16V8l-11 7.047z"
+                            />
+                          </svg>
+                          <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            Módulo de Laboratorista
+                          </span>
+                        </div>
+                        {/* Icon */}
+                        <div className="flex shrink-0 ml-2">
+                          <svg
+                            className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-200 ${
+                              open && "rotate-180"
+                            }`}
+                            viewBox="0 0 12 12"
+                          >
+                            <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </a>
+                    <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
+                      <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
+                        <li className="mb-1 last:mb-0">
+                          <NavLink
+                            end
+                            onClick={() => {
+                              cambioLaboratorista();
+                            }}
+                            to="/admin/laboratorista/pacientes"
+                            className={({ isActive }) =>
+                              "block transition duration-150 truncate " +
+                              (isActive
+                                ? "text-indigo-500"
+                                : "text-slate-300 hover:text-slate-200")
+                            }
+                          >
+                            <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                              Pacientes - Laboratorista
+                            </span>
+                          </NavLink>
+                        </li>
+                      </ul>
+                    </div>
+                  </React.Fragment>
+                );
+              }}
+            </SidebarLinkGroup>
+            {/* Modulo de PersonalAdministrativo */}
+            <SidebarLinkGroup activecondition={pathname.includes("personal")}>
+              {(handleClick, open) => {
+                return (
+                  <React.Fragment>
+                    <a
+                      href="#0"
+                      className={`block text-slate-200 truncate transition duration-150 ${
+                        pathname.includes("personal")
+                          ? "hover:text-slate-200"
+                          : "hover:text-white"
+                      }`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        sidebarExpanded
+                          ? handleClick()
+                          : setSidebarExpanded(true);
+                      }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                          <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                            <path
+                              className={`fill-current ${
+                                pathname.includes("personal")
+                                  ? "text-indigo-500"
+                                  : "text-slate-400"
+                              }`}
+                              d="M19.714 14.7l-7.007 7.007-1.414-1.414 7.007-7.007c-.195-.4-.298-.84-.3-1.286a3 3 0 113 3 2.969 2.969 0 01-1.286-.3z"
+                            />
+                            <path
+                              className={`fill-current ${
+                                pathname.includes("personal")
+                                  ? "text-indigo-300"
+                                  : "text-slate-300"
+                              }`}
+                              d="M10.714 18.3c.4-.195.84-.298 1.286-.3a3 3 0 11-3 3c.002-.446.105-.885.3-1.286l-6.007-6.007 1.414-1.414 6.007 6.007z"
+                            />
+                            <path
+                              className={`fill-current ${
+                                pathname.includes("personal")
+                                  ? "text-indigo-500"
+                                  : "text-slate-400"
+                              }`}
+                              d="M5.7 10.714c.195.4.298.84.3 1.286a3 3 0 11-3-3c.446.002.885.105 1.286.3l7.007-7.007 1.414 1.414L5.7 10.714z"
+                            />
+                            <path
+                              className={`fill-current ${
+                                pathname.includes("personal")
+                                  ? "text-indigo-300"
+                                  : "text-slate-300"
+                              }`}
+                              d="M19.707 9.292a3.012 3.012 0 00-1.415 1.415L13.286 5.7c-.4.195-.84.298-1.286.3a3 3 0 113-3 2.969 2.969 0 01-.3 1.286l5.007 5.006z"
+                            />
+                          </svg>
+                          <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            Módulo de Personal Administrativo
+                          </span>
+                        </div>
+                        {/* Icon */}
+                        <div className="flex shrink-0 ml-2">
+                          <svg
+                            className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-200 ${
+                              open && "rotate-180"
+                            }`}
+                            viewBox="0 0 12 12"
+                          >
+                            <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </a>
+                    <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
+                      <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
+                        <li className="mb-1 last:mb-0">
+                          <NavLink
+                            end
+                            onClick={() => {
+                              cambioPersonal();
+                            }}
+                            to="/admin/personal/pacientes"
+                            className={({ isActive }) =>
+                              "block transition duration-150 truncate " +
+                              (isActive
+                                ? "text-indigo-500"
+                                : "text-slate-300 hover:text-slate-200")
+                            }
+                          >
+                            <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                              Pacientes - Personal Admin.
+                            </span>
+                          </NavLink>
+                        </li>
+                        <li className="mb-1 last:mb-0">
+                          <NavLink
+                            end
+                            to="/admin/personal/citas"
+                            className={({ isActive }) =>
+                              "block transition duration-150 truncate " +
+                              (isActive
+                                ? "text-indigo-500"
+                                : "text-slate-300 hover:text-slate-200")
+                            }
+                          >
+                            <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                              Citas - Personal Admin.
+                            </span>
+                          </NavLink>
+                        </li>
+                      </ul>
+                    </div>
+                  </React.Fragment>
+                );
+              }}
+            </SidebarLinkGroup>
+          </ul>
         </div>
 
         {/* Expand / collapse button */}

@@ -1,6 +1,6 @@
 const boom = require("@hapi/boom");
 const { Op } = require("sequelize");
-const { models } = require("../libs/sequelize");
+const { models, sequelize } = require("../libs/sequelize");
 const UserService = require("./usuario.service");
 const { config } = require("../config/config");
 const fs = require("fs");
@@ -83,47 +83,77 @@ class PersonalAdminService {
     return rta;
   }
   async create(data) {
-    const userService = new UserService();
-    const { usuario, persona, personalAdmin } = data;
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const userService = new UserService();
+      const { usuario, persona, personalAdmin } = data;
 
-    const newUsuario = await userService.createUser(usuario);
-    const newPersona = await models.Persona.create(persona);
+      const newUsuario = await userService.createUser(usuario, { transaction });
+      const newPersona = await models.Persona.create(persona, { transaction });
 
-    const newPersonalAdmin = await models.PersonalAdmin.create({
-      ...personalAdmin,
-      usuarioId: newUsuario.id,
-      personaId: newPersona.id,
-    });
-    return newPersona.id;
+      await models.PersonalAdmin.create(
+        {
+          ...personalAdmin,
+          usuarioId: newUsuario.id,
+          personaId: newPersona.id,
+        },
+        { transaction }
+      );
+      await transaction.commit();
+      return newPersona.id;
+    } catch (error) {
+      if (transaction) {
+        await transaction.rollback();
+      }
+      throw error;
+    }
   }
 
   async update(id, changes) {
-    const { personalAdmin, usuario, persona } = changes;
-    const personalBuscado = await models.PersonalAdmin.findOne({
-      where: { id },
-    });
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
 
-    // Actualiza el registro de Usuario
-    await models.Usuario.update(usuario, {
-      where: { id: personalBuscado.usuarioId }, // Utiliza el ID del Usuario asociado al Doctor
-    });
+      const { personalAdmin, usuario, persona } = changes;
+      const personalBuscado = await models.PersonalAdmin.findOne({
+        where: { id },
+      });
+      if (!personalBuscado) {
+        throw new Error("No se encontró el registro del Personal Admin");
+      }
 
-    // Actualiza el registro de Persona
-    await models.Persona.update(persona, {
-      where: { id: personalBuscado.personaId }, // Utiliza el ID de la Persona asociada al Doctor
-    });
+      // Actualiza el registro de Usuario
+      await models.Usuario.update(usuario, {
+        where: { id: personalBuscado.usuarioId },
+        transaction,
+      });
 
-    // Actualiza el registro de Doctor
-    const updatedPersonal = await models.PersonalAdmin.update(personalAdmin, {
-      where: { id },
-    });
+      // Actualiza el registro de Persona
+      await models.Persona.update(persona, {
+        where: { id: personalBuscado.personaId },
+        transaction,
+      });
 
-    const [rowCount] = updatedPersonal; // Obtiene la cantidad de filas actualizadas
-    if (rowCount === 0) {
-      // Manejo de error: No se encontró el registro para actualizar
-      throw new Error("No se encontró el registro para actualizar");
+      // Actualiza el registro de Doctor
+      const updatedPersonal = await models.PersonalAdmin.update(personalAdmin, {
+        where: { id },
+        transaction,
+      });
+
+      const [rowCount] = updatedPersonal; // Obtiene la cantidad de filas actualizadas
+      if (rowCount === 0) {
+        // Manejo de error: No se encontró el registro para actualizar
+        throw new Error("No se encontró el registro para actualizar");
+      }
+      await transaction.commit();
+      return updatedPersonal;
+    } catch (error) {
+      if (transaction) {
+        await transaction.rollback();
+      }
+      throw error;
     }
-    return updatedPersonal;
   }
   async delete(id) {
     const personal = await models.PersonalAdmin.findByPk(id);

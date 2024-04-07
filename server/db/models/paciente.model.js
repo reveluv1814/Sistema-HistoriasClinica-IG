@@ -23,8 +23,15 @@ const PacienteSchema = {
       const hoy = new Date();
       let edad = hoy.getFullYear() - fechanac.getFullYear();
       const mes = hoy.getMonth() - fechanac.getMonth();
-      if (mes < 0 || (mes === 0 && hoy.getDate() < fechanac.getDate())) {
+      if (
+        (mes === 0 && hoy.getDate() === fechanac.getDate()) ||
+        mes < 0 ||
+        (mes === 0 && hoy.getDate() < fechanac.getDate())
+      ) {
         edad--;
+        if (edad < 0) {
+          edad = 0; // Asegurarse de que la edad no sea negativa
+        }
       }
       return edad;
     },

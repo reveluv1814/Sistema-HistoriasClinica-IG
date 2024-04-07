@@ -1,34 +1,46 @@
 const boom = require("@hapi/boom");
-const { models } = require("./../../libs/sequelize");
+const { models, sequelize } = require("./../../libs/sequelize");
 
 class MiembrosService {
   constructor() {}
 
   async create(data, exploracionFId) {
-    // Primero, crea el miembro
-    const newMiembro= await models.Miembros.create(data);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const newMiembro = await models.Miembros.create(data, { transaction });
 
-    // Luego, actualiza la exploracion fisica con el ID de el miembro creado
-    await models.ExploracionF.update(
-      { miembrosId: newMiembro.id },
-      { where: { id: exploracionFId } }
-    );
-
-    return newMiembro;
+      // Luego, actualiza la exploracion fisica con el ID de el miembro creado
+      await models.ExploracionF.update(
+        { miembrosId: newMiembro.id },
+        { where: { id: exploracionFId }, transaction }
+      );
+      await transaction.commit();
+      return newMiembro;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
+    }
   }
   async updateMiembro(data, id) {
-    // Busca el miembro por su ID
-    const miembro = await models.Miembros.findByPk(id);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const miembro = await models.Miembros.findByPk(id, { transaction });
 
-    if (!miembro) {
-      throw boom.notFound("Miembro not found");
+      if (!miembro) {
+        throw boom.notFound("Miembro not found");
+      }
+      const newMiembro = await miembro.update(data, { transaction });
+      await transaction.commit();
+      return newMiembro;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
     }
-    const newMiembro = await miembro.update(data);
-
-    return newMiembro;
   }
   async deleteMiembro(id) {
-   //busca el miembro para eliminarlo
+    //busca el miembro para eliminarlo
     const miembro = await models.Miembros.findByPk(id);
     if (!miembro) {
       throw boom.notFound("Miembro not found");

@@ -1,34 +1,50 @@
 const boom = require("@hapi/boom");
-const { models } = require("./../../libs/sequelize");
+const { models, sequelize } = require("./../../libs/sequelize");
 
 class MusculaturaService {
   constructor() {}
 
   async create(data, exploracionFId) {
-    // Primero, crea la musculatura
-    const newMusculatura= await models.Musculatura.create(data);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const newMusculatura = await models.Musculatura.create(data, {
+        transaction,
+      });
 
-    // Luego, actualiza la exploracion fisica con el ID de la musculatura creada
-    await models.ExploracionF.update(
-      { musculaturaId: newMusculatura.id },
-      { where: { id: exploracionFId } }
-    );
-
-    return newMusculatura;
+      // Luego, actualiza la exploracion fisica con el ID de la musculatura creada
+      await models.ExploracionF.update(
+        { musculaturaId: newMusculatura.id },
+        { where: { id: exploracionFId }, transaction }
+      );
+      await transaction.commit();
+      return newMusculatura;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
+    }
   }
   async updateMusculatura(data, id) {
-    // Busca la musculatura por su ID
-    const musculatura = await models.Musculatura.findByPk(id);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const musculatura = await models.Musculatura.findByPk(id, {
+        transaction,
+      });
 
-    if (!musculatura) {
-      throw boom.notFound("Musculatura not found");
+      if (!musculatura) {
+        throw boom.notFound("Musculatura not found");
+      }
+      const newMusculatura = await musculatura.update(data, { transaction });
+      await transaction.commit();
+      return newMusculatura;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
     }
-    const newMusculatura = await musculatura.update(data);
-
-    return newMusculatura;
   }
   async deleteMusculatura(id) {
-   //busca la musculatura para eliminarlo
+    //busca la musculatura para eliminarlo
     const musculatura = await models.Musculatura.findByPk(id);
     if (!musculatura) {
       throw boom.notFound("Musculatura not found");

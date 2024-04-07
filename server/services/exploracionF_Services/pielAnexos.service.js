@@ -1,34 +1,48 @@
 const boom = require("@hapi/boom");
-const { models } = require("./../../libs/sequelize");
+const { models, sequelize } = require("./../../libs/sequelize");
 
 class PielAnexosService {
   constructor() {}
 
   async create(data, exploracionFId) {
-    // Primero, crea el pielAnexos
-    const newPielAnexos= await models.PielAnexos.create(data);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const newPielAnexos = await models.PielAnexos.create(data, {
+        transaction,
+      });
 
-    // Luego, actualiza la exploracion fisica con el ID de el pielAnexos creado
-    await models.ExploracionF.update(
-      { pielAnexosId: newPielAnexos.id },
-      { where: { id: exploracionFId } }
-    );
-
-    return newPielAnexos;
+      // Luego, actualiza la exploracion fisica con el ID de el pielAnexos creado
+      await models.ExploracionF.update(
+        { pielAnexosId: newPielAnexos.id },
+        { where: { id: exploracionFId }, transaction }
+      );
+      await transaction.commit();
+      return newPielAnexos;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
+    }
   }
   async updatePielAnexos(data, id) {
-    // Busca el PielAnexos por su ID
-    const pielAnexos = await models.PielAnexos.findByPk(id);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const pielAnexos = await models.PielAnexos.findByPk(id, { transaction });
 
-    if (!pielAnexos) {
-      throw boom.notFound("PielAnexos not found");
+      if (!pielAnexos) {
+        throw boom.notFound("PielAnexos not found");
+      }
+      const newPielAnexos = await pielAnexos.update(data, { transaction });
+      await transaction.commit();
+      return newPielAnexos;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
     }
-    const newPielAnexos = await pielAnexos.update(data);
-
-    return newPielAnexos;
   }
   async deletePielAnexos(id) {
-   //busca el PielAnexos para eliminarlo
+    //busca el PielAnexos para eliminarlo
     const pielAnexos = await models.PielAnexos.findByPk(id);
     if (!pielAnexos) {
       throw boom.notFound("PielAnexos not found");
@@ -38,4 +52,4 @@ class PielAnexosService {
   }
 }
 
-module.exports = PielAnexosService ;
+module.exports = PielAnexosService;

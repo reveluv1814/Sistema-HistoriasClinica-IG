@@ -9,7 +9,11 @@ const ButtonPDF = ({ historiaData }) => {
         fileName={`${
           !historiaData.paciente.persona.nombre
             ? "paciente-"
-            : historiaData.paciente.persona.nombre + "-"
+            : historiaData.paciente.persona.nombre +
+              "-" +
+              (historiaData.paciente.persona.apellidoPaterno
+                ? historiaData.paciente.persona.apellidoPaterno + "-"
+                : "")
         }historiaClinica.pdf`}
       >
         {({ loading, url }) => (

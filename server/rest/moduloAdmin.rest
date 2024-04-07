@@ -189,3 +189,78 @@ DELETE http://127.0.0.1:4000/admin/laboratorista/2
 Authorization: Bearer {{token}}
 Accept: application/json
 ###
+###############Crea un admin
+POST http://127.0.0.1:4000/admin/
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": {
+      "email":"admin1@email.com",
+      "password": "123456",
+      "rol": "admin"
+    },
+    "persona":{
+      "nombre": "Imanol Ronald",
+      "apellidoMaterno": "Valencia",
+      "apellidoPaterno": "Alameda",
+      "ci": "998988",
+      "telefono": "6464654",
+      "direccion": "Zona central",
+      "foto": "",
+      "es_persona": false
+    },
+    "laboratorista":{
+      "especialidad": "Laboratorio xadmin",
+      "matriculaProf": "1111"
+    },
+    "doctor":{
+      "unidad":"genetica lab xadmin",
+      "numeroMatricula": "99898889",
+      "especialidad": "genetica medica x"
+    },
+    "personalAdmin":{
+      "cargo":"Secretario"
+    }
+    
+}
+
+####Listar a los admins
+GET http://127.0.0.1:4000/admin/?q=&page=1&limit=10
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###lista por el id del usuario a los admins:
+GET http://127.0.0.1:4000/admin/14
+Authorization: Bearer {{token}}
+Accept: application/json
+
+#####edita un admin
+PATCH  http://127.0.0.1:4000/admin/14
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": {
+      
+    },
+    "persona":{
+      "nombre": "Juan Alejandro"
+    },
+    "doctor":{
+      "numeroMatricula": "55555"
+    },
+    "personalAdmin":{
+      "cargo":"Portero"
+    },
+    "laboratorista":{
+      "especialidad": "laboratorio de huesos"
+    }
+}
+
+###lista por el id del usuario a los roles:
+GET http://127.0.0.1:4000/admin/rol/14
+Authorization: Bearer {{token}}
+Accept: application/json

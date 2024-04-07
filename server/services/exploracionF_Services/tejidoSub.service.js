@@ -1,34 +1,46 @@
 const boom = require("@hapi/boom");
-const { models } = require("./../../libs/sequelize");
+const { models, sequelize } = require("./../../libs/sequelize");
 
 class TejidoSubService {
   constructor() {}
 
   async create(data, exploracionFId) {
-    // Primero, crea el tejidoSub
-    const newtejidoSub= await models.TejidoSub.create(data);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const newtejidoSub = await models.TejidoSub.create(data, { transaction });
 
-    // Luego, actualiza la exploracion fisica con el ID de el tejidoSub creado
-    await models.ExploracionF.update(
-      { tejidoSubId: newtejidoSub.id },
-      { where: { id: exploracionFId } }
-    );
-
-    return newtejidoSub;
+      // Luego, actualiza la exploracion fisica con el ID de el tejidoSub creado
+      await models.ExploracionF.update(
+        { tejidoSubId: newtejidoSub.id },
+        { where: { id: exploracionFId }, transaction }
+      );
+      await transaction.commit();
+      return newtejidoSub;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
+    }
   }
   async updateTejidoSub(data, id) {
-    // Busca el tejidoSub por su ID
-    const tejidoSub = await models.TejidoSub.findByPk(id);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const tejidoSub = await models.TejidoSub.findByPk(id, { transaction });
 
-    if (!tejidoSub) {
-      throw boom.notFound("TejidoSub not found");
+      if (!tejidoSub) {
+        throw boom.notFound("TejidoSub not found");
+      }
+      const newTejidoSub = await tejidoSub.update(data, { transaction });
+      await transaction.commit();
+      return newTejidoSub;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
     }
-    const newTejidoSub = await tejidoSub.update(data);
-
-    return newTejidoSub;
   }
   async deleteTejidoSub(id) {
-   //busca el tejidoSub para eliminarlo
+    //busca el tejidoSub para eliminarlo
     const tejidoSub = await models.TejidoSub.findByPk(id);
     if (!tejidoSub) {
       throw boom.notFound("TejidoSub not found");
@@ -38,4 +50,4 @@ class TejidoSubService {
   }
 }
 
-module.exports = TejidoSubService ;
+module.exports = TejidoSubService;

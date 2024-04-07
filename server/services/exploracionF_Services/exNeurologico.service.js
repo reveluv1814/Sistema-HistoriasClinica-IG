@@ -1,34 +1,52 @@
 const boom = require("@hapi/boom");
-const { models } = require("./../../libs/sequelize");
+const { models, sequelize } = require("./../../libs/sequelize");
 
 class ExNeurologicoService {
   constructor() {}
 
   async create(data, exploracionFId) {
-    // Primero, crea el exNeurologico
-    const newExNeurologico= await models.ExNeurologico.create(data);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const newExNeurologico = await models.ExNeurologico.create(data, {
+        transaction,
+      });
 
-    // Luego, actualiza la exploracion fisica con el ID de el exNeurologico creado
-    await models.ExploracionF.update(
-      { exNeurologicoId: newExNeurologico.id },
-      { where: { id: exploracionFId } }
-    );
-
-    return newExNeurologico;
+      // Luego, actualiza la exploracion fisica con el ID de el exNeurologico creado
+      await models.ExploracionF.update(
+        { exNeurologicoId: newExNeurologico.id },
+        { where: { id: exploracionFId }, transaction }
+      );
+      await transaction.commit();
+      return newExNeurologico;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
+    }
   }
   async updateExNeurologico(data, id) {
-    // Busca el exNeurologico por su ID
-    const exNeurologico = await models.ExNeurologico.findByPk(id);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const exNeurologico = await models.ExNeurologico.findByPk(id, {
+        transaction,
+      });
 
-    if (!exNeurologico) {
-      throw boom.notFound("ExNeurologico not found");
+      if (!exNeurologico) {
+        throw boom.notFound("ExNeurologico not found");
+      }
+      const newExNeurologico = await exNeurologico.update(data, {
+        transaction,
+      });
+      await transaction.commit();
+      return newExNeurologico;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
     }
-    const newExNeurologico = await exNeurologico.update(data);
-
-    return newExNeurologico;
   }
   async deleteExNeurologico(id) {
-   //busca el exNeurologico para eliminarlo
+    //busca el exNeurologico para eliminarlo
     const exNeurologico = await models.ExNeurologico.findByPk(id);
     if (!exNeurologico) {
       throw boom.notFound("ExNeurologico not found");
@@ -38,4 +56,4 @@ class ExNeurologicoService {
   }
 }
 
-module.exports = ExNeurologicoService ;
+module.exports = ExNeurologicoService;

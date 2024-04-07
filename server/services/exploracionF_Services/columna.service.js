@@ -1,34 +1,46 @@
 const boom = require("@hapi/boom");
-const { models } = require("./../../libs/sequelize");
+const { models, sequelize } = require("./../../libs/sequelize");
 
 class ColumnaService {
   constructor() {}
 
   async create(data, exploracionFId) {
-    // Primero, crea la columna
-    const newColumna= await models.Columna.create(data);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const newColumna = await models.Columna.create(data, { transaction });
 
-    // Luego, actualiza la exploracion fisica con el ID de la columna creada
-    await models.ExploracionF.update(
-      { columnaId: newColumna.id },
-      { where: { id: exploracionFId } }
-    );
-
-    return newColumna;
+      // Luego, actualiza la exploracion fisica con el ID de la columna creada
+      await models.ExploracionF.update(
+        { columnaId: newColumna.id },
+        { where: { id: exploracionFId }, transaction }
+      );
+      await transaction.commit();
+      return newColumna;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
+    }
   }
   async updateColumna(data, id) {
-    // Busca la columna por su ID
-    const columna = await models.Columna.findByPk(id);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const columna = await models.Columna.findByPk(id, { transaction });
 
-    if (!columna) {
-      throw boom.notFound("Columna not found");
+      if (!columna) {
+        throw boom.notFound("Columna not found");
+      }
+      const newColumna = await columna.update(data, { transaction });
+      await transaction.commit();
+      return newColumna;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
     }
-    const newColumna = await columna.update(data);
-
-    return newColumna;
   }
   async deleteColumna(id) {
-   //busca la columna para eliminarlo
+    //busca la columna para eliminarlo
     const columna = await models.Columna.findByPk(id);
     if (!columna) {
       throw boom.notFound("Columna not found");

@@ -5,8 +5,6 @@ const PcreaPacService = require("../../services/p_creaPac.service");
 const configureMulter = require("./../../libs/uploadImages");
 const { config } = require("../../config/config");
 
-//const HistoriaService = require("../../services/historia.service");
-
 //middlewares
 const {
   validatorHandlerObjetos,
@@ -145,19 +143,5 @@ router.delete(
     }
   }
 );
-/* router.get(
-  "/hola",
-  checkRoles("admin", "personalAdmin"),
-  async (req, res, next) => {
-    try {
-      const pacientes = await pcreaPacService.find(req);
-      res.json({
-        pacientes,
-      });
-    } catch (error) {
-      next(error);
-    }
-  }
-); */
 
 module.exports = router;

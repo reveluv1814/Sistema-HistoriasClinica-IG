@@ -1,14 +1,28 @@
 const boom = require("@hapi/boom");
-const { models } = require("./../libs/sequelize");
+const { models, sequelize } = require("./../libs/sequelize");
 
 class ComposicionFService {
   constructor() {}
 
   async create(data, historiaClinicaId) {
-    // crea la composicion familiar
-    const newComposicionFam = await models.ComposicionF.create({...data,historiaId: historiaClinicaId} );
-    
-    return newComposicionFam;
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+
+      const newComposicionFam = await models.ComposicionF.create(
+        { ...data, historiaId: historiaClinicaId },
+        { transaction }
+      );
+
+      await transaction.commit();
+
+      return newComposicionFam;
+    } catch (error) {
+      if (transaction) {
+        await transaction.rollback();
+      }
+      throw error;
+    }
   }
   async updateComposicionF(data, id) {
     // Busca el antecedente por su ID
@@ -22,13 +36,29 @@ class ComposicionFService {
     return newComposicionFam;
   }
   async deleteComposicionF(id) {
-   //busca el antecedente f para eliminarlo
-    const composicionFam = await models.ComposicionF.findByPk(id);
-    if (!composicionFam) {
-      throw boom.notFound("Composicion Familiar not found");
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+
+      const composicionFam = await models.ComposicionF.findByPk(id, {
+        transaction,
+      });
+
+      if (!composicionFam) {
+        throw boom.notFound("Composicion Familiar not found");
+      }
+
+      await composicionFam.destroy({ transaction });
+
+      await transaction.commit();
+
+      return { message: "Composicion Familiar deleted successfully", id };
+    } catch (error) {
+      if (transaction) {
+        await transaction.rollback();
+      }
+      throw error;
     }
-    await composicionFam.destroy();
-    return { message: "Composicion Familiar deleted successfully", id };
   }
 }
 

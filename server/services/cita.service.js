@@ -1,21 +1,37 @@
 const boom = require("@hapi/boom");
 const { Op, Sequelize } = require("sequelize");
-const { models } = require("./../libs/sequelize");
+const { models, sequelize } = require("./../libs/sequelize");
 const HistoriaPac = require("./p_creaPac.service");
 
 class CitaService {
   constructor() {}
 
   async create(data) {
-    const historiaPAc = new HistoriaPac();
-    const { cita } = data;
-    const pacienteId = cita.pacienteId;
-    const historiaId = await historiaPAc.findPacHis(pacienteId);
-    const newCita = await models.Cita.create({
-      ...cita,
-      historiaId: historiaId.historiaId,
-    });
-    return newCita;
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const historiaPAc = new HistoriaPac();
+      const { cita } = data;
+      const pacienteId = cita.pacienteId;
+      const historiaId = await historiaPAc.findPacHis(pacienteId);
+      if (!historiaId) {
+        throw new Error("No se encontró el registro del Paciente");
+      }
+      const newCita = await models.Cita.create(
+        {
+          ...cita,
+          historiaId: historiaId.historiaId,
+        },
+        { transaction }
+      );
+      await transaction.commit();
+      return newCita;
+    } catch (error) {
+      if (transaction) {
+        await transaction.rollback();
+      }
+      throw error;
+    }
   }
 
   async find() {
@@ -185,9 +201,19 @@ class CitaService {
   }
   //busca la cita de id x que el doctor quiera
   async findConsultaDoc(id) {
-    const cita = await models.Cita.findByPk(id);
-    if (!cita) throw boom.notFound("Cita not found");
-    return cita;
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const cita = await models.Cita.findByPk(id, { transaction });
+      if (!cita) throw boom.notFound("Cita not found");
+      await transaction.commit();
+      return cita;
+    } catch (error) {
+      if (transaction) {
+        await transaction.rollback();
+      }
+      throw error;
+    }
   }
   //lista las citas del id del personal administrartivo
   async findPersonal(id) {
@@ -361,25 +387,43 @@ class CitaService {
   }
 
   async update(id, changes) {
-    //const cita = await this.findOne(id);
-    const rta = await models.Cita.update(changes, {
-      where: { id },
-    });
-    const [rowCount] = rta; // Obtiene la cantidad de filas actualizadas
-    if (rowCount === 0) {
-      // Manejo de error: No se encontró el registro para actualizar
-      throw new Error("No se encontró el registro para actualizar");
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const rta = await models.Cita.update(changes, {
+        where: { id },
+        transaction,
+      });
+      const [rowCount] = rta; // Obtiene la cantidad de filas actualizadas
+      if (rowCount === 0) {
+        // Manejo de error: No se encontró el registro para actualizar
+        throw new Error("No se encontró el registro para actualizar");
+      }
+      await transaction.commit();
+      return rta;
+    } catch (error) {
+      if (transaction) {
+        await transaction.rollback();
+      }
+      throw error;
     }
-    return rta;
   }
 
   async delete(id) {
-    const cita = await this.findOne(id);
-    if (!cita) {
-      throw new Error("No se encontró el registro de la Cita");
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const cita = await this.findOne(id, { transaction });
+      if (!cita) {
+        throw new Error("No se encontró el registro de la Cita");
+      }
+      await cita.destroy({ transaction });
+      await transaction.commit();
+      return { id };
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
     }
-    await cita.destroy();
-    return { id };
   }
   async deleteCita(citaId) {
     await models.Cita.destroy({

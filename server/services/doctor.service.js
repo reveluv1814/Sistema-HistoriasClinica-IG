@@ -1,6 +1,6 @@
 const boom = require("@hapi/boom");
 const { Op, Sequelize } = require("sequelize");
-const { models } = require("../libs/sequelize");
+const { models, sequelize } = require("../libs/sequelize");
 const UserService = require("./usuario.service");
 const { config } = require("../config/config");
 const fs = require("fs");
@@ -114,48 +114,89 @@ class DoctorService {
     });
     return rta;
   }
+
   async create(data) {
-    const userService = new UserService();
-    const { usuario, persona, doctor } = data;
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
 
-    const newUsuario = await userService.createUser(usuario);
-    const newPersona = await models.Persona.create(persona);
+      const userService = new UserService();
+      const { usuario, persona, doctor } = data;
 
-    const newDoctor = await models.Doctor.create({
-      ...doctor,
-      usuarioId: newUsuario.id,
-      personaId: newPersona.id,
-    });
-    return newPersona.id;
+      // Crear usuario
+      const newUsuario = await userService.createUser(usuario, { transaction });
+
+      // Crear persona
+      const newPersona = await models.Persona.create(persona, { transaction });
+
+      // Crear doctor asociado al usuario y persona creados
+      await models.Doctor.create(
+        {
+          ...doctor,
+          usuarioId: newUsuario.id,
+          personaId: newPersona.id,
+        },
+        { transaction }
+      );
+
+      // Confirmar la transacción
+      await transaction.commit();
+
+      return newPersona.id;
+    } catch (error) {
+      // Si ocurre algún error, deshacer la transacción
+      if (transaction) {
+        await transaction.rollback();
+      }
+      throw error; // Lanzar el error para manejarlo en un nivel superior
+    }
   }
 
   async update(id, changes) {
-    const { doctor, usuario, persona } = changes;
-    const docBuscado = await models.Doctor.findOne({ where: { id } });
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const { doctor, usuario, persona } = changes;
 
-    // Actualiza el registro de Usuario
-    const updatedUsuario = await models.Usuario.update(usuario, {
-      where: { id: docBuscado.usuarioId }, // Utiliza el ID del Usuario asociado al Doctor
-    });
+      const docBuscado = await models.Doctor.findOne({ where: { id } });
+      if (!docBuscado) {
+        throw new Error("No se encontró el registro del Doctor");
+      }
 
-    // Actualiza el registro de Persona
-    const updatedPersona = await models.Persona.update(persona, {
-      where: { id: docBuscado.personaId }, // Utiliza el ID de la Persona asociada al Doctor
-    });
+      // Actualiza el registro de Usuario
+      await models.Usuario.update(usuario, {
+        where: { id: docBuscado.usuarioId },
+        transaction,
+      });
 
-    // Actualiza el registro de Doctor
-    const updatedDoctor = await models.Doctor.update(doctor, {
-      where: { id },
-    });
+      // Actualiza el registro de Persona
+      await models.Persona.update(persona, {
+        where: { id: docBuscado.personaId },
+        transaction,
+      });
 
-    const [rowCount] = updatedDoctor; // Obtiene la cantidad de filas actualizadas
-    if (rowCount === 0) {
-      // Manejo de error: No se encontró el registro para actualizar
-      throw new Error("No se encontró el registro para actualizar");
+      // Actualiza el registro de Doctor
+      const updatedDoctor = await models.Doctor.update(doctor, {
+        where: { id },
+        transaction,
+      });
+
+      const [rowCount] = updatedDoctor; // Obtiene la cantidad de filas actualizadas
+      if (rowCount === 0) {
+        // Manejo de error: No se encontró el registro para actualizar
+        throw new Error("No se encontró el registro para actualizar");
+      }
+      await transaction.commit();
+
+      /* const updatedRecord = await models.Doctor.findByPk(id); // Consulta el registro actualizado */
+      return updatedDoctor;
+    } catch (error) {
+      // Si ocurre algún error, deshacer la transacción
+      if (transaction) {
+        await transaction.rollback();
+      }
+      throw error; // Lanzar el error para manejarlo en un nivel superior
     }
-
-    /* const updatedRecord = await models.Doctor.findByPk(id); // Consulta el registro actualizado */
-    return updatedDoctor;
   }
   async delete(id) {
     const doctor = await models.Doctor.findByPk(id);

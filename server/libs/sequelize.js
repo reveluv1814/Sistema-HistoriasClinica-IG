@@ -20,4 +20,10 @@ const sequelize = new Sequelize(config.dbUrl, options);
 
 setupModels(sequelize);
 
-module.exports = sequelize;
+const models = sequelize.models;
+//module.exports = sequelize;
+module.exports = {
+  sequelize,
+  Sequelize,
+  models
+};

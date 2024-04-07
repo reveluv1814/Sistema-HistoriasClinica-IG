@@ -1,34 +1,46 @@
 const boom = require("@hapi/boom");
-const { models } = require("./../../libs/sequelize");
+const { models, sequelize } = require("./../../libs/sequelize");
 
 class OjosService {
   constructor() {}
 
   async create(data, exploracionFId) {
-    // Primero, crea los ojos
-    const newOjos = await models.Ojos.create(data);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const newOjos = await models.Ojos.create(data, { transaction });
 
-    // Luego, actualiza la exploracion fisica con el ID de los ojos creados
-    await models.ExploracionF.update(
-      { ojosId: newOjos.id },
-      { where: { id: exploracionFId } }
-    );
-
-    return newOjos;
+      // Luego, actualiza la exploracion fisica con el ID de los ojos creados
+      await models.ExploracionF.update(
+        { ojosId: newOjos.id },
+        { where: { id: exploracionFId }, transaction }
+      );
+      await transaction.commit();
+      return newOjos;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
+    }
   }
   async updateOjos(data, id) {
-    // Busca ojos por su ID
-    const ojos = await models.Ojos.findByPk(id);
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const ojos = await models.Ojos.findByPk(id, { transaction });
 
-    if (!ojos) {
-      throw boom.notFound("Ojos not found");
+      if (!ojos) {
+        throw boom.notFound("Ojos not found");
+      }
+      const newOjos = await ojos.update(data, { transaction });
+      await transaction.commit();
+      return newOjos;
+    } catch (error) {
+      if (transaction) await transaction.rollback();
+      throw error;
     }
-    const newOjos = await ojos.update(data);
-
-    return newOjos;
   }
   async deleteOjos(id) {
-   //busca ojos para eliminarlo
+    //busca ojos para eliminarlo
     const ojos = await models.Ojos.findByPk(id);
     if (!ojos) {
       throw boom.notFound("Ojos not found");

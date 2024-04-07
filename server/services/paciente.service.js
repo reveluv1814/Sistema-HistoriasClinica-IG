@@ -1,6 +1,6 @@
 const boom = require("@hapi/boom");
 const { Op, Sequelize } = require("sequelize");
-const { models } = require("./../libs/sequelize");
+const { models, sequelize } = require("./../libs/sequelize");
 const { config } = require("../config/config");
 const fs = require("fs");
 
@@ -114,70 +114,81 @@ class PacienteService {
           model: models.Persona,
           as: "persona",
         },
-        /* {
-          model: models.PersonalAdmin,
-          as: "personalAd",
-          attributes:["id","cargo"],
-          include: [
-            {
-              model: models.Persona,
-              as: "persona",
-              attributes: [
-                "id",
-                "nombre",
-                "apellidoPaterno",
-                "apellidoMaterno",
-                "ci",
-              ],
-            },
-          ],
-        }, */
       ],
     });
     if (!paciente) throw boom.notFound("Paciente not found");
     return paciente;
   }
-  /* async create(data) {
-    const newPaciente = await models.Paciente.create(data);
-    return newPaciente;
-  } */
   async create(data) {
-    const { paciente, persona, personalAdmin } = data;
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const { paciente, persona, personalAdmin } = data;
 
-    const newPersona = await models.Persona.create(persona);
+      const newPersona = await models.Persona.create(persona, { transaction });
 
-    const newPaciente = await models.Paciente.create({
-      ...paciente,
-      personaId: newPersona.id,
-    });
-    const newHistoria = await models.HistoriaClinica.create({ arbolGene: "" });
-    await models.P_creaPac.create({
-      ...personalAdmin,
-      pacienteId: newPaciente.id,
-      historiaId: newHistoria.id,
-    });
-    return newPersona.id;
+      const newPaciente = await models.Paciente.create(
+        {
+          ...paciente,
+          personaId: newPersona.id,
+        },
+        { transaction }
+      );
+      const newHistoria = await models.HistoriaClinica.create(
+        { arbolGene: "" },
+        { transaction }
+      );
+      await models.P_creaPac.create(
+        {
+          ...personalAdmin,
+          pacienteId: newPaciente.id,
+          historiaId: newHistoria.id,
+        },
+        { transaction }
+      );
+      await transaction.commit();
+      return newPersona.id;
+    } catch (error) {
+      if (transaction) {
+        await transaction.rollback();
+      }
+      throw error;
+    }
   }
   async update(id, changes) {
-    const { paciente, persona } = changes;
-    const pacienteBuscado = await models.Paciente.findOne({ where: { id } });
+    let transaction;
+    try {
+      transaction = await sequelize.transaction();
+      const { paciente, persona } = changes;
+      const pacienteBuscado = await models.Paciente.findOne({ where: { id } });
+      if (!pacienteBuscado) {
+        throw new Error("No se encontró el registro del Paciente");
+      }
 
-    // Actualiza el registro de Usuario
-    await models.Persona.update(persona, {
-      where: { id: pacienteBuscado.personaId }, // Utiliza el ID del Usuario asociado al Doctor
-    });
+      // Actualiza el registro de Usuario
+      await models.Persona.update(persona, {
+        where: { id: pacienteBuscado.personaId },
+        transaction,
+      });
 
-    // Actualiza el registro de Doctor
-    const updatedPaciente = await models.Paciente.update(paciente, {
-      where: { id },
-    });
+      const updatedPaciente = await models.Paciente.update(paciente, {
+        where: { id },
+        transaction,
+      });
 
-    const [rowCount] = updatedPaciente; // Obtiene la cantidad de filas actualizadas
-    if (rowCount === 0) {
-      // Manejo de error: No se encontró el registro para actualizar
-      throw new Error("No se encontró el registro para actualizar");
+      const [rowCount] = updatedPaciente; // Obtiene la cantidad de filas actualizadas
+      if (rowCount === 0) {
+        // Manejo de error: No se encontró el registro para actualizar
+        throw new Error("No se encontró el registro para actualizar");
+      }
+      await transaction.commit();
+      return updatedPaciente;
+    } catch (error) {
+      if (transaction) {
+        await transaction.rollback();
+      }
+      throw error;
     }
-    return updatedPaciente;
   }
   async delete(id) {
     const paciente = await models.Paciente.findByPk(id);

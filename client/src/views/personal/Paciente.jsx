@@ -28,7 +28,7 @@ const Paciente = () => {
     { key: "persona.telefono", label: "CEL/TEL" },
     { key: "sexo", label: "SEXO" },
     { key: "personalAd[0].persona.nombreCompleto", label: "CREADO POR" },
-    { key: "createdAt", label: "CRADO EN" },
+    { key: "createdAt", label: "CREADO EN" },
   ];
   useEffect(() => {
     getPacientes();
@@ -62,7 +62,7 @@ const Paciente = () => {
         ci: "",
         telefono: "",
         direccion: "",
-        foto: "https://static.simpsonswiki.com/images/2/26/Prom_Time_Homer.png",
+        foto: "",
         es_persona: true,
       },
       paciente: {
@@ -129,14 +129,18 @@ const Paciente = () => {
   };
   const handleCita = async (datos) => {
     try {
-      navigate(`/personal/addCita/${datos.id}`);
+      if (localStorage.getItem("rol") === "admin")
+        navigate(`/admin/personal/addCita/${datos.id}`);
+      else navigate(`/personal/addCita/${datos.id}`);
     } catch (error) {
       console.log(error);
     }
   };
   const handleHistoria = async (datos) => {
     try {
-      navigate(`/personal/historia/${datos.id}`);
+      if (localStorage.getItem("rol") === "admin")
+        navigate(`/admin/personal/historia/${datos.id}`);
+      else navigate(`/personal/historia/${datos.id}`);
     } catch (error) {
       console.log(error);
     }

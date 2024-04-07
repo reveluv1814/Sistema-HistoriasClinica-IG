@@ -25,7 +25,9 @@ const Laboratorio = () => {
     } catch (error) {
       console.log(error);
     } finally {
-      navigate("/laboratorista/pacientes");
+      if (localStorage.getItem("rol") === "admin")
+        navigate("/admin/laboratorista/pacientes");
+      else navigate("/laboratorista/pacientes");
     }
   };
   const closeLaboModal = () => {
@@ -34,7 +36,11 @@ const Laboratorio = () => {
   return (
     <div>
       <a
-        onClick={() => navigate("/laboratorista/pacientes")}
+        onClick={() => {
+          if (localStorage.getItem("rol") === "admin")
+            navigate("/admin/laboratorista/pacientes");
+          else navigate("/laboratorista/pacientes");
+        }}
         className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-indigo-600 rounded-lg shadow-md group cursor-pointer bg-indigo-500 dark:bg-indigo-800 dark:border-indigo-900"
       >
         <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-indigo-400 dark:bg-indigo-700 group-hover:translate-x-0 ease">
@@ -149,6 +155,9 @@ const Laboratorio = () => {
                           <h4 className="text-center text-gray-700 text-lg font-bold dark:text-gray-300">
                             Desea registrar el examen laboratorio?
                           </h4>
+                          <h6 className="text-center text-gray-700 text-base italic py-5 font-bold dark:text-gray-300">
+                            Revise su ortografía antes de registrar
+                          </h6>
                           <div className="w-full flex flex-row space-x-2 mt-3">
                             <button
                               type="button"

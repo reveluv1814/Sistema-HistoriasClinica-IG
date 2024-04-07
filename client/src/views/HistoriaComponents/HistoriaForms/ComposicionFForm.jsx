@@ -28,7 +28,6 @@ const ComposicionFForm = ({ historiaId }) => {
       const valoresNoVacios = Object.fromEntries(
         Object.entries(values).filter(([_, value]) => value !== "")
       );
-      console.log(valoresNoVacios);
       await historiaService.guardarComposicionF(historiaId, {
         composicionF: valoresNoVacios,
       });

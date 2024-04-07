@@ -51,7 +51,12 @@ const Citas = () => {
           estado: false,
         },
       });
-      navigate(`/doctor/historia/${datos.historiaId}/consulta/${datos.id}`);
+      if (localStorage.getItem("rol") === "admin")
+        navigate(
+          `/admin/doctor/historia/${datos.historiaId}/consulta/${datos.id}`
+        );
+      else
+        navigate(`/doctor/historia/${datos.historiaId}/consulta/${datos.id}`);
     } catch (error) {
       console.log(error);
     }

@@ -46,7 +46,9 @@ const Citas = () => {
   //edit
   const handleEdit = async (datos) => {
     try {
-      navigate(`/personal/editCita/${datos.id}`);
+      if (localStorage.getItem("rol") === "admin")
+        navigate(`/admin/personal/editCita/${datos.id}`);
+      else navigate(`/personal/editCita/${datos.id}`);
     } catch (error) {
       console.log(error);
     }
@@ -96,17 +98,17 @@ const Citas = () => {
                       {cita.hora.slice(0, 5)}
                     </div>
                   </div>
-                  <p className="mb-2">
+                  <p className="mb-2 capitalize">
                     <b className="text-gray-800 dark:text-gray-400">
                       Paciente:
                     </b>{" "}
                     {cita.paciente.persona.nombreCompleto}
                   </p>
-                  <p className="mb-2">
+                  <p className="mb-2 capitalize">
                     <b className="text-gray-800 dark:text-gray-400">Doctor:</b>{" "}
                     {cita.doctor.persona.nombreCompleto}
                   </p>
-                  <p className="italic text-sm">
+                  <p className="italic text-sm capitalize">
                     <b className="text-gray-700 dark:text-gray-400">
                       Creado Por:
                     </b>{" "}

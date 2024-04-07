@@ -1,26 +1,34 @@
 const boom = require("@hapi/boom");
 const { Op } = require("sequelize");
-const { models } = require("../libs/sequelize");
+const { models, sequelize } = require("../libs/sequelize");
 
 class HistoriaLaboService {
   constructor() {}
   async createHistoriaLabo(data, idPaciente) {
+    let transaction;
     try {
-      const rta = await models.P_creaPac.findOne({
-        where: { pacienteId: idPaciente },
-      });
+      transaction = await sequelize.transaction();
+
+      const rta = await models.P_creaPac.findOne(
+        {
+          where: { pacienteId: idPaciente },
+        },
+        { transaction }
+      );
       if (!rta) throw boom.notFound("Historia not found");
 
-      const newHistoriaLabo = await models.HistoriaLabo.create({
-        ...data,
-        historiaId: rta.historiaId,
-      });
-
+      const newHistoriaLabo = await models.HistoriaLabo.create(
+        {
+          ...data,
+          historiaId: rta.historiaId,
+        },
+        { transaction }
+      );
+      await transaction.commit();
       return newHistoriaLabo;
     } catch (error) {
-      throw new Error(
-        `Error al crear la relación HistoriaLabo: ${error.message}`
-      );
+      if (transaction) await transaction.rollback();
+      throw error;
     }
   }
   async updateHistoriaLabo(data, id) {

@@ -56,7 +56,7 @@ const CitaView = ({ citas }) => {
                           {cita.impresionDiag || "sin dato..."}
                         </p>
                         <p className="w-full italic">
-                          <span className="font-semibold">Doctor: </span>
+                          <span className="font-semibold">Doctor/a: </span>
                           {cita.doctor.persona.nombreCompleto}
                         </p>
                       </div>

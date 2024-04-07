@@ -24,7 +24,9 @@ const LoginForm = () => {
 
       localStorage.setItem("access_token", data.token);
       localStorage.setItem("rol", data.user.rol);
-      localStorage.setItem("id", data.user.idRol);
+      data.user.rol === "admin"
+        ? localStorage.setItem("id", data.user.id)
+        : localStorage.setItem("id", data.user.idRol);
       const rol = localStorage.getItem("rol");
 
       switch (rol) {
