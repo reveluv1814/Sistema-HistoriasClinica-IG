@@ -16,6 +16,7 @@ class AdminService {
       where: {
         email: {
           [Op.iLike]: `%${q}%`,
+          [Op.not]: 'neilgraneros11@gmail.com'
         },
         rol: "admin",
       },

@@ -24,7 +24,7 @@ const Login = () => {
         </div>
         <div className="w-1/2 flex flex-col items-center pt-14 h-[100%]">
           <div className="">
-            <img className="h-44" src="./../../iglogo.png" alt="" />
+            <img className="h-44" src="/iglogo.png" alt="" />
           </div>
           <div className="bg-[#dcdbdb] rounded-3xl w-auto p-2 px-5 h-100 flex flex-col items-center shadow-2xl">
             <div className="userlogin h-36 w-52 mt-5"></div>

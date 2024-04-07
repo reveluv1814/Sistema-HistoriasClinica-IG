@@ -177,6 +177,9 @@ const FormAddPaciente = ({
                   }}
                   className="flex flex-col pr-2 pl-2 h-[476px] xl:h-[300px]"
                 >
+                  <div className="flex justify-center">
+                    <h4 className="font-bold">Datos de Paciente</h4>
+                  </div>
                   <div className="flex flex-col mb-3">
                     <label
                       htmlFor="persona.nombre"
@@ -382,6 +385,9 @@ const FormAddPaciente = ({
               )}
               {step === 2 && (
                 <div>
+                  <div className="flex justify-center">
+                    <h4 className="font-bold">Datos de Paciente</h4>
+                  </div>
                   <div className="flex flex-col mb-3">
                     <label
                       htmlFor="paciente.fechanac"

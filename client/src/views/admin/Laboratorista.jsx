@@ -209,6 +209,7 @@ const Laboratorista = () => {
             listar={getLaboratoristas}
             editUser={editFlag}
             idEdit={idLaboEdit}
+            rol="laboratorista"
           />
         </Modal>
         <Modal

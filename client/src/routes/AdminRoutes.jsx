@@ -20,11 +20,16 @@ import CitasPersonal from "../views/personal/Citas";
 import AddCitaPersonal from "../views/personal/AddCita";
 import EditCitaPersonal from "../views/personal/EditCita";
 import HistoriaPersonal from "../views/HistoriaComponents/Historia";
+import AdminList from "../views/admin/AdminList";
 
 const AdminRoutes = {
   path: "/admin",
   element: <AdminLayout />,
   children: [
+    {
+      path: "adminList",
+      element: <AdminList />,
+    },
     {
       path: "doctores",
       element: <Doctor />,

@@ -212,6 +212,7 @@ const Personal = () => {
             listar={getPersonalAd}
             editUser={editFlag}
             idEdit={idPersonalEdit}
+            rol="personalAdmin"
           />
         </Modal>
         <Modal

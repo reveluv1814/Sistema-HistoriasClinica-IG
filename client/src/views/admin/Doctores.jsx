@@ -212,6 +212,7 @@ const Doctores = () => {
             listar={getDoctores}
             editUser={editFlag}
             idEdit={idDocEdit}
+            rol="doctor"
           />
         </Modal>
         <Modal
