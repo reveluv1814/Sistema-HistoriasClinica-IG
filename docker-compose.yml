@@ -1,81 +1,70 @@
-
-version: '3.8'
-
-services: 
-  postgres:
-    image: postgres:latest
-    restart: always
-    environment:
-      - POSTGRES_DB=sistemahc
-      - POSTGRES_USER=neil
-      - POSTGRES_PASSWORD=admin123
-    ports:
-      - 5432:5432
-    volumes:
-      - ./postgres_data:/var/lib/postgresql/data
-# version: '3.8'
-# services: 
-#   basehc:
-#     image: postgres:latest
-#     restart: always
+# services:
+#   database-postgres:
+#     image: postgres
+#     container_name: databasehc
 #     environment:
 #       POSTGRES_DB: sistemahc
 #       POSTGRES_USER: neil
 #       POSTGRES_PASSWORD: admin123
 #     ports:
-#       - "5432:5432"
+#       - 5432:5432
 #     volumes:
 #       - ./postgres_data:/var/lib/postgresql/data
+#     healthcheck:
+#       test: ["CMD-SHELL", "pg_isready -q -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+#       interval: 5s
+#       timeout: 5s
+#       retries: 5
+#     restart: on-failure
 #     networks:
-#       redsistema:
-#         ipv4_address: 172.28.0.10
+#       - redhc
 
-#   backendhc:
-#     environment:
-#       - IP_DATABASE=172.28.0.10
-#     build: .
+#   backend-hc:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     image: backendhc-image
+#     container_name: backendhc
 #     ports:
 #       - "4000:4000"
 #     depends_on:
-#       - basehc
+#       database-postgres:
+#         condition: service_healthy
+#     restart: on-failure
 #     networks:
-#       redsistema:
-#         ipv4_address: 172.28.0.20
+#       - redhc
+
+#   frontend-hc:
+#     build:
+#       context: ./client
+#       dockerfile: Dockerfile
+#     image: frontendhc-image
+#     container_name: frontendhc
+#     ports:
+#       - "3000:3000"
+#       - "5173:5173"
+#     depends_on:
+#       backend-hc:
+#         condition: service_started
+#     networks:
+#       - redhc
+#     restart: on-failure
 
 # networks:
-#   redsistema:
+#   redhc:
 #     driver: bridge
-#     ipam:
-#       config:
-#         - subnet: 172.28.0.0/16
-#           gateway: 172.28.0.1
 
 
-#version: '3.8'
-
-# services:
-#   basesistema:
-#     image: postgres:latest
-#     restart: always
-#     environment:
-#       - POSTGRES_DB=sistemahc
-#       - POSTGRES_USER=neil
-#       - POSTGRES_PASSWORD=admin123
-#     ports:
-#       - 5432:5432
-#     volumes:
-#       - ./postgres_data:/var/lib/postgresql/d
-#   server:
-#     build: .
-#     restart: unless-stopped
-#     ports:
-#       - 4000:4000
-#     environment:
-#     - NODE_ENV
-#     env_file:
-#     - .env
-#     volumes:
-#       - .:/app
-#     command: ["./wait-for-postgres.sh", "postgres", "npm", "run", "dev"]
-#     depends_on:
-#       - postgres
+ version: '3.8'
+ services: 
+   postgres:
+     image: postgres:latest
+     restart: always
+     environment:
+       - POSTGRES_DB=sistemahc
+       - POSTGRES_USER=neil
+       - POSTGRES_PASSWORD=admin123
+     ports:
+       - 5432:5432
+     volumes:
+       - ./postgres_data:/var/lib/postgresql/data

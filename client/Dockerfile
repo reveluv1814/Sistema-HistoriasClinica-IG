@@ -1,15 +1,7 @@
-FROM node:lts-alpine3.19
-
+FROM node:lts-alpine3.19 as builder
 WORKDIR /app
-
-RUN apk add --no-cache postgresql-client
-
-COPY package.json ./
-
-COPY package-lock.json ./
-
+COPY package.json .
+COPY package-lock.json .
 RUN npm install
-
 COPY . .
-
-CMD [ "npm","run","dev" ]
+CMD [ "npm", "run", "dev", "--", "--host" ]

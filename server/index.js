@@ -14,8 +14,9 @@ const {
 
 const app = express();
 
-const urlFrontend = process.env.URL_FRONT_SERVICE || "http://localhost:5173";
-app.use(cors({ origin: urlFrontend }));
+// const urlFrontend = process.env.URL_FRONT_SERVICE || "http://localhost:5173";
+// app.use(cors({ origin: urlFrontend }));
+app.use(cors());
 app.use(express.json());
 const port = process.env.PORT_SERVER || 4000;
 console.log(__dirname);

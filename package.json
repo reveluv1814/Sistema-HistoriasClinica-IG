@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server/index.js",
+    "start": "node server/index.js",
     "dev1": "nodemon --exec babel-node server/index.js",
     "migrations:generate": "sequelize-cli migration:generate --name",
     "migrations:run": "sequelize-cli db:migrate",
