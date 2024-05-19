@@ -1,0 +1,55 @@
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbCI6ImxhYm9yYXRvcmlzdGEiLCJpYXQiOjE3MDk2NzMzMzJ9.-g0cY_Tc5cgsguIHhdUSssH2iBOiMcC7U0D6uVcgbEA
+
+
+#listar pacientes
+GET http://127.0.0.1:4000/laboratorista/pacientes?q=&page=1&limit=10
+Authorization: Bearer {{token}}
+Accept: application/json
+### obtener un paciente
+GET http://127.0.0.1:4000/laboratorista/paciente/1
+Authorization: Bearer {{token}}
+Accept: application/json
+####################################################
+###listar la historia del paciente de id x
+GET http://127.0.0.1:4000/historia/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###listar la historia  de id x
+GET http://127.0.0.1:4000/historia/form/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### ver nombre del laboratorista de id x
+GET http://127.0.0.1:4000/historia/laboratorio/nombre/1
+Authorization: Bearer {{token}}
+Accept: application/json
+###################################################################
+### crear un laboratorio del paciente de id X
+POST http://127.0.0.1:4000/historia/laboratorio/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "historiaLabo":{
+        "examen": "a verrrr xd hola",
+        "laboratoristaId": 1
+    }
+}
+### editar un laboratorio de id x
+PATCH http://127.0.0.1:4000/historia/laboratorio/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "historiaLabo":{
+        "examen": "era bromaaa xd"
+    }
+}
+
+### eliminar un laboratorio de id x
+DELETE  http://127.0.0.1:4000/historia/laboratorio/5
+Authorization: Bearer {{token}}
+Accept: application/json

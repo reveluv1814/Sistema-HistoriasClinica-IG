@@ -1,0 +1,161 @@
+/* .steps {
+    width: 600px;
+    background-color: #f7f7f7;
+    border-radius: 7px;
+    padding: 25px 100px;
+    margin: 100px auto;
+}
+
+.numbers {
+    display: flex;
+    justify-content: space-between;
+}
+
+.numbers > div {
+    height: 40px;
+    aspect-ratio: 1;
+    background-color: #e7e7e7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.numbers .active,
+button.active {
+    background-color: #7950f2;
+    color: #fff;
+}
+button.noactive{
+    cursor: initial;
+    box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08);
+}
+button.noactive:hover{
+    cursor: initial;
+}
+
+.message {
+    text-align: center;
+    font-size: 20px;
+    margin: 40px 0;
+    font-weight: bold;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons button {
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.buttons button span {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.textStep {
+    margin: 0;
+    text-transform: uppercase;
+} */
+
+.steps {
+    width: 600px;
+    background-color: #f7f7f7;
+    border-radius: 7px;
+    padding: 25px 100px;
+    margin: 100px auto;
+}
+
+.numbers {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.numbers > div {
+    height: 50px;
+    width: 10rem;
+    aspect-ratio: 1;
+    background-color: #e7e7e7;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 2px 5px 2px 5px;
+}
+
+.numbers .active,
+button.active {
+    background-color: #7950f2;
+    color: #fff;
+}
+button.noactive{
+    box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08);
+    background-color: #d4d4d88e;
+    cursor: none;
+}
+button.noactive:hover{
+    cursor: initial;
+}
+
+.message {
+    text-align: center;
+    font-size: 20px;
+    margin: 40px 0;
+    font-weight: bold;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    
+}
+
+.buttons button {
+    border: none;
+    cursor: pointer;
+    padding: 15px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 49%;
+    
+    justify-content: center;
+}
+
+.buttons button span {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.textStep {
+    margin: 0;
+    text-transform: uppercase;
+}

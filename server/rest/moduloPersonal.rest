@@ -1,0 +1,131 @@
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbCI6InBlcnNvbmFsQWRtaW4iLCJpYXQiOjE2OTQxODgxNTV9.OULPAIXZFm83dn-Y6hozx0amejbm2hPLyKum-Fez620
+
+#listar
+GET http://127.0.0.1:4000/personal/paciente?q=&page=1&limit=10
+Authorization: Bearer {{token}}
+Accept: application/json
+###
+GET http://127.0.0.1:4000/personal/paciente/hola
+Authorization: Bearer {{token}}
+Accept: application/json
+###
+#obtener un paciente
+GET http://127.0.0.1:4000/personal/paciente/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+#crear paciente
+POST http://127.0.0.1:4000/personal/paciente
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "persona":{
+      "nombre": "giovani gael",
+      "apellidoMaterno": "graneros",
+      "apellidoPaterno": "acarapi",
+      "ci": "785646456",
+      "telefono": "152879522",
+      "direccion": "villa copa ",
+      "foto": "http://placehold.it/32x32",
+      "es_persona": true
+    },
+    "paciente":{
+        "fechanac": "2000-06-11",
+        "sexo": "masculino",
+        "raza":"mestizo",
+        "procedencia":"la paz",
+        "residencia": "la paz"
+    },
+    "personalAdmin":{
+        "personalAd_Id":1
+    }
+}
+### actualizar
+PATCH  http://127.0.0.1:4000/personal/paciente/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "persona":{
+      "nombre": "giovani gael"
+    },
+    "paciente":{
+        "raza":"blanco",
+        "procedencia":"oruro"
+    }
+}
+### eliminar un paciente
+DELETE http://127.0.0.1:4000/personal/paciente/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+####### CREAR UNA CITA ##################
+
+#listar citas
+GET http://127.0.0.1:4000/personal/cita
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###listar una cita
+GET http://127.0.0.1:4000/personal/cita/4
+Authorization: Bearer {{token}}
+Accept: application/json
+### crea una cita
+POST http://127.0.0.1:4000/personal/cita
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "cita":{
+        "fecha":"2023-10-10",
+        "hora" :"19:00",
+        "pacienteId": 1,
+        "doctorId": 1,
+        "personalAdId": 1,
+        "motivo":"primera vezz",
+        "resumen":"En esta consulta el paciente  se mostro con mejorias y se vio esto y  estofasdf asdfasdfsdfsdfasdfsd asdfadsfasdfasdfsdf",
+        "impresionDiag":"Lo veo con impresiones demasiado buenas y mejorandosafas asdf asdffasdfsdf asdfsdfasfas sadfasdfsd",
+        "estado":false
+    }
+}
+###Edita una cita
+PATCH http://127.0.0.1:4000/personal/cita/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "cita":{
+        "hora" :"14:00",
+        "resumen":"buen resumen",
+        "impresionDiag":"impresiones a verrr",
+        "estado":false
+    }
+}
+### Elimina una cita
+DELETE http://127.0.0.1:4000/personal/cita/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Lista todas las citas del personal x
+GET http://127.0.0.1:4000/personal/cita/personalAd/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Lista doctores para la cita
+GET http://127.0.0.1:4000/personal/doctor
+Authorization: Bearer {{token}}
+Accept: application/json
+### Seleciona un doctor para la cita
+GET http://127.0.0.1:4000/personal/doctor/1
+Authorization: Bearer {{token}}
+Accept: application/json
+####
+GET http://127.0.0.1:4000/personal/cita/historia/1
+Authorization: Bearer {{token}}
+Accept: application/json

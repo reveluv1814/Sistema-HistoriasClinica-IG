@@ -1,0 +1,169 @@
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbCI6InBlcnNvbmFsQWRtaW4iLCJpYXQiOjE2OTQxODgxNTV9.OULPAIXZFm83dn-Y6hozx0amejbm2hPLyKum-Fez620
+@tokenDoc=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInJvbCI6ImRvY3RvciIsImlhdCI6MTY5NjAwMTMxMH0.fQSuKF5en3asffqUOhI4bybBh4rgPDq953QMMb5WjPc
+
+#listar la historia del paciente de id x
+GET http://127.0.0.1:4000/historia/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###listar la historia  de id x (para el form)
+GET http://127.0.0.1:4000/historia/form/1
+Authorization: Bearer {{tokenDoc}}
+Accept: application/json
+
+###listar los apartados de la historia  de id x 
+GET http://127.0.0.1:4000/historia/apartados/1
+Authorization: Bearer {{tokenDoc}}
+Accept: application/json
+
+###############################################
+### lista un antecedente familiar de la historia de id x
+GET http://127.0.0.1:4000/historia/antecedenteF/3
+Authorization: Bearer {{tokenDoc}}
+Accept: application/json
+
+###crea un antecedente familiar con la historia de id x ###############################################
+POST http://127.0.0.1:4000/historia/antecedenteF/1
+Authorization: Bearer {{tokenDoc}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "antecedenteF":{
+        "nomPadre": "",
+        "fechaNac_Padre": null,
+        "profesionPadre": "",
+        "nomMadre": "",
+        "fechaNac_Madre": null,
+        "profesionMadre": "",
+        "edadMat_nacP": null,
+        "edadPat_nacP": null,
+        "edadAbuela_nacM": null
+    }
+}
+###Edita un antecedente familiar de id x
+PATCH http://127.0.0.1:4000/historia/antecedenteF/1
+Authorization: Bearer {{tokenDoc}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "antecedenteF":{
+        "fechaNac_Padre": "antonio graneros benavides",
+        "nomMadre": "mary flores callisaya"
+    }
+}
+###Elimina un antecendente familiar de id x
+DELETE http://127.0.0.1:4000/historia/antecedenteF/18
+Authorization: Bearer {{tokenDoc}}
+Accept: application/json
+
+###crea un antecedente personal con la historia de id x ###############################################
+POST http://127.0.0.1:4000/historia/antecedenteP/1
+Authorization: Bearer {{tokenDoc}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "antecedenteP":{
+        "g_embarazo": "",
+        "g_obs": "",
+        "pat_fiebre": null,
+        "pat_enfInfec": null,
+        "pat_diabetes": null,
+        "pat_epilepsia": null,
+        "pat_otras": "",
+        "factFis_rayosx": null,
+        "factFis_ecografia": null,
+        "factFis_lugar": "",
+        "factFis_numVeces": null,
+        "factQuim_farmacos": "",
+        "factQuim_farmOtros": "",
+        "factQuim_anticonceptivos": "",
+        "fact_Quim_gestagenosAB": "",
+        "factQuim_expProfesional": "",
+        "factQuim_enolismo": "",
+        "gesta": null,
+        "gesta_para": null,
+        "gesta_nroNativivos": null,
+        "gesta_malformados": null,
+        "gesta_nroNatimortos": null,
+        "gesta_nroAB": null,
+        "gesta_exp": null,
+        "gesta_anticonceptivos":null,
+        "gesta_anticonsTipo": "",
+        "gesta_periodo_1_2": null,
+        "gesta_periodo_2_3": null,
+        "gesta_periodo_3_4": null,
+        "gesta_periodoUso": "",
+        "parto": "",
+        "parto_porque": "",
+        "dn_peso": "",
+        "dn_talla": "",
+        "dn_pc": null,
+        "dn_apgar": "",
+        "dn_llanto": "",
+        "dn_oxigeno": "",
+        "dn_ictericia": "",
+        "dn_cianosis": "",
+        "dn_incubadora": "",
+        "dn_fotop": null,
+        "dn_exsanguineo": null,
+        "dn_exsan_fiebre": null,
+        "dn_exsan_convul": null,
+        "dn_hemorragia": null,
+        "dn_hemoIni": "",
+        "dn_hemoDura": "",
+        "dn_altCriptorquidea": null,
+        "dn_altCardiopatia": null,
+        "dn_altFlap": null,
+        "dn_altAnal": null,
+        "dn_altNeural": null,
+        "dn_altObs": ""
+    }
+}
+###Edita un antecedente personal de id x
+PATCH http://127.0.0.1:4000/historia/antecedenteP/2
+Authorization: Bearer {{tokenDoc}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "antecedenteP":{
+        "pat_fiebre": true,
+        "pat_enfInfec": false
+    }
+}
+
+###crea una composicion familiar con la historia de id x ###############################################
+POST http://127.0.0.1:4000/historia/composicionF/1
+Authorization: Bearer {{tokenDoc}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "composicionF":{
+        "nrogestacion": null,
+        "nomHijo": "",
+        "sexo": "",
+        "fechanac": null,
+        "obs": ""
+    }
+}
+###Elimina una composicion familiar de id x
+DELETE http://127.0.0.1:4000/historia/composicionF/1
+Authorization: Bearer {{tokenDoc}}
+Content-Type: application/json
+Accept: application/json
+
+###Edita una composicion familiar de id x
+PATCH http://127.0.0.1:4000/historia/composicionF/1
+Authorization: Bearer {{tokenDoc}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "composicionF":{
+        "nomHijo": "malu"
+    }
+}

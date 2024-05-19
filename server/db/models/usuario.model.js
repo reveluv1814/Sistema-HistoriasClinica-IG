@@ -41,6 +41,14 @@ class Usuario extends Model {
       as: "doctor",
       foreignKey: "usuarioId",
     });
+    this.hasOne(models.PersonalAdmin, {
+      as: "personalAdmin",
+      foreignKey: "usuarioId",
+    });
+    this.hasOne(models.Laboratorista, {
+      as: "laboratorista",
+      foreignKey: "usuarioId",
+    });
   }
 
   static config(sequelize) {

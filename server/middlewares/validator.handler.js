@@ -11,4 +11,15 @@ function validatorHandler(schema, property) {
   }
 }
 
-module.exports = validatorHandler;
+function validatorHandlerObjetos(schema, property) {
+  return (req, res, next) => {
+    const data = req.body[property];
+    const { error } = schema.validate(data, { abortEarly: false });
+    if (error) {
+      next(boom.badRequest(error));
+    }
+    next();
+  }
+}
+
+module.exports = {validatorHandler,validatorHandlerObjetos};

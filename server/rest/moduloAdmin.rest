@@ -1,0 +1,266 @@
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbCI6ImFkbWluIiwiaWF0IjoxNjk0MTg4MDg4fQ.Sqw__tbmQyMOhWJOI9QESvY7gCImTwRLYOiPgw2umQw
+
+#listar usuario
+GET http://127.0.0.1:4000/admin
+Authorization: Bearer {{token}}
+Accept: application/json
+
+#eliminar usuario
+DELETE http://127.0.0.1:4000/admin/4
+Authorization: Bearer {{token}}
+Accept: application/json
+###########################################################
+### doctores
+GET http://127.0.0.1:4000/admin/doctor?q=&page=1&limit=10
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### mostrar un doctor
+GET http://127.0.0.1:4000/admin/doctor/7
+Authorization: Bearer {{token}}
+Accept: application/json
+### crear un doctor
+POST http://127.0.0.1:4000/admin/doctor
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": {
+      "email":"doctor2@email.com",
+      "password": "123456",
+      "rol": "doctor"
+    },
+    "persona":{
+      "nombre": "vania annet",
+      "apellidoMaterno": "graneros",
+      "apellidoPaterno": "perez",
+      "ci": "12345687",
+      "telefono": "152879522",
+      "direccion": "villa copa ",
+      "foto": "",
+      "es_persona": false
+    },
+    "doctor":{
+      "unidad":"genetica",
+      "especialidad": "genetica medica",
+      "numeroMatricula": "111"
+    }
+}
+### Editar un doctor
+PATCH  http://127.0.0.1:4000/admin/doctor/7
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": {
+      "email":"doctor22@email.com"
+    },
+    "persona":{
+      "nombre": "gary nova mamani",
+      "apellidoPaterno": "blanco"
+    },
+    "doctor":{
+      "unidad":"genetica lab",
+      "numeroMatricula": "4646546"
+    }
+}
+### eliminar un doctor
+DELETE http://127.0.0.1:4000/admin/doctor/6
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###############################################fin doctores
+### listar personal
+GET http://127.0.0.1:4000/admin/personalAd?q=&page=1&limit=10
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### mostrar un personalAd
+GET http://127.0.0.1:4000/admin/personalAd/1
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### crear un personalAd
+POST http://127.0.0.1:4000/admin/personalAd
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": {
+      "email":"personal11@email.com",
+      "password": "123456",
+      "rol": "personalAdmin"
+    },
+    "persona":{
+      "nombre": "Melo Carmelo",
+      "apellidoMaterno": "Flores",
+      "apellidoPaterno": "Graneros",
+      "ci": "12345687",
+      "telefono": "152879522",
+      "direccion": "villa copa ",
+      "foto": "",
+      "es_persona": false
+    },
+    "personalAdmin":{
+      "cargo":"secretarios"
+    }
+}
+### Editar un personalAd
+PATCH  http://127.0.0.1:4000/admin/personalAd/2
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": {
+      "email":"personal22@email.com"
+    },
+    "persona":{
+      "nombre": "alejandra gabriela"
+    },
+    "personalAdmin":{
+      "cargo":"mensajera"
+    }
+}
+### eliminar un personalAd
+DELETE http://127.0.0.1:4000/admin/personalAd/1
+Authorization: Bearer {{token}}
+Accept: application/json
+###############################################fin personalAd
+### listar laboratoristas
+GET http://127.0.0.1:4000/admin/laboratorista?q=&page=1&limit=10
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### mostrar un laboratorista
+GET http://127.0.0.1:4000/admin/laboratorista/2
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### crear un laboratorista
+POST http://127.0.0.1:4000/admin/laboratorista
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": {
+      "email":"laboratorista1@email.com",
+      "password": "123456",
+      "rol": "laboratorista"
+    },
+    "persona":{
+      "nombre": "Jeri Bradford",
+      "apellidoMaterno": "Gilliam",
+      "apellidoPaterno": "Holder",
+      "ci": "12345687",
+      "telefono": "152879522",
+      "direccion": "villa copa ",
+      "foto": "",
+      "es_persona": false
+    },
+    "laboratorista":{
+      "especialidad": "laboratorio medico",
+      "matriculaProf": "1111"
+    }
+}
+### Editar un laboratorista
+PATCH  http://127.0.0.1:4000/admin/laboratorista/2
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": {
+      "email":"laboratorista22@email.com"
+    },
+    "persona":{
+      "nombre": "diego marco"
+    },
+    "laboratorista":{
+      "especialidad": "laboratorio de huesos"
+    }
+}
+### eliminar un laboratorista
+DELETE http://127.0.0.1:4000/admin/laboratorista/2
+Authorization: Bearer {{token}}
+Accept: application/json
+###
+###############Crea un admin
+POST http://127.0.0.1:4000/admin/
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": {
+      "email":"admin1@email.com",
+      "password": "123456",
+      "rol": "admin"
+    },
+    "persona":{
+      "nombre": "Imanol Ronald",
+      "apellidoMaterno": "Valencia",
+      "apellidoPaterno": "Alameda",
+      "ci": "998988",
+      "telefono": "6464654",
+      "direccion": "Zona central",
+      "foto": "",
+      "es_persona": false
+    },
+    "laboratorista":{
+      "especialidad": "Laboratorio xadmin",
+      "matriculaProf": "1111"
+    },
+    "doctor":{
+      "unidad":"genetica lab xadmin",
+      "numeroMatricula": "99898889",
+      "especialidad": "genetica medica x"
+    },
+    "personalAdmin":{
+      "cargo":"Secretario"
+    }
+    
+}
+
+####Listar a los admins
+GET http://127.0.0.1:4000/admin/?q=&page=1&limit=10
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###lista por el id del usuario a los admins:
+GET http://127.0.0.1:4000/admin/14
+Authorization: Bearer {{token}}
+Accept: application/json
+
+#####edita un admin
+PATCH  http://127.0.0.1:4000/admin/14
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": {
+      
+    },
+    "persona":{
+      "nombre": "Juan Alejandro"
+    },
+    "doctor":{
+      "numeroMatricula": "55555"
+    },
+    "personalAdmin":{
+      "cargo":"Portero"
+    },
+    "laboratorista":{
+      "especialidad": "laboratorio de huesos"
+    }
+}
+
+###lista por el id del usuario a los roles:
+GET http://127.0.0.1:4000/admin/rol/14
+Authorization: Bearer {{token}}
+Accept: application/json

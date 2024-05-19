@@ -1,6 +1,7 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
 const { USUARIO_TABLE } = require('./usuario.model')
+const { PERSONA_TABLE } = require('./persona.model')
 
 const DOCTOR_TABLE = 'doctor';
 
@@ -15,13 +16,33 @@ const DoctorSchema =  {
     allowNull: false,
     type: DataTypes.STRING,
   },
+  especialidad: {
+    allowNull: false,
+    type: DataTypes.STRING,
+  },
+  numeroMatricula:{
+    allowNull: false,
+    type: DataTypes.STRING,
+  },
   usuarioId: {
     field: 'usuario_id',
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.INTEGER,
     unique: true,
     references: {
       model: USUARIO_TABLE,
+      key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'SET NULL'
+  },
+  personaId:{
+    field: 'persona_id',
+    allowNull: false,
+    type: DataTypes.INTEGER,
+    unique: true,
+    references: {
+      model: PERSONA_TABLE,
       key: 'id'
     },
     onUpdate: 'CASCADE',
@@ -33,6 +54,12 @@ class Doctor extends Model {
 
   static associate(models) {
     this.belongsTo(models.Usuario, {as: 'usuario'});
+    this.belongsTo(models.Persona, {as: 'persona'});
+    //
+    this.hasMany(models.Cita, {
+      as: 'citas',
+      foreignKey: 'doctorId',
+    });
   }
 
   static config(sequelize) {
